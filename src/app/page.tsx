@@ -138,12 +138,20 @@ export default function Home() {
 
       {/* SECTION 1: HERO */}
       <section className="relative min-h-[90vh] flex items-center bg-ink text-cream overflow-hidden">
-        <Placeholder label="Documentary Photo" className="absolute inset-0 opacity-60" />
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.6 }}
+          transition={{ duration: 2, ease: "easeOut", delay: 0.8 }}
+          className="absolute inset-0"
+        >
+          <Placeholder label="Documentary Photo" className="absolute inset-0" />
+        </motion.div>
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-background pointer-events-none" />
         <div className="relative max-w-7xl mx-auto w-full px-6 py-24">
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, ease: "easeOut", delay: 1 }}
+            transition={{ duration: 0.9, ease: "easeOut", delay: 2.2 }}
             className="max-w-xl"
           >
             <h1 className="font-heading text-4xl md:text-6xl font-bold leading-tight mb-6">
@@ -490,4 +498,5 @@ export default function Home() {
     </main>
   );
 }
+
 
