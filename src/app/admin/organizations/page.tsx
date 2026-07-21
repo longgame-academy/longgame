@@ -180,7 +180,7 @@ export default function AdminOrganizationsPage() {
                     {org.name}
                   </p>
                   <p className="font-body text-sm text-text-muted">
-                    {org.contactName} {org.contactEmail && `Â· ${org.contactEmail}`}
+                    {org.contactName} {org.contactEmail && `· ${org.contactEmail}`}
                   </p>
                 </div>
 
@@ -294,5 +294,6 @@ export default function AdminOrganizationsPage() {
     </div>
   );
 }
+
 
 

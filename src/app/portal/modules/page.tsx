@@ -50,7 +50,7 @@ export default async function ModulesPage() {
                 </span>
                 <span className="font-heading font-semibold">{m.title}</span>
               </div>
-              <span className="text-gold">â†’</span>
+              <span className="text-gold">→</span>
             </Link>
           ))}
         </div>
@@ -58,5 +58,6 @@ export default async function ModulesPage() {
     </div>
   );
 }
+
 
 

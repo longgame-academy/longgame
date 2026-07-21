@@ -67,7 +67,7 @@ export default function AdminLeadsPage() {
               {leads.map((lead) => (
                 <tr key={lead.id} className="border-t border-border-grey">
                   <td className="font-body text-sm px-5 py-3">
-                    {lead.firstName || "â€”"}
+                    {lead.firstName || "—"}
                   </td>
                   <td className="font-body text-sm px-5 py-3">{lead.email}</td>
                   <td className="font-body text-sm px-5 py-3">{lead.tag}</td>
@@ -86,5 +86,6 @@ export default function AdminLeadsPage() {
     </div>
   );
 }
+
 
 

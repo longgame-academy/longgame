@@ -48,7 +48,7 @@ export default async function ToolsPage() {
                   href={`/api/portal/tools/${t.id}/download`}
                   className="font-heading text-sm text-gold hover:underline"
                 >
-                  Download â†’
+                  Download →
                 </a>
               ) : (
                 <p className="font-body text-sm text-charcoal/50">
@@ -62,5 +62,6 @@ export default async function ToolsPage() {
     </div>
   );
 }
+
 
 

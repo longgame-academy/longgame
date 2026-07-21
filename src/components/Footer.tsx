@@ -65,7 +65,7 @@ export default function Footer() {
 
       <div className="border-t border-cream/10">
         <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-body text-cream/60">
-          <p>Â© 2026 Long Game. All Rights Reserved.</p>
+          <p>© 2026 Long Game. All Rights Reserved.</p>
           <img src="/logo-white.png" alt="Long Game" className="h-14 w-auto mx-auto" />
           <p>Designed with the long game in mind.</p>
         </div>
@@ -73,5 +73,6 @@ export default function Footer() {
     </motion.footer>
   );
 }
+
 
 
