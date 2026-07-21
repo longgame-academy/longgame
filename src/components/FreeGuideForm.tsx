@@ -93,7 +93,7 @@ export default function FreeGuideForm() {
         disabled={status === "loading"}
         className="w-full bg-gold text-charcoal font-heading font-semibold px-6 py-3 rounded-full hover:bg-gold-light transition-colors disabled:opacity-60"
       >
-        {status === "loading" ? "Sending..." : "Send Me the Free Guide"}
+        {status === "loading" ? "Sending..." : "Send Me the Guide"}
       </button>
 
       {status === "error" && (

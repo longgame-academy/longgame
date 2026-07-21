@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { useAuth } from "@clerk/nextjs";
@@ -32,7 +32,11 @@ export function CheckoutButton({ className }: { className?: string }) {
       disabled={loading}
       className={className}
     >
-      {loading ? "Redirecting..." : "Enroll in the Parent Academy"}
+      {loading ? "Redirecting..." : (
+        <>
+          Get Full Access &mdash; $147 <span aria-hidden>â†’</span>
+        </>
+      )}
     </button>
   );
 }
