@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 
 export default function TermsPage() {
   return (
-    <main className="flex flex-col min-h-screen bg-cream text-charcoal">
+    <main className="flex flex-col min-h-screen bg-background text-charcoal">
       <Nav />
       <section className="max-w-3xl mx-auto w-full px-6 py-20">
         <h1 className="font-heading text-4xl font-bold mb-10">

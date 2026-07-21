@@ -1,4 +1,4 @@
-import { auth } from "@clerk/nextjs/server";
+﻿import { auth } from "@clerk/nextjs/server";
 import { db } from "@/db";
 import { content } from "@/db/schema";
 import { eq } from "drizzle-orm";
@@ -48,22 +48,8 @@ export async function GET(
     return NextResponse.json({ error: "File not available" }, { status: 404 });
   }
 
-  // assetRef stores the private Blob URL — fetch it server-side with the
-  // token and stream it back. Never redirect to it directly.
-  const blobRes = await fetch(item.assetRef, {
-    headers: { Authorization: `Bearer ${process.env.BLOB_READ_WRITE_TOKEN}` },
-  });
-
-  if (!blobRes.ok || !blobRes.body) {
-    return NextResponse.json({ error: "File not available" }, { status: 404 });
-  }
-
-  const filename = item.assetRef.split("/").pop() || "download";
-
-  return new NextResponse(blobRes.body, {
-    headers: {
-      "Content-Type": blobRes.headers.get("content-type") || "application/octet-stream",
-      "Content-Disposition": `attachment; filename="${filename}"`,
-    },
-  });
+  // Redirect to the actual stored asset only after all checks pass.
+  // assetRef should point to a private/signed storage location, not a
+  // public bucket URL, once file storage is wired up.
+  return NextResponse.redirect(item.assetRef);
 }

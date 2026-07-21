@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState, useCallback } from "react";
 import { motion } from "framer-motion";
@@ -47,28 +47,6 @@ export default function AdminContentPage() {
     loadItems();
   }, [loadItems]);
 
-  const [uploading, setUploading] = useState(false);
-
-  async function handleFileUpload(e: React.ChangeEvent<HTMLInputElement>) {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
-    setUploading(true);
-    const formData = new FormData();
-    formData.append("file", file);
-
-    const res = await fetch("/api/admin/content/upload", {
-      method: "POST",
-      body: formData,
-    });
-
-    setUploading(false);
-    if (res.ok) {
-      const data = await res.json();
-      setAssetRef(data.url);
-    }
-  }
-  
   async function handleCreate(e: React.FormEvent) {
     e.preventDefault();
     setCreating(true);
@@ -190,19 +168,14 @@ export default function AdminContentPage() {
           <div className="grid md:grid-cols-2 gap-4 items-end">
             <div>
               <label className="block font-heading text-sm font-medium mb-1">
-                File
+                Asset URL
               </label>
               <input
-                type="file"
-                onChange={handleFileUpload}
-                className="w-full border border-charcoal/20 rounded-lg px-3 py-2 font-body bg-cream text-sm"
+                value={assetRef}
+                onChange={(e) => setAssetRef(e.target.value)}
+                placeholder="https://..."
+                className="w-full border border-charcoal/20 rounded-lg px-3 py-2 font-body bg-cream"
               />
-              {uploading && (
-                <p className="font-body text-xs text-charcoal/50 mt-1">Uploading...</p>
-              )}
-              {assetRef && !uploading && (
-                <p className="font-body text-xs text-green-700 mt-1">File attached</p>
-              )}
             </div>
             <label className="flex items-center gap-2 pb-2">
               <input

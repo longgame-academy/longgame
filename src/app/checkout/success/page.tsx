@@ -33,7 +33,7 @@ export default function CheckoutSuccessPage() {
   }, [router]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-cream">
+    <div className="min-h-screen flex items-center justify-center bg-background">
       <div className="text-center font-body">
         {failed ? (
           <>

@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 
 export default function ParentAcademyPage() {
   return (
-    <main className="flex flex-col min-h-screen bg-cream text-charcoal">
+    <main className="flex flex-col min-h-screen bg-background text-charcoal">
       <Nav />
 
       {/* HERO */}

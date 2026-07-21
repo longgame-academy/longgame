@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 export default function ContactPage() {
   return (
-    <main className="flex flex-col min-h-screen bg-cream text-charcoal">
+    <main className="flex flex-col min-h-screen bg-background text-charcoal">
       <Nav />
       <motion.section
         initial={{ opacity: 0, y: 20 }}

@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 
 export default function FreeGuidePage() {
   return (
-    <main className="flex flex-col min-h-screen bg-cream text-charcoal">
+    <main className="flex flex-col min-h-screen bg-background text-charcoal">
       <Nav />
 
       <section className="max-w-6xl mx-auto w-full px-6 py-20 md:py-24 grid md:grid-cols-2 gap-12 items-center">
