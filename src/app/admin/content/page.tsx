@@ -127,7 +127,7 @@ export default function AdminContentPage() {
 
       <form
         onSubmit={handleCreate}
-        className="bg-cream/60 border border-charcoal/10 rounded-2xl p-6 mb-10 space-y-4 shadow-[0_4px_16px_rgba(18,21,20,0.08)]"
+        className="bg-cream/60 border border-border-grey rounded-2xl p-6 mb-10 space-y-4 shadow-[0_4px_16px_rgba(18,21,20,0.08)]"
       >
         <div className="grid md:grid-cols-3 gap-4">
           <div>
@@ -232,7 +232,7 @@ export default function AdminContentPage() {
             className={`text-xs font-heading font-semibold px-4 py-2 rounded-full transition-colors ${
               filter === f
                 ? "bg-charcoal text-cream"
-                : "bg-cream/60 text-charcoal border border-charcoal/10"
+                : "bg-cream/60 text-charcoal border border-border-grey"
             }`}
           >
             {f === "all" ? "All" : typeLabels[f]}
@@ -241,16 +241,16 @@ export default function AdminContentPage() {
       </div>
 
       {loading ? (
-        <p className="font-body text-charcoal/60">Loading...</p>
+        <p className="font-body text-text-muted">Loading...</p>
       ) : filteredItems.length === 0 ? (
-        <p className="font-body text-charcoal/60">No content yet.</p>
+        <p className="font-body text-text-muted">No content yet.</p>
       ) : (
         <div className="space-y-3">
           {filteredItems.map((item) => (
             <motion.div
               key={item.id}
               layout
-              className="bg-cream/60 border border-charcoal/10 rounded-2xl p-5 flex items-center justify-between flex-wrap gap-4 shadow-[0_4px_16px_rgba(18,21,20,0.08)]"
+              className="bg-cream/60 border border-border-grey rounded-2xl p-5 flex items-center justify-between flex-wrap gap-4 shadow-[0_4px_16px_rgba(18,21,20,0.08)]"
             >
               <div>
                 <span className="font-heading text-xs text-gold uppercase tracking-wide">
@@ -279,7 +279,7 @@ export default function AdminContentPage() {
                     className={`text-xs font-heading font-semibold px-3 py-1 rounded-full ${
                       item.downloadable
                         ? "bg-green-100 text-green-800"
-                        : "bg-charcoal/10 text-charcoal/60"
+                        : "bg-charcoal/10 text-text-muted"
                     }`}
                   >
                     {item.downloadable ? "Downloadable" : "View Only"}
@@ -300,4 +300,5 @@ export default function AdminContentPage() {
     </div>
   );
 }
+
 

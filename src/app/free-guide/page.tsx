@@ -24,14 +24,14 @@ export default function FreeGuidePage() {
             <h1 className="font-heading text-4xl md:text-5xl font-bold leading-tight mb-6">
               The Car Ride Home
             </h1>
-            <p className="font-body text-lg text-charcoal/70 mb-4">
+            <p className="font-body text-lg text-text-body mb-4">
               One of the most important conversations in youth sports doesn&apos;t
               happen during the game.
             </p>
-            <p className="font-body text-lg text-charcoal/70 mb-4">
+            <p className="font-body text-lg text-text-body mb-4">
               It happens on the drive home.
             </p>
-            <p className="font-body text-lg text-charcoal/70 mb-8">
+            <p className="font-body text-lg text-text-body mb-8">
               Download this free guide and discover simple ways to make those
               conversations more meaningful&mdash;for both you and your athlete.
             </p>
@@ -71,13 +71,13 @@ export default function FreeGuidePage() {
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">
               What&apos;s Inside
             </h2>
-            <p className="font-body text-lg text-charcoal/70 mb-4">
+            <p className="font-body text-lg text-text-body mb-4">
               Inside this guide you&apos;ll discover practical ideas for
               navigating the conversations that happen after great games,
               difficult games, disappointing performances, and everything in
               between.
             </p>
-            <p className="font-body text-lg text-charcoal/70">
+            <p className="font-body text-lg text-text-body">
               You&apos;ll also learn simple questions that build confidence,
               what to avoid saying in emotional moments, and why the car ride
               home can shape an athlete long after the final whistle.
@@ -93,7 +93,7 @@ export default function FreeGuidePage() {
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
               A Preview Inside
             </h2>
-            <p className="font-body text-lg text-charcoal/70">
+            <p className="font-body text-lg text-text-body">
               Professionally designed.
               <br />
               Immediately practical.
@@ -126,7 +126,7 @@ export default function FreeGuidePage() {
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
               Ready to Read?
             </h2>
-            <p className="font-body text-lg text-charcoal/70 mb-10">
+            <p className="font-body text-lg text-text-body mb-10">
               Enter your email below and we&apos;ll send The Car Ride Home
               directly to your inbox.
             </p>
@@ -147,5 +147,6 @@ export default function FreeGuidePage() {
     </main>
   );
 }
+
 
 

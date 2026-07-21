@@ -68,9 +68,9 @@ export default function AdminUsersPage() {
       </form>
 
       {loading ? (
-        <p className="font-body text-charcoal/60">Loading...</p>
+        <p className="font-body text-text-muted">Loading...</p>
       ) : users.length === 0 ? (
-        <p className="font-body text-charcoal/60">No users found.</p>
+        <p className="font-body text-text-muted">No users found.</p>
       ) : (
         <div className="space-y-3">
           {users.map((u) => {
@@ -78,13 +78,13 @@ export default function AdminUsersPage() {
             return (
               <div
                 key={u.id}
-                className="bg-cream/60 border border-charcoal/10 rounded-2xl p-5 flex items-center justify-between flex-wrap gap-4 shadow-[0_4px_16px_rgba(18,21,20,0.08)]"
+                className="bg-cream/60 border border-border-grey rounded-2xl p-5 flex items-center justify-between flex-wrap gap-4 shadow-[0_4px_16px_rgba(18,21,20,0.08)]"
               >
                 <div>
                   <p className="font-heading font-semibold">
                     {u.firstName} {u.lastName}
                   </p>
-                  <p className="font-body text-sm text-charcoal/60">
+                  <p className="font-body text-sm text-text-muted">
                     {u.email}
                   </p>
                 </div>
@@ -99,7 +99,7 @@ export default function AdminUsersPage() {
                       Individual Access
                     </span>
                   ) : (
-                    <span className="font-heading text-xs font-semibold bg-charcoal/10 text-charcoal/60 px-3 py-1 rounded-full">
+                    <span className="font-heading text-xs font-semibold bg-charcoal/10 text-text-muted px-3 py-1 rounded-full">
                       No Access
                     </span>
                   )}
@@ -122,4 +122,5 @@ export default function AdminUsersPage() {
     </div>
   );
 }
+
 

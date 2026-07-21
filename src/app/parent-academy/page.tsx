@@ -117,7 +117,7 @@ function Accordion({
       {items.map((item, i) => {
         const isOpen = openIndex === i;
         return (
-          <div key={i} className="border border-charcoal/10 rounded-2xl overflow-hidden bg-cream shadow-[0_4px_16px_rgba(18,21,20,0.08)]">
+          <div key={i} className="border border-border-grey rounded-2xl overflow-hidden bg-cream shadow-[0_4px_16px_rgba(18,21,20,0.08)]">
             <button
               onClick={() => setOpenIndex(isOpen ? null : i)}
               className="w-full text-left px-6 py-5 flex justify-between items-center gap-4"
@@ -142,7 +142,7 @@ function Accordion({
                   transition={{ duration: 0.3, ease: "easeOut" }}
                   className="overflow-hidden"
                 >
-                  <p className="font-body text-sm text-charcoal/70 leading-relaxed px-6 pb-6">
+                  <p className="font-body text-sm text-text-body leading-relaxed px-6 pb-6">
                     {item.body || item.a}
                   </p>
                 </motion.div>
@@ -170,7 +170,7 @@ export default function ParentAcademyPage() {
             <h1 className="font-heading text-4xl md:text-5xl font-bold leading-tight mb-6">
               Become the parent your athlete will remember.
             </h1>
-            <p className="font-body text-lg text-charcoal/70 mb-10">
+            <p className="font-body text-lg text-text-body mb-10">
               The Parent Academy is a practical parent development system that
               helps families confidently navigate every stage of the youth sports
               journey.
@@ -221,12 +221,12 @@ export default function ParentAcademyPage() {
 
       {/* SECTION 4: ENROLL */}
       <section className="max-w-lg mx-auto w-full px-6 py-20 text-center">
-        <div className="bg-cream border border-charcoal/10 rounded-2xl p-10 shadow-[0_6px_20px_rgba(18,21,20,0.10)]">
+        <div className="bg-cream border border-border-grey rounded-2xl p-10 shadow-[0_6px_20px_rgba(18,21,20,0.10)]">
           <p className="font-heading text-gold text-sm font-semibold tracking-widest uppercase mb-2">
             Parent Academy
           </p>
           <p className="font-heading text-4xl font-bold mb-4">$147 USD</p>
-          <p className="font-body text-sm text-charcoal/70 mb-8">
+          <p className="font-body text-sm text-text-body mb-8">
             One-time payment. Permanent access to the Parent Academy included
             with your purchase.
           </p>
@@ -246,5 +246,6 @@ export default function ParentAcademyPage() {
     </main>
   );
 }
+
 
 

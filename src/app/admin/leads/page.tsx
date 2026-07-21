@@ -38,11 +38,11 @@ export default function AdminLeadsPage() {
       </div>
 
       {loading ? (
-        <p className="font-body text-charcoal/60">Loading...</p>
+        <p className="font-body text-text-muted">Loading...</p>
       ) : leads.length === 0 ? (
-        <p className="font-body text-charcoal/60">No leads yet.</p>
+        <p className="font-body text-text-muted">No leads yet.</p>
       ) : (
-        <div className="bg-cream/60 border border-charcoal/10 rounded-2xl overflow-hidden shadow-[0_4px_16px_rgba(18,21,20,0.08)]">
+        <div className="bg-cream/60 border border-border-grey rounded-2xl overflow-hidden shadow-[0_4px_16px_rgba(18,21,20,0.08)]">
           <table className="w-full text-left">
             <thead className="bg-charcoal/5">
               <tr>
@@ -65,7 +65,7 @@ export default function AdminLeadsPage() {
             </thead>
             <tbody>
               {leads.map((lead) => (
-                <tr key={lead.id} className="border-t border-charcoal/10">
+                <tr key={lead.id} className="border-t border-border-grey">
                   <td className="font-body text-sm px-5 py-3">
                     {lead.firstName || "â€”"}
                   </td>
@@ -74,7 +74,7 @@ export default function AdminLeadsPage() {
                   <td className="font-body text-sm px-5 py-3">
                     {lead.delivered ? "Yes" : "No"}
                   </td>
-                  <td className="font-body text-sm px-5 py-3 text-charcoal/60">
+                  <td className="font-body text-sm px-5 py-3 text-text-muted">
                     {new Date(lead.createdAt).toLocaleDateString()}
                   </td>
                 </tr>
@@ -86,4 +86,5 @@ export default function AdminLeadsPage() {
     </div>
   );
 }
+
 

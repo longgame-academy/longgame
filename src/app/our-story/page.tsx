@@ -24,22 +24,22 @@ export default function OurStoryPage() {
             <h1 className="font-heading text-4xl md:text-5xl font-bold leading-tight mb-6">
               Why Long Game Exists
             </h1>
-            <p className="font-body text-lg text-charcoal/70 mb-4">
+            <p className="font-body text-lg text-text-body mb-4">
               Long Game wasn&apos;t built to sell a course.
             </p>
-            <p className="font-body text-lg text-charcoal/70 mb-4">
+            <p className="font-body text-lg text-text-body mb-4">
               It was built to solve a problem.
             </p>
-            <p className="font-body text-lg text-charcoal/70 mb-4">
+            <p className="font-body text-lg text-text-body mb-4">
               Years spent coaching young athletes. Years navigating youth
               sports as a parent. And one ordinary car ride that changed how
               I saw it all.
             </p>
-            <p className="font-body text-lg text-charcoal/70 mb-4">
+            <p className="font-body text-lg text-text-body mb-4">
               I realized the biggest influence on a young athlete often
               isn&apos;t the coach.
             </p>
-            <p className="font-body text-lg text-charcoal/70 mb-8">
+            <p className="font-body text-lg text-text-body mb-8">
               It&apos;s the parent beside them on the drive home.
             </p>
             <Link
@@ -106,7 +106,7 @@ export default function OurStoryPage() {
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">
               Years of Coaching Changed How I Saw the Game
             </h2>
-            <div className="font-body text-lg text-charcoal/70 leading-relaxed space-y-4">
+            <div className="font-body text-lg text-text-body leading-relaxed space-y-4">
               <p>Years of coaching taught me to recognize patterns.</p>
               <p>Talented athletes losing confidence.</p>
               <p>
@@ -191,5 +191,6 @@ export default function OurStoryPage() {
     </main>
   );
 }
+
 
 

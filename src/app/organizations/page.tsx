@@ -124,7 +124,7 @@ export default function OrganizationsPage() {
             <h1 className="font-heading text-4xl md:text-5xl font-bold leading-tight mb-6">
               Build Stronger Families. Strengthen Your Organization.
             </h1>
-            <p className="font-body text-lg text-charcoal/70 mb-10">
+            <p className="font-body text-lg text-text-body mb-10">
               Long Game partners with youth sports organizations to equip parents
               with the guidance, practical tools, and ongoing support they need,
               strengthening families, empowering coaches, and creating a
@@ -159,7 +159,7 @@ export default function OrganizationsPage() {
             <br />
             <span className="text-gold">Very few help develop the parent.</span>
           </h2>
-          <div className="font-body text-charcoal/70 leading-relaxed space-y-4">
+          <div className="font-body text-text-body leading-relaxed space-y-4">
             <p>Every organization invests in developing athletes.</p>
             <p>
               They hire coaches. Build facilities. Create development programs.
@@ -211,7 +211,7 @@ export default function OrganizationsPage() {
               >
                 <b.icon className="w-8 h-8 text-gold mb-4" strokeWidth={1.5} />
                 <h3 className="font-heading text-lg font-semibold mb-3">{b.title}</h3>
-                <p className="font-body text-sm text-charcoal/70 leading-relaxed mb-4 flex-1">
+                <p className="font-body text-sm text-text-body leading-relaxed mb-4 flex-1">
                   {b.body}
                 </p>
                 <p className="font-body text-sm font-semibold text-gold">{b.result}</p>
@@ -228,7 +228,7 @@ export default function OrganizationsPage() {
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
               A Simple Partnership. A Lasting Impact.
             </h2>
-            <p className="font-body text-charcoal/70 max-w-2xl mx-auto leading-relaxed">
+            <p className="font-body text-text-body max-w-2xl mx-auto leading-relaxed">
               Getting started with Long Game is simple. We guide the
               implementation so your organization can remain focused on
               developing athletes while we help equip the parents who influence
@@ -246,7 +246,7 @@ export default function OrganizationsPage() {
               >
                 <p className="font-heading text-gold text-3xl font-bold mb-3">{s.step}</p>
                 <h3 className="font-heading text-lg font-semibold mb-2">{s.title}</h3>
-                <p className="font-body text-sm text-charcoal/70 leading-relaxed">{s.body}</p>
+                <p className="font-body text-sm text-text-body leading-relaxed">{s.body}</p>
               </motion.div>
             ))}
           </div>
@@ -260,7 +260,7 @@ export default function OrganizationsPage() {
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
               Your Long Game Partnership Includes
             </h2>
-            <p className="font-body text-charcoal/70 max-w-2xl mx-auto leading-relaxed">
+            <p className="font-body text-text-body max-w-2xl mx-auto leading-relaxed">
               Every Long Game Partnership includes a complete parent development
               ecosystem designed to strengthen your organization and equip the
               families you serve.
@@ -274,10 +274,10 @@ export default function OrganizationsPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.08 }}
-                className="bg-cream border border-charcoal/10 rounded-2xl p-8 shadow-[0_4px_16px_rgba(18,21,20,0.08)]"
+                className="bg-cream border border-border-grey rounded-2xl p-8 shadow-[0_4px_16px_rgba(18,21,20,0.08)]"
               >
                 <h3 className="font-heading text-lg font-semibold mb-3">{item.title}</h3>
-                <p className="font-body text-sm text-charcoal/70 leading-relaxed">{item.body}</p>
+                <p className="font-body text-sm text-text-body leading-relaxed">{item.body}</p>
               </motion.div>
             ))}
           </div>
@@ -318,5 +318,6 @@ export default function OrganizationsPage() {
     </main>
   );
 }
+
 
 

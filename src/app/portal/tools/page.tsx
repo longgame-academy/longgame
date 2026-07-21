@@ -32,7 +32,7 @@ export default async function ToolsPage() {
       </h1>
 
       {tools.length === 0 ? (
-        <p className="font-body text-charcoal/60">
+        <p className="font-body text-text-muted">
           Tools will appear here once published.
         </p>
       ) : (
@@ -40,7 +40,7 @@ export default async function ToolsPage() {
           {tools.map((t) => (
             <div
               key={t.id}
-              className="bg-cream/60 border border-charcoal/10 rounded-2xl p-6 shadow-[0_4px_16px_rgba(18,21,20,0.08)]"
+              className="bg-cream/60 border border-border-grey rounded-2xl p-6 shadow-[0_4px_16px_rgba(18,21,20,0.08)]"
             >
               <h3 className="font-heading font-semibold mb-2">{t.title}</h3>
               {t.downloadable ? (
@@ -62,4 +62,5 @@ export default async function ToolsPage() {
     </div>
   );
 }
+
 

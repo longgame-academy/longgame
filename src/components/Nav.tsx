@@ -13,7 +13,7 @@ export default function Nav() {
       initial={{ opacity: 0, y: -12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className="w-full border-b border-charcoal/10"
+      className="w-full border-b border-border-grey"
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-5">
         <Link href="/" className="flex items-center">
@@ -66,7 +66,7 @@ export default function Nav() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
-            className="md:hidden overflow-hidden border-t border-charcoal/10"
+            className="md:hidden overflow-hidden border-t border-border-grey"
           >
             <div className="flex flex-col gap-1 px-6 py-4 font-heading text-sm font-medium">
               <Link href="/parent-academy" onClick={() => setOpen(false)} className="py-3 hover:text-gold transition-colors">
@@ -102,4 +102,5 @@ export default function Nav() {
     </motion.header>
   );
 }
+
 

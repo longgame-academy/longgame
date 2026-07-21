@@ -15,7 +15,7 @@ export default function ContactPage() {
         className="max-w-2xl mx-auto w-full px-6 py-20 text-center"
       >
         <h1 className="font-heading text-4xl font-bold mb-6">Get in Touch</h1>
-        <p className="font-body text-lg text-charcoal/70 mb-10">
+        <p className="font-body text-lg text-text-body mb-10">
           Have a question about the Parent Academy or want to bring Long Game
           to your organization? Reach out below.
         </p>
@@ -30,5 +30,6 @@ export default function ContactPage() {
     </main>
   );
 }
+
 
 

@@ -119,7 +119,7 @@ export default function AdminOrganizationsPage() {
       {/* Create org */}
       <form
         onSubmit={handleCreateOrg}
-        className="bg-cream/60 border border-charcoal/10 rounded-2xl p-6 mb-10 grid md:grid-cols-4 gap-4 items-end shadow-[0_4px_16px_rgba(18,21,20,0.08)]"
+        className="bg-cream/60 border border-border-grey rounded-2xl p-6 mb-10 grid md:grid-cols-4 gap-4 items-end shadow-[0_4px_16px_rgba(18,21,20,0.08)]"
       >
         <div>
           <label className="block font-heading text-sm font-medium mb-1">
@@ -164,22 +164,22 @@ export default function AdminOrganizationsPage() {
 
       {/* Org list */}
       {loading ? (
-        <p className="font-body text-charcoal/60">Loading...</p>
+        <p className="font-body text-text-muted">Loading...</p>
       ) : orgs.length === 0 ? (
-        <p className="font-body text-charcoal/60">No organizations yet.</p>
+        <p className="font-body text-text-muted">No organizations yet.</p>
       ) : (
         <div className="space-y-4">
           {orgs.map((org) => (
             <div
               key={org.id}
-              className="bg-cream/60 border border-charcoal/10 rounded-2xl p-6 shadow-[0_4px_16px_rgba(18,21,20,0.08)]"
+              className="bg-cream/60 border border-border-grey rounded-2xl p-6 shadow-[0_4px_16px_rgba(18,21,20,0.08)]"
             >
               <div className="flex items-center justify-between flex-wrap gap-4">
                 <div>
                   <p className="font-heading font-semibold text-lg">
                     {org.name}
                   </p>
-                  <p className="font-body text-sm text-charcoal/60">
+                  <p className="font-body text-sm text-text-muted">
                     {org.contactName} {org.contactEmail && `Â· ${org.contactEmail}`}
                   </p>
                 </div>
@@ -223,7 +223,7 @@ export default function AdminOrganizationsPage() {
               </div>
 
               {expandedOrgId === org.id && (
-                <div className="mt-6 pt-6 border-t border-charcoal/10">
+                <div className="mt-6 pt-6 border-t border-border-grey">
                   <div className="flex items-end gap-3 mb-4">
                     <div>
                       <label className="block font-heading text-xs font-medium mb-1">
@@ -255,13 +255,13 @@ export default function AdminOrganizationsPage() {
                     {(codes[org.id] || []).map((c) => (
                       <div
                         key={c.id}
-                        className="flex items-center justify-between bg-cream border border-charcoal/10 rounded-lg px-4 py-3"
+                        className="flex items-center justify-between bg-cream border border-border-grey rounded-lg px-4 py-3"
                       >
                         <div>
                           <p className="font-heading font-bold tracking-widest">
                             {c.code}
                           </p>
-                          <p className="font-body text-xs text-charcoal/60">
+                          <p className="font-body text-xs text-text-muted">
                             {c.usesCount} / {c.maxUses} used
                           </p>
                         </div>
@@ -272,7 +272,7 @@ export default function AdminOrganizationsPage() {
                           className={`text-xs font-heading font-semibold px-3 py-1 rounded-full ${
                             c.active
                               ? "bg-green-100 text-green-800"
-                              : "bg-charcoal/10 text-charcoal/60"
+                              : "bg-charcoal/10 text-text-muted"
                           }`}
                         >
                           {c.active ? "Active" : "Inactive"}
@@ -294,4 +294,5 @@ export default function AdminOrganizationsPage() {
     </div>
   );
 }
+
 

@@ -34,7 +34,7 @@ export default function FreeGuideForm() {
         <h3 className="font-heading text-xl font-semibold mb-2">
           Check your inbox
         </h3>
-        <p className="font-body text-charcoal/70">
+        <p className="font-body text-text-body">
           Your Free Guide is on its way to {email}.
         </p>
       </div>
@@ -44,7 +44,7 @@ export default function FreeGuideForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-cream/70 border border-charcoal/10 rounded-2xl p-8 max-w-md mx-auto shadow-[0_4px_16px_rgba(18,21,20,0.08)]"
+      className="bg-cream/70 border border-border-grey rounded-2xl p-8 max-w-md mx-auto shadow-[0_4px_16px_rgba(18,21,20,0.08)]"
     >
       <div className="mb-5">
         <label className="block font-heading text-sm font-medium mb-2">
@@ -82,7 +82,7 @@ export default function FreeGuideForm() {
           onChange={(e) => setConsent(e.target.checked)}
           className="mt-1"
         />
-        <span className="font-body text-sm text-charcoal/70">
+        <span className="font-body text-sm text-text-body">
           I agree to receive the Free Guide and occasional emails from Long
           Game. Unsubscribe anytime.
         </span>
@@ -104,4 +104,5 @@ export default function FreeGuideForm() {
     </form>
   );
 }
+
 

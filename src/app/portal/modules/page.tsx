@@ -33,7 +33,7 @@ export default async function ModulesPage() {
       </h1>
 
       {modules.length === 0 ? (
-        <p className="font-body text-charcoal/60">
+        <p className="font-body text-text-muted">
           Modules will appear here once published.
         </p>
       ) : (
@@ -42,7 +42,7 @@ export default async function ModulesPage() {
             <Link
               key={m.id}
               href={`/portal/modules/${m.id}`}
-              className="flex items-center justify-between bg-cream/60 border border-charcoal/10 rounded-2xl p-5 hover:border-gold transition-colors shadow-[0_4px_16px_rgba(18,21,20,0.08)] hover:shadow-[0_8px_24px_rgba(18,21,20,0.12)]"
+              className="flex items-center justify-between bg-cream/60 border border-border-grey rounded-2xl p-5 hover:border-gold transition-colors shadow-[0_4px_16px_rgba(18,21,20,0.08)] hover:shadow-[0_8px_24px_rgba(18,21,20,0.12)]"
             >
               <div className="flex items-center gap-4">
                 <span className="font-heading text-gold text-lg font-bold w-8">
@@ -58,4 +58,5 @@ export default async function ModulesPage() {
     </div>
   );
 }
+
 

@@ -43,14 +43,14 @@ export default function JoinOrganizationPage() {
       <h1 className="font-heading text-3xl font-bold mb-3">
         Join Your Organization
       </h1>
-      <p className="font-body text-charcoal/70 mb-8">
+      <p className="font-body text-text-body mb-8">
         Enter the code your organization shared with you to unlock your
         access.
       </p>
 
       <form
         onSubmit={handleSubmit}
-        className="bg-cream/60 border border-charcoal/10 rounded-2xl p-6 shadow-[0_4px_16px_rgba(18,21,20,0.08)]"
+        className="bg-cream/60 border border-border-grey rounded-2xl p-6 shadow-[0_4px_16px_rgba(18,21,20,0.08)]"
       >
         <label className="block font-heading text-sm font-medium mb-2">
           Organization Code
@@ -80,4 +80,5 @@ export default function JoinOrganizationPage() {
     </motion.div>
   );
 }
+
 

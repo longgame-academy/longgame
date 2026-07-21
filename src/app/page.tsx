@@ -196,7 +196,7 @@ export default function Home() {
             <br />
             So has the experience of raising an athlete.
           </h2>
-          <div className="font-body text-charcoal/70 leading-relaxed space-y-4">
+          <div className="font-body text-text-body leading-relaxed space-y-4">
             <p>
               Somewhere along the way, youth sports became more than practices and
               weekend games.
@@ -224,7 +224,7 @@ export default function Home() {
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">
               A different way to support sports families.
             </h2>
-            <p className="font-body text-charcoal/70 leading-relaxed max-w-2xl mx-auto mb-16">
+            <p className="font-body text-text-body leading-relaxed max-w-2xl mx-auto mb-16">
               Long Game was created to help sports parents navigate the moments
               that matter most. The conversations after difficult games. The
               pressure that quietly builds over time. The confidence that can
@@ -242,11 +242,11 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.1 }}
-                className="bg-background border border-charcoal/10 rounded-2xl p-8 shadow-[0_4px_16px_rgba(18,21,20,0.08)]"
+                className="bg-background border border-border-grey rounded-2xl p-8 shadow-[0_4px_16px_rgba(18,21,20,0.08)]"
               >
                 <p.icon className="w-8 h-8 text-gold mb-4" strokeWidth={1.5} />
                 <h3 className="font-heading text-lg font-semibold mb-3">{p.title}</h3>
-                <p className="font-body text-sm text-charcoal/70 leading-relaxed">{p.body}</p>
+                <p className="font-body text-sm text-text-body leading-relaxed">{p.body}</p>
               </motion.div>
             ))}
           </div>
@@ -262,7 +262,7 @@ export default function Home() {
           <p className="font-heading text-gold text-sm font-semibold tracking-widest uppercase mb-6">
             Real-life moments, not modules.
           </p>
-          <p className="font-body text-charcoal/70 leading-relaxed max-w-2xl mx-auto">
+          <p className="font-body text-text-body leading-relaxed max-w-2xl mx-auto">
             Parents do not wake up thinking they need another course. They think
             about the game that went badly, the confidence that disappeared, the
             car ride that felt too quiet, the coach conversation they are not sure
@@ -287,7 +287,7 @@ export default function Home() {
               <Placeholder label="Documentary Photo" className="aspect-[16/10] rounded-lg" />
               <div>
                 <h3 className="font-heading text-xl font-semibold mb-3">{m.title}</h3>
-                <p className="font-body text-charcoal/70 leading-relaxed">{m.body}</p>
+                <p className="font-body text-text-body leading-relaxed">{m.body}</p>
               </div>
             </motion.div>
           ))}
@@ -347,7 +347,7 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.1 }}
-              className="text-center border-b border-charcoal/10 pb-14 last:border-0"
+              className="text-center border-b border-border-grey pb-14 last:border-0"
             >
               <p className="font-body italic text-xl md:text-2xl leading-relaxed mb-5">
                 &ldquo;{q.quote}&rdquo;
@@ -398,7 +398,7 @@ export default function Home() {
             <br />
             Created with purpose.
           </h2>
-          <div className="font-body text-charcoal/70 leading-relaxed space-y-4 mb-8">
+          <div className="font-body text-text-body leading-relaxed space-y-4 mb-8">
             <p>Long Game wasn&apos;t built in a boardroom.</p>
             <p>
               It was built over years of coaching young athletes, walking
@@ -414,15 +414,15 @@ export default function Home() {
             </p>
           </div>
           <p className="font-heading font-semibold">Shawn Dixon</p>
-          <p className="font-body text-sm text-charcoal/60 mb-8">
+          <p className="font-body text-sm text-text-muted mb-8">
             Coach &middot; Parent &middot; Author
             <br />
             Author of <span className="italic">Raising an Athlete: Built for the Long Game</span>
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 border-t border-charcoal/10 pt-8">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 border-t border-border-grey pt-8">
             <div>
               <p className="font-heading text-sm font-semibold mb-1">Years of Coaching</p>
-              <p className="font-body text-xs text-charcoal/60">
+              <p className="font-body text-xs text-text-muted">
                 Helping young athletes and sports families navigate the youth
                 sports journey.
               </p>
@@ -431,13 +431,13 @@ export default function Home() {
               <p className="font-heading text-sm font-semibold mb-1">
                 Amazon #1 Best Selling Author
               </p>
-              <p className="font-body text-xs text-charcoal/60">
+              <p className="font-body text-xs text-text-muted">
                 Raising an Athlete: Built for the Long Game.
               </p>
             </div>
             <div>
               <p className="font-heading text-sm font-semibold mb-1">Built for Sports Families</p>
-              <p className="font-body text-xs text-charcoal/60">
+              <p className="font-body text-xs text-text-muted">
                 Created to support parents, athletes, teams, and organizations
                 through every stage of the journey.
               </p>
@@ -450,7 +450,7 @@ export default function Home() {
       <section className="max-w-6xl mx-auto w-full px-6 pb-20">
         <motion.div
           {...fadeUp}
-          className="bg-cream border border-charcoal/10 rounded-2xl p-10 md:p-14 grid md:grid-cols-2 gap-10 items-center shadow-[0_6px_20px_rgba(18,21,20,0.10)]"
+          className="bg-cream border border-border-grey rounded-2xl p-10 md:p-14 grid md:grid-cols-2 gap-10 items-center shadow-[0_6px_20px_rgba(18,21,20,0.10)]"
         >
           <div>
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 leading-tight">
@@ -458,7 +458,7 @@ export default function Home() {
               <br />
               What matters most doesn&apos;t.
             </h2>
-            <p className="font-body text-charcoal/70 leading-relaxed mb-8">
+            <p className="font-body text-text-body leading-relaxed mb-8">
               Every family experiences moments of confidence, uncertainty,
               growth, and challenge. Long Game was created to help you navigate
               each of them, while keeping what matters most at the center of the
@@ -498,6 +498,7 @@ export default function Home() {
     </main>
   );
 }
+
 
 
 
