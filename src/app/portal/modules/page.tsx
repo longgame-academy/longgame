@@ -42,7 +42,7 @@ export default async function ModulesPage() {
             <Link
               key={m.id}
               href={`/portal/modules/${m.id}`}
-              className="flex items-center justify-between bg-white/60 border border-charcoal/10 rounded-2xl p-5 hover:border-gold transition-colors"
+              className="flex items-center justify-between bg-cream/60 border border-charcoal/10 rounded-2xl p-5 hover:border-gold transition-colors"
             >
               <div className="flex items-center gap-4">
                 <span className="font-heading text-gold text-lg font-bold w-8">

@@ -127,7 +127,7 @@ export default function AdminContentPage() {
 
       <form
         onSubmit={handleCreate}
-        className="bg-white/60 border border-charcoal/10 rounded-2xl p-6 mb-10 space-y-4"
+        className="bg-cream/60 border border-charcoal/10 rounded-2xl p-6 mb-10 space-y-4"
       >
         <div className="grid md:grid-cols-3 gap-4">
           <div>
@@ -232,7 +232,7 @@ export default function AdminContentPage() {
             className={`text-xs font-heading font-semibold px-4 py-2 rounded-full transition-colors ${
               filter === f
                 ? "bg-charcoal text-cream"
-                : "bg-white/60 text-charcoal border border-charcoal/10"
+                : "bg-cream/60 text-charcoal border border-charcoal/10"
             }`}
           >
             {f === "all" ? "All" : typeLabels[f]}
@@ -250,7 +250,7 @@ export default function AdminContentPage() {
             <motion.div
               key={item.id}
               layout
-              className="bg-white/60 border border-charcoal/10 rounded-2xl p-5 flex items-center justify-between flex-wrap gap-4"
+              className="bg-cream/60 border border-charcoal/10 rounded-2xl p-5 flex items-center justify-between flex-wrap gap-4"
             >
               <div>
                 <span className="font-heading text-xs text-gold uppercase tracking-wide">

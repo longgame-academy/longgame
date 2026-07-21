@@ -40,7 +40,7 @@ export default async function ToolsPage() {
           {tools.map((t) => (
             <div
               key={t.id}
-              className="bg-white/60 border border-charcoal/10 rounded-2xl p-6"
+              className="bg-cream/60 border border-charcoal/10 rounded-2xl p-6"
             >
               <h3 className="font-heading font-semibold mb-2">{t.title}</h3>
               {t.downloadable ? (

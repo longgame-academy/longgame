@@ -50,7 +50,7 @@ export default function JoinOrganizationPage() {
 
       <form
         onSubmit={handleSubmit}
-        className="bg-white/60 border border-charcoal/10 rounded-2xl p-6"
+        className="bg-cream/60 border border-charcoal/10 rounded-2xl p-6"
       >
         <label className="block font-heading text-sm font-medium mb-2">
           Organization Code

@@ -119,7 +119,7 @@ export default function AdminOrganizationsPage() {
       {/* Create org */}
       <form
         onSubmit={handleCreateOrg}
-        className="bg-white/60 border border-charcoal/10 rounded-2xl p-6 mb-10 grid md:grid-cols-4 gap-4 items-end"
+        className="bg-cream/60 border border-charcoal/10 rounded-2xl p-6 mb-10 grid md:grid-cols-4 gap-4 items-end"
       >
         <div>
           <label className="block font-heading text-sm font-medium mb-1">
@@ -172,7 +172,7 @@ export default function AdminOrganizationsPage() {
           {orgs.map((org) => (
             <div
               key={org.id}
-              className="bg-white/60 border border-charcoal/10 rounded-2xl p-6"
+              className="bg-cream/60 border border-charcoal/10 rounded-2xl p-6"
             >
               <div className="flex items-center justify-between flex-wrap gap-4">
                 <div>

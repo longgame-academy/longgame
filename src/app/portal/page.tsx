@@ -17,7 +17,7 @@ export default async function PortalDashboard() {
       <div className="grid md:grid-cols-3 gap-6">
         <Link
           href="/portal/modules"
-          className="bg-white/60 border border-charcoal/10 rounded-2xl p-6 hover:border-gold transition-colors"
+          className="bg-cream/60 border border-charcoal/10 rounded-2xl p-6 hover:border-gold transition-colors"
         >
           <h3 className="font-heading text-lg font-semibold mb-2">
             Parent Development System
@@ -29,7 +29,7 @@ export default async function PortalDashboard() {
 
         <Link
           href="/portal/field-guides"
-          className="bg-white/60 border border-charcoal/10 rounded-2xl p-6 hover:border-gold transition-colors"
+          className="bg-cream/60 border border-charcoal/10 rounded-2xl p-6 hover:border-gold transition-colors"
         >
           <h3 className="font-heading text-lg font-semibold mb-2">
             Field Guides
@@ -41,7 +41,7 @@ export default async function PortalDashboard() {
 
         <Link
           href="/portal/tools"
-          className="bg-white/60 border border-charcoal/10 rounded-2xl p-6 hover:border-gold transition-colors"
+          className="bg-cream/60 border border-charcoal/10 rounded-2xl p-6 hover:border-gold transition-colors"
         >
           <h3 className="font-heading text-lg font-semibold mb-2">
             Practical Tools
