@@ -84,7 +84,7 @@ export default function OrganizationsPage() {
       </section>
 
       {/* WHAT'S INCLUDED */}
-      <section className="bg-white/60 py-16">
+      <section className="bg-cream py-16">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="font-heading text-2xl md:text-3xl font-bold text-center mb-12">
             What Your Families Get

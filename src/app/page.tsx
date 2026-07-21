@@ -1,47 +1,128 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 
-const stats = [
-  { value: "12", label: "Core Modules" },
-  { value: "1,000+", label: "Parents Reached" },
-  { value: "35+", label: "Years Combined Coaching Experience" },
-  { value: "4.9", label: "Average Rating" },
-];
+const fadeUp = {
+  initial: { opacity: 0, y: 24 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-80px" },
+  transition: { duration: 0.6, ease: "easeOut" },
+};
+
+function Placeholder({ label, className = "" }: { label: string; className?: string }) {
+  return (
+    <div
+      className={`bg-ink flex items-center justify-center text-cream/30 font-heading text-xs tracking-widest uppercase ${className}`}
+    >
+      {label}
+    </div>
+  );
+}
 
 const pillars = [
   {
-    label: "The System",
-    title: "12 Core Modules",
-    body: "Sequential, video-guided lessons built around confidence, communication, and identity through the pressures of modern youth sports.",
+    title: "Build Confidence",
+    body: "Helping athletes develop confidence that lasts longer than a great game or a winning season.",
   },
   {
-    label: "The Reference",
-    title: "Field Guides",
-    body: "Focused material to revisit before big moments, tryouts, tough conversations, and setbacks.",
+    title: "Strengthen Communication",
+    body: "Creating better conversations before practice, after games, and in the moments that matter most.",
   },
   {
-    label: "The Practice",
-    title: "Practical Tools",
-    body: "Downloadable worksheets and conversation starters you bring straight into everyday life with your athlete.",
+    title: "Develop Resilience",
+    body: "Helping families navigate setbacks, mistakes, pressure, and adversity with perspective and purpose.",
+  },
+  {
+    title: "Protect the Relationship",
+    body: "Because one day the games will end, but your relationship with your athlete is just getting started.",
   },
 ];
 
-const faqPreview = [
+const moments = [
   {
-    q: "How do I access the content after purchasing?",
-    a: "You get instant access to your portal right after checkout, every module, Field Guide, and Tool included.",
+    title: "After the Tough Game",
+    body: "Knowing what to say when emotions are high, and what to leave for another day.",
   },
   {
-    q: "Can I access this on my phone?",
-    a: "Yes, the portal works fully on mobile, tablet, and desktop.",
+    title: "When Confidence Disappears",
+    body: "Helping athletes rebuild belief without adding more pressure.",
   },
   {
-    q: "My organization gave me a code, how do I use it?",
-    a: "Enter it during sign up. It links your account to your organization's access at no extra cost.",
+    title: "When Your Athlete Wants to Quit",
+    body: "Separating a difficult day from a decision they may remember for years.",
+  },
+  {
+    title: "When Dealing with Coaches Becomes Difficult",
+    body: "Responding with perspective instead of emotion.",
+  },
+  {
+    title: "When Sports Start Affecting Life at Home",
+    body: "Keeping your family connected, even during the hardest seasons.",
+  },
+];
+
+const pathways = [
+  {
+    label: "FOR PARENTS",
+    body: "A parent development system designed to help you navigate confidence, pressure, communication, setbacks, and the moments that shape your athlete's experience.",
+    button: "Explore the Parent System",
+    href: "/parent-academy",
+  },
+  {
+    label: "FOR ORGANIZATIONS",
+    body: "A way for clubs, teams, and associations to support families with a shared language, practical tools, and a healthier parent experience.",
+    button: "Organization Solutions",
+    href: "/organizations",
+  },
+  {
+    label: "START WITH THE BOOK",
+    body: "Begin with Raising an Athlete: Built for the Long Game, the book that introduced the Long Game philosophy to sports families.",
+    button: "Discover the Book",
+    href: "/our-story",
+  },
+];
+
+const parentQuotes = [
+  {
+    quote:
+      "This changed the way we talked after games. Our son became more confident, but more importantly, our relationship became stronger.",
+    name: "Sarah M.",
+    role: "Baseball Mom",
+  },
+  {
+    quote:
+      "I thought this was going to help my daughter. I didn't realize how much it would help me.",
+    name: "Jennifer R.",
+    role: "Hockey Mom",
+  },
+  {
+    quote: "Every parent involved in youth sports should read this.",
+    name: "Jay Wells",
+    role: "Stanley Cup Champion",
+  },
+];
+
+const leaders = [
+  {
+    quote:
+      "The Long Game Parent Development System is an outstanding resource for parents navigating youth sports. It helps families focus on what truly matters.",
+    name: "Jay Wells",
+    role: "Stanley Cup Champion",
+  },
+  {
+    quote:
+      "It captures the realities of today's youth sports environment while giving families guidance that lasts beyond the season.",
+    name: "Allan Ross",
+    role: "Former MLB Scout",
+  },
+  {
+    quote:
+      "Long Game gives our families a shared language and practical tools our coaches don't have time to teach.",
+    name: "Tom Mathews",
+    role: "Vice President, Brantford Red Sox",
   },
 ];
 
@@ -50,218 +131,353 @@ export default function Home() {
     <main className="flex flex-col min-h-screen bg-background text-charcoal">
       <Nav />
 
-      {/* HERO */}
-      <section className="max-w-7xl mx-auto w-full px-6 py-20 md:py-28 grid md:grid-cols-2 gap-12 items-center">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-        >
-          <p className="font-heading text-gold text-sm font-semibold tracking-widest uppercase mb-4">
-            For Sports Parents
-          </p>
-          <h1 className="font-heading text-4xl md:text-6xl font-bold leading-tight mb-6">
-            The game will end.
+      {/* SECTION 1: HERO */}
+      <section className="relative min-h-[90vh] flex items-center bg-ink text-cream overflow-hidden">
+        <Placeholder label="Documentary Photo" className="absolute inset-0 opacity-60" />
+        <div className="relative max-w-7xl mx-auto w-full px-6 py-24">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: "easeOut", delay: 1 }}
+            className="max-w-xl"
+          >
+            <h1 className="font-heading text-4xl md:text-6xl font-bold leading-tight mb-6">
+              The journey matters.
+              <br />
+              So does the relationship waiting at the end of it.
+            </h1>
+            <p className="font-body text-lg text-cream/80 leading-relaxed mb-10">
+              Youth sports can be one of the greatest experiences a family ever shares.
+              It can also test the very relationship you&apos;re trying to protect.
+              Long Game gives sports parents the guidance, perspective, and practical
+              tools to navigate every season with confidence, helping families build
+              resilient athletes while protecting the relationship that matters long
+              after the final game.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <Link
+                href="/parent-academy"
+                className="inline-flex items-center gap-2 bg-gold text-charcoal font-heading font-semibold px-6 py-3 rounded-full hover:bg-gold-light transition-colors"
+              >
+                Explore Long Game
+              </Link>
+              <Link
+                href="/organizations"
+                className="inline-flex items-center gap-2 border border-cream/30 text-cream font-heading font-semibold px-6 py-3 rounded-full hover:border-gold hover:text-gold transition-colors"
+              >
+                For Organizations
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* SECTION 2: YOUTH SPORTS HAVE CHANGED */}
+      <section className="max-w-6xl mx-auto w-full px-6 py-20 md:py-28 grid md:grid-cols-2 gap-12 items-center">
+        <motion.div {...fadeUp}>
+          <Placeholder label="Documentary Photo" className="aspect-[4/5] rounded-lg" />
+        </motion.div>
+        <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.15 }}>
+          <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6 leading-tight">
+            Youth sports have changed.
             <br />
-            The relationship won&apos;t.
-          </h1>
-          <p className="font-body text-lg text-charcoal/70 max-w-md mb-10">
-            A simple reminder that the moments you create today will last far
-            longer than the final score.
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <Link
-              href="/parent-academy"
-              className="inline-flex items-center gap-2 bg-gold text-charcoal font-heading font-semibold px-6 py-3 rounded-full hover:bg-gold-light transition-colors"
-            >
-              Explore the Parent Academy
-              <span aria-hidden>→</span>
-            </Link>
-            <Link
-              href="/free-guide"
-              className="inline-flex items-center gap-2 border border-charcoal/20 text-charcoal font-heading font-semibold px-6 py-3 rounded-full hover:border-gold hover:text-gold transition-colors"
-            >
-              Start With the Free Guide
-              <span aria-hidden>→</span>
-            </Link>
+            So has the experience of raising an athlete.
+          </h2>
+          <div className="font-body text-charcoal/70 leading-relaxed space-y-4">
+            <p>
+              Somewhere along the way, youth sports became more than practices and
+              weekend games.
+            </p>
+            <p>
+              The pressure found its way into the car ride home, the dinner table,
+              and conversations families never expected to have.
+            </p>
+            <p>
+              Most parents aren&apos;t looking for perfection. They&apos;re simply
+              trying to do what&apos;s best for the child they love.
+            </p>
+            <p className="font-semibold text-charcoal">That&apos;s why Long Game exists.</p>
           </div>
         </motion.div>
+      </section>
 
+      {/* SECTION 3: THE LONG GAME APPROACH */}
+      <section className="bg-cream py-20 md:py-28">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <motion.div {...fadeUp}>
+            <p className="font-heading text-gold text-sm font-semibold tracking-widest uppercase mb-4">
+              The Long Game Approach
+            </p>
+            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">
+              A different way to support sports families.
+            </h2>
+            <p className="font-body text-charcoal/70 leading-relaxed max-w-2xl mx-auto mb-16">
+              Long Game was created to help sports parents navigate the moments
+              that matter most. The conversations after difficult games. The
+              pressure that quietly builds over time. The confidence that can
+              disappear overnight. The challenge of encouraging without pushing.
+              Through practical tools, guided lessons, and real-world experience,
+              Long Game helps families raise confident athletes while protecting
+              the relationship that matters most.
+            </p>
+          </motion.div>
+          <div className="grid md:grid-cols-2 gap-6 text-left max-w-3xl mx-auto">
+            {pillars.map((p, i) => (
+              <motion.div
+                key={p.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.1 }}
+                className="bg-background border border-charcoal/10 rounded-2xl p-8"
+              >
+                <h3 className="font-heading text-lg font-semibold mb-3">{p.title}</h3>
+                <p className="font-body text-sm text-charcoal/70 leading-relaxed">{p.body}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 4: SUPPORT FOR THE MOMENTS THAT MATTER MOST */}
+      <section className="max-w-5xl mx-auto w-full px-6 py-20 md:py-28">
+        <motion.div {...fadeUp} className="text-center mb-16">
+          <h2 className="font-heading text-3xl md:text-4xl font-bold mb-3">
+            Support for the moments that matter most.
+          </h2>
+          <p className="font-heading text-gold text-sm font-semibold tracking-widest uppercase mb-6">
+            Real-life moments, not modules.
+          </p>
+          <p className="font-body text-charcoal/70 leading-relaxed max-w-2xl mx-auto">
+            Parents do not wake up thinking they need another course. They think
+            about the game that went badly, the confidence that disappeared, the
+            car ride that felt too quiet, the coach conversation they are not sure
+            how to handle, and the child they are trying to support without making
+            the pressure worse. Long Game gives parents practical guidance for
+            those moments, so they can respond with more confidence, more
+            perspective, and more connection.
+          </p>
+        </motion.div>
+        <div className="space-y-16">
+          {moments.map((m, i) => (
+            <motion.div
+              key={m.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className={`grid md:grid-cols-2 gap-8 items-center ${
+                i % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""
+              }`}
+            >
+              <Placeholder label="Documentary Photo" className="aspect-[16/10] rounded-lg" />
+              <div>
+                <h3 className="font-heading text-xl font-semibold mb-3">{m.title}</h3>
+                <p className="font-body text-charcoal/70 leading-relaxed">{m.body}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* SECTION 5: CHOOSE THE PATH THAT'S RIGHT FOR YOU */}
+      <section className="bg-ink text-cream py-20 md:py-28">
+        <div className="max-w-6xl mx-auto px-6">
+          <motion.div {...fadeUp} className="text-center mb-14">
+            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
+              Choose the path that&apos;s right for you.
+            </h2>
+            <p className="font-body text-cream/70 max-w-xl mx-auto leading-relaxed">
+              Every family enters the Long Game journey from a different place.
+              Some parents are ready for deeper guidance. Some organizations want
+              to support every family in their program. Some people want to begin
+              with the book. Start where it makes the most sense.
+            </p>
+          </motion.div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {pathways.map((p, i) => (
+              <motion.div
+                key={p.label}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.12 }}
+                className="border border-cream/15 rounded-2xl p-8 flex flex-col"
+              >
+                <p className="font-heading text-gold text-xs font-semibold tracking-widest uppercase mb-4">
+                  {p.label}
+                </p>
+                <p className="font-body text-cream/80 leading-relaxed mb-8 flex-1">{p.body}</p>
+                <Link
+                  href={p.href}
+                  className="font-heading text-sm font-semibold text-gold hover:underline"
+                >
+                  {p.button} &rarr;
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 6A: WHAT PARENTS ARE SAYING */}
+      <section className="max-w-4xl mx-auto w-full px-6 py-20 md:py-28">
+        <motion.h2 {...fadeUp} className="font-heading text-3xl md:text-4xl font-bold text-center mb-16">
+          What Parents Are Saying
+        </motion.h2>
+        <div className="space-y-14">
+          {parentQuotes.map((q, i) => (
+            <motion.div
+              key={q.name}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.1 }}
+              className="text-center border-b border-charcoal/10 pb-14 last:border-0"
+            >
+              <p className="font-body italic text-xl md:text-2xl leading-relaxed mb-5">
+                &ldquo;{q.quote}&rdquo;
+              </p>
+              <p className="font-heading font-semibold text-sm">{q.name}</p>
+              <p className="font-heading text-xs text-gold tracking-wide">{q.role}</p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* SECTION 6B: TRUSTED BY LEADERS IN SPORT */}
+      <section className="bg-cream py-20 md:py-28">
+        <div className="max-w-6xl mx-auto px-6">
+          <motion.h2 {...fadeUp} className="font-heading text-3xl md:text-4xl font-bold text-center mb-16">
+            Trusted by leaders in sport.
+          </motion.h2>
+          <div className="grid md:grid-cols-3 gap-10">
+            {leaders.map((l, i) => (
+              <motion.div
+                key={l.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.1 }}
+                className="text-center"
+              >
+                <Placeholder label="Headshot" className="w-24 h-24 rounded-full mx-auto mb-6" />
+                <p className="font-body italic text-charcoal/80 leading-relaxed mb-5">
+                  &ldquo;{l.quote}&rdquo;
+                </p>
+                <p className="font-heading font-semibold text-sm">{l.name}</p>
+                <p className="font-heading text-xs text-gold tracking-wide">{l.role}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 7: BUILT FROM EXPERIENCE. CREATED WITH PURPOSE. */}
+      <section className="max-w-6xl mx-auto w-full px-6 py-20 md:py-28 grid md:grid-cols-2 gap-14 items-center">
+        <motion.div {...fadeUp}>
+          <Placeholder label="Documentary Photo" className="aspect-[4/5] rounded-lg" />
+        </motion.div>
+        <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.15 }}>
+          <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6 leading-tight">
+            Built from experience.
+            <br />
+            Created with purpose.
+          </h2>
+          <div className="font-body text-charcoal/70 leading-relaxed space-y-4 mb-8">
+            <p>Long Game wasn&apos;t built in a boardroom.</p>
+            <p>
+              It was built over years of coaching young athletes, walking
+              alongside sports families, and seeing the same conversations happen
+              again and again.
+            </p>
+            <p>
+              It came from watching parents do their very best in a youth sports
+              environment that has become more demanding than ever before.
+            </p>
+            <p className="font-semibold text-charcoal">
+              Long Game exists because families deserve support too.
+            </p>
+          </div>
+          <p className="font-heading font-semibold">Shawn Dixon</p>
+          <p className="font-body text-sm text-charcoal/60 mb-8">
+            Coach &middot; Parent &middot; Author
+            <br />
+            Author of <span className="italic">Raising an Athlete: Built for the Long Game</span>
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 border-t border-charcoal/10 pt-8">
+            <div>
+              <p className="font-heading text-sm font-semibold mb-1">Years of Coaching</p>
+              <p className="font-body text-xs text-charcoal/60">
+                Helping young athletes and sports families navigate the youth
+                sports journey.
+              </p>
+            </div>
+            <div>
+              <p className="font-heading text-sm font-semibold mb-1">
+                Amazon #1 Best Selling Author
+              </p>
+              <p className="font-body text-xs text-charcoal/60">
+                Raising an Athlete: Built for the Long Game.
+              </p>
+            </div>
+            <div>
+              <p className="font-heading text-sm font-semibold mb-1">Built for Sports Families</p>
+              <p className="font-body text-xs text-charcoal/60">
+                Created to support parents, athletes, teams, and organizations
+                through every stage of the journey.
+              </p>
+            </div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* SECTION 8: FINAL CTA */}
+      <section className="max-w-6xl mx-auto w-full px-6 pb-20">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
-          className="relative flex justify-center md:justify-end"
+          {...fadeUp}
+          className="bg-cream border border-charcoal/10 rounded-2xl p-10 md:p-14 grid md:grid-cols-2 gap-10 items-center"
         >
-          <div className="relative w-full max-w-sm aspect-[4/5] rounded-lg overflow-hidden shadow-2xl rotate-2 bg-ink flex flex-col items-center justify-center text-cream p-8">
+          <div>
+            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 leading-tight">
+              Every season changes.
+              <br />
+              What matters most doesn&apos;t.
+            </h2>
+            <p className="font-body text-charcoal/70 leading-relaxed mb-8">
+              Every family experiences moments of confidence, uncertainty,
+              growth, and challenge. Long Game was created to help you navigate
+              each of them, while keeping what matters most at the center of the
+              journey.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <Link
+                href="/parent-academy"
+                className="inline-flex items-center gap-2 bg-gold text-charcoal font-heading font-semibold px-6 py-3 rounded-full hover:bg-gold-light transition-colors"
+              >
+                Explore the Parent Academy
+              </Link>
+              <Link
+                href="/free-guide"
+                className="inline-flex items-center gap-2 border border-charcoal/20 text-charcoal font-heading font-semibold px-6 py-3 rounded-full hover:border-gold hover:text-gold transition-colors"
+              >
+                Start With the Free Guide
+              </Link>
+            </div>
+          </div>
+          <div className="relative w-full max-w-xs mx-auto aspect-[4/5] rounded-lg overflow-hidden shadow-2xl bg-ink flex flex-col items-center justify-center text-cream p-8">
             <p className="font-heading font-bold text-2xl tracking-wide mb-2">LONG GAME</p>
-            <p className="font-heading text-xs tracking-widest text-cream/60 mb-1">THE GAME WILL END.</p>
-            <p className="font-heading text-xs tracking-widest text-cream/60 mb-6">THE RELATIONSHIP WON&apos;T.</p>
+            <p className="font-heading text-xs tracking-widest text-cream/60 mb-1">
+              THE GAME WILL END.
+            </p>
+            <p className="font-heading text-xs tracking-widest text-cream/60 mb-6">
+              THE RELATIONSHIP WON&apos;T.
+            </p>
             <span className="font-heading text-xs tracking-widest border border-gold text-gold rounded-full px-4 py-1">
               PARENT GUIDE
             </span>
           </div>
         </motion.div>
-      </section>
-
-      {/* STATS BAR */}
-      <section className="bg-ink text-cream py-14">
-        <div className="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
-          {stats.map((s, i) => (
-            <motion.div
-              key={s.label}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.08 }}
-              className="text-center md:text-left"
-            >
-              <p className="font-heading text-4xl md:text-5xl font-bold text-gold mb-1">
-                {s.value}
-              </p>
-              <p className="font-body text-sm text-cream/70">{s.label}</p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* WHAT'S INSIDE */}
-      <section className="max-w-6xl mx-auto w-full px-6 py-20 md:py-24">
-        <div className="text-center mb-14">
-          <p className="font-heading text-gold text-sm font-semibold tracking-widest uppercase mb-4">
-            What&apos;s Inside
-          </p>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold">
-            One system. Built for the long run.
-          </h2>
-        </div>
-        <div className="grid md:grid-cols-3 gap-6">
-          {pillars.map((item, i) => (
-            <motion.div
-              key={item.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.1 }}
-              className="bg-cream border border-charcoal/10 rounded-2xl p-8"
-            >
-              <p className="font-heading text-gold text-xs font-semibold tracking-widest uppercase mb-4">
-                {item.label}
-              </p>
-              <h3 className="font-heading text-xl font-semibold mb-3">
-                {item.title}
-              </h3>
-              <p className="font-body text-charcoal/70 leading-relaxed">
-                {item.body}
-              </p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* TESTIMONIAL STRIP */}
-      <section className="bg-ink text-cream py-20">
-        <div className="max-w-3xl mx-auto px-6 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-          >
-            <p className="font-body italic text-xl md:text-2xl text-cream/90 mb-6 leading-relaxed">
-              &ldquo;The Long Game Parent Development System is an outstanding
-              resource for parents navigating youth sports. It helps families
-              focus on what truly matters.&rdquo;
-            </p>
-            <p className="font-heading font-semibold text-sm">Doug Ouilette</p>
-            <p className="font-heading text-xs text-gold tracking-wide">
-              Vice President, Ancaster Baseball · U18 WOW Factor Head Coach
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ORGANIZATIONS TEASER */}
-      <section className="max-w-6xl mx-auto w-full px-6 py-20">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="bg-cream border border-charcoal/10 rounded-2xl p-10 md:p-14 grid md:grid-cols-2 gap-8 items-center"
-        >
-          <div>
-            <p className="font-heading text-gold text-sm font-semibold tracking-widest uppercase mb-4">
-              For Clubs & Leagues
-            </p>
-            <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4">
-              Bring Long Game to your entire organization.
-            </h2>
-            <p className="font-body text-charcoal/70 leading-relaxed">
-              One registration code, full access for every parent in your
-              program.
-            </p>
-          </div>
-          <div className="md:text-right">
-            <Link
-              href="/organizations"
-              className="inline-flex items-center gap-2 bg-charcoal text-cream font-heading font-semibold px-8 py-3 rounded-full hover:bg-charcoal/80 transition-colors"
-            >
-              Learn More
-              <span aria-hidden>→</span>
-            </Link>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* FAQ PREVIEW */}
-      <section className="max-w-3xl mx-auto w-full px-6 py-20">
-        <h2 className="font-heading text-2xl md:text-3xl font-bold text-center mb-12">
-          Common Questions
-        </h2>
-        <div className="space-y-4">
-          {faqPreview.map((item, i) => (
-            <motion.div
-              key={item.q}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.08 }}
-              className="bg-cream border border-charcoal/10 rounded-2xl p-6"
-            >
-              <h3 className="font-heading text-base font-semibold mb-2">
-                {item.q}
-              </h3>
-              <p className="font-body text-sm text-charcoal/70 leading-relaxed">
-                {item.a}
-              </p>
-            </motion.div>
-          ))}
-        </div>
-        <div className="text-center mt-10">
-          <Link
-            href="/faq"
-            className="font-heading text-sm font-semibold text-gold hover:underline"
-          >
-            See all questions →
-          </Link>
-        </div>
-      </section>
-
-      {/* FINAL CTA */}
-      <section className="bg-ink text-cream py-20 text-center">
-        <div className="max-w-2xl mx-auto px-6">
-          <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">
-            Ready to change how you show up?
-          </h2>
-          <Link
-            href="/parent-academy"
-            className="inline-flex items-center gap-2 bg-gold text-charcoal font-heading font-semibold px-8 py-3 rounded-full hover:bg-gold-light transition-colors"
-          >
-            Explore the Parent Academy
-            <span aria-hidden>→</span>
-          </Link>
-        </div>
       </section>
 
       <Footer />

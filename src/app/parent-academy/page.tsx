@@ -54,7 +54,7 @@ export default function ParentAcademyPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.1 }}
-              className="bg-white/60 border border-charcoal/10 rounded-2xl p-8"
+              className="bg-cream border border-charcoal/10 rounded-2xl p-8"
             >
               <h3 className="font-heading text-xl font-semibold mb-3">
                 {item.title}
