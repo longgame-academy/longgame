@@ -4,6 +4,7 @@ import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
+import { Users, Megaphone, TrendingUp, Heart, Award, Repeat } from "lucide-react";
 
 function Placeholder({ label, className = "" }: { label: string; className?: string }) {
   return (
@@ -27,31 +28,37 @@ const benefits = [
     title: "Stronger Parent Culture",
     body: "Equip parents with practical tools that encourage healthier communication, realistic expectations, and a more positive youth sports environment.",
     result: "Parents become partners in development rather than adding unnecessary pressure.",
+    icon: Users,
   },
   {
     title: "Better Coach Support",
     body: "When parents understand the Long Game philosophy, coaches spend less time managing conflict and more time developing athletes.",
     result: "Coaches feel more supported, valued, and effective.",
+    icon: Megaphone,
   },
   {
     title: "Stronger Family Experience",
     body: "Equip parents with practical guidance they can apply during the moments that matter most, creating a more positive experience for everyone involved.",
     result: "Families feel more connected to your organization and more confident throughout their youth sports journey.",
+    icon: Heart,
   },
   {
     title: "Healthier Athlete Development",
     body: "When parents and coaches share the same philosophy, athletes experience greater consistency, healthier communication, and stronger long-term development.",
     result: "Athletes develop in an environment where confidence, resilience, and character can thrive.",
+    icon: TrendingUp,
   },
   {
     title: "Stronger Organization Reputation",
     body: "Organizations that invest in families stand apart. Supporting parents demonstrates a commitment that extends beyond wins, losses, and championships.",
     result: "Build a reputation families trust and proudly recommend.",
+    icon: Award,
   },
   {
     title: "An Ongoing Partnership",
     body: "Your partnership continues well beyond launch through ongoing Parent Portal content, seasonal learning opportunities, and practical tools designed to keep families engaged throughout the year.",
     result: "Continued value for your organization and every family you serve.",
+    icon: Repeat,
   },
 ];
 
@@ -202,6 +209,7 @@ export default function OrganizationsPage() {
                 transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.08 }}
                 className="bg-cream rounded-2xl p-8 flex flex-col"
               >
+                <b.icon className="w-8 h-8 text-gold mb-4" strokeWidth={1.5} />
                 <h3 className="font-heading text-lg font-semibold mb-3">{b.title}</h3>
                 <p className="font-body text-sm text-charcoal/70 leading-relaxed mb-4 flex-1">
                   {b.body}

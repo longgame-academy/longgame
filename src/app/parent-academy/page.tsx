@@ -1,4 +1,4 @@
-"use client";
+ï»¿"use client";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -19,51 +19,51 @@ function Placeholder({ label, className = "" }: { label: string; className?: str
 
 const modules = [
   {
-    title: "Module 1 — The Car Ride Home",
+    title: "Module 1 â€” The Car Ride Home",
     body: "The ride home is often the most emotional part of youth sports. Learn simple conversation frameworks that help your athlete feel supported after great games, difficult losses, mistakes, and disappointment, while protecting confidence and strengthening your relationship.",
   },
   {
-    title: "Module 2 — Confidence",
+    title: "Module 2 â€” Confidence",
     body: "Confidence isn't built by praise alone. Discover what truly creates lasting confidence, the subtle ways parents unknowingly chip away at it, and practical strategies that help athletes believe in themselves through every stage of development.",
   },
   {
-    title: "Module 3 — Pressure Without Realizing It",
+    title: "Module 3 â€” Pressure Without Realizing It",
     body: "Most parents never intend to create pressure, but it happens every day. Learn to recognize hidden sources of pressure and create an environment where your athlete feels supported, not burdened by expectations.",
   },
   {
-    title: "Module 4 — The Mental Game",
+    title: "Module 4 â€” The Mental Game",
     body: "Learn practical ways to help your athlete develop resilience, focus, emotional control, and a stronger mindset.",
   },
   {
-    title: "Module 5 — Development Over Exposure",
+    title: "Module 5 â€” Development Over Exposure",
     body: "Learn how to focus on long-term development instead of chasing showcases, rankings, and short-term opportunities.",
   },
   {
-    title: "Module 6 — Communication",
+    title: "Module 6 â€” Communication",
     body: "Practical communication strategies that build trust, reduce conflict, and strengthen your relationship.",
   },
   {
-    title: "Module 7 — Failure & Resilience",
+    title: "Module 7 â€” Failure & Resilience",
     body: "Help your athlete respond to setbacks in ways that build resilience and long-term confidence.",
   },
   {
-    title: "Module 8 — The Athlete Lifestyle",
+    title: "Module 8 â€” The Athlete Lifestyle",
     body: "Discover how sleep, nutrition, recovery, routines, and healthy habits influence performance and well-being.",
   },
   {
-    title: "Module 9 — Coaches, Teams & Politics",
+    title: "Module 9 â€” Coaches, Teams & Politics",
     body: "Navigate playing time, difficult coaches, and team politics while protecting your athlete's growth.",
   },
   {
-    title: "Module 10 — Identity Beyond Sport",
+    title: "Module 10 â€” Identity Beyond Sport",
     body: "Help your athlete build an identity that extends beyond performance and sport.",
   },
   {
-    title: "Module 11 — Burnout",
+    title: "Module 11 â€” Burnout",
     body: "Recognize the warning signs of burnout and create an environment that keeps sport enjoyable.",
   },
   {
-    title: "Module 12 — Playing the Long Game",
+    title: "Module 12 â€” Playing the Long Game",
     body: "Bring everything together with a clear vision for becoming the steady influence your athlete needs.",
   },
 ];
