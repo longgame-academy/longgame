@@ -3,6 +3,7 @@ import "@/lib/env";
 import { Poppins, Lora } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
+import { CookieConsent } from "@/components/CookieConsent";
 
 
 const poppins = Poppins({
@@ -59,9 +60,13 @@ export default function RootLayout({
         lang="en"
         className={`${poppins.variable} ${lora.variable} h-full antialiased`}
       >
-        <body className="min-h-full flex flex-col">{children}</body>
+        <body className="min-h-full flex flex-col">
+          {children}
+          <CookieConsent />
+        </body>
       </html>
     </ClerkProvider>
   );
 }
+
 
