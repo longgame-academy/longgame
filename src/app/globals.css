@@ -2,13 +2,12 @@
 
 :root {
   --background: #FFFFFF;
-  --foreground: #1A1A1A;
-
-  --color-cream: #F7F1E8;
-  --color-charcoal: #1A1A1A;
-  --color-ink: #0D0D0D;
-  --color-gold: #C9962E;
-  --color-gold-light: #E0B563;
+  --foreground: #1E293B;
+  --color-cream: #F1F5F9;
+  --color-charcoal: #334155;
+  --color-ink: #0F172A;
+  --color-gold: #2563EB;
+  --color-gold-light: #3B82F6;
 }
 
 @theme inline {
