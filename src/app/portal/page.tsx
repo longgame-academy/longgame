@@ -1,0 +1,56 @@
+import { auth, currentUser } from "@clerk/nextjs/server";
+import Link from "next/link";
+import { motion } from "framer-motion";
+
+export default async function PortalDashboard() {
+  const user = await currentUser();
+
+  return (
+    <div>
+      <h1 className="font-heading text-3xl font-bold mb-2">
+        Welcome back{user?.firstName ? `, ${user.firstName}` : ""}.
+      </h1>
+      <p className="font-body text-charcoal/70 mb-10">
+        Continue where you left off, or explore your resources below.
+      </p>
+
+      <div className="grid md:grid-cols-3 gap-6">
+        <Link
+          href="/portal/modules"
+          className="bg-white/60 border border-charcoal/10 rounded-2xl p-6 hover:border-gold transition-colors"
+        >
+          <h3 className="font-heading text-lg font-semibold mb-2">
+            Parent Development System
+          </h3>
+          <p className="font-body text-sm text-charcoal/70">
+            Continue your 12-module journey.
+          </p>
+        </Link>
+
+        <Link
+          href="/portal/field-guides"
+          className="bg-white/60 border border-charcoal/10 rounded-2xl p-6 hover:border-gold transition-colors"
+        >
+          <h3 className="font-heading text-lg font-semibold mb-2">
+            Field Guides
+          </h3>
+          <p className="font-body text-sm text-charcoal/70">
+            Quick reference for key moments.
+          </p>
+        </Link>
+
+        <Link
+          href="/portal/tools"
+          className="bg-white/60 border border-charcoal/10 rounded-2xl p-6 hover:border-gold transition-colors"
+        >
+          <h3 className="font-heading text-lg font-semibold mb-2">
+            Practical Tools
+          </h3>
+          <p className="font-body text-sm text-charcoal/70">
+            Worksheets and conversation guides.
+          </p>
+        </Link>
+      </div>
+    </div>
+  );
+}

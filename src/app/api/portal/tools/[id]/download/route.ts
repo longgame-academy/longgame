@@ -1,0 +1,55 @@
+import { auth } from "@clerk/nextjs/server";
+import { db } from "@/db";
+import { content } from "@/db/schema";
+import { eq } from "drizzle-orm";
+import { getUserAccessType } from "@/lib/access";
+import { NextResponse } from "next/server";
+
+export async function GET(
+  _req: Request,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  const { userId } = await auth();
+  if (!userId) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  const accessType = await getUserAccessType(userId);
+  if (!accessType) {
+    return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+  }
+
+  const { id } = await params;
+  const toolId = Number(id);
+  if (!Number.isInteger(toolId)) {
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
+  }
+
+  const [item] = await db
+    .select()
+    .from(content)
+    .where(eq(content.id, toolId))
+    .limit(1);
+
+  if (!item || item.type !== "tool" || !item.downloadable) {
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
+  }
+
+  const allowed =
+    item.visibility === "both" ||
+    (item.visibility === "individual" && accessType === "individual") ||
+    (item.visibility === "org" && accessType === "org");
+
+  if (!allowed) {
+    return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+  }
+
+  if (!item.assetRef) {
+    return NextResponse.json({ error: "File not available" }, { status: 404 });
+  }
+
+  // Redirect to the actual stored asset only after all checks pass.
+  // assetRef should point to a private/signed storage location, not a
+  // public bucket URL, once file storage is wired up.
+  return NextResponse.redirect(item.assetRef);
+}
