@@ -146,7 +146,7 @@ export default function Home() {
         >
           <Placeholder label="Documentary Photo" className="absolute inset-0" />
         </motion.div>
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-background pointer-events-none" />
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-ink/0 via-ink/70 to-background pointer-events-none" />
         <div className="relative max-w-7xl mx-auto w-full px-6 py-24">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -498,6 +498,7 @@ export default function Home() {
     </main>
   );
 }
+
 
 
 
