@@ -29,7 +29,7 @@ export default function AdminLeadsPage() {
     <div>
       <div className="flex items-center justify-between mb-8">
         <h1 className="font-heading text-3xl font-bold">Free Guide Leads</h1>
-        
+        <a
           href="/api/admin/leads/export"
           className="bg-gold text-charcoal font-heading font-semibold px-5 py-2 rounded-full hover:bg-gold-light transition-colors text-sm"
         >

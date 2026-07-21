@@ -44,7 +44,7 @@ export default async function ToolsPage() {
             >
               <h3 className="font-heading font-semibold mb-2">{t.title}</h3>
               {t.downloadable ? (
-                
+                <a
                   href={`/api/portal/tools/${t.id}/download`}
                   className="font-heading text-sm text-gold hover:underline"
                 >

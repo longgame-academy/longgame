@@ -9,7 +9,7 @@ export default function SupportPage() {
         We&apos;re here to help.
       </p>
 
-      
+      <a
         href="mailto:hello@longgameacademy.com"
         className="inline-flex items-center gap-2 bg-gold text-charcoal font-heading font-semibold px-8 py-3 rounded-full hover:bg-gold-light transition-colors"
       >
