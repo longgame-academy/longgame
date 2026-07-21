@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { Show, UserButton } from "@clerk/nextjs";
 
 export default function Nav() {
   return (
@@ -30,17 +30,17 @@ export default function Nav() {
             Our Story
           </Link>
         </nav>
-        <SignedOut>
+        <Show when="signed-out">
           <Link
             href="/sign-in"
             className="font-heading text-sm font-semibold border border-charcoal px-5 py-2 rounded-full hover:bg-charcoal hover:text-cream transition-colors"
           >
             Sign In
           </Link>
-        </SignedOut>
-        <SignedIn>
-          <UserButton afterSignOutUrl="/" />
-        </SignedIn>
+        </Show>
+        <Show when="signed-in">
+          <UserButton />
+        </Show>
       </div>
     </motion.header>
   );
