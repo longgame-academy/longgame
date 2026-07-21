@@ -4,6 +4,7 @@ import { auth } from "@clerk/nextjs/server";
 import { eq } from "drizzle-orm";
 import { NextResponse } from "next/server";
 import { z } from "zod";
+import { orgRedeemRatelimit } from "@/lib/ratelimit";
 
 const redeemSchema = z.object({
   code: z.string().trim().min(1).max(32),
@@ -21,6 +22,11 @@ export async function POST(req: Request) {
   const { userId } = await auth();
   if (!userId) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  const { success } = await orgRedeemRatelimit.limit(userId);
+  if (!success) {
+    return NextResponse.json({ error: "Too many requests" }, { status: 429 });
   }
 
   let body: unknown;

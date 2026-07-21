@@ -1,11 +1,17 @@
 import { auth, currentUser } from "@clerk/nextjs/server";
 import { stripe } from "@/lib/stripe";
+import { checkoutRatelimit } from "@/lib/ratelimit";
 import { NextResponse } from "next/server";
 
 export async function POST() {
   const { userId } = await auth();
   if (!userId) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  const { success } = await checkoutRatelimit.limit(userId);
+  if (!success) {
+    return NextResponse.json({ error: "Too many requests" }, { status: 429 });
   }
 
   const user = await currentUser();

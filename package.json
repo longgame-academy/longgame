@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "seed": "tsx src/db/seed.ts",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -12,6 +13,9 @@
     "@clerk/nextjs": "^7.5.20",
     "@mailerlite/mailerlite-nodejs": "^1.6.0",
     "@neondatabase/serverless": "^1.1.0",
+    "@sentry/nextjs": "^10.67.0",
+    "@upstash/ratelimit": "^2.0.8",
+    "@upstash/redis": "^1.38.0",
     "drizzle-orm": "^0.45.2",
     "framer-motion": "^12.42.2",
     "nanoid": "^6.0.0",
@@ -34,6 +38,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.2.10",
     "tailwindcss": "^4",
+    "tsx": "^4.23.1",
     "typescript": "^5"
   }
 }

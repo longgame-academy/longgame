@@ -3,6 +3,7 @@ import { leads } from "@/db/schema";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { addFreeGuideLead } from "@/lib/emails/addFreeGuideLead";
+import { leadsRatelimit } from "@/lib/ratelimit";
 
 const leadSchema = z.object({
   firstName: z.string().trim().min(1).max(100),
@@ -11,6 +12,12 @@ const leadSchema = z.object({
 });
 
 export async function POST(req: Request) {
+  const ip = req.headers.get("x-forwarded-for") ?? "unknown";
+  const { success } = await leadsRatelimit.limit(ip);
+  if (!success) {
+    return NextResponse.json({ error: "Too many requests" }, { status: 429 });
+  }
+
   let body: unknown;
   try {
     body = await req.json();

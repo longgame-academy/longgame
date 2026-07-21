@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { UserButton } from "@clerk/nextjs";
 
 export function PortalShell({
@@ -11,6 +12,8 @@ export function PortalShell({
   children: React.ReactNode;
   orgName: string | null;
 }) {
+  const [open, setOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-cream text-charcoal">
       <motion.header
@@ -50,8 +53,50 @@ export function PortalShell({
               </span>
             )}
             <UserButton />
+            <button
+              onClick={() => setOpen(!open)}
+              className="md:hidden flex flex-col gap-1.5 p-2"
+              aria-label="Toggle menu"
+            >
+              <span className={`block w-6 h-0.5 bg-cream transition-transform ${open ? "rotate-45 translate-y-2" : ""}`} />
+              <span className={`block w-6 h-0.5 bg-cream transition-opacity ${open ? "opacity-0" : ""}`} />
+              <span className={`block w-6 h-0.5 bg-cream transition-transform ${open ? "-rotate-45 -translate-y-2" : ""}`} />
+            </button>
           </div>
         </div>
+
+        <AnimatePresence>
+          {open && (
+            <motion.nav
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              className="md:hidden overflow-hidden border-t border-cream/10"
+            >
+              <div className="flex flex-col gap-1 px-6 py-4 font-heading text-sm">
+                <Link href="/portal" onClick={() => setOpen(false)} className="py-3 hover:text-gold transition-colors">
+                  Dashboard
+                </Link>
+                <Link href="/portal/modules" onClick={() => setOpen(false)} className="py-3 hover:text-gold transition-colors">
+                  Modules
+                </Link>
+                <Link href="/portal/field-guides" onClick={() => setOpen(false)} className="py-3 hover:text-gold transition-colors">
+                  Field Guides
+                </Link>
+                <Link href="/portal/tools" onClick={() => setOpen(false)} className="py-3 hover:text-gold transition-colors">
+                  Tools
+                </Link>
+                <Link href="/portal/account" onClick={() => setOpen(false)} className="py-3 hover:text-gold transition-colors">
+                  Account
+                </Link>
+                <Link href="/portal/support" onClick={() => setOpen(false)} className="py-3 hover:text-gold transition-colors">
+                  Support
+                </Link>
+              </div>
+            </motion.nav>
+          )}
+        </AnimatePresence>
       </motion.header>
 
       <motion.main
