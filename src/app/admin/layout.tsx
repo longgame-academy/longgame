@@ -22,19 +22,19 @@ export default async function AdminLayout({
             LONG GAME ADMIN
           </Link>
           <nav className="flex gap-6 font-heading text-sm">
-            <Link href="/admin/organizations" className="hover:text-gold transition-colors">
+            <Link href="/admin/organizations" className="hover:text-teal transition-colors">
               Organizations
             </Link>
-            <Link href="/admin/users" className="hover:text-gold transition-colors">
+            <Link href="/admin/users" className="hover:text-teal transition-colors">
               Users
             </Link>
-            <Link href="/admin/content" className="hover:text-gold transition-colors">
+            <Link href="/admin/content" className="hover:text-teal transition-colors">
               Content
             </Link>
-            <Link href="/admin/leads" className="hover:text-gold transition-colors">
+            <Link href="/admin/leads" className="hover:text-teal transition-colors">
               Leads
             </Link>
-            <Link href="/" className="hover:text-gold transition-colors">
+            <Link href="/" className="hover:text-teal transition-colors">
               Back to Site
             </Link>
           </nav>
@@ -44,3 +44,4 @@ export default async function AdminLayout({
     </div>
   );
 }
+

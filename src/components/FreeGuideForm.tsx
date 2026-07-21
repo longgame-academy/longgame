@@ -30,7 +30,7 @@ export default function FreeGuideForm() {
 
   if (status === "done") {
     return (
-      <div className="bg-cream/70 border border-gold rounded-2xl p-8 text-center shadow-[0_4px_16px_rgba(18,21,20,0.08)]">
+      <div className="bg-cream/70 border border-teal rounded-2xl p-8 text-center shadow-[0_4px_16px_rgba(18,21,20,0.08)]">
         <h3 className="font-heading text-xl font-semibold mb-2">
           Check your inbox
         </h3>
@@ -55,7 +55,7 @@ export default function FreeGuideForm() {
           required
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
-          className="w-full border border-charcoal/20 rounded-lg px-4 py-3 font-body bg-cream focus:outline-none focus:border-gold"
+          className="w-full border border-charcoal/20 rounded-lg px-4 py-3 font-body bg-cream focus:outline-none focus:border-teal"
           placeholder="Your first name"
         />
       </div>
@@ -69,7 +69,7 @@ export default function FreeGuideForm() {
           required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full border border-charcoal/20 rounded-lg px-4 py-3 font-body bg-cream focus:outline-none focus:border-gold"
+          className="w-full border border-charcoal/20 rounded-lg px-4 py-3 font-body bg-cream focus:outline-none focus:border-teal"
           placeholder="you@example.com"
         />
       </div>
@@ -91,7 +91,7 @@ export default function FreeGuideForm() {
       <button
         type="submit"
         disabled={status === "loading"}
-        className="w-full bg-gold text-charcoal font-heading font-semibold px-6 py-3 rounded-full hover:bg-gold-light transition-colors disabled:opacity-60"
+        className="w-full bg-teal text-charcoal font-heading font-semibold px-6 py-3 rounded-full hover:bg-teal-dark transition-colors disabled:opacity-60"
       >
         {status === "loading" ? "Sending..." : "Send Me the Guide"}
       </button>
@@ -104,5 +104,6 @@ export default function FreeGuideForm() {
     </form>
   );
 }
+
 
 

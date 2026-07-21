@@ -91,7 +91,7 @@ export default function AdminUsersPage() {
 
                 <div className="flex items-center gap-3">
                   {u.orgName ? (
-                    <span className="font-heading text-xs font-semibold bg-gold/20 text-charcoal px-3 py-1 rounded-full">
+                    <span className="font-heading text-xs font-semibold bg-teal/20 text-charcoal px-3 py-1 rounded-full">
                       Org: {u.orgName}
                     </span>
                   ) : u.accessType === "individual" ? (
@@ -122,5 +122,6 @@ export default function AdminUsersPage() {
     </div>
   );
 }
+
 
 

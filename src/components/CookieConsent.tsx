@@ -35,7 +35,7 @@ export function CookieConsent() {
           <div className="max-w-6xl mx-auto px-6 py-5 flex flex-col md:flex-row items-center gap-4 justify-between">
             <p className="font-body text-sm text-cream/80 leading-relaxed">
               We use cookies to improve your experience and understand how our site is used. See our{" "}
-              <Link href="/cookies" className="underline hover:text-gold">
+              <Link href="/cookies" className="underline hover:text-teal">
                 Cookie Policy
               </Link>{" "}
               for details.
@@ -43,13 +43,13 @@ export function CookieConsent() {
             <div className="flex gap-3 shrink-0">
               <button
                 onClick={decline}
-                className="font-heading text-sm font-semibold border border-cream/30 text-cream px-5 py-2 rounded-full hover:border-gold hover:text-gold transition-colors"
+                className="font-heading text-sm font-semibold border border-cream/30 text-cream px-5 py-2 rounded-full hover:border-teal hover:text-teal transition-colors"
               >
                 Decline
               </button>
               <button
                 onClick={accept}
-                className="font-heading text-sm font-semibold bg-gold text-charcoal px-5 py-2 rounded-full hover:bg-gold-light transition-colors"
+                className="font-heading text-sm font-semibold bg-teal text-charcoal px-5 py-2 rounded-full hover:bg-teal-dark transition-colors"
               >
                 Accept
               </button>
@@ -60,4 +60,5 @@ export function CookieConsent() {
     </AnimatePresence>
   );
 }
+
 

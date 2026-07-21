@@ -1,4 +1,4 @@
-import { mailerlite } from "@/lib/mailerlite";
+﻿import { mailerlite } from "@/lib/mailerlite";
 
 export async function addFreeGuideLead(email: string, firstName: string) {
   await mailerlite.subscribers.createOrUpdate({

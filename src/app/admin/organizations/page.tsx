@@ -156,7 +156,7 @@ export default function AdminOrganizationsPage() {
         <button
           type="submit"
           disabled={creating}
-          className="bg-gold text-charcoal font-heading font-semibold px-6 py-2 rounded-full hover:bg-gold-light transition-colors disabled:opacity-60"
+          className="bg-teal text-charcoal font-heading font-semibold px-6 py-2 rounded-full hover:bg-teal-dark transition-colors disabled:opacity-60"
         >
           {creating ? "Creating..." : "Create Org"}
         </button>
@@ -215,7 +215,7 @@ export default function AdminOrganizationsPage() {
                   )}
                   <button
                     onClick={() => toggleExpand(org.id)}
-                    className="text-xs font-heading font-semibold text-gold"
+                    className="text-xs font-heading font-semibold text-teal"
                   >
                     {expandedOrgId === org.id ? "Hide Codes" : "Manage Codes"}
                   </button>
@@ -245,7 +245,7 @@ export default function AdminOrganizationsPage() {
                     </div>
                     <button
                       onClick={() => generateCode(org.id)}
-                      className="bg-gold text-charcoal font-heading font-semibold text-sm px-4 py-2 rounded-full hover:bg-gold-light transition-colors"
+                      className="bg-teal text-charcoal font-heading font-semibold text-sm px-4 py-2 rounded-full hover:bg-teal-dark transition-colors"
                     >
                       Generate Code
                     </button>
@@ -294,6 +294,7 @@ export default function AdminOrganizationsPage() {
     </div>
   );
 }
+
 
 
 

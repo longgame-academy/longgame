@@ -1,4 +1,4 @@
-import { db } from "@/db";
+﻿import { db } from "@/db";
 import { leads } from "@/db/schema";
 import { NextResponse } from "next/server";
 import { z } from "zod";

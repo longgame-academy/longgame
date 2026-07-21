@@ -170,13 +170,13 @@ export default function Home() {
             <div className="flex flex-wrap gap-4">
               <Link
                 href="/parent-academy"
-                className="inline-flex items-center gap-2 bg-gold text-charcoal font-heading font-semibold px-6 py-3 rounded-full hover:bg-gold-light transition-colors"
+                className="inline-flex items-center gap-2 bg-teal text-charcoal font-heading font-semibold px-6 py-3 rounded-full hover:bg-teal-dark transition-colors"
               >
                 Explore Long Game
               </Link>
               <Link
                 href="/organizations"
-                className="inline-flex items-center gap-2 border border-cream/30 text-cream font-heading font-semibold px-6 py-3 rounded-full hover:border-gold hover:text-gold transition-colors"
+                className="inline-flex items-center gap-2 border border-cream/30 text-cream font-heading font-semibold px-6 py-3 rounded-full hover:border-teal hover:text-teal transition-colors"
               >
                 For Organizations
               </Link>
@@ -218,7 +218,7 @@ export default function Home() {
       <section className="bg-cream py-20 md:py-28">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <motion.div {...fadeUp}>
-            <p className="font-heading text-gold text-sm font-semibold tracking-widest uppercase mb-4">
+            <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase mb-4">
               The Long Game Approach
             </p>
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">
@@ -244,7 +244,7 @@ export default function Home() {
                 transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.1 }}
                 className="bg-background border border-border-grey rounded-2xl p-8 shadow-[0_4px_16px_rgba(18,21,20,0.08)]"
               >
-                <p.icon className="w-8 h-8 text-gold mb-4" strokeWidth={1.5} />
+                <p.icon className="w-8 h-8 text-teal mb-4" strokeWidth={1.5} />
                 <h3 className="font-heading text-lg font-semibold mb-3">{p.title}</h3>
                 <p className="font-body text-sm text-text-body leading-relaxed">{p.body}</p>
               </motion.div>
@@ -259,7 +259,7 @@ export default function Home() {
           <h2 className="font-heading text-3xl md:text-4xl font-bold mb-3">
             Support for the moments that matter most.
           </h2>
-          <p className="font-heading text-gold text-sm font-semibold tracking-widest uppercase mb-6">
+          <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase mb-6">
             Real-life moments, not modules.
           </p>
           <p className="font-body text-text-body leading-relaxed max-w-2xl mx-auto">
@@ -318,13 +318,13 @@ export default function Home() {
                 transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.12 }}
                 className="border border-cream/15 rounded-2xl p-8 flex flex-col shadow-[0_4px_16px_rgba(18,21,20,0.08)]"
               >
-                <p className="font-heading text-gold text-xs font-semibold tracking-widest uppercase mb-4">
+                <p className="font-heading text-teal text-xs font-semibold tracking-widest uppercase mb-4">
                   {p.label}
                 </p>
                 <p className="font-body text-cream/80 leading-relaxed mb-8 flex-1">{p.body}</p>
                 <Link
                   href={p.href}
-                  className="font-heading text-sm font-semibold text-gold hover:underline"
+                  className="font-heading text-sm font-semibold text-teal hover:underline"
                 >
                   {p.button} &rarr;
                 </Link>
@@ -353,7 +353,7 @@ export default function Home() {
                 &ldquo;{q.quote}&rdquo;
               </p>
               <p className="font-heading font-semibold text-sm">{q.name}</p>
-              <p className="font-heading text-xs text-gold tracking-wide">{q.role}</p>
+              <p className="font-heading text-xs text-teal tracking-wide">{q.role}</p>
             </motion.div>
           ))}
         </div>
@@ -380,7 +380,7 @@ export default function Home() {
                   &ldquo;{l.quote}&rdquo;
                 </p>
                 <p className="font-heading font-semibold text-sm">{l.name}</p>
-                <p className="font-heading text-xs text-gold tracking-wide">{l.role}</p>
+                <p className="font-heading text-xs text-teal tracking-wide">{l.role}</p>
               </motion.div>
             ))}
           </div>
@@ -467,13 +467,13 @@ export default function Home() {
             <div className="flex flex-wrap gap-4">
               <Link
                 href="/parent-academy"
-                className="inline-flex items-center gap-2 bg-gold text-charcoal font-heading font-semibold px-6 py-3 rounded-full hover:bg-gold-light transition-colors"
+                className="inline-flex items-center gap-2 bg-teal text-charcoal font-heading font-semibold px-6 py-3 rounded-full hover:bg-teal-dark transition-colors"
               >
                 Explore the Parent Academy
               </Link>
               <Link
                 href="/free-guide"
-                className="inline-flex items-center gap-2 border border-charcoal/20 text-charcoal font-heading font-semibold px-6 py-3 rounded-full hover:border-gold hover:text-gold transition-colors"
+                className="inline-flex items-center gap-2 border border-charcoal/20 text-charcoal font-heading font-semibold px-6 py-3 rounded-full hover:border-teal hover:text-teal transition-colors"
               >
                 Start With the Free Guide
               </Link>
@@ -487,7 +487,7 @@ export default function Home() {
             <p className="font-heading text-xs tracking-widest text-cream/60 mb-6">
               THE RELATIONSHIP WON&apos;T.
             </p>
-            <span className="font-heading text-xs tracking-widest border border-gold text-gold rounded-full px-4 py-1">
+            <span className="font-heading text-xs tracking-widest border border-teal text-teal rounded-full px-4 py-1">
               PARENT GUIDE
             </span>
           </div>
@@ -498,6 +498,7 @@ export default function Home() {
     </main>
   );
 }
+
 
 
 

@@ -31,7 +31,7 @@ export default function AdminLeadsPage() {
         <h1 className="font-heading text-3xl font-bold">Free Guide Leads</h1>
         <a
           href="/api/admin/leads/export"
-          className="bg-gold text-charcoal font-heading font-semibold px-5 py-2 rounded-full hover:bg-gold-light transition-colors text-sm"
+          className="bg-teal text-charcoal font-heading font-semibold px-5 py-2 rounded-full hover:bg-teal-dark transition-colors text-sm"
         >
           Export CSV
         </a>
@@ -86,6 +86,7 @@ export default function AdminLeadsPage() {
     </div>
   );
 }
+
 
 
 

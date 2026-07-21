@@ -11,12 +11,13 @@ export default function SupportPage() {
 
       <a
         href="mailto:hello@longgameacademy.com"
-        className="inline-flex items-center gap-2 bg-gold text-charcoal font-heading font-semibold px-8 py-3 rounded-full hover:bg-gold-light transition-colors"
+        className="inline-flex items-center gap-2 bg-teal text-charcoal font-heading font-semibold px-8 py-3 rounded-full hover:bg-teal-dark transition-colors"
       >
         hello@longgameacademy.com
       </a>
     </div>
   );
 }
+
 
 

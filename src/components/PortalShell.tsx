@@ -27,28 +27,28 @@ export function PortalShell({
             LONG GAME
           </Link>
           <nav className="hidden md:flex items-center gap-6 font-heading text-sm">
-            <Link href="/portal" className="hover:text-gold transition-colors">
+            <Link href="/portal" className="hover:text-teal transition-colors">
               Dashboard
             </Link>
-            <Link href="/portal/modules" className="hover:text-gold transition-colors">
+            <Link href="/portal/modules" className="hover:text-teal transition-colors">
               Modules
             </Link>
-            <Link href="/portal/field-guides" className="hover:text-gold transition-colors">
+            <Link href="/portal/field-guides" className="hover:text-teal transition-colors">
               Field Guides
             </Link>
-            <Link href="/portal/tools" className="hover:text-gold transition-colors">
+            <Link href="/portal/tools" className="hover:text-teal transition-colors">
               Tools
             </Link>
-            <Link href="/portal/account" className="hover:text-gold transition-colors">
+            <Link href="/portal/account" className="hover:text-teal transition-colors">
               Account
             </Link>
-            <Link href="/portal/support" className="hover:text-gold transition-colors">
+            <Link href="/portal/support" className="hover:text-teal transition-colors">
               Support
             </Link>
           </nav>
           <div className="flex items-center gap-4">
             {orgName && (
-              <span className="hidden md:inline font-heading text-xs text-gold">
+              <span className="hidden md:inline font-heading text-xs text-teal">
                 {orgName}
               </span>
             )}
@@ -75,22 +75,22 @@ export function PortalShell({
               className="md:hidden overflow-hidden border-t border-cream/10"
             >
               <div className="flex flex-col gap-1 px-6 py-4 font-heading text-sm">
-                <Link href="/portal" onClick={() => setOpen(false)} className="py-3 hover:text-gold transition-colors">
+                <Link href="/portal" onClick={() => setOpen(false)} className="py-3 hover:text-teal transition-colors">
                   Dashboard
                 </Link>
-                <Link href="/portal/modules" onClick={() => setOpen(false)} className="py-3 hover:text-gold transition-colors">
+                <Link href="/portal/modules" onClick={() => setOpen(false)} className="py-3 hover:text-teal transition-colors">
                   Modules
                 </Link>
-                <Link href="/portal/field-guides" onClick={() => setOpen(false)} className="py-3 hover:text-gold transition-colors">
+                <Link href="/portal/field-guides" onClick={() => setOpen(false)} className="py-3 hover:text-teal transition-colors">
                   Field Guides
                 </Link>
-                <Link href="/portal/tools" onClick={() => setOpen(false)} className="py-3 hover:text-gold transition-colors">
+                <Link href="/portal/tools" onClick={() => setOpen(false)} className="py-3 hover:text-teal transition-colors">
                   Tools
                 </Link>
-                <Link href="/portal/account" onClick={() => setOpen(false)} className="py-3 hover:text-gold transition-colors">
+                <Link href="/portal/account" onClick={() => setOpen(false)} className="py-3 hover:text-teal transition-colors">
                   Account
                 </Link>
-                <Link href="/portal/support" onClick={() => setOpen(false)} className="py-3 hover:text-gold transition-colors">
+                <Link href="/portal/support" onClick={() => setOpen(false)} className="py-3 hover:text-teal transition-colors">
                   Support
                 </Link>
               </div>
@@ -110,3 +110,4 @@ export function PortalShell({
     </div>
   );
 }
+

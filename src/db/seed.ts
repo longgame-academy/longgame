@@ -1,4 +1,4 @@
-import { db } from "./index";
+﻿import { db } from "./index";
 import { organizations, orgCodes, content } from "./schema";
 
 async function seed() {

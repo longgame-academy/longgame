@@ -72,7 +72,7 @@ export default function JoinOrganizationPage() {
         <button
           type="submit"
           disabled={status === "loading"}
-          className="w-full bg-gold text-charcoal font-heading font-semibold px-6 py-3 rounded-full hover:bg-gold-light transition-colors disabled:opacity-60"
+          className="w-full bg-teal text-charcoal font-heading font-semibold px-6 py-3 rounded-full hover:bg-teal-dark transition-colors disabled:opacity-60"
         >
           {status === "loading" ? "Verifying..." : "Unlock Access"}
         </button>
@@ -80,5 +80,6 @@ export default function JoinOrganizationPage() {
     </motion.div>
   );
 }
+
 
 

@@ -1,4 +1,4 @@
-import { auth } from "@clerk/nextjs/server";
+﻿import { auth } from "@clerk/nextjs/server";
 
 export async function requireAdmin() {
   const { userId, sessionClaims } = await auth();

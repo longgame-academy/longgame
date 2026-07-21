@@ -1,4 +1,4 @@
-import { stripe } from "@/lib/stripe";
+﻿import { stripe } from "@/lib/stripe";
 import { clerkClient } from "@clerk/nextjs/server";
 import { db } from "@/db";
 import { payments, enrollments } from "@/db/schema";
@@ -36,7 +36,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Missing user reference" }, { status: 400 });
     }
 
-    // Idempotency guard — Stripe can send the same event more than once.
+    // Idempotency guard â€” Stripe can send the same event more than once.
     const [existingPayment] = await db
       .select()
       .from(payments)

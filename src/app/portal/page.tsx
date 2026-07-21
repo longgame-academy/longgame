@@ -17,7 +17,7 @@ export default async function PortalDashboard() {
       <div className="grid md:grid-cols-3 gap-6">
         <Link
           href="/portal/modules"
-          className="bg-cream/60 border border-border-grey rounded-2xl p-6 hover:border-gold transition-colors shadow-[0_4px_16px_rgba(18,21,20,0.08)] hover:shadow-[0_8px_24px_rgba(18,21,20,0.12)]"
+          className="bg-cream/60 border border-border-grey rounded-2xl p-6 hover:border-teal transition-colors shadow-[0_4px_16px_rgba(18,21,20,0.08)] hover:shadow-[0_8px_24px_rgba(18,21,20,0.12)]"
         >
           <h3 className="font-heading text-lg font-semibold mb-2">
             Parent Development System
@@ -29,7 +29,7 @@ export default async function PortalDashboard() {
 
         <Link
           href="/portal/field-guides"
-          className="bg-cream/60 border border-border-grey rounded-2xl p-6 hover:border-gold transition-colors shadow-[0_4px_16px_rgba(18,21,20,0.08)] hover:shadow-[0_8px_24px_rgba(18,21,20,0.12)]"
+          className="bg-cream/60 border border-border-grey rounded-2xl p-6 hover:border-teal transition-colors shadow-[0_4px_16px_rgba(18,21,20,0.08)] hover:shadow-[0_8px_24px_rgba(18,21,20,0.12)]"
         >
           <h3 className="font-heading text-lg font-semibold mb-2">
             Field Guides
@@ -41,7 +41,7 @@ export default async function PortalDashboard() {
 
         <Link
           href="/portal/tools"
-          className="bg-cream/60 border border-border-grey rounded-2xl p-6 hover:border-gold transition-colors shadow-[0_4px_16px_rgba(18,21,20,0.08)] hover:shadow-[0_8px_24px_rgba(18,21,20,0.12)]"
+          className="bg-cream/60 border border-border-grey rounded-2xl p-6 hover:border-teal transition-colors shadow-[0_4px_16px_rgba(18,21,20,0.08)] hover:shadow-[0_8px_24px_rgba(18,21,20,0.12)]"
         >
           <h3 className="font-heading text-lg font-semibold mb-2">
             Practical Tools
@@ -54,5 +54,6 @@ export default async function PortalDashboard() {
     </div>
   );
 }
+
 
 

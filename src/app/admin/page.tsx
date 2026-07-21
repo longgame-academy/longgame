@@ -7,7 +7,7 @@ export default function AdminPage() {
       <div className="grid md:grid-cols-2 gap-4">
         <Link
           href="/admin/organizations"
-          className="bg-cream/60 border border-border-grey rounded-2xl p-6 hover:border-gold transition-colors shadow-[0_4px_16px_rgba(18,21,20,0.08)] hover:shadow-[0_8px_24px_rgba(18,21,20,0.12)]"
+          className="bg-cream/60 border border-border-grey rounded-2xl p-6 hover:border-teal transition-colors shadow-[0_4px_16px_rgba(18,21,20,0.08)] hover:shadow-[0_8px_24px_rgba(18,21,20,0.12)]"
         >
           <h3 className="font-heading font-semibold mb-1">Organizations</h3>
           <p className="font-body text-sm text-text-muted">
@@ -16,7 +16,7 @@ export default function AdminPage() {
         </Link>
         <Link
           href="/admin/users"
-          className="bg-cream/60 border border-border-grey rounded-2xl p-6 hover:border-gold transition-colors shadow-[0_4px_16px_rgba(18,21,20,0.08)] hover:shadow-[0_8px_24px_rgba(18,21,20,0.12)]"
+          className="bg-cream/60 border border-border-grey rounded-2xl p-6 hover:border-teal transition-colors shadow-[0_4px_16px_rgba(18,21,20,0.08)] hover:shadow-[0_8px_24px_rgba(18,21,20,0.12)]"
         >
           <h3 className="font-heading font-semibold mb-1">Users</h3>
           <p className="font-body text-sm text-text-muted">
@@ -25,7 +25,7 @@ export default function AdminPage() {
         </Link>
         <Link
           href="/admin/content"
-          className="bg-cream/60 border border-border-grey rounded-2xl p-6 hover:border-gold transition-colors shadow-[0_4px_16px_rgba(18,21,20,0.08)] hover:shadow-[0_8px_24px_rgba(18,21,20,0.12)]"
+          className="bg-cream/60 border border-border-grey rounded-2xl p-6 hover:border-teal transition-colors shadow-[0_4px_16px_rgba(18,21,20,0.08)] hover:shadow-[0_8px_24px_rgba(18,21,20,0.12)]"
         >
           <h3 className="font-heading font-semibold mb-1">Content</h3>
           <p className="font-body text-sm text-text-muted">
@@ -34,7 +34,7 @@ export default function AdminPage() {
         </Link>
         <Link
           href="/admin/leads"
-          className="bg-cream/60 border border-border-grey rounded-2xl p-6 hover:border-gold transition-colors shadow-[0_4px_16px_rgba(18,21,20,0.08)] hover:shadow-[0_8px_24px_rgba(18,21,20,0.12)]"
+          className="bg-cream/60 border border-border-grey rounded-2xl p-6 hover:border-teal transition-colors shadow-[0_4px_16px_rgba(18,21,20,0.08)] hover:shadow-[0_8px_24px_rgba(18,21,20,0.12)]"
         >
           <h3 className="font-heading font-semibold mb-1">Leads</h3>
           <p className="font-body text-sm text-text-muted">
@@ -45,5 +45,6 @@ export default function AdminPage() {
     </div>
   );
 }
+
 
 

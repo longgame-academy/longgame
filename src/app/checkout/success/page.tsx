@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -38,11 +38,11 @@ export default function CheckoutSuccessPage() {
         {failed ? (
           <>
             <p className="text-charcoal mb-2">
-              Still finalizing your access — this can take a minute.
+              Still finalizing your access â€” this can take a minute.
             </p>
             <button
               onClick={() => router.push("/portal")}
-              className="text-gold underline"
+              className="text-teal underline"
             >
               Try the portal now
             </button>

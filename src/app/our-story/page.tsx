@@ -173,13 +173,13 @@ export default function OurStoryPage() {
               <p>We believe sport should build people, not just players.</p>
               <p>The game will end.</p>
               <p>The relationship won&apos;t.</p>
-              <p className="font-heading font-semibold text-gold">
+              <p className="font-heading font-semibold text-teal">
                 That&apos;s the Long Game.
               </p>
             </div>
             <Link
               href="/parent-academy"
-              className="inline-block bg-gold text-charcoal font-heading font-semibold px-8 py-4 rounded-full hover:bg-gold-light transition-colors"
+              className="inline-block bg-teal text-charcoal font-heading font-semibold px-8 py-4 rounded-full hover:bg-teal-dark transition-colors"
             >
               Explore the Parent Academy
             </Link>
@@ -191,6 +191,7 @@ export default function OurStoryPage() {
     </main>
   );
 }
+
 
 
 

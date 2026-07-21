@@ -218,7 +218,7 @@ export default function AdminContentPage() {
         <button
           type="submit"
           disabled={creating}
-          className="bg-gold text-charcoal font-heading font-semibold px-6 py-2 rounded-full hover:bg-gold-light transition-colors disabled:opacity-60"
+          className="bg-teal text-charcoal font-heading font-semibold px-6 py-2 rounded-full hover:bg-teal-dark transition-colors disabled:opacity-60"
         >
           {creating ? "Creating..." : "Create Content"}
         </button>
@@ -253,7 +253,7 @@ export default function AdminContentPage() {
               className="bg-cream/60 border border-border-grey rounded-2xl p-5 flex items-center justify-between flex-wrap gap-4 shadow-[0_4px_16px_rgba(18,21,20,0.08)]"
             >
               <div>
-                <span className="font-heading text-xs text-gold uppercase tracking-wide">
+                <span className="font-heading text-xs text-teal uppercase tracking-wide">
                   {typeLabels[item.type]}
                 </span>
                 <p className="font-heading font-semibold">{item.title}</p>
@@ -300,5 +300,6 @@ export default function AdminContentPage() {
     </div>
   );
 }
+
 
 

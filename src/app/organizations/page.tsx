@@ -133,13 +133,13 @@ export default function OrganizationsPage() {
             <div className="flex flex-wrap gap-4">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 bg-gold text-charcoal font-heading font-semibold px-8 py-3 rounded-full hover:bg-gold-light transition-colors"
+                className="inline-flex items-center gap-2 bg-teal text-charcoal font-heading font-semibold px-8 py-3 rounded-full hover:bg-teal-dark transition-colors"
               >
                 Schedule a Discovery Call
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 border border-charcoal/20 text-charcoal font-heading font-semibold px-8 py-3 rounded-full hover:border-gold hover:text-gold transition-colors"
+                className="inline-flex items-center gap-2 border border-charcoal/20 text-charcoal font-heading font-semibold px-8 py-3 rounded-full hover:border-teal hover:text-teal transition-colors"
               >
                 Download Organization Overview
               </Link>
@@ -157,7 +157,7 @@ export default function OrganizationsPage() {
           <h2 className="font-heading text-3xl md:text-4xl font-bold leading-tight">
             Most organizations develop the athlete.
             <br />
-            <span className="text-gold">Very few help develop the parent.</span>
+            <span className="text-teal">Very few help develop the parent.</span>
           </h2>
           <div className="font-body text-text-body leading-relaxed space-y-4">
             <p>Every organization invests in developing athletes.</p>
@@ -209,12 +209,12 @@ export default function OrganizationsPage() {
                 transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.08 }}
                 className="bg-cream rounded-2xl p-8 flex flex-col shadow-[0_4px_16px_rgba(18,21,20,0.08)]"
               >
-                <b.icon className="w-8 h-8 text-gold mb-4" strokeWidth={1.5} />
+                <b.icon className="w-8 h-8 text-teal mb-4" strokeWidth={1.5} />
                 <h3 className="font-heading text-lg font-semibold mb-3">{b.title}</h3>
                 <p className="font-body text-sm text-text-body leading-relaxed mb-4 flex-1">
                   {b.body}
                 </p>
-                <p className="font-body text-sm font-semibold text-gold">{b.result}</p>
+                <p className="font-body text-sm font-semibold text-teal">{b.result}</p>
               </motion.div>
             ))}
           </div>
@@ -244,7 +244,7 @@ export default function OrganizationsPage() {
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.1 }}
               >
-                <p className="font-heading text-gold text-3xl font-bold mb-3">{s.step}</p>
+                <p className="font-heading text-teal text-3xl font-bold mb-3">{s.step}</p>
                 <h3 className="font-heading text-lg font-semibold mb-2">{s.title}</h3>
                 <p className="font-body text-sm text-text-body leading-relaxed">{s.body}</p>
               </motion.div>
@@ -300,13 +300,13 @@ export default function OrganizationsPage() {
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 bg-gold text-charcoal font-heading font-semibold px-8 py-3 rounded-full hover:bg-gold-light transition-colors"
+              className="inline-flex items-center gap-2 bg-teal text-charcoal font-heading font-semibold px-8 py-3 rounded-full hover:bg-teal-dark transition-colors"
             >
               Schedule a Discovery Call
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 border border-cream/30 text-cream font-heading font-semibold px-8 py-3 rounded-full hover:border-gold hover:text-gold transition-colors"
+              className="inline-flex items-center gap-2 border border-cream/30 text-cream font-heading font-semibold px-8 py-3 rounded-full hover:border-teal hover:text-teal transition-colors"
             >
               Download Organization Overview
             </Link>
@@ -318,6 +318,7 @@ export default function OrganizationsPage() {
     </main>
   );
 }
+
 
 
 

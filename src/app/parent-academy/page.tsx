@@ -126,7 +126,7 @@ function Accordion({
                 {item.title || item.q}
               </span>
               <span
-                className={`font-heading text-gold text-xl transition-transform ${
+                className={`font-heading text-teal text-xl transition-transform ${
                   isOpen ? "rotate-45" : ""
                 }`}
               >
@@ -176,10 +176,10 @@ export default function ParentAcademyPage() {
               journey.
             </p>
             <div className="flex flex-wrap gap-4">
-              <CheckoutButton className="inline-flex items-center gap-2 bg-gold text-charcoal font-heading font-semibold px-8 py-3 rounded-full hover:bg-gold-light transition-colors" />
+              <CheckoutButton className="inline-flex items-center gap-2 bg-teal text-charcoal font-heading font-semibold px-8 py-3 rounded-full hover:bg-teal-dark transition-colors" />
               <a
                 href="#modules"
-                className="inline-flex items-center gap-2 border border-charcoal/20 text-charcoal font-heading font-semibold px-8 py-3 rounded-full hover:border-gold hover:text-gold transition-colors"
+                className="inline-flex items-center gap-2 border border-charcoal/20 text-charcoal font-heading font-semibold px-8 py-3 rounded-full hover:border-teal hover:text-teal transition-colors"
               >
                 Preview Course Pages
               </a>
@@ -189,7 +189,7 @@ export default function ParentAcademyPage() {
             <div className="relative w-full max-w-sm mx-auto aspect-[4/5] rounded-lg overflow-hidden shadow-2xl rotate-2 bg-ink flex flex-col items-center justify-center text-cream p-8">
               <p className="font-heading font-bold text-2xl tracking-wide mb-2">LONG GAME</p>
               <p className="font-heading text-xs tracking-widest text-cream/60 mb-6">PARENT ACADEMY</p>
-              <span className="font-heading text-xs tracking-widest border border-gold text-gold rounded-full px-4 py-1">
+              <span className="font-heading text-xs tracking-widest border border-teal text-teal rounded-full px-4 py-1">
                 12 MODULES
               </span>
             </div>
@@ -222,7 +222,7 @@ export default function ParentAcademyPage() {
       {/* SECTION 4: ENROLL */}
       <section className="max-w-lg mx-auto w-full px-6 py-20 text-center">
         <div className="bg-cream border border-border-grey rounded-2xl p-10 shadow-[0_6px_20px_rgba(18,21,20,0.10)]">
-          <p className="font-heading text-gold text-sm font-semibold tracking-widest uppercase mb-2">
+          <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase mb-2">
             Parent Academy
           </p>
           <p className="font-heading text-4xl font-bold mb-4">$147 USD</p>
@@ -230,7 +230,7 @@ export default function ParentAcademyPage() {
             One-time payment. Permanent access to the Parent Academy included
             with your purchase.
           </p>
-          <CheckoutButton className="inline-flex items-center gap-2 bg-gold text-charcoal font-heading font-semibold px-8 py-3 rounded-full hover:bg-gold-light transition-colors w-full justify-center" />
+          <CheckoutButton className="inline-flex items-center gap-2 bg-teal text-charcoal font-heading font-semibold px-8 py-3 rounded-full hover:bg-teal-dark transition-colors w-full justify-center" />
         </div>
       </section>
 
@@ -246,6 +246,7 @@ export default function ParentAcademyPage() {
     </main>
   );
 }
+
 
 
 

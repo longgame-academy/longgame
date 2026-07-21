@@ -1,4 +1,4 @@
-import { auth, currentUser } from "@clerk/nextjs/server";
+﻿import { auth, currentUser } from "@clerk/nextjs/server";
 import { stripe } from "@/lib/stripe";
 import { checkoutRatelimit } from "@/lib/ratelimit";
 import { NextResponse } from "next/server";
@@ -27,7 +27,7 @@ export async function POST() {
     ],
     allow_promotion_codes: true,
     customer_email: email,
-    // Stripe's source-of-truth link back to this specific user —
+    // Stripe's source-of-truth link back to this specific user â€”
     // read in the webhook handler, never trust client-supplied user id.
     client_reference_id: userId,
     success_url: `${process.env.NEXT_PUBLIC_SITE_URL}/checkout/success`,

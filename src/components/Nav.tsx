@@ -20,16 +20,16 @@ export default function Nav() {
           <img src="/logo-black.png" alt="Long Game" className="h-16 w-auto" />
         </Link>
         <nav className="hidden md:flex items-center gap-8 font-heading text-sm font-medium">
-          <Link href="/parent-academy" className="hover:text-gold transition-colors">
+          <Link href="/parent-academy" className="hover:text-teal transition-colors">
             Parent Academy
           </Link>
-          <Link href="/organizations" className="hover:text-gold transition-colors">
+          <Link href="/organizations" className="hover:text-teal transition-colors">
             Organizations
           </Link>
-          <Link href="/free-guide" className="hover:text-gold transition-colors">
+          <Link href="/free-guide" className="hover:text-teal transition-colors">
             Free Guide
           </Link>
-          <Link href="/our-story" className="hover:text-gold transition-colors">
+          <Link href="/our-story" className="hover:text-teal transition-colors">
             Our Story
           </Link>
         </nav>
@@ -69,16 +69,16 @@ export default function Nav() {
             className="md:hidden overflow-hidden border-t border-border-grey"
           >
             <div className="flex flex-col gap-1 px-6 py-4 font-heading text-sm font-medium">
-              <Link href="/parent-academy" onClick={() => setOpen(false)} className="py-3 hover:text-gold transition-colors">
+              <Link href="/parent-academy" onClick={() => setOpen(false)} className="py-3 hover:text-teal transition-colors">
                 Parent Academy
               </Link>
-              <Link href="/organizations" onClick={() => setOpen(false)} className="py-3 hover:text-gold transition-colors">
+              <Link href="/organizations" onClick={() => setOpen(false)} className="py-3 hover:text-teal transition-colors">
                 Organizations
               </Link>
-              <Link href="/free-guide" onClick={() => setOpen(false)} className="py-3 hover:text-gold transition-colors">
+              <Link href="/free-guide" onClick={() => setOpen(false)} className="py-3 hover:text-teal transition-colors">
                 Free Guide
               </Link>
-              <Link href="/our-story" onClick={() => setOpen(false)} className="py-3 hover:text-gold transition-colors">
+              <Link href="/our-story" onClick={() => setOpen(false)} className="py-3 hover:text-teal transition-colors">
                 Our Story
               </Link>
               <Show when="signed-out">
@@ -102,5 +102,6 @@ export default function Nav() {
     </motion.header>
   );
 }
+
 
 

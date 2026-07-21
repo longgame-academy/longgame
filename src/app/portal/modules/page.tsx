@@ -42,15 +42,15 @@ export default async function ModulesPage() {
             <Link
               key={m.id}
               href={`/portal/modules/${m.id}`}
-              className="flex items-center justify-between bg-cream/60 border border-border-grey rounded-2xl p-5 hover:border-gold transition-colors shadow-[0_4px_16px_rgba(18,21,20,0.08)] hover:shadow-[0_8px_24px_rgba(18,21,20,0.12)]"
+              className="flex items-center justify-between bg-cream/60 border border-border-grey rounded-2xl p-5 hover:border-teal transition-colors shadow-[0_4px_16px_rgba(18,21,20,0.08)] hover:shadow-[0_8px_24px_rgba(18,21,20,0.12)]"
             >
               <div className="flex items-center gap-4">
-                <span className="font-heading text-gold text-lg font-bold w-8">
+                <span className="font-heading text-teal text-lg font-bold w-8">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <span className="font-heading font-semibold">{m.title}</span>
               </div>
-              <span className="text-gold">→</span>
+              <span className="text-teal">→</span>
             </Link>
           ))}
         </div>
@@ -58,6 +58,7 @@ export default async function ModulesPage() {
     </div>
   );
 }
+
 
 
 

@@ -1,4 +1,4 @@
-import { db } from "@/db";
+﻿import { db } from "@/db";
 import { leads } from "@/db/schema";
 import { requireAdmin } from "@/lib/admin";
 import { NextResponse } from "next/server";

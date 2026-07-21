@@ -1,4 +1,4 @@
-import Nav from "@/components/Nav";
+﻿import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 
 export default function PrivacyPage() {
@@ -89,3 +89,4 @@ export default function PrivacyPage() {
     </main>
   );
 }
+
