@@ -1,8 +1,16 @@
 import { db } from "@/db";
-import { organizations } from "@/db/schema";
+import { sql } from "drizzle-orm";
 import { NextResponse } from "next/server";
 
 export async function GET() {
-  const rows = await db.select().from(organizations).limit(1);
-  return NextResponse.json({ ok: true, rows });
+  try {
+    await db.execute(sql`SELECT 1`);
+    return NextResponse.json({ status: "ok", timestamp: new Date().toISOString() });
+  } catch (err) {
+    console.error("Health check failed:", err);
+    return NextResponse.json(
+      { status: "error", timestamp: new Date().toISOString() },
+      { status: 503 }
+    );
+  }
 }

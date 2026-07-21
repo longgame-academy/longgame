@@ -1,4 +1,5 @@
 import { stripe } from "@/lib/stripe";
+import { clerkClient } from "@clerk/nextjs/server";
 import { db } from "@/db";
 import { payments, enrollments } from "@/db/schema";
 import { eq } from "drizzle-orm";
@@ -53,19 +54,22 @@ export async function POST(req: Request) {
       status: "succeeded",
     });
 
-    const [existingEnrollment] = await db
-      .select()
-      .from(enrollments)
-      .where(eq(enrollments.userId, userId))
-      .limit(1);
-
-    if (!existingEnrollment) {
+    try {
       await db.insert(enrollments).values({
         userId,
         accessType: "individual",
         contentPackage: "standard_v1",
       });
+    } catch (err) {
+      const isDuplicate =
+        err instanceof Error && err.message.includes("enrollments_user_id_idx");
+      if (!isDuplicate) throw err;
     }
+
+    const client = await clerkClient();
+    await client.users.updateUserMetadata(userId, {
+      publicMetadata: { enrolled: true },
+    });
 
     const email = session.customer_details?.email;
     if (email) {

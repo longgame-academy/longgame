@@ -7,6 +7,8 @@ import {
   timestamp,
   pgEnum,
   serial,
+  index,
+  uniqueIndex,
 } from "drizzle-orm/pg-core";
 import { relations } from "drizzle-orm";
 
@@ -38,7 +40,9 @@ export const orgCodes = pgTable("org_codes", {
   usesCount: integer("uses_count").notNull().default(0),
   active: boolean("active").notNull().default(true),
   createdAt: timestamp("created_at").notNull().defaultNow(),
-});
+}, (table) => [
+  index("org_codes_org_id_idx").on(table.organizationId),
+]);
 
 export const orgMemberships = pgTable("org_memberships", {
   id: serial("id").primaryKey(),
@@ -46,7 +50,10 @@ export const orgMemberships = pgTable("org_memberships", {
   organizationId: integer("organization_id").notNull().references(() => organizations.id),
   status: membershipStatusEnum("status").notNull().default("active"),
   joinedAt: timestamp("joined_at").notNull().defaultNow(),
-});
+}, (table) => [
+  index("org_memberships_user_id_idx").on(table.userId),
+  index("org_memberships_org_id_idx").on(table.organizationId),
+]);
 
 // ---------- Enrollments / Payments ----------
 export const enrollments = pgTable("enrollments", {
@@ -55,7 +62,9 @@ export const enrollments = pgTable("enrollments", {
   accessType: accessTypeEnum("access_type").notNull(),
   contentPackage: varchar("content_package", { length: 100 }).notNull().default("standard_v1"),
   grantedAt: timestamp("granted_at").notNull().defaultNow(),
-});
+}, (table) => [
+  uniqueIndex("enrollments_user_id_idx").on(table.userId),
+]);
 
 export const payments = pgTable("payments", {
   id: serial("id").primaryKey(),
@@ -64,7 +73,9 @@ export const payments = pgTable("payments", {
   amount: integer("amount").notNull(), // cents
   status: paymentStatusEnum("status").notNull().default("pending"),
   createdAt: timestamp("created_at").notNull().defaultNow(),
-});
+}, (table) => [
+  index("payments_user_id_idx").on(table.userId),
+]);
 
 // ---------- Leads ----------
 export const leads = pgTable("leads", {
@@ -93,7 +104,10 @@ export const content = pgTable("content", {
   audienceTag: varchar("audience_tag", { length: 100 }),
   relatedModuleId: integer("related_module_id"),
   createdAt: timestamp("created_at").notNull().defaultNow(),
-});
+}, (table) => [
+  index("content_type_idx").on(table.type),
+  index("content_visibility_idx").on(table.visibility),
+]);
 
 // ---------- Relations ----------
 export const organizationsRelations = relations(organizations, ({ many }) => ({

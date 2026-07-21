@@ -10,14 +10,22 @@ export default async function PortalLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { userId } = await auth();
+  const { userId, sessionClaims } = await auth();
   if (!userId) redirect("/sign-in");
 
-  const [enrollment] = await db
-    .select()
-    .from(enrollments)
-    .where(eq(enrollments.userId, userId))
-    .limit(1);
+  const cachedEnrolled = (sessionClaims?.publicMetadata as { enrolled?: boolean } | undefined)?.enrolled;
+
+  let enrollment = null;
+  if (cachedEnrolled) {
+    enrollment = true;
+  } else {
+    const [row] = await db
+      .select()
+      .from(enrollments)
+      .where(eq(enrollments.userId, userId))
+      .limit(1);
+    enrollment = row ?? null;
+  }
 
   const [membership] = await db
     .select({ orgName: organizations.name })

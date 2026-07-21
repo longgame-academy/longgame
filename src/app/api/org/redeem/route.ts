@@ -1,6 +1,6 @@
 import { db } from "@/db";
 import { orgCodes, orgMemberships, enrollments } from "@/db/schema";
-import { auth } from "@clerk/nextjs/server";
+import { auth, clerkClient } from "@clerk/nextjs/server";
 import { eq } from "drizzle-orm";
 import { NextResponse } from "next/server";
 import { z } from "zod";
@@ -79,6 +79,11 @@ export async function POST(req: Request) {
         userId,
         accessType: "org",
         contentPackage: "standard_v1",
+      });
+
+      const client = await clerkClient();
+      await client.users.updateUserMetadata(userId, {
+        publicMetadata: { enrolled: true },
       });
 
       await tx

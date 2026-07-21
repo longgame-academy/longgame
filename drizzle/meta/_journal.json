@@ -8,6 +8,13 @@
       "when": 1784571376435,
       "tag": "0000_vengeful_hercules",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1784607842632,
+      "tag": "0001_absent_red_wolf",
+      "breakpoints": true
     }
   ]
 }

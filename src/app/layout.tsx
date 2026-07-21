@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import "@/lib/env";
 import { Poppins, Lora } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
