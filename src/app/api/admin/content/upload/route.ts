@@ -1,14 +1,13 @@
-import { auth } from "@clerk/nextjs/server";
+﻿import { requireAdmin } from "@/lib/admin";
 import { put } from "@vercel/blob";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
-  const { userId } = await auth();
-  if (!userId) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const check = await requireAdmin();
+  if (!check.ok) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: check.status });
   }
 
-  // TODO: swap for a real admin check once roles exist
   const formData = await req.formData();
   const file = formData.get("file") as File | null;
 

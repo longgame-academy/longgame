@@ -35,7 +35,7 @@ export function CookieConsent() {
           <div className="max-w-6xl mx-auto px-6 py-5 flex flex-col md:flex-row items-center gap-4 justify-between">
             <p className="font-body text-sm text-cream/80 leading-relaxed">
               We use cookies to improve your experience and understand how our site is used. See our{" "}
-              <Link href="/cookie-policy" className="underline hover:text-gold">
+              <Link href="/cookies" className="underline hover:text-gold">
                 Cookie Policy
               </Link>{" "}
               for details.
@@ -60,3 +60,4 @@ export function CookieConsent() {
     </AnimatePresence>
   );
 }
+
