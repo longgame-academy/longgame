@@ -1,9 +1,10 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
+import { Shield, MessageCircle, TrendingUp, Heart } from "lucide-react";
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -26,18 +27,22 @@ const pillars = [
   {
     title: "Build Confidence",
     body: "Helping athletes develop confidence that lasts longer than a great game or a winning season.",
+    icon: Shield,
   },
   {
     title: "Strengthen Communication",
     body: "Creating better conversations before practice, after games, and in the moments that matter most.",
+    icon: MessageCircle,
   },
   {
     title: "Develop Resilience",
     body: "Helping families navigate setbacks, mistakes, pressure, and adversity with perspective and purpose.",
+    icon: TrendingUp,
   },
   {
     title: "Protect the Relationship",
     body: "Because one day the games will end, but your relationship with your athlete is just getting started.",
+    icon: Heart,
   },
 ];
 
@@ -231,6 +236,7 @@ export default function Home() {
                 transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.1 }}
                 className="bg-background border border-charcoal/10 rounded-2xl p-8"
               >
+                <p.icon className="w-8 h-8 text-gold mb-4" strokeWidth={1.5} />
                 <h3 className="font-heading text-lg font-semibold mb-3">{p.title}</h3>
                 <p className="font-body text-sm text-charcoal/70 leading-relaxed">{p.body}</p>
               </motion.div>
