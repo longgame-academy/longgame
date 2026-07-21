@@ -1,4 +1,4 @@
-import { auth } from "@clerk/nextjs/server";
+﻿import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import { db } from "@/db";
 import { content } from "@/db/schema";
@@ -40,7 +40,7 @@ export default async function ToolsPage() {
           {tools.map((t) => (
             <div
               key={t.id}
-              className="bg-cream/60 border border-charcoal/10 rounded-2xl p-6"
+              className="bg-cream/60 border border-charcoal/10 rounded-2xl p-6 shadow-sm"
             >
               <h3 className="font-heading font-semibold mb-2">{t.title}</h3>
               {t.downloadable ? (
@@ -48,7 +48,7 @@ export default async function ToolsPage() {
                   href={`/api/portal/tools/${t.id}/download`}
                   className="font-heading text-sm text-gold hover:underline"
                 >
-                  Download →
+                  Download â†’
                 </a>
               ) : (
                 <p className="font-body text-sm text-charcoal/50">

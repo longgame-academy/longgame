@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState, useCallback } from "react";
 
@@ -119,7 +119,7 @@ export default function AdminOrganizationsPage() {
       {/* Create org */}
       <form
         onSubmit={handleCreateOrg}
-        className="bg-cream/60 border border-charcoal/10 rounded-2xl p-6 mb-10 grid md:grid-cols-4 gap-4 items-end"
+        className="bg-cream/60 border border-charcoal/10 rounded-2xl p-6 mb-10 grid md:grid-cols-4 gap-4 items-end shadow-sm"
       >
         <div>
           <label className="block font-heading text-sm font-medium mb-1">
@@ -172,7 +172,7 @@ export default function AdminOrganizationsPage() {
           {orgs.map((org) => (
             <div
               key={org.id}
-              className="bg-cream/60 border border-charcoal/10 rounded-2xl p-6"
+              className="bg-cream/60 border border-charcoal/10 rounded-2xl p-6 shadow-sm"
             >
               <div className="flex items-center justify-between flex-wrap gap-4">
                 <div>
@@ -180,7 +180,7 @@ export default function AdminOrganizationsPage() {
                     {org.name}
                   </p>
                   <p className="font-body text-sm text-charcoal/60">
-                    {org.contactName} {org.contactEmail && `· ${org.contactEmail}`}
+                    {org.contactName} {org.contactEmail && `Â· ${org.contactEmail}`}
                   </p>
                 </div>
 

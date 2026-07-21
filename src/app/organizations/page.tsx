@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import Nav from "@/components/Nav";
@@ -207,7 +207,7 @@ export default function OrganizationsPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.08 }}
-                className="bg-cream rounded-2xl p-8 flex flex-col"
+                className="bg-cream rounded-2xl p-8 flex flex-col shadow-sm"
               >
                 <b.icon className="w-8 h-8 text-gold mb-4" strokeWidth={1.5} />
                 <h3 className="font-heading text-lg font-semibold mb-3">{b.title}</h3>
@@ -274,7 +274,7 @@ export default function OrganizationsPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.08 }}
-                className="bg-cream border border-charcoal/10 rounded-2xl p-8"
+                className="bg-cream border border-charcoal/10 rounded-2xl p-8 shadow-sm"
               >
                 <h3 className="font-heading text-lg font-semibold mb-3">{item.title}</h3>
                 <p className="font-body text-sm text-charcoal/70 leading-relaxed">{item.body}</p>
@@ -318,3 +318,4 @@ export default function OrganizationsPage() {
     </main>
   );
 }
+

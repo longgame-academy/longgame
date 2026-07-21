@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
@@ -14,16 +14,16 @@ const faqs = [
     a: "You'll create an account immediately after checkout and get instant access to your portal, where all modules, Field Guides, and Tools are available.",
   },
   {
-    q: "My organization gave me a code — how do I use it?",
+    q: "My organization gave me a code â€” how do I use it?",
     a: "Sign up for an account and enter your organization's code during registration. This links your account to your organization's access at no additional cost.",
   },
   {
     q: "Can I access this on my phone?",
-    a: "Yes — the portal is fully accessible on mobile, tablet, and desktop.",
+    a: "Yes â€” the portal is fully accessible on mobile, tablet, and desktop.",
   },
   {
     q: "Do I get lifetime access?",
-    a: "[Placeholder — Shawn to confirm access duration policy.]",
+    a: "[Placeholder â€” Shawn to confirm access duration policy.]",
   },
 ];
 
@@ -43,7 +43,7 @@ export default function FaqPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.06 }}
-              className="bg-cream/60 border border-charcoal/10 rounded-2xl p-6"
+              className="bg-cream/60 border border-charcoal/10 rounded-2xl p-6 shadow-sm"
             >
               <h3 className="font-heading text-lg font-semibold mb-2">
                 {item.q}

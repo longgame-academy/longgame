@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -50,7 +50,7 @@ export default function JoinOrganizationPage() {
 
       <form
         onSubmit={handleSubmit}
-        className="bg-cream/60 border border-charcoal/10 rounded-2xl p-6"
+        className="bg-cream/60 border border-charcoal/10 rounded-2xl p-6 shadow-sm"
       >
         <label className="block font-heading text-sm font-medium mb-2">
           Organization Code

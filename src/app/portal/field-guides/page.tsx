@@ -1,4 +1,4 @@
-import { auth } from "@clerk/nextjs/server";
+﻿import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import { db } from "@/db";
 import { content } from "@/db/schema";
@@ -43,7 +43,7 @@ export default async function FieldGuidesPage() {
             <Link
               key={g.id}
               href={`/portal/field-guides/${g.id}`}
-              className="bg-cream/60 border border-charcoal/10 rounded-2xl p-6 hover:border-gold transition-colors"
+              className="bg-cream/60 border border-charcoal/10 rounded-2xl p-6 hover:border-gold transition-colors shadow-sm hover:shadow-md"
             >
               <h3 className="font-heading font-semibold">{g.title}</h3>
             </Link>

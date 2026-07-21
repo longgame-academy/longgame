@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState, useCallback } from "react";
 import { motion } from "framer-motion";
@@ -127,7 +127,7 @@ export default function AdminContentPage() {
 
       <form
         onSubmit={handleCreate}
-        className="bg-cream/60 border border-charcoal/10 rounded-2xl p-6 mb-10 space-y-4"
+        className="bg-cream/60 border border-charcoal/10 rounded-2xl p-6 mb-10 space-y-4 shadow-sm"
       >
         <div className="grid md:grid-cols-3 gap-4">
           <div>
@@ -250,7 +250,7 @@ export default function AdminContentPage() {
             <motion.div
               key={item.id}
               layout
-              className="bg-cream/60 border border-charcoal/10 rounded-2xl p-5 flex items-center justify-between flex-wrap gap-4"
+              className="bg-cream/60 border border-charcoal/10 rounded-2xl p-5 flex items-center justify-between flex-wrap gap-4 shadow-sm"
             >
               <div>
                 <span className="font-heading text-xs text-gold uppercase tracking-wide">

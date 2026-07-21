@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 
@@ -42,7 +42,7 @@ export default function AdminLeadsPage() {
       ) : leads.length === 0 ? (
         <p className="font-body text-charcoal/60">No leads yet.</p>
       ) : (
-        <div className="bg-cream/60 border border-charcoal/10 rounded-2xl overflow-hidden">
+        <div className="bg-cream/60 border border-charcoal/10 rounded-2xl overflow-hidden shadow-sm">
           <table className="w-full text-left">
             <thead className="bg-charcoal/5">
               <tr>
@@ -67,7 +67,7 @@ export default function AdminLeadsPage() {
               {leads.map((lead) => (
                 <tr key={lead.id} className="border-t border-charcoal/10">
                   <td className="font-body text-sm px-5 py-3">
-                    {lead.firstName || "—"}
+                    {lead.firstName || "â€”"}
                   </td>
                   <td className="font-body text-sm px-5 py-3">{lead.email}</td>
                   <td className="font-body text-sm px-5 py-3">{lead.tag}</td>

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 
@@ -30,7 +30,7 @@ export default function FreeGuideForm() {
 
   if (status === "done") {
     return (
-      <div className="bg-cream/70 border border-gold rounded-2xl p-8 text-center">
+      <div className="bg-cream/70 border border-gold rounded-2xl p-8 text-center shadow-sm">
         <h3 className="font-heading text-xl font-semibold mb-2">
           Check your inbox
         </h3>
@@ -44,7 +44,7 @@ export default function FreeGuideForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-cream/70 border border-charcoal/10 rounded-2xl p-8 max-w-md mx-auto"
+      className="bg-cream/70 border border-charcoal/10 rounded-2xl p-8 max-w-md mx-auto shadow-sm"
     >
       <div className="mb-5">
         <label className="block font-heading text-sm font-medium mb-2">

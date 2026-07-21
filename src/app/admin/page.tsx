@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 
 export default function AdminPage() {
   return (
@@ -7,7 +7,7 @@ export default function AdminPage() {
       <div className="grid md:grid-cols-2 gap-4">
         <Link
           href="/admin/organizations"
-          className="bg-cream/60 border border-charcoal/10 rounded-2xl p-6 hover:border-gold transition-colors"
+          className="bg-cream/60 border border-charcoal/10 rounded-2xl p-6 hover:border-gold transition-colors shadow-sm hover:shadow-md"
         >
           <h3 className="font-heading font-semibold mb-1">Organizations</h3>
           <p className="font-body text-sm text-charcoal/60">
@@ -16,7 +16,7 @@ export default function AdminPage() {
         </Link>
         <Link
           href="/admin/users"
-          className="bg-cream/60 border border-charcoal/10 rounded-2xl p-6 hover:border-gold transition-colors"
+          className="bg-cream/60 border border-charcoal/10 rounded-2xl p-6 hover:border-gold transition-colors shadow-sm hover:shadow-md"
         >
           <h3 className="font-heading font-semibold mb-1">Users</h3>
           <p className="font-body text-sm text-charcoal/60">
@@ -25,7 +25,7 @@ export default function AdminPage() {
         </Link>
         <Link
           href="/admin/content"
-          className="bg-cream/60 border border-charcoal/10 rounded-2xl p-6 hover:border-gold transition-colors"
+          className="bg-cream/60 border border-charcoal/10 rounded-2xl p-6 hover:border-gold transition-colors shadow-sm hover:shadow-md"
         >
           <h3 className="font-heading font-semibold mb-1">Content</h3>
           <p className="font-body text-sm text-charcoal/60">
@@ -34,7 +34,7 @@ export default function AdminPage() {
         </Link>
         <Link
           href="/admin/leads"
-          className="bg-cream/60 border border-charcoal/10 rounded-2xl p-6 hover:border-gold transition-colors"
+          className="bg-cream/60 border border-charcoal/10 rounded-2xl p-6 hover:border-gold transition-colors shadow-sm hover:shadow-md"
         >
           <h3 className="font-heading font-semibold mb-1">Leads</h3>
           <p className="font-body text-sm text-charcoal/60">

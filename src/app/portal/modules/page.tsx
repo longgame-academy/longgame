@@ -1,4 +1,4 @@
-import { auth } from "@clerk/nextjs/server";
+﻿import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import { db } from "@/db";
 import { content } from "@/db/schema";
@@ -42,7 +42,7 @@ export default async function ModulesPage() {
             <Link
               key={m.id}
               href={`/portal/modules/${m.id}`}
-              className="flex items-center justify-between bg-cream/60 border border-charcoal/10 rounded-2xl p-5 hover:border-gold transition-colors"
+              className="flex items-center justify-between bg-cream/60 border border-charcoal/10 rounded-2xl p-5 hover:border-gold transition-colors shadow-sm hover:shadow-md"
             >
               <div className="flex items-center gap-4">
                 <span className="font-heading text-gold text-lg font-bold w-8">
@@ -50,7 +50,7 @@ export default async function ModulesPage() {
                 </span>
                 <span className="font-heading font-semibold">{m.title}</span>
               </div>
-              <span className="text-gold">→</span>
+              <span className="text-gold">â†’</span>
             </Link>
           ))}
         </div>
