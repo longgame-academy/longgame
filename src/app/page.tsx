@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import Nav from "@/components/Nav";
@@ -173,9 +173,9 @@ export default function Home() {
       </section>
 
       {/* SECTION 2: YOUTH SPORTS HAVE CHANGED */}
-      <section className="max-w-6xl mx-auto w-full px-6 py-20 md:py-28 grid md:grid-cols-2 gap-12 items-center">
-        <motion.div {...fadeUp}>
-          <Placeholder label="Documentary Photo" className="aspect-[4/5] rounded-lg" />
+      <section className="max-w-7xl mx-auto w-full px-6 py-20 md:py-28 grid md:grid-cols-5 gap-12 items-center">
+        <motion.div {...fadeUp} className="md:col-span-3">
+          <Placeholder label="Documentary Photo" className="aspect-[4/3] rounded-lg" />
         </motion.div>
         <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.15 }}>
           <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6 leading-tight">
@@ -376,7 +376,7 @@ export default function Home() {
       {/* SECTION 7: BUILT FROM EXPERIENCE. CREATED WITH PURPOSE. */}
       <section className="max-w-6xl mx-auto w-full px-6 py-20 md:py-28 grid md:grid-cols-2 gap-14 items-center">
         <motion.div {...fadeUp}>
-          <Placeholder label="Documentary Photo" className="aspect-[4/5] rounded-lg" />
+          <Placeholder label="Documentary Photo" className="aspect-[4/3] rounded-lg" />
         </motion.div>
         <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.15 }}>
           <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6 leading-tight">
