@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -35,8 +35,6 @@ export default function Footer() {
             <li><Link href="/faq" className="hover:text-gold transition-colors">FAQ</Link></li>
             <li><Link href="/privacy" className="hover:text-gold transition-colors">Privacy Policy</Link></li>
             <li><Link href="/terms" className="hover:text-gold transition-colors">Terms of Service</Link></li>
-            <li><Link href="/cookies" className="hover:text-gold transition-colors">Cookie Policy</Link></li>
-            <li><Link href="/disclaimer" className="hover:text-gold transition-colors">Disclaimer</Link></li>
           </ul>
         </div>
 
@@ -65,7 +63,7 @@ export default function Footer() {
 
       <div className="border-t border-cream/10">
         <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-body text-cream/60">
-          <p>© 2026 Long Game. All Rights Reserved.</p>
+          <p>Â© 2026 Long Game. All Rights Reserved.</p>
           <p className="font-heading tracking-widest">LONG GAME</p>
           <p>Designed with the long game in mind.</p>
         </div>
