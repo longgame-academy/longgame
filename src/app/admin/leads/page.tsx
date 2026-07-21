@@ -42,7 +42,7 @@ export default function AdminLeadsPage() {
       ) : leads.length === 0 ? (
         <p className="font-body text-charcoal/60">No leads yet.</p>
       ) : (
-        <div className="bg-cream/60 border border-charcoal/10 rounded-2xl overflow-hidden shadow-sm">
+        <div className="bg-cream/60 border border-charcoal/10 rounded-2xl overflow-hidden shadow-[0_4px_16px_rgba(18,21,20,0.08)]">
           <table className="w-full text-left">
             <thead className="bg-charcoal/5">
               <tr>
@@ -86,3 +86,4 @@ export default function AdminLeadsPage() {
     </div>
   );
 }
+

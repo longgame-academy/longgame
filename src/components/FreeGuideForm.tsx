@@ -30,7 +30,7 @@ export default function FreeGuideForm() {
 
   if (status === "done") {
     return (
-      <div className="bg-cream/70 border border-gold rounded-2xl p-8 text-center shadow-sm">
+      <div className="bg-cream/70 border border-gold rounded-2xl p-8 text-center shadow-[0_4px_16px_rgba(18,21,20,0.08)]">
         <h3 className="font-heading text-xl font-semibold mb-2">
           Check your inbox
         </h3>
@@ -44,7 +44,7 @@ export default function FreeGuideForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-cream/70 border border-charcoal/10 rounded-2xl p-8 max-w-md mx-auto shadow-sm"
+      className="bg-cream/70 border border-charcoal/10 rounded-2xl p-8 max-w-md mx-auto shadow-[0_4px_16px_rgba(18,21,20,0.08)]"
     >
       <div className="mb-5">
         <label className="block font-heading text-sm font-medium mb-2">
@@ -104,3 +104,4 @@ export default function FreeGuideForm() {
     </form>
   );
 }
+

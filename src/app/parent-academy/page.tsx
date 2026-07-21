@@ -117,7 +117,7 @@ function Accordion({
       {items.map((item, i) => {
         const isOpen = openIndex === i;
         return (
-          <div key={i} className="border border-charcoal/10 rounded-2xl overflow-hidden bg-cream shadow-sm">
+          <div key={i} className="border border-charcoal/10 rounded-2xl overflow-hidden bg-cream shadow-[0_4px_16px_rgba(18,21,20,0.08)]">
             <button
               onClick={() => setOpenIndex(isOpen ? null : i)}
               className="w-full text-left px-6 py-5 flex justify-between items-center gap-4"
@@ -221,7 +221,7 @@ export default function ParentAcademyPage() {
 
       {/* SECTION 4: ENROLL */}
       <section className="max-w-lg mx-auto w-full px-6 py-20 text-center">
-        <div className="bg-cream border border-charcoal/10 rounded-2xl p-10 shadow-md">
+        <div className="bg-cream border border-charcoal/10 rounded-2xl p-10 shadow-[0_6px_20px_rgba(18,21,20,0.10)]">
           <p className="font-heading text-gold text-sm font-semibold tracking-widest uppercase mb-2">
             Parent Academy
           </p>
@@ -246,4 +246,5 @@ export default function ParentAcademyPage() {
     </main>
   );
 }
+
 

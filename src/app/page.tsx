@@ -242,7 +242,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.1 }}
-                className="bg-background border border-charcoal/10 rounded-2xl p-8 shadow-sm"
+                className="bg-background border border-charcoal/10 rounded-2xl p-8 shadow-[0_4px_16px_rgba(18,21,20,0.08)]"
               >
                 <p.icon className="w-8 h-8 text-gold mb-4" strokeWidth={1.5} />
                 <h3 className="font-heading text-lg font-semibold mb-3">{p.title}</h3>
@@ -316,7 +316,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.12 }}
-                className="border border-cream/15 rounded-2xl p-8 flex flex-col shadow-sm"
+                className="border border-cream/15 rounded-2xl p-8 flex flex-col shadow-[0_4px_16px_rgba(18,21,20,0.08)]"
               >
                 <p className="font-heading text-gold text-xs font-semibold tracking-widest uppercase mb-4">
                   {p.label}
@@ -450,7 +450,7 @@ export default function Home() {
       <section className="max-w-6xl mx-auto w-full px-6 pb-20">
         <motion.div
           {...fadeUp}
-          className="bg-cream border border-charcoal/10 rounded-2xl p-10 md:p-14 grid md:grid-cols-2 gap-10 items-center shadow-md"
+          className="bg-cream border border-charcoal/10 rounded-2xl p-10 md:p-14 grid md:grid-cols-2 gap-10 items-center shadow-[0_6px_20px_rgba(18,21,20,0.10)]"
         >
           <div>
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 leading-tight">
@@ -498,5 +498,6 @@ export default function Home() {
     </main>
   );
 }
+
 
 

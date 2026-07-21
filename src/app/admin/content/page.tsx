@@ -127,7 +127,7 @@ export default function AdminContentPage() {
 
       <form
         onSubmit={handleCreate}
-        className="bg-cream/60 border border-charcoal/10 rounded-2xl p-6 mb-10 space-y-4 shadow-sm"
+        className="bg-cream/60 border border-charcoal/10 rounded-2xl p-6 mb-10 space-y-4 shadow-[0_4px_16px_rgba(18,21,20,0.08)]"
       >
         <div className="grid md:grid-cols-3 gap-4">
           <div>
@@ -250,7 +250,7 @@ export default function AdminContentPage() {
             <motion.div
               key={item.id}
               layout
-              className="bg-cream/60 border border-charcoal/10 rounded-2xl p-5 flex items-center justify-between flex-wrap gap-4 shadow-sm"
+              className="bg-cream/60 border border-charcoal/10 rounded-2xl p-5 flex items-center justify-between flex-wrap gap-4 shadow-[0_4px_16px_rgba(18,21,20,0.08)]"
             >
               <div>
                 <span className="font-heading text-xs text-gold uppercase tracking-wide">
@@ -300,3 +300,4 @@ export default function AdminContentPage() {
     </div>
   );
 }
+

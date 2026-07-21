@@ -43,7 +43,7 @@ export default function FaqPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.06 }}
-              className="bg-cream/60 border border-charcoal/10 rounded-2xl p-6 shadow-sm"
+              className="bg-cream/60 border border-charcoal/10 rounded-2xl p-6 shadow-[0_4px_16px_rgba(18,21,20,0.08)]"
             >
               <h3 className="font-heading text-lg font-semibold mb-2">
                 {item.q}
@@ -59,3 +59,4 @@ export default function FaqPage() {
     </main>
   );
 }
+

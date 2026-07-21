@@ -50,7 +50,7 @@ export default function JoinOrganizationPage() {
 
       <form
         onSubmit={handleSubmit}
-        className="bg-cream/60 border border-charcoal/10 rounded-2xl p-6 shadow-sm"
+        className="bg-cream/60 border border-charcoal/10 rounded-2xl p-6 shadow-[0_4px_16px_rgba(18,21,20,0.08)]"
       >
         <label className="block font-heading text-sm font-medium mb-2">
           Organization Code
@@ -80,3 +80,4 @@ export default function JoinOrganizationPage() {
     </motion.div>
   );
 }
+
