@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
 import Nav from "@/components/Nav";
@@ -10,7 +10,7 @@ const fadeUp = {
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, margin: "-80px" },
   transition: { duration: 0.6, ease: "easeOut" },
-};
+} as const;
 
 function Placeholder({ label, className = "" }: { label: string; className?: string }) {
   return (
