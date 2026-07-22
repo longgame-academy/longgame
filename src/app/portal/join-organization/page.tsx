@@ -72,11 +72,18 @@ export default function JoinOrganizationPage() {
         <button
           type="submit"
           disabled={status === "loading"}
-          className="w-full bg-teal text-charcoal font-heading font-semibold px-6 py-3 rounded-full hover:bg-teal-dark transition-colors disabled:opacity-60"
+          className="w-full bg-ink text-cream font-heading font-semibold px-6 py-3 rounded-full hover:opacity-90 transition-colors disabled:opacity-60"
         >
           {status === "loading" ? "Verifying..." : "Unlock Access"}
         </button>
       </form>
+      <button
+        type="button"
+        onClick={() => router.push("/portal")}
+        className="w-full text-center font-body text-sm text-text-muted mt-4 hover:underline"
+      >
+        Skip — I don't have a code
+      </button>
     </motion.div>
   );
 }

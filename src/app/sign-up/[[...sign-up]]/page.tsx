@@ -11,7 +11,7 @@ export default function Page() {
       transition={{ duration: 0.5, ease: "easeOut" }}
       className="flex min-h-screen items-center justify-center bg-background"
     >
-      <SignUp />
+      <SignUp fallbackRedirectUrl="/portal/join-organization" />
     </motion.div>
   );
 }
