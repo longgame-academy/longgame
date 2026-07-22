@@ -176,7 +176,7 @@ export default function ParentAcademyPage() {
               journey.
             </p>
             <div className="flex flex-wrap gap-4">
-              <CheckoutButton className="inline-flex items-center gap-2 bg-teal text-charcoal font-heading font-semibold px-8 py-3 rounded-full hover:bg-teal-dark transition-colors" />
+              <CheckoutButton className="inline-flex items-center gap-2 bg-ink text-cream font-heading font-semibold px-8 py-3 rounded-full hover:bg-charcoal transition-colors" />
               <a
                 href="#modules"
                 className="inline-flex items-center gap-2 border border-charcoal/20 text-charcoal font-heading font-semibold px-8 py-3 rounded-full hover:border-teal hover:text-teal transition-colors"
@@ -230,7 +230,7 @@ export default function ParentAcademyPage() {
             One-time payment. Permanent access to the Parent Academy included
             with your purchase.
           </p>
-          <CheckoutButton className="inline-flex items-center gap-2 bg-teal text-charcoal font-heading font-semibold px-8 py-3 rounded-full hover:bg-teal-dark transition-colors w-full justify-center" />
+          <CheckoutButton className="inline-flex items-center gap-2 bg-ink text-cream font-heading font-semibold px-8 py-3 rounded-full hover:bg-charcoal transition-colors w-full justify-center" />
         </div>
       </section>
 

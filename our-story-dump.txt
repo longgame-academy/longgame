@@ -179,7 +179,7 @@ export default function OurStoryPage() {
             </div>
             <Link
               href="/parent-academy"
-              className="inline-block bg-cream text-ink font-heading font-semibold px-8 py-4 rounded-full hover:bg-cream/90 transition-colors"
+              className="inline-block bg-teal text-charcoal font-heading font-semibold px-8 py-4 rounded-full hover:bg-teal-dark transition-colors"
             >
               Explore the Parent Academy
             </Link>
@@ -191,6 +191,7 @@ export default function OurStoryPage() {
     </main>
   );
 }
+
 
 
 
