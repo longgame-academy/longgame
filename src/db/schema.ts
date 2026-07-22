@@ -98,7 +98,7 @@ export const content = pgTable("content", {
   visibility: visibilityEnum("visibility").notNull().default("neither"),
   downloadable: boolean("downloadable").notNull().default(false),
   order: integer("order").notNull().default(0),
-  // Phase 2 tagging â€” nullable now, populate later
+  // Phase 2 tagging - nullable now, populate later
   topicTag: varchar("topic_tag", { length: 100 }),
   situationTag: varchar("situation_tag", { length: 100 }),
   audienceTag: varchar("audience_tag", { length: 100 }),
