@@ -147,7 +147,11 @@ export default function Home() {
           transition={{ duration: 2, ease: "easeOut", delay: 0.8 }}
           className="absolute inset-0"
         >
-          <Placeholder label="Documentary Photo" className="absolute inset-0" />
+          <img
+            src="/hero-father-son.jpg"
+            alt="Father and son walking off the field"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
         </motion.div>
         <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-ink/0 via-ink/70 to-background pointer-events-none" />
         <div className="relative max-w-7xl mx-auto w-full px-6 py-24">
@@ -512,6 +516,8 @@ export default function Home() {
     </main>
   );
 }
+
+
 
 
 
