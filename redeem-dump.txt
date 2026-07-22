@@ -1,7 +1,7 @@
 ﻿import { db } from "@/db";
 import { orgCodes, orgMemberships, enrollments } from "@/db/schema";
 import { auth, clerkClient } from "@clerk/nextjs/server";
-import { eq, and } from "drizzle-orm";
+import { eq } from "drizzle-orm";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { orgRedeemRatelimit } from "@/lib/ratelimit";
@@ -59,19 +59,14 @@ export async function POST(req: Request) {
         throw new RouteError("This code has reached its limit", 403);
       }
 
-      const [existingMembership] = await tx
+      const [existing] = await tx
         .select()
         .from(orgMemberships)
-        .where(
-          and(
-            eq(orgMemberships.userId, userId),
-            eq(orgMemberships.organizationId, codeRow.organizationId)
-          )
-        )
+        .where(eq(orgMemberships.userId, userId))
         .limit(1);
 
-      if (existingMembership && existingMembership.status === "active") {
-        throw new RouteError("You are already linked to this organization", 409);
+      if (existing && existing.status === "active") {
+        throw new RouteError("You are already linked to an organization", 409);
       }
 
       await tx.insert(orgMemberships).values({
@@ -80,19 +75,11 @@ export async function POST(req: Request) {
         status: "active",
       });
 
-      const [existingEnrollment] = await tx
-        .select()
-        .from(enrollments)
-        .where(eq(enrollments.userId, userId))
-        .limit(1);
-
-      if (!existingEnrollment) {
-        await tx.insert(enrollments).values({
-          userId,
-          accessType: "org",
-          contentPackage: "standard_v1",
-        });
-      }
+      await tx.insert(enrollments).values({
+        userId,
+        accessType: "org",
+        contentPackage: "standard_v1",
+      });
 
       const client = await clerkClient();
       await client.users.updateUserMetadata(userId, {
