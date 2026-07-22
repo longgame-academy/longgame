@@ -1,10 +1,11 @@
 ﻿import { db } from "@/db";
-import { orgCodes, orgMemberships, enrollments } from "@/db/schema";
+import { orgCodes, orgMemberships, enrollments, organizations } from "@/db/schema";
 import { auth, clerkClient } from "@clerk/nextjs/server";
 import { eq, and } from "drizzle-orm";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { orgRedeemRatelimit } from "@/lib/ratelimit";
+import { sendOrgWelcomeEmail } from "@/lib/emails/sendWelcomeEmail";
 
 const redeemSchema = z.object({
   code: z.string().trim().min(1).max(32),
@@ -103,6 +104,18 @@ export async function POST(req: Request) {
         .update(orgCodes)
         .set({ usesCount: codeRow.usesCount + 1 })
         .where(eq(orgCodes.id, codeRow.id));
+
+      const [org] = await tx
+        .select()
+        .from(organizations)
+        .where(eq(organizations.id, codeRow.organizationId))
+        .limit(1);
+
+      const user = await client.users.getUser(userId);
+      const email = user.primaryEmailAddress?.emailAddress;
+      if (email && org) {
+        await sendOrgWelcomeEmail(email, org.name);
+      }
     });
   } catch (err) {
     if (err instanceof RouteError) {
