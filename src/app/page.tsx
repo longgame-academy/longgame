@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
 import Nav from "@/components/Nav";
@@ -127,7 +127,7 @@ const leaders = [
   },
   {
     quote:
-      "The Long Game Parent Development System is an outstanding resource for parents navigating youth sports. It helps families focus on what truly matters—confidence, communication, development, and the relationship that lasts beyond the game.",
+      "The Long Game Parent Development System is an outstanding resource for parents navigating youth sports. It helps families focus on what truly matters�confidence, communication, development, and the relationship that lasts beyond the game.",
     name: "Doug Ouilette",
     role: "Vice President, Ancaster Baseball, U18 Wow Factor Head Coach",
     photo: "/team/doug-ouilette.jpg",
@@ -382,7 +382,7 @@ export default function Home() {
                   <img
                     src={l.photo}
                     alt={l.name}
-                    className="w-24 h-24 rounded-full mx-auto mb-6 object-cover"
+                    className="w-24 h-24 rounded-full mx-auto mb-6 object-cover object-top"
                   />
                 ) : (
                   <Placeholder label="Headshot" className="w-24 h-24 rounded-full mx-auto mb-6" />
