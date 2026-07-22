@@ -65,7 +65,6 @@ export default function Footer() {
           <img src="/logo-white.png" alt="Long Game" className="h-14 w-auto mx-auto" />
           <p>Designed with the long game in mind.</p>
         </div>
-      </div>
       <div className="max-w-7xl mx-auto px-6 pb-6 flex flex-wrap justify-center gap-x-5 gap-y-2 text-[11px] font-body text-cream/40">
         <Link href="/privacy" className="hover:text-cream/70 transition-colors">Privacy Policy</Link>
         <Link href="/terms" className="hover:text-cream/70 transition-colors">Terms of Service</Link>
@@ -75,6 +74,7 @@ export default function Footer() {
     </motion.footer>
   );
 }
+
 
 
 
