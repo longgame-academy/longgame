@@ -388,7 +388,7 @@ export default function Home() {
                   <img
                     src={l.photo}
                     alt={l.name}
-                    className="w-24 h-24 rounded-full mx-auto mb-6 object-cover"
+                    className="w-24 h-24 rounded-full mx-auto mb-6 object-cover object-top"
                   />
                 ) : (
                   <Placeholder label="Headshot" className="w-24 h-24 rounded-full mx-auto mb-6" />
@@ -516,6 +516,7 @@ export default function Home() {
     </main>
   );
 }
+
 
 
 
