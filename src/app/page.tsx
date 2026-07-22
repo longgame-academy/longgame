@@ -150,7 +150,7 @@ export default function Home() {
           <img
             src="/hero-father-son.jpg"
             alt="Father and son walking off the field"
-            className="absolute inset-0 w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full object-cover object-top"
           />
         </motion.div>
         <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-ink/0 via-ink/70 to-background pointer-events-none" />
@@ -388,7 +388,7 @@ export default function Home() {
                   <img
                     src={l.photo}
                     alt={l.name}
-                    className="w-24 h-24 rounded-full mx-auto mb-6 object-cover object-top"
+                    className="w-24 h-24 rounded-full mx-auto mb-6 object-cover"
                   />
                 ) : (
                   <Placeholder label="Headshot" className="w-24 h-24 rounded-full mx-auto mb-6" />
@@ -516,6 +516,7 @@ export default function Home() {
     </main>
   );
 }
+
 
 
 
