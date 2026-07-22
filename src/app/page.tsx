@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import Nav from "@/components/Nav";
@@ -247,7 +247,9 @@ export default function Home() {
                 transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.1 }}
                 className="bg-background border border-border-grey rounded-2xl p-8 shadow-[0_4px_16px_rgba(18,21,20,0.08)]"
               >
-                <p.icon className="w-8 h-8 text-teal mb-4" strokeWidth={1.5} />
+                <div className="w-14 h-14 rounded-2xl bg-teal/10 flex items-center justify-center mb-4">
+                  <p.icon className="w-7 h-7 text-teal" strokeWidth={1.5} />
+                </div>
                 <h3 className="font-heading text-lg font-semibold mb-3">{p.title}</h3>
                 <p className="font-body text-sm text-text-body leading-relaxed">{p.body}</p>
               </motion.div>
