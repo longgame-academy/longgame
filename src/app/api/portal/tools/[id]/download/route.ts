@@ -48,7 +48,7 @@ export async function GET(
     return NextResponse.json({ error: "File not available" }, { status: 404 });
   }
 
-  // assetRef stores the private Blob URL â€” fetch it server-side with the
+  // assetRef stores the private Blob URL — fetch it server-side with the
   // token and stream it back. Never redirect to it directly.
   const blobRes = await fetch(item.assetRef, {
     headers: { Authorization: `Bearer ${process.env.BLOB_READ_WRITE_TOKEN}` },

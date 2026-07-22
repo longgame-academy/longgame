@@ -28,7 +28,7 @@ export default async function ModuleDetailPage({
 
   if (!item || item.type !== "module") notFound();
 
-  // Server-side visibility enforcement â€” never trust the client here.
+  // Server-side visibility enforcement — never trust the client here.
   const allowed =
     item.visibility === "both" ||
     (item.visibility === "individual" && accessType === "individual") ||

@@ -27,7 +27,7 @@ export async function POST() {
     ],
     allow_promotion_codes: true,
     customer_email: email,
-    // Stripe's source-of-truth link back to this specific user â€”
+    // Stripe's source-of-truth link back to this specific user —
     // read in the webhook handler, never trust client-supplied user id.
     client_reference_id: userId,
     success_url: `${process.env.NEXT_PUBLIC_SITE_URL}/checkout/success`,
