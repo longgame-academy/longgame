@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -33,10 +33,6 @@ export default function Footer() {
           <ul className="space-y-3 font-body text-sm">
             <li><Link href="/free-guide" className="hover:text-teal transition-colors">Free Guide</Link></li>
             <li><Link href="/faq" className="hover:text-teal transition-colors">FAQ</Link></li>
-            <li><Link href="/privacy" className="hover:text-teal transition-colors">Privacy Policy</Link></li>
-            <li><Link href="/terms" className="hover:text-teal transition-colors">Terms of Service</Link></li>
-            <li><Link href="/cookies" className="hover:text-teal transition-colors">Cookie Policy</Link></li>
-            <li><Link href="/disclaimer" className="hover:text-teal transition-colors">Disclaimer</Link></li>
           </ul>
         </div>
 
@@ -65,10 +61,15 @@ export default function Footer() {
 
       <div className="border-t border-cream/10">
         <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-body text-cream/60">
-          <p>© 2026 Long Game. All Rights Reserved.</p>
+          <p>� 2026 Long Game. All Rights Reserved.</p>
           <img src="/logo-white.png" alt="Long Game" className="h-14 w-auto mx-auto" />
           <p>Designed with the long game in mind.</p>
         </div>
+      <div className="max-w-7xl mx-auto px-6 pb-6 flex flex-wrap justify-center gap-x-5 gap-y-2 text-[11px] font-body text-cream/40">
+        <Link href="/privacy" className="hover:text-cream/70 transition-colors">Privacy Policy</Link>
+        <Link href="/terms" className="hover:text-cream/70 transition-colors">Terms of Service</Link>
+        <Link href="/cookies" className="hover:text-cream/70 transition-colors">Cookie Policy</Link>
+        <Link href="/disclaimer" className="hover:text-cream/70 transition-colors">Disclaimer</Link>
       </div>
     </motion.footer>
   );

@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
@@ -49,7 +49,7 @@ export function CookieConsent() {
               </button>
               <button
                 onClick={accept}
-                className="font-heading text-sm font-semibold bg-teal text-charcoal px-5 py-2 rounded-full hover:bg-teal-dark transition-colors"
+                className="font-heading text-sm font-semibold bg-cream text-ink px-5 py-2 rounded-full hover:bg-cream/90 transition-colors"
               >
                 Accept
               </button>
