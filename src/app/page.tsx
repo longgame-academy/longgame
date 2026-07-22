@@ -115,19 +115,22 @@ const leaders = [
     quote:
       "The Long Game Parent Development System is an outstanding resource for parents navigating youth sports. It helps families focus on what truly matters.",
     name: "Jay Wells",
-    role: "Stanley Cup Champion",
+    role: "18-Year NHL Veteran, 1994 Stanley Cup Champion",
+    photo: "/team/jay-wells.jpg",
   },
   {
     quote:
       "It captures the realities of today's youth sports environment while giving families guidance that lasts beyond the season.",
     name: "Allan Ross",
-    role: "Former MLB Scout",
+    role: "Former Major League Baseball Scout",
+    photo: "/team/allan-ross.jpg",
   },
   {
     quote:
-      "Long Game gives our families a shared language and practical tools our coaches don't have time to teach.",
-    name: "Tom Mathews",
-    role: "Vice President, Brantford Red Sox",
+      "The Long Game Parent Development System is an outstanding resource for parents navigating youth sports. It helps families focus on what truly matters—confidence, communication, development, and the relationship that lasts beyond the game.",
+    name: "Doug Ouilette",
+    role: "Vice President, Ancaster Baseball, U18 Wow Factor Head Coach",
+    photo: "/team/doug-ouilette.jpg",
   },
 ];
 
@@ -498,6 +501,7 @@ export default function Home() {
     </main>
   );
 }
+
 
 
 
