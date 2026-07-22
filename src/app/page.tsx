@@ -378,7 +378,15 @@ export default function Home() {
                 transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.1 }}
                 className="text-center"
               >
-                <Placeholder label="Headshot" className="w-24 h-24 rounded-full mx-auto mb-6" />
+                {l.photo ? (
+                  <img
+                    src={l.photo}
+                    alt={l.name}
+                    className="w-24 h-24 rounded-full mx-auto mb-6 object-cover"
+                  />
+                ) : (
+                  <Placeholder label="Headshot" className="w-24 h-24 rounded-full mx-auto mb-6" />
+                )}
                 <p className="font-body italic text-charcoal/80 leading-relaxed mb-5">
                   &ldquo;{l.quote}&rdquo;
                 </p>
@@ -501,6 +509,7 @@ export default function Home() {
     </main>
   );
 }
+
 
 
 
