@@ -150,7 +150,7 @@ export default function Home() {
           <img
             src="/hero-father-son.jpg"
             alt="Father and son walking off the field"
-            className="absolute inset-0 w-full h-full object-cover object-top"
+            className="absolute inset-0 w-full h-full object-cover object-[center_30%]"
           />
         </motion.div>
         <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-ink/0 via-ink/70 to-background pointer-events-none" />
@@ -516,6 +516,8 @@ export default function Home() {
     </main>
   );
 }
+
+
 
 
 
