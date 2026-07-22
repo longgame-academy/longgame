@@ -490,17 +490,18 @@ export default function Home() {
               </Link>
             </div>
           </div>
-          <div className="relative w-full max-w-xs mx-auto aspect-[4/5] rounded-lg overflow-hidden shadow-2xl bg-ink flex flex-col items-center justify-center text-cream p-8">
-            <p className="font-heading font-bold text-2xl tracking-wide mb-2">LONG GAME</p>
-            <p className="font-heading text-xs tracking-widest text-cream/60 mb-1">
-              THE GAME WILL END.
+          <div className="w-full max-w-xs mx-auto">
+            <p
+              className="font-heading text-sm font-medium text-charcoal text-center"
+              style={{ marginTop: "18px", marginBottom: "20px" }}
+            >
+              165 pages of practical guidance for sports parents.
             </p>
-            <p className="font-heading text-xs tracking-widest text-cream/60 mb-6">
-              THE RELATIONSHIP WON&apos;T.
-            </p>
-            <span className="font-heading text-xs tracking-widest border border-teal text-teal rounded-full px-4 py-1">
-              PARENT GUIDE
-            </span>
+            <img
+              src="/book-cover.jpg"
+              alt="Long Game Parent Guide"
+              className="w-full rounded-lg shadow-2xl object-cover"
+            />
           </div>
         </motion.div>
       </section>
