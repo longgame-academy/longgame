@@ -221,53 +221,6 @@ export default function OrganizationsPage() {
         </div>
       </section>
 
-      {/* SECTION 3B: FAMILY ACCESS / PARENT PORTAL */}
-      <section className="bg-[#E8EFF0] py-20 md:py-28">
-        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-          <motion.div {...fadeUp}>
-            <h2 className="font-heading text-3xl md:text-4xl font-bold leading-tight mb-6">
-              Give every family access to the right support.
-            </h2>
-            <p className="font-body text-text-body leading-relaxed">
-              When an organization partners with Long Game, families receive
-              access to the Parent Academy, situation-based guidance, Field
-              Guides, and Practical Tools — all in one structured
-              parent-development portal.
-            </p>
-          </motion.div>
-          <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.15 }}>
-            <img
-              src="/org-family-access.png"
-              alt="Welcome, Brantford Minor Baseball families — Parent Portal"
-              className="w-full h-auto rounded-lg"
-            />
-          </motion.div>
-        </div>
-      </section>
-
-      {/* SECTION 3C: ORGANIZATION ADMIN / DASHBOARD */}
-      <section className="bg-cream py-20 md:py-28">
-        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-          <motion.div {...fadeUp} className="md:order-1">
-            <img
-              src="/org-admin-dashboard.png"
-              alt="Brantford Minor Baseball Admin dashboard"
-              className="w-full h-auto rounded-lg"
-            />
-          </motion.div>
-          <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.15 }} className="md:order-2">
-            <h2 className="font-heading text-3xl md:text-4xl font-bold leading-tight mb-6">
-              Simple for your organization to launch and manage.
-            </h2>
-            <p className="font-body text-text-body leading-relaxed">
-              Long Game gives organizations a simple way to roll out parent
-              access, manage invitations, monitor activation, and provide
-              structured support to families through one central portal.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
       {/* SECTION 4: HOW THE PARTNERSHIP WORKS */}
       <section className="bg-cream py-20 md:py-28">
         <div className="max-w-5xl mx-auto px-6">

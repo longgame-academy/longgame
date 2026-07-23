@@ -293,15 +293,7 @@ export default function Home() {
                 i % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""
               }`}
             >
-              {i === 0 ? (
-                <img
-                  src="/parent-portal-phone.png"
-                  alt="Parent Portal — What do you need help with right now?"
-                  className="w-full h-auto rounded-lg md:order-2"
-                />
-              ) : (
-                <Placeholder label="Documentary Photo" className="aspect-[16/10] rounded-lg" />
-              )}
+              <Placeholder label="Documentary Photo" className="aspect-[16/10] rounded-lg" />
               <div>
                 <h3 className="font-heading text-xl font-semibold mb-3">{m.title}</h3>
                 <p className="font-body text-text-body leading-relaxed">{m.body}</p>
