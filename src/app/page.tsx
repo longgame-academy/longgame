@@ -50,22 +50,27 @@ const moments = [
   {
     title: "After the Tough Game",
     body: "Knowing what to say when emotions are high, and what to leave for another day.",
+    image: "/moment-tough-game.jpg",
   },
   {
     title: "When Confidence Disappears",
     body: "Helping athletes rebuild belief without adding more pressure.",
+    image: "/moment-confidence.jpg",
   },
   {
     title: "When Your Athlete Wants to Quit",
     body: "Separating a difficult day from a decision they may remember for years.",
+    image: "/moment-quit.jpg",
   },
   {
     title: "When Dealing with Coaches Becomes Difficult",
     body: "Responding with perspective instead of emotion.",
+    image: null,
   },
   {
     title: "When Sports Start Affecting Life at Home",
     body: "Keeping your family connected, even during the hardest seasons.",
+    image: "/moment-home.jpg",
   },
 ];
 
@@ -111,26 +116,27 @@ const parentQuotes = [
 ];
 
 const leaders = [
+  ...
+];
+
+const stats = [
   {
-    quote:
-      "The Long Game Parent Development System is an outstanding resource for parents navigating youth sports. It helps families focus on what truly matters.",
-    name: "Jay Wells",
-    role: "18-Year NHL Veteran, 1994 Stanley Cup Champion",
-    photo: "/team/jay-wells.jpg",
+    stat: "70%",
+    headline: "Children quit organized sports by age 13.",
+    body: "Most don't leave because they aren't talented. They leave because the experience stopped being fun.",
+    source: "Source: Aspen Institute / SFIA",
   },
   {
-    quote:
-      "It captures the realities of today's youth sports environment while giving families guidance that lasts beyond the season.",
-    name: "Allan Ross",
-    role: "Former Major League Baseball Scout",
-    photo: "/team/allan-ross.jpg",
+    stat: "#1",
+    headline: 'Reason kids quit sports: "It stopped being fun."',
+    body: "Pressure, adult expectations, and burnout consistently rank among the biggest reasons children walk away.",
+    source: "Source: Aspen Institute / Project Play",
   },
   {
-    quote:
-      "The Long Game Parent Development System is an outstanding resource for parents navigating youth sports. It helps families focus on what truly matters—confidence, communication, development, and the relationship that lasts beyond the game.",
-    name: "Doug Ouilette",
-    role: "Vice President, Ancaster Baseball, U18 Wow Factor Head Coach",
-    photo: "/team/doug-ouilette.jpg",
+    stat: "80%+",
+    headline: "Parents believe they're being supportive.",
+    body: "Many athletes experience the same behaviours as pressure. Perception matters more than intention.",
+    source: "Source: Harvard Youth Sports Survey",
   },
 ];
 
@@ -148,9 +154,14 @@ export default function Home() {
           className="absolute inset-0"
         >
           <img
-            src="/hero-father-son.jpg"
+            src="/hero-mobile.jpg"
             alt="Father and son walking off the field"
-            className="absolute inset-0 w-full h-full object-cover object-[center_30%]"
+            className="absolute inset-0 w-full h-full object-cover object-[center_30%] md:hidden"
+          />
+          <img
+            src="/hero-desktop.jpg"
+            alt="Young athlete sitting alone reflecting after a game"
+            className="absolute inset-0 w-full h-full object-cover object-[center_30%] hidden md:block"
           />
         </motion.div>
         <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-ink/0 via-ink/70 to-background pointer-events-none" />
@@ -177,13 +188,13 @@ export default function Home() {
             <div className="flex flex-wrap gap-4">
               <Link
                 href="/parent-academy"
-                className="inline-flex items-center gap-2 bg-cream text-ink font-heading font-semibold px-6 py-3 rounded-full hover:bg-cream/90 transition-colors"
+                className="inline-flex items-center gap-2 bg-cream text-ink font-heading font-semibold px-6 py-3 rounded-lg hover:bg-cream/90 transition-colors"
               >
                 Explore Long Game
               </Link>
               <Link
                 href="/organizations"
-                className="inline-flex items-center gap-2 border border-cream/30 text-cream font-heading font-semibold px-6 py-3 rounded-full hover:border-teal hover:text-teal transition-colors"
+                className="inline-flex items-center gap-2 border border-cream/30 text-cream font-heading font-semibold px-6 py-3 rounded-lg hover:border-teal hover:text-teal transition-colors"
               >
                 For Organizations
               </Link>
@@ -195,7 +206,7 @@ export default function Home() {
       {/* SECTION 2: YOUTH SPORTS HAVE CHANGED */}
       <section className="max-w-7xl mx-auto w-full px-6 py-20 md:py-28 grid md:grid-cols-5 gap-12 items-center">
         <motion.div {...fadeUp} className="md:col-span-3">
-          <Placeholder label="Documentary Photo" className="aspect-[4/3] rounded-lg" />
+          <img src="/youth-sports-changed.jpg" alt="Youth sports have changed" className="w-full h-auto aspect-[4/3] object-cover rounded-lg" />
         </motion.div>
         <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.15 }}>
           <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6 leading-tight">
@@ -262,6 +273,34 @@ export default function Home() {
         </div>
       </section>
 
+      {/* SECTION 3.5: THE REALITY PARENTS ARE FACING */}
+      <section className="py-20 md:py-28" style={{ backgroundColor: "#F1F3F2" }}>
+        <div className="max-w-6xl mx-auto px-6">
+          <motion.h2 {...fadeUp} className="font-heading text-3xl md:text-4xl font-bold text-center mb-16">
+            The Reality Parents Are Facing
+          </motion.h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            {stats.map((s, i) => (
+              <motion.div
+                key={s.stat}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.1 }}
+                className="bg-ink rounded-[28px] p-10 md:p-12"
+              >
+                <p className="font-heading text-5xl md:text-6xl font-bold text-teal mb-6">{s.stat}</p>
+                <h3 className="font-heading text-lg font-semibold text-cream mb-3 leading-snug">{s.headline}</h3>
+                <p className="font-body text-sm leading-relaxed mb-6" style={{ color: "#B8BDBD" }}>
+                  {s.body}
+                </p>
+                <p className="font-heading text-xs text-teal tracking-wide">{s.source}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+      
       {/* SECTION 4: SUPPORT FOR THE MOMENTS THAT MATTER MOST */}
       <section className="max-w-5xl mx-auto w-full px-6 py-20 md:py-28">
         <motion.div {...fadeUp} className="text-center mb-16">
@@ -293,14 +332,13 @@ export default function Home() {
                 i % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""
               }`}
             >
-              {i === 0 ? (
-                <img
-                  src="/parent-portal-phone.png"
-                  alt="Parent Portal — What do you need help with right now?"
-                  className="w-full h-auto rounded-lg md:order-2"
-                />
+              {m.image ? (
+                <img src={m.image} alt={m.title} className="w-full h-auto rounded-lg" />
               ) : (
-                <Placeholder label="Documentary Photo" className="aspect-[16/10] rounded-lg" />
+                <Placeholder
+                  label="Documentary Photo"
+                  className={`rounded-lg ${i % 2 === 0 ? "aspect-[4/3]" : "aspect-[3/4]"}`}
+                />
               )}
               <div>
                 <h3 className="font-heading text-xl font-semibold mb-3">{m.title}</h3>
@@ -492,13 +530,13 @@ export default function Home() {
             <div className="flex flex-wrap gap-4">
               <Link
                 href="/parent-academy"
-                className="inline-flex items-center gap-2 bg-ink text-cream font-heading font-semibold px-6 py-3 rounded-full hover:bg-charcoal transition-colors"
+                className="inline-flex items-center gap-2 bg-ink text-cream font-heading font-semibold px-6 py-3 rounded-lg hover:bg-charcoal transition-colors"
               >
                 Explore the Parent Academy
               </Link>
               <Link
                 href="/free-guide"
-                className="inline-flex items-center gap-2 border border-charcoal/20 text-charcoal font-heading font-semibold px-6 py-3 rounded-full hover:border-teal hover:text-teal transition-colors"
+                className="inline-flex items-center gap-2 border border-charcoal/20 text-charcoal font-heading font-semibold px-6 py-3 rounded-lg hover:border-teal hover:text-teal transition-colors"
               >
                 Start With the Free Guide
               </Link>

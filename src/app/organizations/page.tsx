@@ -268,6 +268,17 @@ export default function OrganizationsPage() {
         </div>
       </section>
 
+      {/* SECTION 3D: ADMIN PHONE MOCKUP */}
+      <section className="max-w-4xl mx-auto w-full px-6 py-20 md:py-28">
+        <motion.div {...fadeUp}>
+          <img
+            src="/org-admin-phones.png"
+            alt="Brantford Minor Baseball Admin dashboard on mobile"
+            className="w-full h-auto rounded-lg"
+          />
+        </motion.div>
+      </section>
+
       {/* SECTION 4: HOW THE PARTNERSHIP WORKS */}
       <section className="bg-cream py-20 md:py-28">
         <div className="max-w-5xl mx-auto px-6">

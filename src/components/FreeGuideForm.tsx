@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 
@@ -91,7 +91,7 @@ export default function FreeGuideForm() {
       <button
         type="submit"
         disabled={status === "loading"}
-        className="w-full bg-ink text-cream font-heading font-semibold px-6 py-3 rounded-full hover:bg-charcoal transition-colors disabled:opacity-60"
+        className="w-full bg-ink text-cream font-heading font-semibold px-6 py-3 rounded-lg hover:bg-charcoal transition-colors disabled:opacity-60"
       >
         {status === "loading" ? "Sending..." : "Send Me the Guide"}
       </button>

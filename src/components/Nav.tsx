@@ -38,7 +38,7 @@ export default function Nav() {
           <Show when="signed-out">
             <Link
               href="/sign-in"
-              className="font-heading text-sm font-semibold border border-charcoal px-5 py-2 rounded-full hover:bg-charcoal hover:text-cream transition-colors"
+              className="font-heading text-sm font-semibold border border-charcoal px-5 py-2 rounded-lg hover:bg-charcoal hover:text-cream transition-colors"
             >
               Sign In
             </Link>
@@ -85,8 +85,7 @@ export default function Nav() {
                 <Link
                   href="/sign-in"
                   onClick={() => setOpen(false)}
-                  className="mt-2 text-center border border-charcoal px-5 py-3 rounded-full hover:bg-charcoal hover:text-cream transition-colors"
-                >
+                  className="mt-2 text-center border border-charcoal px-5 py-3 rounded-lg hover:bg-charcoal hover:text-cream transition-colors"                >
                   Sign In
                 </Link>
               </Show>
