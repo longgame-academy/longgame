@@ -391,7 +391,7 @@ export default function Home() {
       </section>
 
       {/* SECTION 4.5: THE LONG GAME EXPERIENCE */}
-      <section className="max-w-4xl mx-auto w-full px-6 py-20 md:py-28 text-center">
+      <section className="max-w-4xl mx-auto w-full px-6 pt-4 pb-20 md:pt-6 md:pb-28 text-center">
         <motion.div {...fadeUp}>
           <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase mb-4">
             The Long Game Experience
@@ -610,7 +610,7 @@ export default function Home() {
           <img
             src="/final-cta-photo.jpg"
             alt="Coach and young athlete walking off the field together"
-            className="w-full h-auto rounded-lg"
+            className="w-full h-64 md:h-96 object-cover rounded-lg"
           />
         </motion.div>
       </section>
