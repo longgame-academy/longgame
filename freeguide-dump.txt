@@ -46,13 +46,11 @@ export default function FreeGuidePage() {
           <motion.div
             {...fadeUp}
             transition={{ ...fadeUp.transition, delay: 0.15 }}
-            className="max-w-sm mx-auto w-full"
+            className="aspect-[3/4] max-w-sm mx-auto w-full rounded-2xl border border-charcoal/15 bg-white flex items-center justify-center"
           >
-            <img
-              src="/free-guide-cover.jpg"
-              alt="The Car Ride Home — Free Guide for Sports Parents"
-              className="w-full h-auto rounded-2xl shadow-2xl"
-            />
+            <span className="font-heading text-sm tracking-widest uppercase text-charcoal/40">
+              Guide Cover Placeholder
+            </span>
           </motion.div>
         </div>
       </section>
