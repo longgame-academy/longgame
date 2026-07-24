@@ -199,16 +199,9 @@ export default function ParentAcademyPage() {
 
       {/* SECTION 2: EXPLORE THE PARENT ACADEMY */}
       <section id="modules" className="max-w-3xl mx-auto w-full px-6 py-20">
-        <h2 className="font-heading text-2xl md:text-3xl font-bold text-center mb-6">
+        <h2 className="font-heading text-2xl md:text-3xl font-bold text-center mb-12">
           Explore the Parent Academy
         </h2>
-        <p className="font-body text-text-body leading-relaxed text-center max-w-2xl mx-auto mb-12">
-          The Long Game Parent Academy gives sports parents practical guidance
-          for the situations they face throughout their athlete&apos;s journey.
-          Inside you&apos;ll find 12 practical modules filled with real
-          conversations, proven strategies, and tools you can immediately put
-          into practice.
-        </p>
         <Accordion items={modules} openIndex={openModule} setOpenIndex={setOpenModule} />
       </section>
 

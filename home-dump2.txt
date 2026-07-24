@@ -65,7 +65,7 @@ const moments = [
   {
     title: "When Dealing with Coaches Becomes Difficult",
     body: "Responding with perspective instead of emotion.",
-    image: "/moment-coaches.jpg",
+    image: null,
   },
   {
     title: "When Sports Start Affecting Life at Home",
@@ -198,8 +198,12 @@ export default function Home() {
               So does the relationship waiting at the end of it.
             </h1>
             <p className="font-body text-lg text-cream/80 leading-relaxed mb-10">
-              Practical guidance for sports parents who want to build confident
-              athletes and stronger relationships.
+              Youth sports can be one of the greatest experiences a family ever shares.
+              It can also test the very relationship you&apos;re trying to protect.
+              Long Game gives sports parents the guidance, perspective, and practical
+              tools to navigate every season with confidence, helping families build
+              resilient athletes while protecting the relationship that matters long
+              after the final game.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link
@@ -303,18 +307,16 @@ export default function Home() {
               className="font-heading text-xs font-semibold uppercase mb-4"
               style={{ letterSpacing: "0.18em", color: "#858C89" }}
             >
-              Research &amp; Evidence
+              Research and Evidence
             </p>
-            <h3 className="font-heading text-xl font-semibold mb-3 leading-snug">
-              The challenges facing sports families are well documented.
-            </h3>
             <p className="font-body text-text-body leading-relaxed mb-6">
-              These findings help explain why young athletes lose confidence,
-              experience burnout, and walk away from the game.
+              The challenges facing sports families are well documented. These findings
+              help explain why young athletes lose confidence, experience burnout, and
+              walk away from the game.
             </p>
-            <Link href="/research-evidence" className="font-heading text-sm font-semibold text-teal hover:underline">
+            <a href="#" className="font-heading text-sm font-semibold text-teal hover:underline">
               Here&apos;s what the research shows. &rarr;
-            </Link>
+            </a>
           </motion.div>
           <div className="grid md:grid-cols-3 gap-6">
             {stats.map((s, i) => (
@@ -388,33 +390,6 @@ export default function Home() {
             </motion.div>
           ))}
         </div>
-      </section>
-
-      {/* SECTION 4.5: THE LONG GAME EXPERIENCE */}
-      <section className="max-w-4xl mx-auto w-full px-6 py-20 md:py-28 text-center">
-        <motion.div {...fadeUp}>
-          <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase mb-4">
-            The Long Game Experience
-          </p>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">
-            Guidance built around real life.
-          </h2>
-          <div className="font-body text-text-body leading-relaxed space-y-4 max-w-2xl mx-auto mb-12">
-            <p>Parents don&apos;t experience youth sports one lesson at a time.</p>
-            <p>
-              They experience difficult conversations, confidence struggles,
-              slumps, and moments when they aren&apos;t sure what to do next.
-            </p>
-            <p>Long Game helps you find the right guidance—in seconds.</p>
-          </div>
-        </motion.div>
-        <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.15 }}>
-          <img
-            src="/long-game-experience.png"
-            alt="Long Game guidance flow on mobile"
-            className="w-full max-w-2xl mx-auto h-auto"
-          />
-        </motion.div>
       </section>
 
       {/* SECTION 5: CHOOSE THE PATH THAT'S RIGHT FOR YOU */}
@@ -578,40 +553,51 @@ export default function Home() {
       </section>
 
       {/* SECTION 8: FINAL CTA */}
-      <section className="max-w-4xl mx-auto w-full px-6 pt-20 pb-0 text-center">
-        <motion.div {...fadeUp}>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 leading-tight">
-            Ready to Take the Next Step?
-          </h2>
-          <p className="font-body text-text-body leading-relaxed mb-8 max-w-2xl mx-auto">
-            Whether you&apos;re looking for practical guidance today or a
-            complete parent development system, Long Game is here to help you
-            support your athlete through every stage of the journey.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link
-              href="/parent-academy"
-              className="inline-flex items-center gap-2 bg-ink text-cream font-heading font-semibold px-6 py-3 rounded-lg hover:bg-charcoal transition-colors"
-            >
-              Explore the Parent Academy
-            </Link>
-            <Link
-              href="/free-guide"
-              className="inline-flex items-center gap-2 border border-charcoal/20 text-charcoal font-heading font-semibold px-6 py-3 rounded-lg hover:border-teal hover:text-teal transition-colors"
-            >
-              Start With the Free Guide
-            </Link>
+      <section className="max-w-6xl mx-auto w-full px-6 pb-20">
+        <motion.div
+          {...fadeUp}
+          className="bg-cream border border-border-grey rounded-2xl p-10 md:p-14 grid md:grid-cols-2 gap-10 items-center shadow-[0_6px_20px_rgba(18,21,20,0.10)]"
+        >
+          <div>
+            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 leading-tight">
+              Every season changes.
+              <br />
+              What matters most doesn&apos;t.
+            </h2>
+            <p className="font-body text-text-body leading-relaxed mb-8">
+              Every family experiences moments of confidence, uncertainty,
+              growth, and challenge. Long Game was created to help you navigate
+              each of them, while keeping what matters most at the center of the
+              journey.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <Link
+                href="/parent-academy"
+                className="inline-flex items-center gap-2 bg-ink text-cream font-heading font-semibold px-6 py-3 rounded-lg hover:bg-charcoal transition-colors"
+              >
+                Explore the Parent Academy
+              </Link>
+              <Link
+                href="/free-guide"
+                className="inline-flex items-center gap-2 border border-charcoal/20 text-charcoal font-heading font-semibold px-6 py-3 rounded-lg hover:border-teal hover:text-teal transition-colors"
+              >
+                Start With the Free Guide
+              </Link>
+            </div>
           </div>
-        </motion.div>
-      </section>
-
-      <section className="max-w-6xl mx-auto w-full px-6 pt-14 pb-20">
-        <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.15 }}>
-          <img
-            src="/final-cta-photo.jpg"
-            alt="Coach and young athlete walking off the field together"
-            className="w-full h-auto rounded-lg"
-          />
+          <div className="w-full max-w-xs mx-auto">
+            <p
+              className="font-heading text-sm font-medium text-charcoal text-center"
+              style={{ marginTop: "18px", marginBottom: "20px" }}
+            >
+              165 pages of practical guidance for sports parents.
+            </p>
+            <img
+              src="/book-cover.jpg"
+              alt="Long Game Parent Guide"
+              className="w-full rounded-lg shadow-2xl object-cover"
+            />
+          </div>
         </motion.div>
       </section>
 
