@@ -1,6 +1,6 @@
 ﻿import type { Metadata } from "next";
 import "@/lib/env";
-import { Poppins, Lora } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { CookieConsent } from "@/components/CookieConsent";
@@ -9,13 +9,7 @@ import { CookieConsent } from "@/components/CookieConsent";
 const poppins = Poppins({
   variable: "--font-poppins",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-});
-
-const lora = Lora({
-  variable: "--font-lora",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["300", "400", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
@@ -58,7 +52,7 @@ export default function RootLayout({
     <ClerkProvider>
       <html
         lang="en"
-        className={`${poppins.variable} ${lora.variable} h-full antialiased`}
+        className={`${poppins.variable} h-full antialiased`}
       >
         <body className="min-h-full flex flex-col">
           {children}

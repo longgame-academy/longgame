@@ -17,7 +17,7 @@ export default function Nav() {
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-5">
         <Link href="/" className="flex items-center">
-          <img src="/logo-black.png" alt="Long Game" className="h-16 w-auto" />
+          <img src="/logo-black.png" alt="Long Game" className="h-8 w-auto" />
         </Link>
         <nav className="hidden md:flex items-center gap-8 font-heading text-sm font-medium">
           <Link href="/parent-academy" className="hover:text-teal transition-colors">

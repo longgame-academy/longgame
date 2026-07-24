@@ -296,9 +296,28 @@ export default function Home() {
       {/* SECTION 3.5: THE REALITY PARENTS ARE FACING */}
       <section className="py-20 md:py-28" style={{ backgroundColor: "#F1F3F2" }}>
         <div className="max-w-6xl mx-auto px-6">
-          <motion.h2 {...fadeUp} className="font-heading text-3xl md:text-4xl font-bold text-center mb-16">
+          <motion.h2 {...fadeUp} className="font-heading text-3xl md:text-4xl font-bold text-center mb-10">
             The Reality Parents Are Facing
           </motion.h2>
+          <motion.div
+            {...fadeUp}
+            className="bg-background border border-border-grey rounded-2xl p-8 md:p-10 mb-10"
+          >
+            <p
+              className="font-heading text-xs font-semibold uppercase mb-4"
+              style={{ letterSpacing: "0.18em", color: "#858C89" }}
+            >
+              Research and Evidence
+            </p>
+            <p className="font-body text-text-body leading-relaxed mb-6">
+              The challenges facing sports families are well documented. These findings
+              help explain why young athletes lose confidence, experience burnout, and
+              walk away from the game.
+            </p>
+            <a href="#" className="font-heading text-sm font-semibold text-teal hover:underline">
+              Here&apos;s what the research shows. &rarr;
+            </a>
+          </motion.div>
           <div className="grid md:grid-cols-3 gap-6">
             {stats.map((s, i) => (
               <motion.div
