@@ -133,13 +133,13 @@ export default function OrganizationsPage() {
             <div className="flex flex-wrap gap-4">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 bg-ink text-cream font-heading font-semibold px-8 py-3 rounded-lg hover:bg-charcoal transition-colors"
+                className="inline-flex items-center gap-2 bg-ink text-cream font-heading font-semibold px-8 py-3 rounded-full hover:bg-charcoal transition-colors"
               >
                 Schedule a Discovery Call
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 border border-charcoal/20 text-charcoal font-heading font-semibold px-8 py-3 rounded-lg hover:border-teal hover:text-teal transition-colors"
+                className="inline-flex items-center gap-2 border border-charcoal/20 text-charcoal font-heading font-semibold px-8 py-3 rounded-full hover:border-teal hover:text-teal transition-colors"
               >
                 Download Organization Overview
               </Link>
@@ -358,13 +358,13 @@ export default function OrganizationsPage() {
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 bg-cream text-ink font-heading font-semibold px-8 py-3 rounded-lg hover:bg-cream/90 transition-colors"
+              className="inline-flex items-center gap-2 bg-cream text-ink font-heading font-semibold px-8 py-3 rounded-full hover:bg-cream/90 transition-colors"
             >
               Schedule a Discovery Call
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 border border-cream/30 text-cream font-heading font-semibold px-8 py-3 rounded-lg hover:border-teal hover:text-teal transition-colors"
+              className="inline-flex items-center gap-2 border border-cream/30 text-cream font-heading font-semibold px-8 py-3 rounded-full hover:border-teal hover:text-teal transition-colors"
             >
               Download Organization Overview
             </Link>
@@ -376,6 +376,7 @@ export default function OrganizationsPage() {
     </main>
   );
 }
+
 
 
 

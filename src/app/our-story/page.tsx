@@ -44,7 +44,7 @@ export default function OurStoryPage() {
             </p>
             <Link
               href="/parent-academy"
-              className="inline-block bg-charcoal text-white font-heading font-semibold px-8 py-4 rounded-full hover:bg-charcoal/90 transition-colors"
+              className="inline-block bg-charcoal text-white font-heading font-semibold px-8 py-4 rounded-lg hover:bg-charcoal/90 transition-colors"
             >
               Explore the Parent Academy
             </Link>
@@ -179,7 +179,7 @@ export default function OurStoryPage() {
             </div>
             <Link
               href="/parent-academy"
-              className="inline-block bg-cream text-ink font-heading font-semibold px-8 py-4 rounded-full hover:bg-cream/90 transition-colors"
+              className="inline-block bg-cream text-ink font-heading font-semibold px-8 py-4 rounded-lg hover:bg-cream/90 transition-colors"
             >
               Explore the Parent Academy
             </Link>

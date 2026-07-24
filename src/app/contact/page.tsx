@@ -21,7 +21,7 @@ export default function ContactPage() {
         </p>
         <a
           href="mailto:hello@longgameacademy.com"
-          className="inline-flex items-center gap-2 bg-ink text-cream font-heading font-semibold px-8 py-3 rounded-full hover:bg-charcoal transition-colors"
+          className="inline-flex items-center gap-2 bg-ink text-cream font-heading font-semibold px-8 py-3 rounded-lg hover:bg-charcoal transition-colors"
         >
           hello@longgameacademy.com
         </a>

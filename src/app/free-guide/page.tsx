@@ -37,7 +37,7 @@ export default function FreeGuidePage() {
             </p>
             <a
               href="#download"
-              className="inline-block bg-charcoal text-white font-heading font-semibold px-8 py-4 rounded-full hover:bg-charcoal/90 transition-colors"
+              className="inline-block bg-charcoal text-white font-heading font-semibold px-8 py-4 rounded-lg hover:bg-charcoal/90 transition-colors"
             >
               Download Your Free Guide
             </a>
