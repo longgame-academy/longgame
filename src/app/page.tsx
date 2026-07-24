@@ -412,7 +412,7 @@ export default function Home() {
           <img
             src="/long-game-experience.png"
             alt="Long Game guidance flow on mobile"
-            className="w-full max-w-2xl mx-auto h-auto"
+            className="w-full max-w-sm mx-auto h-auto"
           />
         </motion.div>
       </section>
