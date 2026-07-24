@@ -610,7 +610,7 @@ export default function Home() {
           <img
             src="/final-cta-photo.jpg"
             alt="Coach and young athlete walking off the field together"
-            className="w-full h-64 md:h-96 object-cover rounded-lg"
+            className="w-full h-auto max-h-[500px] object-cover object-center rounded-lg"
           />
         </motion.div>
       </section>
