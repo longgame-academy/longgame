@@ -270,7 +270,7 @@ export default function OrganizationsPage() {
 
       {/* SECTION 3D: ADMIN PHONE MOCKUP */}
       <section className="max-w-4xl mx-auto w-full px-6 py-20 md:py-28">
-        <motion.div {...fadeUp}>
+        <motion.div {...fadeUp} className="max-w-md mx-auto">
           <img
             src="/org-admin-phones.png"
             alt="Brantford Minor Baseball Admin dashboard on mobile"
