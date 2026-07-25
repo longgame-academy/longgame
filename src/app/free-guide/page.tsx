@@ -59,7 +59,7 @@ export default function FreeGuidePage() {
             <p className="font-body text-lg text-text-body mb-8">
               One conversation can shape an athlete for years.
             </p>
-            
+            <a
               href="#download"
               className="inline-block bg-charcoal text-white font-heading font-semibold px-8 py-4 rounded-lg hover:bg-charcoal/90 transition-colors"
             >
