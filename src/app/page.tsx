@@ -4,7 +4,7 @@ import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
-import { Shield, MessageCircle, TrendingUp, Heart } from "lucide-react";
+import { Shield, MessageCircle, TrendingUp, Heart, Star } from "lucide-react";
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -475,6 +475,11 @@ export default function Home() {
               <p className="font-body italic text-xl md:text-2xl leading-relaxed mb-5">
                 &ldquo;{q.quote}&rdquo;
               </p>
+              <div className="flex justify-center gap-1 mb-4">
+                {[...Array(5)].map((_, idx) => (
+                  <Star key={idx} className="w-4 h-4 text-teal fill-teal" />
+                ))}
+              </div>
               <p className="font-heading font-semibold text-sm">{q.name}</p>
               <p className="font-heading text-xs text-teal tracking-wide">{q.role}</p>
             </motion.div>
