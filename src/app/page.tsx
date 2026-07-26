@@ -46,6 +46,29 @@ const pillars = [
   },
 ];
 
+const philosophyCards = [
+  {
+    title: "Hard Work Matters",
+    body: "Confidence isn't built through comfort. It's built through preparation, discipline, consistent effort, and doing difficult things over time. We believe young athletes should be challenged—not protected from hard work.",
+    emphasized: true,
+  },
+  {
+    title: "Failure Is Part of Growth",
+    body: "Failure isn't something parents need to rescue their athletes from. It's one of the greatest teachers in sport. Our role is helping parents respond in ways that build resilience instead of fear.",
+    emphasized: true,
+  },
+  {
+    title: "Relationships Build Better Competitors",
+    body: "Athletes compete with more freedom when they know their parents' support doesn't depend on the scoreboard. Connection doesn't replace accountability. It strengthens it.",
+    emphasized: false,
+  },
+  {
+    title: "Character Is the Real Win",
+    body: "Winning matters. Competing matters. But if sport doesn't help build resilient, respectful, and confident people, we've missed its greatest purpose.",
+    emphasized: false,
+  },
+];
+
 const moments = [
   {
     title: "After the Tough Game",
@@ -109,9 +132,10 @@ const parentQuotes = [
     role: "Hockey Mom",
   },
   {
-    quote: "Every parent involved in youth sports should read this.",
-    name: "Jay Wells",
-    role: "Stanley Cup Champion",
+    quote:
+      "As a parent of two Division I athletes and someone who has spent a career in education, I highly recommend the Long Game Parent Academy. It provides practical guidance for the conversations and challenges every sports family faces while helping protect the relationship that matters most. I only wish this resource had been available twenty years ago.",
+    name: "Jim Kean",
+    role: "Parent of Two Division I Athletes, Educator",
   },
 ];
 
@@ -246,6 +270,81 @@ export default function Home() {
             <p className="font-semibold text-charcoal">That&apos;s why Long Game exists.</p>
           </div>
         </motion.div>
+      </section>
+
+      {/* SECTION 2.5: OUR PHILOSOPHY */}
+      <section className="bg-white w-full">
+        <div className="max-w-7xl mx-auto w-full px-6 py-20 md:py-28">
+          <div className="grid md:grid-cols-5 gap-12 items-center mb-16">
+            <motion.div {...fadeUp} className="md:col-span-3">
+              <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase mb-4">
+                Our Philosophy
+              </p>
+              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6 leading-tight">
+                We don&apos;t believe in lowering the standard.
+                <br />
+                We believe in changing how parents help young athletes rise to it.
+              </h2>
+              <div className="font-body text-text-body leading-relaxed space-y-4">
+                <p>Long Game isn&apos;t about making sports easier.</p>
+                <p>
+                  We believe young athletes should work hard, embrace
+                  failure, compete with confidence, and develop resilience
+                  through the challenges that sport naturally provides.
+                </p>
+                <p>
+                  Our role is helping parents become the steady presence
+                  that supports that journey—without adding unnecessary
+                  pressure or damaging the relationship along the way.
+                </p>
+              </div>
+            </motion.div>
+            <motion.div
+              {...fadeUp}
+              transition={{ ...fadeUp.transition, delay: 0.15 }}
+              className="md:col-span-2"
+            >
+              <img
+                src="/philosophy-image.jpg"
+                alt="Athlete reflecting after training"
+                className="w-full h-auto aspect-[4/5] object-cover rounded-2xl"
+              />
+            </motion.div>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            {philosophyCards.map((c, i) => (
+              <motion.div
+                key={c.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.1 }}
+                className={
+                  c.emphasized
+                    ? "border-2 border-teal/25 rounded-2xl p-10 bg-teal/[0.03]"
+                    : "border border-border-grey rounded-2xl p-8 shadow-[0_4px_16px_rgba(18,21,20,0.08)]"
+                }
+              >
+                <h3 className="font-heading text-lg font-semibold mb-3">{c.title}</h3>
+                <p className="font-body text-sm text-text-body leading-relaxed">{c.body}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div {...fadeUp} className="text-center max-w-2xl mx-auto">
+            <p className="font-heading text-xl md:text-2xl font-semibold mb-4 leading-snug">
+              We don&apos;t teach parents to lower expectations.
+              <br />
+              We teach them how to raise athletes who can meet them.
+            </p>
+            <p className="font-body text-text-body leading-relaxed">
+              Long Game combines high standards with practical guidance,
+              helping parents raise confident competitors while protecting
+              the relationship that lasts long after the final game.
+            </p>
+          </motion.div>
+        </div>
       </section>
 
       {/* SECTION 3: THE LONG GAME APPROACH */}
@@ -582,42 +681,111 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* SECTION 8: FINAL CTA */}
-      <section className="max-w-4xl mx-auto w-full px-6 pt-20 pb-0 text-center">
+      {/* SECTION 8: FINAL IMAGE + PRICING */}
+      <section className="max-w-6xl mx-auto w-full px-6 pt-20 pb-14">
         <motion.div {...fadeUp}>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 leading-tight">
-            Ready to Take the Next Step?
-          </h2>
-          <p className="font-body text-text-body leading-relaxed mb-8 max-w-2xl mx-auto">
-            Whether you&apos;re looking for practical guidance today or a
-            complete parent development system, Long Game is here to help you
-            support your athlete through every stage of the journey.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link
-              href="/parent-academy"
-              className="inline-flex items-center gap-2 bg-ink text-cream font-heading font-semibold px-6 py-3 rounded-lg hover:bg-charcoal transition-colors"
-            >
-              Explore the Parent Academy
-            </Link>
-            <Link
-              href="/free-guide"
-              className="inline-flex items-center gap-2 border border-charcoal/20 text-charcoal font-heading font-semibold px-6 py-3 rounded-lg hover:border-teal hover:text-teal transition-colors"
-            >
-              Start With the Free Guide
-            </Link>
-          </div>
+          <img
+            src="/final-cta-photo.jpg"
+            alt="Father and son walking off the field together"
+            className="w-full h-auto max-h-[500px] object-cover object-top rounded-2xl"
+          />
         </motion.div>
       </section>
 
-      <section className="max-w-6xl mx-auto w-full px-6 pt-14 pb-20">
-        <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.15 }}>
-          <img
-            src="/final-cta-photo.jpg"
-            alt="Coach and young athlete walking off the field together"
-            className="w-full h-auto max-h-[500px] object-cover object-top rounded-lg"
-          />
-        </motion.div>
+      <section className="w-full py-8 md:py-14">
+        <div className="max-w-6xl mx-auto px-5 md:px-6">
+          <motion.div
+            {...fadeUp}
+            className="bg-ink text-cream rounded-[28px] max-w-[760px] mx-auto p-8 md:p-10"
+          >
+            <p className="font-heading text-teal text-xs font-semibold tracking-widest uppercase mb-4">
+              The Parent Academy
+            </p>
+            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 leading-tight">
+              Everything You Need to Parent the Long Game
+            </h2>
+            <p className="font-body text-cream/70 leading-relaxed mb-8">
+              Practical guidance for sports parents who want to build
+              confident, resilient athletes while protecting the
+              relationship that matters most.
+            </p>
+
+            <div className="flex items-end gap-3 mb-1">
+              <span className="font-heading text-5xl font-bold">$97</span>
+              <span className="font-heading text-sm text-cream/60 mb-2">USD</span>
+            </div>
+            <p className="font-heading text-teal text-xs font-semibold tracking-widest uppercase mb-1">
+              Founding Member Price
+            </p>
+            <p className="font-body text-sm text-cream/60 mb-8">
+              One-time payment &middot; Regular price{" "}
+              <span className="line-through">$147</span>
+            </p>
+
+            <Link
+              href="/parent-academy"
+              className="flex items-center justify-center gap-2 bg-cream text-ink font-heading font-semibold px-6 py-4 rounded-lg hover:bg-cream/90 transition-colors mb-4"
+            >
+              Get the Parent Academy &rarr;
+            </Link>
+            <Link
+              href="/parent-academy"
+              className="block text-center font-heading text-sm font-semibold text-teal hover:underline mb-8"
+            >
+              See Everything Included &rarr;
+            </Link>
+
+            <div className="border-t border-cream/10 pt-2 mb-8">
+              <p className="font-heading text-teal text-xs font-semibold tracking-widest uppercase mb-4">
+                Included
+              </p>
+              <ul className="font-body text-sm space-y-0">
+                {[
+                  "12 practical parent-development modules",
+                  "165+ pages of proven guidance",
+                  "Fillable worksheets & reflection pages",
+                  "Confidence, pressure & resilience strategies",
+                  "Practical scripts for difficult conversations",
+                  "Immediate access on all devices",
+                  "Lifetime access & future updates",
+                  "Works for all sports and competitive levels",
+                ].map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-center gap-3 py-3 border-b border-cream/10 last:border-0"
+                  >
+                    <span className="text-teal">&#10003;</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="border-t border-cream/10 pt-6 mb-8">
+              <p className="font-heading text-teal text-xs font-semibold tracking-widest uppercase mb-2">
+                Bonus
+              </p>
+              <p className="font-heading text-sm font-semibold mb-1">
+                Long Game Glove Box Cards
+              </p>
+              <p className="font-body text-sm text-cream/60 leading-relaxed">
+                Quick reminders and conversation starters for the moments
+                that matter most.
+              </p>
+            </div>
+
+            <p className="font-body text-sm text-cream/60 border-t border-cream/10 pt-6 mb-6">
+              Designed for parents of athletes ages 8&ndash;18 across every
+              competitive sport.
+            </p>
+
+            <div className="flex flex-wrap gap-x-6 gap-y-2 text-xs font-body text-cream/60">
+              <span className="flex items-center gap-1.5"><span className="text-teal">&#10003;</span> Secure Checkout</span>
+              <span className="flex items-center gap-1.5"><span className="text-teal">&#10003;</span> Instant Access</span>
+              <span className="flex items-center gap-1.5"><span className="text-teal">&#10003;</span> One-Time Purchase</span>
+            </div>
+          </motion.div>
+        </div>
       </section>
 
       <Footer />
