@@ -696,47 +696,47 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-5 md:px-6">
           <motion.div
             {...fadeUp}
-            className="bg-ink text-cream rounded-[28px] max-w-[760px] mx-auto p-8 md:p-10"
+            className="bg-ink text-cream rounded-[24px] max-w-[520px] mx-auto p-6 md:p-8"
           >
-            <p className="font-heading text-teal text-xs font-semibold tracking-widest uppercase mb-4">
+            <p className="font-heading text-teal text-[11px] font-semibold tracking-widest uppercase mb-3">
               The Parent Academy
             </p>
-            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 leading-tight">
+            <h2 className="font-heading text-2xl md:text-3xl font-bold mb-3 leading-tight">
               Everything You Need to Parent the Long Game
             </h2>
-            <p className="font-body text-cream/70 leading-relaxed mb-8">
+            <p className="font-body text-sm text-cream/70 leading-relaxed mb-6">
               Practical guidance for sports parents who want to build
               confident, resilient athletes while protecting the
               relationship that matters most.
             </p>
 
-            <div className="flex items-end gap-3 mb-1">
-              <span className="font-heading text-5xl font-bold">$97</span>
-              <span className="font-heading text-sm text-cream/60 mb-2">USD</span>
+            <div className="flex items-end gap-2 mb-1">
+              <span className="font-heading text-4xl font-bold">$97</span>
+              <span className="font-heading text-xs text-cream/60 mb-1.5">USD</span>
             </div>
-            <p className="font-heading text-teal text-xs font-semibold tracking-widest uppercase mb-1">
+            <p className="font-heading text-teal text-[11px] font-semibold tracking-widest uppercase mb-1">
               Founding Member Price
             </p>
-            <p className="font-body text-sm text-cream/60 mb-8">
+            <p className="font-body text-xs text-cream/60 mb-6">
               One-time payment &middot; Regular price{" "}
               <span className="line-through">$147</span>
             </p>
 
             <Link
               href="/parent-academy"
-              className="flex items-center justify-center gap-2 bg-cream text-ink font-heading font-semibold px-6 py-4 rounded-lg hover:bg-cream/90 transition-colors mb-4"
+              className="flex items-center justify-center gap-2 bg-cream text-ink font-heading font-semibold text-sm px-6 py-3 rounded-lg hover:bg-cream/90 transition-colors mb-3"
             >
               Get the Parent Academy &rarr;
             </Link>
             <Link
               href="/parent-academy"
-              className="block text-center font-heading text-sm font-semibold text-teal hover:underline mb-8"
+              className="block text-center font-heading text-xs font-semibold text-teal hover:underline mb-6"
             >
               See Everything Included &rarr;
             </Link>
 
-            <div className="border-t border-cream/10 pt-2 mb-8">
-              <p className="font-heading text-teal text-xs font-semibold tracking-widest uppercase mb-4">
+            <div className="border-t border-cream/10 pt-2 mb-6">
+              <p className="font-heading text-teal text-[11px] font-semibold tracking-widest uppercase mb-2">
                 Included
               </p>
               <ul className="font-body text-sm space-y-0">
@@ -752,7 +752,7 @@ export default function Home() {
                 ].map((item) => (
                   <li
                     key={item}
-                    className="flex items-center gap-3 py-3 border-b border-cream/10 last:border-0"
+                    className="flex items-center gap-2.5 py-2 border-b border-cream/10 last:border-0"
                   >
                     <span className="text-teal">&#10003;</span>
                     {item}
@@ -761,25 +761,25 @@ export default function Home() {
               </ul>
             </div>
 
-            <div className="border-t border-cream/10 pt-6 mb-8">
-              <p className="font-heading text-teal text-xs font-semibold tracking-widest uppercase mb-2">
+            <div className="border-t border-cream/10 pt-4 mb-6">
+              <p className="font-heading text-teal text-[11px] font-semibold tracking-widest uppercase mb-2">
                 Bonus
               </p>
               <p className="font-heading text-sm font-semibold mb-1">
                 Long Game Glove Box Cards
               </p>
-              <p className="font-body text-sm text-cream/60 leading-relaxed">
+              <p className="font-body text-xs text-cream/60 leading-relaxed">
                 Quick reminders and conversation starters for the moments
                 that matter most.
               </p>
             </div>
 
-            <p className="font-body text-sm text-cream/60 border-t border-cream/10 pt-6 mb-6">
+            <p className="font-body text-xs text-cream/60 border-t border-cream/10 pt-4 mb-4">
               Designed for parents of athletes ages 8&ndash;18 across every
               competitive sport.
             </p>
 
-            <div className="flex flex-wrap gap-x-6 gap-y-2 text-xs font-body text-cream/60">
+            <div className="flex flex-wrap gap-x-4 gap-y-1.5 text-[11px] font-body text-cream/60">
               <span className="flex items-center gap-1.5"><span className="text-teal">&#10003;</span> Secure Checkout</span>
               <span className="flex items-center gap-1.5"><span className="text-teal">&#10003;</span> Instant Access</span>
               <span className="flex items-center gap-1.5"><span className="text-teal">&#10003;</span> One-Time Purchase</span>
