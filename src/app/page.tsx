@@ -243,6 +243,47 @@ export default function Home() {
         </div>
       </section>
 
+      {/* SECTION 1B: TRUST BANNER */}
+      <section className="bg-cream py-16 md:py-20">
+        <div className="max-w-5xl mx-auto px-6 text-center">
+          <motion.h2 {...fadeUp} className="font-heading text-2xl md:text-3xl font-bold mb-3">
+            Trusted by leaders in sport.
+          </motion.h2>
+          <motion.p
+            {...fadeUp}
+            transition={{ ...fadeUp.transition, delay: 0.05 }}
+            className="font-body text-text-body mb-12 max-w-md mx-auto"
+          >
+            Experienced coaches, scouts and leaders who understand what
+            matters most.
+          </motion.p>
+          <div className="grid grid-cols-3 gap-6 md:gap-10">
+            {leaders.map((l, i) => (
+              <motion.div
+                key={l.name}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.08 }}
+                className="text-center"
+              >
+                {l.photo ? (
+                  <img
+                    src={l.photo}
+                    alt={l.name}
+                    className="w-20 h-20 md:w-24 md:h-24 rounded-full mx-auto mb-4 object-cover object-top"
+                  />
+                ) : (
+                  <Placeholder label="Headshot" className="w-20 h-20 md:w-24 md:h-24 rounded-full mx-auto mb-4" />
+                )}
+                <p className="font-heading font-semibold text-sm">{l.name}</p>
+                <p className="font-heading text-xs text-teal tracking-wide leading-snug">{l.role}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* SECTION 2: YOUTH SPORTS HAVE CHANGED */}
       <section className="max-w-7xl mx-auto w-full px-6 py-20 md:py-28 grid md:grid-cols-5 gap-12 items-center">
         <motion.div {...fadeUp} className="md:col-span-3">
@@ -586,41 +627,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 6B: TRUSTED BY LEADERS IN SPORT */}
-      <section className="bg-cream py-20 md:py-28">
-        <div className="max-w-6xl mx-auto px-6">
-          <motion.h2 {...fadeUp} className="font-heading text-3xl md:text-4xl font-bold text-center mb-16">
-            Trusted by leaders in sport.
-          </motion.h2>
-          <div className="grid md:grid-cols-3 gap-10">
-            {leaders.map((l, i) => (
-              <motion.div
-                key={l.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.1 }}
-                className="text-center"
-              >
-                {l.photo ? (
-                  <img
-                    src={l.photo}
-                    alt={l.name}
-                    className="w-24 h-24 rounded-full mx-auto mb-6 object-cover object-top"
-                  />
-                ) : (
-                  <Placeholder label="Headshot" className="w-24 h-24 rounded-full mx-auto mb-6" />
-                )}
-                <p className="font-body italic text-charcoal/80 leading-relaxed mb-5">
-                  &ldquo;{l.quote}&rdquo;
-                </p>
-                <p className="font-heading font-semibold text-sm">{l.name}</p>
-                <p className="font-heading text-xs text-teal tracking-wide">{l.role}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      
 
       {/* SECTION 7: BUILT FROM EXPERIENCE. CREATED WITH PURPOSE. */}
       <section className="max-w-6xl mx-auto w-full px-6 py-20 md:py-28 grid md:grid-cols-2 gap-14 items-center">
