@@ -181,7 +181,7 @@ export default function ParentAcademyPage() {
                 href="#modules"
                 className="inline-flex items-center gap-2 border border-charcoal/20 text-charcoal font-heading font-semibold px-8 py-3 rounded-lg hover:border-teal hover:text-teal transition-colors"
               >
-                Preview Course Pages &rarr;
+                Preview Course Pages
               </a>
             </div>
           </motion.div>
@@ -253,6 +253,7 @@ export default function ParentAcademyPage() {
     </main>
   );
 }
+
 
 
 

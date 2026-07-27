@@ -14,10 +14,6 @@
   --color-border-grey: #E1E5E3;
   --color-text-body: #5D6562;
   --color-text-muted: #858C89;
-  --font-satoshi: "Satoshi", Arial, sans-serif;
-  --tracking-display: -0.045em;
-  --tracking-heading: -0.035em;
-  --tracking-body: -0.005em;
 }
 
 @theme inline {
@@ -34,8 +30,8 @@
   --color-border-grey: var(--color-border-grey);
   --color-text-body: var(--color-text-body);
   --color-text-muted: var(--color-text-muted);
-  --font-heading: var(--font-satoshi);
-  --font-body: var(--font-satoshi);
+  --font-heading: var(--font-poppins);
+  --font-body: var(--font-poppins);
 }
 
 html {
@@ -46,38 +42,14 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-body), sans-serif;
-  font-weight: 400;
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
+  line-height: 1.7;
 }
 
 h1, h2, h3, h4 {
   font-family: var(--font-heading), sans-serif;
-  font-weight: 600;
-  letter-spacing: var(--tracking-heading);
-  line-height: 1.08;
-  margin-bottom: 0.4em;
-}
-
-.hero-title {
-  font-size: clamp(46px, 5.2vw, 76px);
-  font-weight: 600;
-  line-height: 1;
-  letter-spacing: var(--tracking-display);
-}
-
-.section-title {
-  font-size: clamp(34px, 3.8vw, 54px);
-  font-weight: 600;
-  line-height: 1.06;
-  letter-spacing: var(--tracking-heading);
-}
-
-.body-large {
-  font-size: clamp(17px, 1.5vw, 20px);
-  font-weight: 400;
-  line-height: 1.46;
   letter-spacing: -0.01em;
+  margin-bottom: 0.5em;
 }
+
+
+

@@ -51,7 +51,7 @@ export function CheckoutButton({ className }: { className?: string }) {
       disabled={loading || !checked}
       className={className}
     >
-      {loading ? "Redirecting..." : enrolled ? "Go to Portal →" : "Enroll in the Parent Academy →"}
+      {loading ? "Redirecting..." : enrolled ? "Go to Portal" : "Enroll in the Parent Academy"}
     </button>
   );
 }

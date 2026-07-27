@@ -63,7 +63,7 @@ export default function FreeGuidePage() {
               href="#download"
               className="inline-block bg-charcoal text-white font-heading font-semibold px-8 py-4 rounded-lg hover:bg-charcoal/90 transition-colors"
             >
-              Download the Free Guide &rarr;
+              Download the Free Guide
             </a>
           </motion.div>
 
@@ -178,3 +178,4 @@ export default function FreeGuidePage() {
     </main>
   );
 }
+

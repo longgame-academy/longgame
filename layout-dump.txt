@@ -1,8 +1,16 @@
 ﻿import type { Metadata } from "next";
 import "@/lib/env";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { CookieConsent } from "@/components/CookieConsent";
+
+
+const poppins = Poppins({
+  variable: "--font-poppins",
+  subsets: ["latin"],
+  weight: ["300", "400", "600", "700", "800"],
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://longgameacademy.com"),
@@ -42,14 +50,10 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en" className="h-full antialiased">
-        <head>
-          <link rel="preconnect" href="https://api.fontshare.com" />
-          <link
-            href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700&display=swap"
-            rel="stylesheet"
-          />
-        </head>
+      <html
+        lang="en"
+        className={`${poppins.variable} h-full antialiased`}
+      >
         <body className="min-h-full flex flex-col">
           {children}
           <CookieConsent />
@@ -58,3 +62,7 @@ export default function RootLayout({
     </ClerkProvider>
   );
 }
+
+
+
+

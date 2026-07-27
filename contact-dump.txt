@@ -23,13 +23,14 @@ export default function ContactPage() {
           href="mailto:hello@longgameacademy.com"
           className="inline-flex items-center gap-2 bg-ink text-cream font-heading font-semibold px-8 py-3 rounded-lg hover:bg-charcoal transition-colors"
         >
-          hello@longgameacademy.com &rarr;
+          hello@longgameacademy.com
         </a>
       </motion.section>
       <Footer />
     </main>
   );
 }
+
 
 
 

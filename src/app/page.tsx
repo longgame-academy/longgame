@@ -193,19 +193,19 @@ export default function Home() {
       <section className="relative min-h-[90vh] flex items-center bg-ink text-cream overflow-hidden">
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: 0.6 }}
+          animate={{ opacity: 0.9 }}
           transition={{ duration: 2, ease: "easeOut", delay: 0.8 }}
           className="absolute inset-0"
         >
           <img
             src="/hero-mobile.jpg"
             alt="Father and son walking off the field"
-            className="absolute inset-0 w-full h-full object-cover object-[center_30%] md:hidden"
+            className="absolute inset-0 w-full h-full object-cover object-[center_15%] md:hidden"
           />
           <img
             src="/hero-desktop.jpg"
             alt="Young athlete sitting alone reflecting after a game"
-            className="absolute inset-0 w-full h-full object-cover object-[center_30%] hidden md:block"
+            className="absolute inset-0 w-full h-full object-cover object-[center_15%] hidden md:block"
           />
         </motion.div>
         <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-ink/0 via-ink/70 to-background pointer-events-none" />
@@ -216,27 +216,27 @@ export default function Home() {
             transition={{ duration: 0.9, ease: "easeOut", delay: 2.2 }}
             className="max-w-xl"
           >
-            <h1 className="font-heading text-4xl md:text-6xl font-bold leading-tight mb-6">
+            <h1 className="hero-title font-heading mb-5">
               The journey matters.
               <br />
               So does the relationship waiting at the end of it.
             </h1>
-            <p className="font-body text-lg text-cream/80 leading-relaxed mb-10">
+            <p className="body-large font-body text-cream/80 mb-8">
               Practical guidance for sports parents who want to build confident
               athletes and stronger relationships.
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-3">
               <Link
                 href="/parent-academy"
-                className="inline-flex items-center gap-2 bg-cream text-ink font-heading font-semibold px-6 py-3 rounded-lg hover:bg-cream/90 transition-colors"
+                className="inline-flex items-center gap-2 bg-cream text-ink font-heading font-semibold text-[15px] px-6 py-3.5 rounded-lg hover:bg-cream/90 transition-colors"
               >
-                Explore Long Game
+                Explore Long Game &rarr;
               </Link>
               <Link
                 href="/organizations"
-                className="inline-flex items-center gap-2 border border-cream/30 text-cream font-heading font-semibold px-6 py-3 rounded-lg hover:border-teal hover:text-teal transition-colors"
+                className="inline-flex items-center gap-2 border border-cream/30 text-cream font-heading font-semibold text-[15px] px-6 py-3.5 rounded-lg hover:border-teal hover:text-teal transition-colors"
               >
-                For Organizations
+                For Organizations &rarr;
               </Link>
             </div>
           </motion.div>
