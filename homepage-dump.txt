@@ -49,22 +49,22 @@ const pillars = [
 const philosophyCards = [
   {
     title: "Hard Work Matters",
-    body: "Confidence is built through preparation and doing hard things—not comfort.",
+    body: "Confidence isn't built through comfort. It's built through preparation, discipline, consistent effort, and doing difficult things over time. We believe young athletes should be challenged—not protected from hard work.",
     emphasized: true,
   },
   {
     title: "Failure Is Part of Growth",
-    body: "Failure is one of sport's greatest teachers, not something to rescue athletes from.",
+    body: "Failure isn't something parents need to rescue their athletes from. It's one of the greatest teachers in sport. Our role is helping parents respond in ways that build resilience instead of fear.",
     emphasized: true,
   },
   {
     title: "Relationships Build Better Competitors",
-    body: "Athletes compete with more freedom when support doesn't depend on the scoreboard.",
+    body: "Athletes compete with more freedom when they know their parents' support doesn't depend on the scoreboard. Connection doesn't replace accountability. It strengthens it.",
     emphasized: false,
   },
   {
     title: "Character Is the Real Win",
-    body: "If sport doesn't build resilient, confident people, it's missed its purpose.",
+    body: "Winning matters. Competing matters. But if sport doesn't help build resilient, respectful, and confident people, we've missed its greatest purpose.",
     emphasized: false,
   },
 ];
@@ -133,7 +133,7 @@ const parentQuotes = [
   },
   {
     quote:
-      "Practical guidance for the conversations and challenges every sports family faces. I only wish this had been available twenty years ago.",
+      "As a parent of two Division I athletes and someone who has spent a career in education, I highly recommend the Long Game Parent Academy. It provides practical guidance for the conversations and challenges every sports family faces while helping protect the relationship that matters most. I only wish this resource had been available twenty years ago.",
     name: "Jim Kean",
     role: "Parent of Two Division I Athletes, Educator",
   },
@@ -156,7 +156,7 @@ const leaders = [
   },
   {
     quote:
-      "It gives families a shared language for confidence, communication, and the relationship that lasts beyond the game.",
+      "The Long Game Parent Development System is an outstanding resource for parents navigating youth sports. It helps families focus on what truly matters—confidence, communication, development, and the relationship that lasts beyond the game.",
     name: "Doug Ouilette",
     role: "Vice President, Ancaster Baseball, U18 Wow Factor Head Coach",
     photo: "/team/doug-ouilette.jpg",
@@ -295,9 +295,18 @@ export default function Home() {
             <br />
             So has the experience of raising an athlete.
           </h2>
-          <div className="font-body text-text-body leading-relaxed">
-            <p className="mb-4">
-              The pressure has followed families home—into the car ride, the dinner table, conversations no one expected to have.
+          <div className="font-body text-text-body leading-relaxed space-y-4">
+            <p>
+              Somewhere along the way, youth sports became more than practices and
+              weekend games.
+            </p>
+            <p>
+              The pressure found its way into the car ride home, the dinner table,
+              and conversations families never expected to have.
+            </p>
+            <p>
+              Most parents aren&apos;t looking for perfection. They&apos;re simply
+              trying to do what&apos;s best for the child they love.
             </p>
             <p className="font-semibold text-charcoal">That&apos;s why Long Game exists.</p>
           </div>
@@ -317,9 +326,19 @@ export default function Home() {
                 <br />
                 We believe in changing how parents help young athletes rise to it.
               </h2>
-              <p className="font-body text-text-body leading-relaxed">
-                Long Game isn&apos;t about making sports easier—it&apos;s about helping parents become the steady presence that supports young athletes through hard work, failure, and pressure.
-              </p>
+              <div className="font-body text-text-body leading-relaxed space-y-4">
+                <p>Long Game isn&apos;t about making sports easier.</p>
+                <p>
+                  We believe young athletes should work hard, embrace
+                  failure, compete with confidence, and develop resilience
+                  through the challenges that sport naturally provides.
+                </p>
+                <p>
+                  Our role is helping parents become the steady presence
+                  that supports that journey—without adding unnecessary
+                  pressure or damaging the relationship along the way.
+                </p>
+              </div>
             </motion.div>
             <motion.div
               {...fadeUp}
@@ -380,7 +399,13 @@ export default function Home() {
               A different way to support sports families.
             </h2>
             <p className="font-body text-text-body leading-relaxed max-w-2xl mx-auto mb-16">
-              Practical guidance for the moments that matter most—difficult conversations, quiet pressure, disappearing confidence—so families can raise confident athletes without losing the relationship.
+              Long Game was created to help sports parents navigate the moments
+              that matter most. The conversations after difficult games. The
+              pressure that quietly builds over time. The confidence that can
+              disappear overnight. The challenge of encouraging without pushing.
+              Through practical tools, guided lessons, and real-world experience,
+              Long Game helps families raise confident athletes while protecting
+              the relationship that matters most.
             </p>
           </motion.div>
           <div className="grid md:grid-cols-2 gap-6 text-left max-w-3xl mx-auto">
@@ -463,7 +488,13 @@ export default function Home() {
             Real-life moments, not modules.
           </p>
           <p className="font-body text-text-body leading-relaxed max-w-2xl mx-auto">
-            Not another course—practical guidance for the actual moments: the bad game, the quiet car ride, the coach conversation you&apos;re not sure how to handle.
+            Parents do not wake up thinking they need another course. They think
+            about the game that went badly, the confidence that disappeared, the
+            car ride that felt too quiet, the coach conversation they are not sure
+            how to handle, and the child they are trying to support without making
+            the pressure worse. Long Game gives parents practical guidance for
+            those moments, so they can respond with more confidence, more
+            perspective, and more connection.
           </p>
         </motion.div>
         <div className="space-y-16">
@@ -508,9 +539,14 @@ export default function Home() {
           <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">
             Guidance built around real life.
           </h2>
-          <p className="font-body text-text-body leading-relaxed max-w-2xl mx-auto mb-12">
-            Real life doesn&apos;t come one lesson at a time. Long Game helps you find the right guidance—in seconds.
-          </p>
+          <div className="font-body text-text-body leading-relaxed space-y-4 max-w-2xl mx-auto mb-12">
+            <p>Parents don&apos;t experience youth sports one lesson at a time.</p>
+            <p>
+              They experience difficult conversations, confidence struggles,
+              slumps, and moments when they aren&apos;t sure what to do next.
+            </p>
+            <p>Long Game helps you find the right guidance—in seconds.</p>
+          </div>
         </motion.div>
         <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.15 }}>
           <img
@@ -529,7 +565,10 @@ export default function Home() {
               Choose the path that&apos;s right for you.
             </h2>
             <p className="font-body text-cream/70 max-w-xl mx-auto leading-relaxed">
-              Every family enters from a different place. Start where it makes the most sense.
+              Every family enters the Long Game journey from a different place.
+              Some parents are ready for deeper guidance. Some organizations want
+              to support every family in their program. Some people want to begin
+              with the book. Start where it makes the most sense.
             </p>
           </motion.div>
           <div className="grid md:grid-cols-3 gap-6">
@@ -601,9 +640,16 @@ export default function Home() {
             <br />
             Created with purpose.
           </h2>
-          <div className="font-body text-text-body leading-relaxed mb-8">
-            <p className="mb-4">
-              Long Game wasn&apos;t built in a boardroom—it came from years coaching young athletes and walking alongside sports families through the same conversations, again and again.
+          <div className="font-body text-text-body leading-relaxed space-y-4 mb-8">
+            <p>Long Game wasn&apos;t built in a boardroom.</p>
+            <p>
+              It was built over years of coaching young athletes, walking
+              alongside sports families, and seeing the same conversations happen
+              again and again.
+            </p>
+            <p>
+              It came from watching parents do their very best in a youth sports
+              environment that has become more demanding than ever before.
             </p>
             <p className="font-semibold text-charcoal">
               Long Game exists because families deserve support too.
@@ -703,8 +749,11 @@ export default function Home() {
               <ul className="font-body text-sm space-y-0">
                 {[
                   "12 practical parent-development modules",
+                  "165+ pages of proven guidance",
                   "Fillable worksheets & reflection pages",
+                  "Confidence, pressure & resilience strategies",
                   "Practical scripts for difficult conversations",
+                  "Immediate access on all devices",
                   "Lifetime access & future updates",
                   "Works for all sports and competitive levels",
                 ].map((item) => (
