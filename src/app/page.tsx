@@ -285,7 +285,7 @@ export default function Home() {
       </section>
 
       {/* SECTION 2: YOUTH SPORTS HAVE CHANGED */}
-      <section className="max-w-7xl mx-auto w-full px-6 py-20 md:py-28 grid md:grid-cols-5 gap-12 items-center">
+      <section className="max-w-7xl mx-auto w-full px-6 py-16 md:py-24 grid md:grid-cols-5 gap-12 items-center">
         <motion.div {...fadeUp} className="md:col-span-3">
           <img src="/youth-sports-changed.jpg" alt="Youth sports have changed" className="w-full h-auto aspect-[4/3] object-cover rounded-lg" />
         </motion.div>
@@ -306,7 +306,7 @@ export default function Home() {
 
       {/* SECTION 2.5: OUR PHILOSOPHY */}
       <section className="bg-white w-full">
-        <div className="max-w-7xl mx-auto w-full px-6 py-20 md:py-28">
+        <div className="max-w-7xl mx-auto w-full px-6 py-16 md:py-24">
           <div className="grid md:grid-cols-5 gap-12 items-center mb-16">
             <motion.div {...fadeUp} className="md:col-span-3">
               <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase mb-4">
@@ -370,7 +370,7 @@ export default function Home() {
       </section>
 
       {/* SECTION 3: THE LONG GAME APPROACH */}
-      <section className="bg-cream py-20 md:py-28">
+      <section className="bg-cream py-16 md:py-24">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <motion.div {...fadeUp}>
             <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase mb-4">
@@ -405,7 +405,7 @@ export default function Home() {
       </section>
 
       {/* SECTION 3.5: THE REALITY PARENTS ARE FACING */}
-      <section className="py-20 md:py-28" style={{ backgroundColor: "#F1F3F2" }}>
+      <section className="py-16 md:py-24" style={{ backgroundColor: "#F1F3F2" }}>
         <div className="max-w-6xl mx-auto px-6">
           <motion.h2 {...fadeUp} className="font-heading text-3xl md:text-4xl font-bold text-center mb-10">
             The Reality Parents Are Facing
@@ -454,7 +454,7 @@ export default function Home() {
       </section>
       
       {/* SECTION 4: SUPPORT FOR THE MOMENTS THAT MATTER MOST */}
-      <section className="max-w-5xl mx-auto w-full px-6 py-20 md:py-28">
+      <section className="max-w-5xl mx-auto w-full px-6 py-16 md:py-24">
         <motion.div {...fadeUp} className="text-center mb-16">
           <h2 className="font-heading text-3xl md:text-4xl font-bold mb-3">
             Support for the moments that matter most.
@@ -522,7 +522,7 @@ export default function Home() {
       </section>
 
       {/* SECTION 5: CHOOSE THE PATH THAT'S RIGHT FOR YOU */}
-      <section className="bg-ink text-cream py-20 md:py-28">
+      <section className="bg-ink text-cream py-16 md:py-24">
         <div className="max-w-6xl mx-auto px-6">
           <motion.div {...fadeUp} className="text-center mb-14">
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
@@ -643,7 +643,7 @@ export default function Home() {
       </section>
 
       {/* SECTION 8: FINAL IMAGE + PRICING */}
-      <section className="max-w-6xl mx-auto w-full px-6 pt-20 pb-14">
+      <section className="max-w-6xl mx-auto w-full px-6 pt-10 pb-10">
         <motion.div {...fadeUp}>
           <img
             src="/final-cta-photo.jpg"
@@ -653,7 +653,7 @@ export default function Home() {
         </motion.div>
       </section>
 
-      <section className="w-full py-8 md:py-14">
+      <section className="w-full py-4 md:py-8">
         <div className="max-w-6xl mx-auto px-5 md:px-6">
           <motion.div
             {...fadeUp}
