@@ -370,7 +370,7 @@ export default function Home() {
       </section>
 
       {/* SECTION 3: THE LONG GAME APPROACH */}
-      <section className="bg-cream py-16 md:py-24">
+      <section className="bg-cream pt-16 pb-8 md:pt-24 md:pb-12">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <motion.div {...fadeUp}>
             <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase mb-4">
@@ -405,7 +405,7 @@ export default function Home() {
       </section>
 
       {/* SECTION 3.5: THE REALITY PARENTS ARE FACING */}
-      <section className="pt-8 pb-16 md:pt-14 md:pb-24" style={{ backgroundColor: "#F1F3F2" }}>
+      <section className="pt-4 pb-16 md:pt-8 md:pb-24" style={{ backgroundColor: "#F1F3F2" }}>
         <div className="max-w-6xl mx-auto px-6">
           <motion.h2 {...fadeUp} className="font-heading text-3xl md:text-4xl font-bold text-center mb-10">
             The Reality Parents Are Facing
