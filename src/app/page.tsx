@@ -643,10 +643,15 @@ export default function Home() {
       </section>
 
       {/* SECTION 8: FINAL IMAGE + PRICING */}
-      <section className="max-w-6xl mx-auto w-full px-6 pt-10 pb-10">
-        <motion.div {...fadeUp}>
-          <img
-            src="/final-cta-photo.jpg"
+        <section className="max-w-6xl mx-auto w-full px-6 pt-10 pb-10">
+          <motion.h2 {...fadeUp} className="font-heading text-3xl md:text-4xl font-bold text-center mb-10 leading-tight">
+            The Game Will End.
+            <br />
+            The Relationship Won&apos;t.
+          </motion.h2>
+          <motion.div {...fadeUp}>
+            <img
+              src="/final-cta-photo.jpg"
             alt="Father and son walking off the field together"
             className="w-full h-auto max-h-[500px] object-cover object-top rounded-2xl"
           />
@@ -703,8 +708,11 @@ export default function Home() {
               <ul className="font-body text-sm space-y-0">
                 {[
                   "12 practical parent-development modules",
+                  "165+ pages of proven guidance",
                   "Fillable worksheets & reflection pages",
+                  "Confidence, pressure & resilience strategies",
                   "Practical scripts for difficult conversations",
+                  "Immediate access on all devices",
                   "Lifetime access & future updates",
                   "Works for all sports and competitive levels",
                 ].map((item) => (
