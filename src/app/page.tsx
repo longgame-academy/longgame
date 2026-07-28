@@ -405,7 +405,7 @@ export default function Home() {
       </section>
 
       {/* SECTION 3.5: THE REALITY PARENTS ARE FACING */}
-      <section className="py-16 md:py-24" style={{ backgroundColor: "#F1F3F2" }}>
+      <section className="pt-8 pb-16 md:pt-14 md:pb-24" style={{ backgroundColor: "#F1F3F2" }}>
         <div className="max-w-6xl mx-auto px-6">
           <motion.h2 {...fadeUp} className="font-heading text-3xl md:text-4xl font-bold text-center mb-10">
             The Reality Parents Are Facing
