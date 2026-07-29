@@ -240,23 +240,44 @@ export default function Home() {
 
       
 
+      {/* SECTION 1B: TRUST BAR */}
+      <section className="bg-background py-6 md:py-8 border-b border-border-grey">
+        <div className="max-w-3xl mx-auto px-6 text-center">
+          <p className="font-heading text-sm md:text-base font-medium text-charcoal">
+            Trusted by parents and organizations across North America.
+          </p>
+        </div>
+      </section>
+
       {/* SECTION 2: YOUTH SPORTS HAVE CHANGED */}
       <section className="max-w-7xl mx-auto w-full px-6 py-16 md:py-24 grid md:grid-cols-5 gap-12 items-center">
         <motion.div {...fadeUp} className="md:col-span-3">
           <img src="/youth-sports-changed.jpg" alt="Youth sports have changed" className="w-full h-auto aspect-[4/3] object-cover rounded-lg" />
         </motion.div>
         <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.15 }}>
+          <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase mb-4">
+            Why Long Game Exists
+          </p>
           <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6 leading-tight">
-            Youth sports have changed.
-            <br />
-            So has the experience of raising an athlete.
+            Somewhere along the way, sport got heavier than it needed to be.
           </h2>
-          <div className="font-body text-text-body leading-relaxed">
+          <div className="font-body text-text-body leading-relaxed mb-6">
             <p className="mb-4">
-              The pressure has followed families home—into the car ride, the dinner table, conversations no one expected to have.
+              The pressure found its way into the car ride home, the dinner
+              table, and conversations families never expected to have. Most
+              parents aren&apos;t looking for perfection. They&apos;re trying
+              to do right by the child they love—without a system for how.
             </p>
-            <p className="font-semibold text-charcoal">That&apos;s why Long Game exists.</p>
+            <p className="font-semibold text-charcoal">
+              That&apos;s what Long Game provides.
+            </p>
           </div>
+          <a         
+            href="#quiz-section"
+            className="font-heading text-sm font-semibold text-teal hover:underline"
+          >
+            See how it works &rarr;
+          </a>
         </motion.div>
       </section>
 
@@ -349,6 +370,43 @@ export default function Home() {
       {/* SECTION 4: THE QUIZ — FIND YOUR MOMENT */}
       <QuizSection />
 
+      {/* SECTION 6: THE SIGNATURE IDEA — THE LONG GAME PRINCIPLE */}
+      <section className="bg-ink text-cream py-16 md:py-24">
+        <div className="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+          <motion.div {...fadeUp}>
+            <img
+              src="/youth-sports-changed.jpg"
+              alt="Quiet car ride at dusk"
+              className="w-full h-auto aspect-[4/3] object-cover rounded-lg grayscale contrast-[1.05]"
+            />
+          </motion.div>
+          <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.15 }}>
+            <h2 className="font-heading text-2xl md:text-3xl font-bold mb-2">
+              The Long Game Principle&trade;
+            </h2>
+            <p className="font-heading text-5xl md:text-6xl font-bold text-teal mb-6">
+              Fifteen minutes.
+            </p>
+            <p className="font-body text-cream/80 leading-relaxed mb-6">
+              That&apos;s usually all it is. But what happens in that window
+              after a hard game shapes how an athlete relates to failure, to
+              sport, and to you—more than almost anything that happens on the
+              field.
+            </p>
+            <p className="font-body text-cream/80 leading-relaxed mb-8">
+              Long Game gives you a system for those fifteen minutes, and
+              every other moment like them.
+            </p>
+            <a            
+              href="#quiz-section"
+              className="font-heading text-sm font-semibold text-teal hover:underline"
+            >
+              See what&apos;s inside the Academy &rarr;
+            </a>
+          </motion.div>
+        </div>
+      </section>
+
       {/* SECTION 5: PROOF (LEADERS + TESTIMONIALS CONSOLIDATED) */}
       <section className="bg-cream py-16 md:py-24">
         <div className="max-w-5xl mx-auto px-6 text-center">
@@ -417,6 +475,51 @@ export default function Home() {
       </section>
 
       
+
+      {/* SECTION 6.5: FAQ */}
+      <section className="bg-cream py-16 md:py-24">
+        <div className="max-w-3xl mx-auto px-6">
+          <motion.h2 {...fadeUp} className="font-heading text-3xl md:text-4xl font-bold text-center mb-14">
+            Frequently Asked Questions
+          </motion.h2>
+          <div className="space-y-10">
+            {[
+              {
+                q: "Is this a course I have to keep up with?",
+                a: "No. It's built to open to the exact page you need, not a schedule to fall behind on.",
+              },
+              {
+                q: "Does this work for my sport?",
+                a: "Yes. Every module is built around the parent, not the sport.",
+              },
+              {
+                q: "What ages is this built for?",
+                a: "8 to 18. Different modules matter more at different ages; the core system doesn't change.",
+              },
+              {
+                q: "What do I actually get?",
+                a: "Twelve modules, 165+ pages, worksheets, and scripts—instant access, yours for good.",
+              },
+              {
+                q: "Is there a guarantee?",
+                a: "[CONFIRM ACTUAL POLICY BEFORE LAUNCH]",
+              },
+            ].map((item, i) => (
+              <motion.div
+                key={item.q}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.06 }}
+                className="border-b border-border-grey pb-8 last:border-0"
+              >
+                <h3 className="font-heading text-lg font-semibold mb-2">{item.q}</h3>
+                <p className="font-body text-text-body leading-relaxed">{item.a}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* SECTION 7: BUILT FROM EXPERIENCE. CREATED WITH PURPOSE. */}
       <section className="max-w-6xl mx-auto w-full px-6 py-20 md:py-28 grid md:grid-cols-2 gap-14 items-center">
@@ -506,6 +609,9 @@ export default function Home() {
             >
               Get the Parent Academy &rarr;
             </Link>
+            <p className="text-center font-body text-[11px] text-cream/60 mb-3">
+              &check; Secure Checkout &nbsp; &check; Instant Access &nbsp; &check; One-Time Purchase
+            </p>
             <Link
               href="/parent-academy"
               className="block text-center font-heading text-xs font-semibold text-teal hover:underline mb-6"
