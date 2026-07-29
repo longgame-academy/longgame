@@ -535,7 +535,7 @@ export default function Home() {
           </motion.div>
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { label: "Module Library", image: "/parent-portal-phone.png" },
+              { label: "Module Library", image: "/long-game-experience.png" },
               { label: "Worksheets", image: "/org-family-access.png" },
               { label: "Glove Box Cards", image: "/org-admin-phones.png" },
             ].map((item, i) => (
