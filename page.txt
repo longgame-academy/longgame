@@ -600,13 +600,11 @@ export default function Home() {
                 transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.12 }}
                 className="text-center"
               >
-                <div className="h-[340px] flex items-center justify-center mb-4">
-                  <img
-                    src={item.image}
-                    alt={item.label}
-                    className="max-h-full max-w-full w-auto h-auto object-contain mx-auto"
-                  />
-                </div>
+                <img
+                  src={item.image}
+                  alt={item.label}
+                  className="w-full h-auto max-w-[280px] mx-auto mb-4"
+                />
                 <p className="font-heading text-sm font-semibold text-charcoal">{item.label}</p>
               </motion.div>
             ))}
@@ -804,6 +802,7 @@ export default function Home() {
     </main>
   );
 }
+
 
 
 
