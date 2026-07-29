@@ -5,6 +5,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { Shield, MessageCircle, TrendingUp, Heart, Star } from "lucide-react";
+import QuizSection from "@/components/QuizSection";
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -230,59 +231,14 @@ export default function Home() {
                 href="/parent-academy"
                 className="inline-flex items-center gap-2 bg-cream text-ink font-heading font-semibold text-[15px] px-6 py-3.5 rounded-lg hover:bg-cream/90 transition-colors"
               >
-                Explore Long Game &rarr;
-              </Link>
-              <Link
-                href="/organizations"
-                className="inline-flex items-center gap-2 border border-cream/30 text-cream font-heading font-semibold text-[15px] px-6 py-3.5 rounded-lg hover:border-teal hover:text-teal transition-colors"
-              >
-                For Organizations &rarr;
+                Get the Parent Academy &rarr;
               </Link>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* SECTION 1B: TRUST BANNER */}
-      <section className="bg-cream py-16 md:py-20">
-        <div className="max-w-5xl mx-auto px-6 text-center">
-          <motion.h2 {...fadeUp} className="font-heading text-2xl md:text-3xl font-bold mb-3">
-            Trusted by leaders in sport.
-          </motion.h2>
-          <motion.p
-            {...fadeUp}
-            transition={{ ...fadeUp.transition, delay: 0.05 }}
-            className="font-body text-text-body mb-12 max-w-md mx-auto"
-          >
-            Experienced coaches, scouts and leaders who understand what
-            matters most.
-          </motion.p>
-          <div className="grid grid-cols-3 gap-6 md:gap-10">
-            {leaders.map((l, i) => (
-              <motion.div
-                key={l.name}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.08 }}
-                className="text-center"
-              >
-                {l.photo ? (
-                  <img
-                    src={l.photo}
-                    alt={l.name}
-                    className="w-20 h-20 md:w-24 md:h-24 rounded-full mx-auto mb-4 object-cover object-top"
-                  />
-                ) : (
-                  <Placeholder label="Headshot" className="w-20 h-20 md:w-24 md:h-24 rounded-full mx-auto mb-4" />
-                )}
-                <p className="font-heading font-semibold text-sm">{l.name}</p>
-                <p className="font-heading text-xs text-teal tracking-wide leading-snug">{l.role}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      
 
       {/* SECTION 2: YOUTH SPORTS HAVE CHANGED */}
       <section className="max-w-7xl mx-auto w-full px-6 py-16 md:py-24 grid md:grid-cols-5 gap-12 items-center">
@@ -304,86 +260,23 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* SECTION 2.5: OUR PHILOSOPHY */}
+      {/* SECTION 2.5: WHAT WE BELIEVE (MERGED PHILOSOPHY) */}
       <section className="bg-white w-full">
         <div className="max-w-7xl mx-auto w-full px-6 py-16 md:py-24">
-          <div className="grid md:grid-cols-5 gap-12 items-center mb-16">
-            <motion.div {...fadeUp} className="md:col-span-3">
-              <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase mb-4">
-                Our Philosophy
-              </p>
-              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6 leading-tight">
-                We don&apos;t believe in lowering the standard.
-                <br />
-                We believe in changing how parents help young athletes rise to it.
-              </h2>
-              <p className="font-body text-text-body leading-relaxed">
-                Long Game isn&apos;t about making sports easier—it&apos;s about helping parents become the steady presence that supports young athletes through hard work, failure, and pressure.
-              </p>
-            </motion.div>
-            <motion.div
-              {...fadeUp}
-              transition={{ ...fadeUp.transition, delay: 0.15 }}
-              className="md:col-span-2"
-            >
-              <img
-                src="/philosophy-image.jpg"
-                alt="Athlete reflecting after training"
-                className="w-full h-auto aspect-[4/5] object-cover rounded-2xl"
-              />
-            </motion.div>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            {philosophyCards.map((c, i) => (
-              <motion.div
-                key={c.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.1 }}
-                className={
-                  c.emphasized
-                    ? "border-2 border-teal/25 rounded-2xl p-10 bg-teal/[0.03]"
-                    : "border border-border-grey rounded-2xl p-8 shadow-[0_4px_16px_rgba(18,21,20,0.08)]"
-                }
-              >
-                <h3 className="font-heading text-lg font-semibold mb-3">{c.title}</h3>
-                <p className="font-body text-sm text-text-body leading-relaxed">{c.body}</p>
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.div {...fadeUp} className="text-center max-w-2xl mx-auto">
-            <p className="font-heading text-xl md:text-2xl font-semibold mb-4 leading-snug">
-              We don&apos;t teach parents to lower expectations.
-              <br />
-              We teach them how to raise athletes who can meet them.
-            </p>
-            <p className="font-body text-text-body leading-relaxed">
-              Long Game combines high standards with practical guidance,
-              helping parents raise confident competitors while protecting
-              the relationship that lasts long after the final game.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* SECTION 3: THE LONG GAME APPROACH */}
-      <section className="bg-cream pt-16 pb-8 md:pt-24 md:pb-12">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <motion.div {...fadeUp}>
+          <motion.div {...fadeUp} className="text-center max-w-2xl mx-auto mb-16">
             <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase mb-4">
-              The Long Game Approach
+              Our Philosophy
             </p>
-            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">
-              A different way to support sports families.
+            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6 leading-tight">
+              We don&apos;t believe in lowering the standard.
+              <br />
+              We believe in changing how parents help young athletes rise to it.
             </h2>
-            <p className="font-body text-text-body leading-relaxed max-w-2xl mx-auto mb-16">
-              Practical guidance for the moments that matter most—difficult conversations, quiet pressure, disappearing confidence—so families can raise confident athletes without losing the relationship.
+            <p className="font-body text-text-body leading-relaxed">
+              Long Game isn&apos;t about making sports easier—it&apos;s about helping parents become the steady presence that supports young athletes through hard work, failure, and pressure.
             </p>
           </motion.div>
-          <div className="grid md:grid-cols-2 gap-6 text-left max-w-3xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
             {pillars.map((p, i) => (
               <motion.div
                 key={p.title}
@@ -391,7 +284,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.1 }}
-                className="bg-background border border-border-grey rounded-2xl p-8 shadow-[0_4px_16px_rgba(18,21,20,0.08)]"
+                className="bg-background border border-border-grey rounded-2xl p-8 shadow-[0_4px_16px_rgba(18,21,20,0.08)] text-left"
               >
                 <div className="w-14 h-14 rounded-2xl bg-teal/10 flex items-center justify-center mb-4">
                   <p.icon className="w-7 h-7 text-teal" strokeWidth={1.5} />
@@ -453,138 +346,73 @@ export default function Home() {
         </div>
       </section>
       
-      {/* SECTION 4: SUPPORT FOR THE MOMENTS THAT MATTER MOST */}
-      <section className="max-w-5xl mx-auto w-full px-6 py-16 md:py-24">
-        <motion.div {...fadeUp} className="text-center mb-16">
-          <h2 className="font-heading text-3xl md:text-4xl font-bold mb-3">
-            Support for the moments that matter most.
-          </h2>
-          <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase mb-6">
-            Real-life moments, not modules.
-          </p>
-          <p className="font-body text-text-body leading-relaxed max-w-2xl mx-auto">
-            Not another course—practical guidance for the actual moments: the bad game, the quiet car ride, the coach conversation you&apos;re not sure how to handle.
-          </p>
-        </motion.div>
-        <div className="space-y-16">
-          {moments.map((m, i) => (
-            <motion.div
-              key={m.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-              className={`grid md:grid-cols-2 gap-8 items-center ${
-                i % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""
-              }`}
-            >
-              {m.image ? (
-                <img
-                  src={m.image}
-                  alt={m.title}
-                  className={`w-full object-cover rounded-lg ${i % 2 === 0 ? "aspect-[4/5]" : "aspect-[3/4]"} md:aspect-auto md:h-auto`}
-                />
-              ) : (
-                <Placeholder
-                  label="Documentary Photo"
-                  className={`rounded-lg ${i % 2 === 0 ? "aspect-[4/3]" : "aspect-[3/4]"}`}
-                />
-              )}
-              <div>
-                <h3 className="font-heading text-xl font-semibold mb-3">{m.title}</h3>
-                <p className="font-body text-text-body leading-relaxed">{m.body}</p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
+      {/* SECTION 4: THE QUIZ — FIND YOUR MOMENT */}
+      <QuizSection />
 
-      {/* SECTION 4.5: THE LONG GAME EXPERIENCE */}
-      <section className="max-w-4xl mx-auto w-full px-6 pt-4 pb-20 md:pt-6 md:pb-28 text-center">
-        <motion.div {...fadeUp}>
-          <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase mb-4">
-            The Long Game Experience
-          </p>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">
-            Guidance built around real life.
-          </h2>
-          <p className="font-body text-text-body leading-relaxed max-w-2xl mx-auto mb-12">
-            Real life doesn&apos;t come one lesson at a time. Long Game helps you find the right guidance—in seconds.
-          </p>
-        </motion.div>
-        <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.15 }}>
-          <img
-            src="/long-game-experience.png"
-            alt="Long Game guidance flow on mobile"
-            className="w-full max-w-sm mx-auto h-auto"
-          />
-        </motion.div>
-      </section>
-
-      {/* SECTION 5: CHOOSE THE PATH THAT'S RIGHT FOR YOU */}
-      <section className="bg-ink text-cream py-16 md:py-24">
-        <div className="max-w-6xl mx-auto px-6">
-          <motion.div {...fadeUp} className="text-center mb-14">
-            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
-              Choose the path that&apos;s right for you.
-            </h2>
-            <p className="font-body text-cream/70 max-w-xl mx-auto leading-relaxed">
-              Every family enters from a different place. Start where it makes the most sense.
-            </p>
-          </motion.div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {pathways.map((p, i) => (
+      {/* SECTION 5: PROOF (LEADERS + TESTIMONIALS CONSOLIDATED) */}
+      <section className="bg-cream py-16 md:py-24">
+        <div className="max-w-5xl mx-auto px-6 text-center">
+          <motion.h2 {...fadeUp} className="font-heading text-2xl md:text-3xl font-bold mb-3">
+            Trusted by leaders in sport.
+          </motion.h2>
+          <motion.p
+            {...fadeUp}
+            transition={{ ...fadeUp.transition, delay: 0.05 }}
+            className="font-body text-text-body mb-12 max-w-md mx-auto"
+          >
+            Experienced coaches, scouts and leaders who understand what
+            matters most.
+          </motion.p>
+          <div className="grid grid-cols-3 gap-6 md:gap-10 mb-20">
+            {leaders.map((l, i) => (
               <motion.div
-                key={p.label}
-                initial={{ opacity: 0, y: 20 }}
+                key={l.name}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.12 }}
-                className="border border-cream/15 rounded-2xl p-8 flex flex-col shadow-[0_4px_16px_rgba(18,21,20,0.08)]"
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.08 }}
+                className="text-center"
               >
-                <p className="font-heading text-teal text-xs font-semibold tracking-widest uppercase mb-4">
-                  {p.label}
-                </p>
-                <p className="font-body text-cream/80 leading-relaxed mb-8 flex-1">{p.body}</p>
-                <Link
-                  href={p.href}
-                  className="font-heading text-sm font-semibold text-teal hover:underline"
-                >
-                  {p.button} &rarr;
-                </Link>
+                {l.photo ? (
+                  <img
+                    src={l.photo}
+                    alt={l.name}
+                    className="w-20 h-20 md:w-24 md:h-24 rounded-full mx-auto mb-4 object-cover object-top"
+                  />
+                ) : (
+                  <Placeholder label="Headshot" className="w-20 h-20 md:w-24 md:h-24 rounded-full mx-auto mb-4" />
+                )}
+                <p className="font-heading font-semibold text-sm">{l.name}</p>
+                <p className="font-heading text-xs text-teal tracking-wide leading-snug">{l.role}</p>
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* SECTION 6A: WHAT PARENTS ARE SAYING */}
-      <section className="max-w-4xl mx-auto w-full px-6 py-20 md:py-28">
-        <motion.h2 {...fadeUp} className="font-heading text-3xl md:text-4xl font-bold text-center mb-16">
-          What Parents Are Saying
-        </motion.h2>
-        <div className="space-y-14">
-          {parentQuotes.map((q, i) => (
-            <motion.div
-              key={q.name}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.1 }}
-              className="text-center border-b border-border-grey pb-14 last:border-0"
-            >
-              <p className="font-body italic text-xl md:text-2xl leading-relaxed mb-5">
-                &ldquo;{q.quote}&rdquo;
-              </p>
-              <div className="flex justify-center gap-1 mb-4">
-                {[...Array(5)].map((_, idx) => (
-                  <Star key={idx} className="w-4 h-4 text-teal fill-teal" />
-                ))}
-              </div>
-              <p className="font-heading font-semibold text-sm">{q.name}</p>
-              <p className="font-heading text-xs text-teal tracking-wide">{q.role}</p>
-            </motion.div>
-          ))}
+          <motion.h2 {...fadeUp} className="font-heading text-3xl md:text-4xl font-bold text-center mb-16">
+            What Parents Are Saying
+          </motion.h2>
+          <div className="space-y-14 max-w-4xl mx-auto">
+            {parentQuotes.map((q, i) => (
+              <motion.div
+                key={q.name}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.1 }}
+                className="text-center border-b border-border-grey pb-14 last:border-0"
+              >
+                <p className="font-body italic text-xl md:text-2xl leading-relaxed mb-5">
+                  &ldquo;{q.quote}&rdquo;
+                </p>
+                <div className="flex justify-center gap-1 mb-4">
+                  {[...Array(5)].map((_, idx) => (
+                    <Star key={idx} className="w-4 h-4 text-teal fill-teal" />
+                  ))}
+                </div>
+                <p className="font-heading font-semibold text-sm">{q.name}</p>
+                <p className="font-heading text-xs text-teal tracking-wide">{q.role}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -639,22 +467,6 @@ export default function Home() {
               </p>
             </div>
           </div>
-        </motion.div>
-      </section>
-
-      {/* SECTION 8: FINAL IMAGE + PRICING */}
-        <section className="max-w-6xl mx-auto w-full px-6 pt-10 pb-10">
-          <motion.h2 {...fadeUp} className="font-heading text-3xl md:text-4xl font-bold text-center mb-10 leading-tight">
-            The Game Will End.
-            <br />
-            The Relationship Won&apos;t.
-          </motion.h2>
-          <motion.div {...fadeUp}>
-            <img
-              src="/final-cta-photo.jpg"
-            alt="Father and son walking off the field together"
-            className="w-full h-auto max-h-[500px] object-cover object-top rounded-2xl"
-          />
         </motion.div>
       </section>
 
@@ -752,6 +564,59 @@ export default function Home() {
             </div>
           </motion.div>
         </div>
+      </section>
+
+      {/* SECTION: OTHER PATHS (DEMOTED PATHWAYS) */}
+      <section className="bg-ink text-cream py-16 md:py-24">
+        <div className="max-w-6xl mx-auto px-6">
+          <motion.div {...fadeUp} className="text-center mb-14">
+            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
+              Other paths.
+            </h2>
+            <p className="font-body text-cream/70 max-w-xl mx-auto leading-relaxed">
+              Every family enters from a different place. Start where it makes the most sense.
+            </p>
+          </motion.div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {pathways.map((p, i) => (
+              <motion.div
+                key={p.label}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.12 }}
+                className="border border-cream/15 rounded-2xl p-8 flex flex-col shadow-[0_4px_16px_rgba(18,21,20,0.08)]"
+              >
+                <p className="font-heading text-teal text-xs font-semibold tracking-widest uppercase mb-4">
+                  {p.label}
+                </p>
+                <p className="font-body text-cream/80 leading-relaxed mb-8 flex-1">{p.body}</p>
+                <Link
+                  href={p.href}
+                  className="font-heading text-sm font-semibold text-teal hover:underline"
+                >
+                  {p.button} &rarr;
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION: FINAL CLOSE */}
+      <section className="max-w-6xl mx-auto w-full px-6 pt-16 pb-16 md:pt-20 md:pb-20">
+        <motion.h2 {...fadeUp} className="font-heading text-3xl md:text-4xl font-bold text-center mb-10 leading-tight">
+          The Game Will End.
+          <br />
+          The Relationship Won&apos;t.
+        </motion.h2>
+        <motion.div {...fadeUp}>
+          <img
+            src="/final-cta-photo.jpg"
+            alt="Father and son walking off the field together"
+            className="w-full h-auto max-h-[500px] object-cover object-top rounded-2xl"
+          />
+        </motion.div>
       </section>
 
       <Footer />
