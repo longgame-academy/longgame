@@ -47,57 +47,6 @@ const pillars = [
   },
 ];
 
-const philosophyCards = [
-  {
-    title: "Hard Work Matters",
-    body: "Confidence is built through preparation and doing hard things—not comfort.",
-    emphasized: true,
-  },
-  {
-    title: "Failure Is Part of Growth",
-    body: "Failure is one of sport's greatest teachers, not something to rescue athletes from.",
-    emphasized: true,
-  },
-  {
-    title: "Relationships Build Better Competitors",
-    body: "Athletes compete with more freedom when support doesn't depend on the scoreboard.",
-    emphasized: false,
-  },
-  {
-    title: "Character Is the Real Win",
-    body: "If sport doesn't build resilient, confident people, it's missed its purpose.",
-    emphasized: false,
-  },
-];
-
-const moments = [
-  {
-    title: "After the Tough Game",
-    body: "Knowing what to say when emotions are high, and what to leave for another day.",
-    image: "/moment-tough-game.jpg",
-  },
-  {
-    title: "When Confidence Disappears",
-    body: "Helping athletes rebuild belief without adding more pressure.",
-    image: "/moment-confidence.jpg",
-  },
-  {
-    title: "When Your Athlete Wants to Quit",
-    body: "Separating a difficult day from a decision they may remember for years.",
-    image: "/moment-quit.jpg",
-  },
-  {
-    title: "When Dealing with Coaches Becomes Difficult",
-    body: "Responding with perspective instead of emotion.",
-    image: "/moment-coaches.jpg",
-  },
-  {
-    title: "When Sports Start Affecting Life at Home",
-    body: "Keeping your family connected, even during the hardest seasons.",
-    image: "/moment-home.jpg",
-  },
-];
-
 const pathways = [
   {
     label: "FOR PARENTS",
@@ -573,8 +522,52 @@ export default function Home() {
         </motion.div>
       </section>
 
-      <section className="w-full py-4 md:py-8">
-        <div className="max-w-6xl mx-auto px-5 md:px-6">
+      {/* SECTION 8: WHAT'S INSIDE */}
+      <section className="bg-cream py-16 md:py-24">
+        <div className="max-w-6xl mx-auto px-6">
+          <motion.div {...fadeUp} className="text-center mb-14">
+            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
+              What&apos;s Inside
+            </h2>
+            <p className="font-body text-text-body max-w-xl mx-auto leading-relaxed">
+              A look at the system, on the device you&apos;ll actually use it on.
+            </p>
+          </motion.div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { label: "Module Library", image: "/parent-portal-phone.png" },
+              { label: "Worksheets", image: "/org-family-access.png" },
+              { label: "Glove Box Cards", image: "/org-admin-phones.png" },
+            ].map((item, i) => (
+              <motion.div
+                key={item.label}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.12 }}
+                className="text-center"
+              >
+                <img
+                  src={item.image}
+                  alt={item.label}
+                  className="w-full h-auto max-w-[280px] mx-auto mb-4"
+                />
+                <p className="font-heading text-sm font-semibold text-charcoal">{item.label}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing" className="w-full py-4 md:py-8">
+        <div className="max-w-6xl mx-auto px-5 md:px-6 grid md:grid-cols-2 gap-8 items-center">
+          <motion.div {...fadeUp} className="hidden md:block">
+            <img
+              src="/parent-portal-phone.png"
+              alt="Parent Academy on mobile"
+              className="w-full h-auto max-w-[380px] mx-auto"
+            />
+          </motion.div>
           <motion.div
             {...fadeUp}
             className="bg-ink text-cream rounded-[24px] max-w-[520px] mx-auto p-6 md:p-8"
@@ -609,9 +602,6 @@ export default function Home() {
             >
               Get the Parent Academy &rarr;
             </Link>
-            <p className="text-center font-body text-[11px] text-cream/60 mb-3">
-              &check; Secure Checkout &nbsp; &check; Instant Access &nbsp; &check; One-Time Purchase
-            </p>
             <Link
               href="/parent-academy"
               className="block text-center font-heading text-xs font-semibold text-teal hover:underline mb-6"
