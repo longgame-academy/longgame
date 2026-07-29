@@ -1,9 +1,10 @@
 ﻿"use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Shield, MessageCircle, TrendingUp, Heart, Star } from "lucide-react";
 import QuizSection from "@/components/QuizSection";
 
@@ -134,7 +135,96 @@ const stats = [
   },
 ];
 
+const faqs = [
+  {
+    q: "Who is the Parent Academy designed for?",
+    a: "The Parent Academy was created for parents of athletes of all ages and across all sports. Whether your child is just beginning or competing at a high level, the principles inside are designed to help you navigate the challenges of youth sports.",
+  },
+  {
+    q: "Is the Parent Academy for all sports?",
+    a: "Yes. While many stories come from baseball, the principles apply across every youth sport. Confidence, communication, pressure, setbacks, motivation, burnout, and protecting the parent-athlete relationship are universal.",
+  },
+  {
+    q: "How do I access the Parent Academy?",
+    a: "You'll receive immediate access through your secure online account after purchase.",
+  },
+  {
+    q: "Can I print the Parent Guide?",
+    a: "Yes. The Parent Guide is provided as a fillable PDF that can also be printed.",
+  },
+  {
+    q: "Is this a subscription?",
+    a: "No. Your initial purchase is a one-time payment that gives you permanent access to the Parent Academy you purchase today. Future resources or programs may be offered separately.",
+  },
+  {
+    q: "Will new content be added?",
+    a: "Yes. As new resources are created, you'll be notified by email. Some future content may be offered separately or through membership options.",
+  },
+  {
+    q: "What if I'm not satisfied?",
+    a: "Contact us within 30 days of purchase for a full refund.",
+  },
+  {
+    q: "Do I have to complete the Parent Academy in order?",
+    a: "No. The Parent Academy is designed to be practical, not prescriptive. While each module builds on the last, you can start wherever your family needs the most support right now. Whether you're navigating confidence, communication, pressure, or the car ride home, simply begin there and come back to the other modules when you're ready.",
+  },
+];
+
+function Accordion({
+  items,
+  openIndex,
+  setOpenIndex,
+}: {
+  items: { title?: string; q?: string; body?: string; a?: string }[];
+  openIndex: number | null;
+  setOpenIndex: (i: number | null) => void;
+}) {
+  return (
+    <div className="space-y-3">
+      {items.map((item, i) => {
+        const isOpen = openIndex === i;
+        return (
+          <div key={i} className="border border-border-grey rounded-2xl overflow-hidden bg-cream shadow-[0_4px_16px_rgba(18,21,20,0.08)]">
+            <button
+              onClick={() => setOpenIndex(isOpen ? null : i)}
+              className="w-full text-left px-6 py-5 flex justify-between items-center gap-4"
+            >
+              <span className="font-heading font-semibold text-base">
+                {item.title || item.q}
+              </span>
+              <span
+                className={`font-heading text-teal text-xl transition-transform ${
+                  isOpen ? "rotate-45" : ""
+                }`}
+              >
+                +
+              </span>
+            </button>
+            <AnimatePresence initial={false}>
+              {isOpen && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                  className="overflow-hidden"
+                >
+                  <p className="font-body text-sm text-text-body leading-relaxed px-6 pb-6">
+                    {item.body || item.a}
+                  </p>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 export default function Home() {
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
   return (
     <main className="flex flex-col min-h-screen bg-background text-charcoal">
       <Nav />
@@ -201,7 +291,7 @@ export default function Home() {
       {/* SECTION 2: YOUTH SPORTS HAVE CHANGED */}
       <section className="max-w-7xl mx-auto w-full px-6 py-16 md:py-24 grid md:grid-cols-5 gap-12 items-center">
         <motion.div {...fadeUp} className="md:col-span-3">
-          <img src="/youth-sports-changed.jpg" alt="Youth sports have changed" className="w-full h-auto aspect-[4/3] object-cover rounded-lg" />
+          <img src="/athlete-reflection.jpg" alt="Young athlete reflecting quietly in the locker room" className="w-full h-auto aspect-[4/3] object-cover rounded-lg" />
         </motion.div>
         <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.15 }}>
           <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase mb-4">
@@ -426,48 +516,11 @@ export default function Home() {
       
 
       {/* SECTION 6.5: FAQ */}
-      <section className="bg-cream py-16 md:py-24">
-        <div className="max-w-3xl mx-auto px-6">
-          <motion.h2 {...fadeUp} className="font-heading text-3xl md:text-4xl font-bold text-center mb-14">
-            Frequently Asked Questions
-          </motion.h2>
-          <div className="space-y-10">
-            {[
-              {
-                q: "Is this a course I have to keep up with?",
-                a: "No. It's built to open to the exact page you need, not a schedule to fall behind on.",
-              },
-              {
-                q: "Does this work for my sport?",
-                a: "Yes. Every module is built around the parent, not the sport.",
-              },
-              {
-                q: "What ages is this built for?",
-                a: "8 to 18. Different modules matter more at different ages; the core system doesn't change.",
-              },
-              {
-                q: "What do I actually get?",
-                a: "Twelve modules, 165+ pages, worksheets, and scripts—instant access, yours for good.",
-              },
-              {
-                q: "Is there a guarantee?",
-                a: "[CONFIRM ACTUAL POLICY BEFORE LAUNCH]",
-              },
-            ].map((item, i) => (
-              <motion.div
-                key={item.q}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.06 }}
-                className="border-b border-border-grey pb-8 last:border-0"
-              >
-                <h3 className="font-heading text-lg font-semibold mb-2">{item.q}</h3>
-                <p className="font-body text-text-body leading-relaxed">{item.a}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
+      <section className="max-w-3xl mx-auto w-full px-6 py-20">
+        <h2 className="font-heading text-2xl md:text-3xl font-bold text-center mb-12">
+          Common Questions
+        </h2>
+        <Accordion items={faqs} openIndex={openFaq} setOpenIndex={setOpenFaq} />
       </section>
 
       {/* SECTION 7: BUILT FROM EXPERIENCE. CREATED WITH PURPOSE. */}
@@ -662,6 +715,36 @@ export default function Home() {
         </div>
       </section>
 
+      {/* SECTION: BUILT FOR THE LONG GAME (TRUST/PAYMENT BADGES) */}
+      <section className="bg-background py-16 md:py-20">
+        <div className="max-w-2xl mx-auto px-6 text-center">
+          <motion.h2 {...fadeUp} className="font-heading text-3xl md:text-4xl font-bold mb-4">
+            Built for the Long Game
+          </motion.h2>
+          <motion.div {...fadeUp} className="w-12 h-0.5 bg-teal mx-auto mb-8" />
+          <motion.p {...fadeUp} className="font-body text-text-body leading-relaxed mb-10">
+            You&apos;re making an investment in the relationship that matters
+            most. Get instant access today, and if you&apos;re not completely
+            satisfied within 30 days, we&apos;ll make it right.
+          </motion.p>
+          <motion.div {...fadeUp} className="flex flex-wrap justify-center items-center gap-4">
+            <span className="border border-border-grey rounded-lg px-5 py-3 font-heading font-bold italic text-[#1A1F71] text-sm bg-white">
+              VISA
+            </span>
+            <span className="bg-[#1A1A1A] rounded-lg px-5 py-3 flex items-center">
+              <span className="w-4 h-4 rounded-full bg-[#EB001B]" />
+              <span className="w-4 h-4 rounded-full bg-[#F79E1B] -ml-2" />
+            </span>
+            <span className="bg-[#1F72CD] text-white rounded-lg px-5 py-3 font-heading font-bold text-sm">
+              AMEX
+            </span>
+            <span className="bg-[#635BFF] text-white rounded-lg px-5 py-3 font-heading font-bold text-sm">
+              stripe
+            </span>
+          </motion.div>
+        </div>
+      </section>
+
       {/* SECTION: OTHER PATHS (DEMOTED PATHWAYS) */}
       <section className="bg-ink text-cream py-16 md:py-24">
         <div className="max-w-6xl mx-auto px-6">
@@ -708,8 +791,8 @@ export default function Home() {
         </motion.h2>
         <motion.div {...fadeUp}>
           <img
-            src="/final-cta-photo.jpg"
-            alt="Father and son walking off the field together"
+            src="/duffel-bag-stadium.jpg"
+            alt="Duffel bag left on a wet stadium parking lot at night"
             className="w-full h-auto max-h-[500px] object-cover object-top rounded-2xl"
           />
         </motion.div>

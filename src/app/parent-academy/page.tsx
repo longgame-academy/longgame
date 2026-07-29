@@ -197,6 +197,99 @@ export default function ParentAcademyPage() {
         </div>
       </section>
 
+      {/* SECTION 1.5: PRICING CARD (DUPLICATE, TOP) */}
+      <section id="pricing-top" className="max-w-lg mx-auto w-full px-6 py-20">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="bg-ink text-cream rounded-[24px] p-6 md:p-8"
+        >
+          <p className="font-heading text-teal text-[11px] font-semibold tracking-widest uppercase mb-3">
+            The Parent Academy
+          </p>
+          <h2 className="font-heading text-2xl md:text-3xl font-bold mb-3 leading-tight">
+            Everything You Need to Parent the Long Game
+          </h2>
+          <p className="font-body text-sm text-cream/70 leading-relaxed mb-6">
+            Practical guidance for sports parents who want to build
+            confident, resilient athletes while protecting the
+            relationship that matters most.
+          </p>
+
+          <div className="flex items-end gap-2 mb-1">
+            <span className="font-heading text-4xl font-bold">$97</span>
+            <span className="font-heading text-xs text-cream/60 mb-1.5">USD</span>
+          </div>
+          <p className="font-heading text-teal text-[11px] font-semibold tracking-widest uppercase mb-1">
+            Founding Member Price
+          </p>
+          <p className="font-body text-xs text-cream/60 mb-6">
+            One-time payment &middot; Regular price{" "}
+            <span className="line-through">$147</span>
+          </p>
+
+          <CheckoutButton className="flex items-center justify-center gap-2 bg-cream text-ink font-heading font-semibold text-sm px-6 py-3 rounded-lg hover:bg-cream/90 transition-colors mb-3 w-full" />
+          <a
+            href="#modules"
+            className="block text-center font-heading text-xs font-semibold text-teal hover:underline mb-6"
+          >
+            See Everything Included &rarr;
+          </a>
+
+          <div className="border-t border-cream/10 pt-2 mb-6">
+            <p className="font-heading text-teal text-[11px] font-semibold tracking-widest uppercase mb-2">
+              Included
+            </p>
+            <ul className="font-body text-sm space-y-0">
+              {[
+                "12 practical parent-development modules",
+                "165+ pages of proven guidance",
+                "Fillable worksheets & reflection pages",
+                "Confidence, pressure & resilience strategies",
+                "Practical scripts for difficult conversations",
+                "Immediate access on all devices",
+                "Lifetime access & future updates",
+                "Works for all sports and competitive levels",
+              ].map((item) => (
+                <li
+                  key={item}
+                  className="flex items-center gap-2.5 py-2 border-b border-cream/10 last:border-0"
+                >
+                  <span className="text-teal">&#10003;</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="border-t border-cream/10 pt-4 mb-6">
+            <p className="font-heading text-teal text-[11px] font-semibold tracking-widest uppercase mb-2">
+              Bonus
+            </p>
+            <p className="font-heading text-sm font-semibold mb-1">
+              Long Game Glove Box Cards
+            </p>
+            <p className="font-body text-xs text-cream/60 leading-relaxed">
+              Quick reminders and conversation starters for the moments
+              that matter most.
+            </p>
+          </div>
+
+          <p className="font-body text-xs text-cream/60 border-t border-cream/10 pt-4 mb-4">
+            Designed for parents of athletes ages 8&ndash;18 across every
+            competitive sport.
+          </p>
+
+          <div className="flex flex-wrap gap-x-4 gap-y-1.5 text-[11px] font-body text-cream/60">
+            <span className="flex items-center gap-1.5"><span className="text-teal">&#10003;</span> Secure Checkout</span>
+            <span className="flex items-center gap-1.5"><span className="text-teal">&#10003;</span> Instant Access</span>
+            <span className="flex items-center gap-1.5"><span className="text-teal">&#10003;</span> One-Time Purchase</span>
+          </div>
+        </motion.div>
+      </section>
+
       {/* SECTION 2: EXPLORE THE PARENT ACADEMY */}
       <section id="modules" className="max-w-3xl mx-auto w-full px-6 py-20">
         <h2 className="font-heading text-2xl md:text-3xl font-bold text-center mb-6">
@@ -227,18 +320,96 @@ export default function ParentAcademyPage() {
       </section>
 
       {/* SECTION 4: ENROLL */}
-      <section className="max-w-lg mx-auto w-full px-6 py-20 text-center">
-        <div className="bg-cream border border-border-grey rounded-2xl p-10 shadow-[0_6px_20px_rgba(18,21,20,0.10)]">
-          <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase mb-2">
-            Parent Academy
+      <section id="pricing" className="max-w-lg mx-auto w-full px-6 py-20">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="bg-ink text-cream rounded-[24px] p-6 md:p-8"
+        >
+          <p className="font-heading text-teal text-[11px] font-semibold tracking-widest uppercase mb-3">
+            The Parent Academy
           </p>
-          <p className="font-heading text-4xl font-bold mb-4">$147 USD</p>
-          <p className="font-body text-sm text-text-body mb-8">
-            One-time payment. Permanent access to the Parent Academy included
-            with your purchase.
+          <h2 className="font-heading text-2xl md:text-3xl font-bold mb-3 leading-tight">
+            Everything You Need to Parent the Long Game
+          </h2>
+          <p className="font-body text-sm text-cream/70 leading-relaxed mb-6">
+            Practical guidance for sports parents who want to build
+            confident, resilient athletes while protecting the
+            relationship that matters most.
           </p>
-          <CheckoutButton className="inline-flex items-center gap-2 bg-ink text-cream font-heading font-semibold px-8 py-3 rounded-lg hover:bg-charcoal transition-colors w-full justify-center" />
-        </div>
+
+          <div className="flex items-end gap-2 mb-1">
+            <span className="font-heading text-4xl font-bold">$97</span>
+            <span className="font-heading text-xs text-cream/60 mb-1.5">USD</span>
+          </div>
+          <p className="font-heading text-teal text-[11px] font-semibold tracking-widest uppercase mb-1">
+            Founding Member Price
+          </p>
+          <p className="font-body text-xs text-cream/60 mb-6">
+            One-time payment &middot; Regular price{" "}
+            <span className="line-through">$147</span>
+          </p>
+          
+          <CheckoutButton className="flex items-center justify-center gap-2 bg-cream text-ink font-heading font-semibold text-sm px-6 py-3 rounded-lg hover:bg-cream/90 transition-colors mb-3 w-full" />
+          <a
+            href="#modules"
+            className="block text-center font-heading text-xs font-semibold text-teal hover:underline mb-6"
+          >
+            See Everything Included &rarr;
+          </a>
+
+          <div className="border-t border-cream/10 pt-2 mb-6">
+            <p className="font-heading text-teal text-[11px] font-semibold tracking-widest uppercase mb-2">
+              Included
+            </p>
+            <ul className="font-body text-sm space-y-0">
+              {[
+                "12 practical parent-development modules",
+                "165+ pages of proven guidance",
+                "Fillable worksheets & reflection pages",
+                "Confidence, pressure & resilience strategies",
+                "Practical scripts for difficult conversations",
+                "Immediate access on all devices",
+                "Lifetime access & future updates",
+                "Works for all sports and competitive levels",
+              ].map((item) => (
+                <li
+                  key={item}
+                  className="flex items-center gap-2.5 py-2 border-b border-cream/10 last:border-0"
+                >
+                  <span className="text-teal">&#10003;</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="border-t border-cream/10 pt-4 mb-6">
+            <p className="font-heading text-teal text-[11px] font-semibold tracking-widest uppercase mb-2">
+              Bonus
+            </p>
+            <p className="font-heading text-sm font-semibold mb-1">
+              Long Game Glove Box Cards
+            </p>
+            <p className="font-body text-xs text-cream/60 leading-relaxed">
+              Quick reminders and conversation starters for the moments
+              that matter most.
+            </p>
+          </div>
+
+          <p className="font-body text-xs text-cream/60 border-t border-cream/10 pt-4 mb-4">
+            Designed for parents of athletes ages 8&ndash;18 across every
+            competitive sport.
+          </p>
+
+          <div className="flex flex-wrap gap-x-4 gap-y-1.5 text-[11px] font-body text-cream/60">
+            <span className="flex items-center gap-1.5"><span className="text-teal">&#10003;</span> Secure Checkout</span>
+            <span className="flex items-center gap-1.5"><span className="text-teal">&#10003;</span> Instant Access</span>
+            <span className="flex items-center gap-1.5"><span className="text-teal">&#10003;</span> One-Time Purchase</span>
+          </div>
+        </motion.div>
       </section>
 
       {/* SECTION 5: FAQ */}

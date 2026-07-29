@@ -4,7 +4,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import FreeGuideForm from "@/components/FreeGuideForm";
 import { motion } from "framer-motion";
-import { MessageCircle, Brain, Heart, Check } from "lucide-react";
+import { MessageCircle, Brain, Heart } from "lucide-react";
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -31,15 +31,7 @@ const features = [
   },
 ];
 
-const checklist = [
-  "Why the first five minutes matter",
-  "What to say after a difficult game",
-  "What to say after a great game",
-  "Questions that build confidence",
-  "Questions to avoid",
-  "The Glovebox Card",
-  "Practical conversations you can use immediately",
-];
+
 
 export default function FreeGuidePage() {
   return (
@@ -108,21 +100,88 @@ export default function FreeGuidePage() {
         </div>
       </section>
 
-      {/* SECTION 3 - INSIDE THE GUIDE */}
-      <section className="bg-cream w-full">
-        <div className="max-w-2xl mx-auto w-full px-6 py-20 md:py-28">
-          <motion.h2 {...fadeUp} className="font-heading text-3xl md:text-4xl font-bold text-center mb-12">
-            Inside the Guide
-          </motion.h2>
-          <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.1 }} className="space-y-4">
-            {checklist.map((item) => (
-              <div key={item} className="flex items-center gap-3">
-                <span className="w-6 h-6 rounded-full bg-teal/10 flex items-center justify-center flex-shrink-0">
-                  <Check className="w-4 h-4 text-teal" strokeWidth={2.5} />
-                </span>
-                <p className="font-body text-text-body">{item}</p>
-              </div>
-            ))}
+      {/* SECTION 3 - FREE GUIDE CARD (Parent Academy Pricing Card Style) */}
+      <section className="w-full py-16 md:py-20">
+        <div className="max-w-lg mx-auto px-6">
+          <motion.div
+            {...fadeUp}
+            className="bg-ink text-cream rounded-[24px] p-6 md:p-8"
+          >
+            <p className="font-heading text-teal text-[11px] font-semibold tracking-widest uppercase mb-3">
+              Free Parent Guide
+            </p>
+            <h2 className="font-heading text-2xl md:text-3xl font-bold mb-3 leading-tight">
+              Everything You Need for the Car Ride Home
+            </h2>
+            <p className="font-body text-sm text-cream/70 leading-relaxed mb-6">
+              One conversation after the game can shape your athlete&apos;s
+              confidence for years. Learn exactly what to say, what to
+              avoid, and how to turn every drive home into an opportunity
+              to strengthen your relationship.
+            </p>
+
+            <div className="flex items-end gap-2 mb-1">
+              <span className="font-heading text-4xl font-bold">Free</span>
+            </div>
+            <p className="font-body text-xs text-cream/60 mb-6">
+              No cost &middot; Instant PDF download
+            </p>
+
+            <a
+              href="#download"
+              className="flex items-center justify-center gap-2 bg-cream text-ink font-heading font-semibold text-sm px-6 py-3 rounded-lg hover:bg-cream/90 transition-colors mb-3"
+            >
+              Get the Free Guide &rarr;
+            </a>
+            <a
+              href="#download"
+              className="block text-center font-heading text-xs font-semibold text-teal hover:underline mb-6"
+            >
+              See Everything Included &rarr;
+            </a>
+
+            <div className="border-t border-cream/10 pt-2 mb-6">
+              <p className="font-heading text-teal text-[11px] font-semibold tracking-widest uppercase mb-2">
+                Inside the Guide
+              </p>
+              <ul className="font-body text-sm space-y-0">
+                {[
+                  "Why the first five minutes matter most",
+                  "Exactly what to say after great games and difficult games",
+                  "Questions that build confidence—and the ones to avoid",
+                  "Practical conversation scripts you can use immediately",
+                  "How to respond when your athlete is frustrated, quiet, or discouraged",
+                  "A simple framework that protects confidence and your relationship",
+                  "Works for every sport and every competitive level",
+                ].map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-center gap-2.5 py-2 border-b border-cream/10 last:border-0"
+                  >
+                    <span className="text-teal">&#10003;</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="border-t border-cream/10 pt-4 mb-6">
+              <p className="font-heading text-teal text-[11px] font-semibold tracking-widest uppercase mb-2">
+                Bonus
+              </p>
+              <p className="font-heading text-sm font-semibold mb-1">
+                Printable Glove Box Card
+              </p>
+              <p className="font-body text-xs text-cream/60 leading-relaxed">
+                Keep the most important reminders in your vehicle so
+                you&apos;ll always know what to say when emotions are high.
+              </p>
+            </div>
+
+            <p className="font-body text-xs text-cream/60 border-t border-cream/10 pt-4">
+              20&ndash;25 minute read &middot; Instant PDF download &middot;
+              Practical conversations you can use after your very next game
+            </p>
           </motion.div>
         </div>
       </section>
