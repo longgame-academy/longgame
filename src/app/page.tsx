@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { Shield, MessageCircle, TrendingUp, Heart, Star } from "lucide-react";
 import QuizSection from "@/components/QuizSection";
 
@@ -28,22 +28,26 @@ function Placeholder({ label, className = "" }: { label: string; className?: str
 const pillars = [
   {
     title: "Build Confidence",
-    body: "Helping athletes develop confidence that lasts longer than a great game or a winning season.",
+    hard: "Confidence isn't built by comfort. It's earned through hard work, real failure, and wins nobody handed them.",
+    helps: "Long Game shows you when to step back and when to push.",
     icon: Shield,
   },
   {
     title: "Strengthen Communication",
-    body: "Creating better conversations before practice, after games, and in the moments that matter most.",
+    hard: "That inner voice isn't theirs alone. It's built from every car ride, every sideline comment, every word you've ever said.",
+    helps: "Long Game gives you the scripts for the conversations that shape it.",
     icon: MessageCircle,
   },
   {
     title: "Develop Resilience",
-    body: "Helping families navigate setbacks, mistakes, pressure, and adversity with perspective and purpose.",
+    hard: "Failure isn't the opposite of development. It's development. That's sport — not a setback.",
+    helps: "Long Game gives you the process — feel it, reflect on it, learn from it.",
     icon: TrendingUp,
   },
   {
     title: "Protect the Relationship",
-    body: "Because one day the games will end, but your relationship with your athlete is just getting started.",
+    hard: "What's left after the games end isn't the scoreboard. It's whatever relationship you actually built along the way.",
+    helps: "Long Game helps you build it while there's still time.",
     icon: Heart,
   },
 ];
@@ -224,6 +228,7 @@ function Accordion({
 
 export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const reduceMotion = useReducedMotion();
 
   return (
     <main className="flex flex-col min-h-screen bg-background text-charcoal">
@@ -320,42 +325,8 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* SECTION 2.5: WHAT WE BELIEVE (MERGED PHILOSOPHY) */}
-      <section className="bg-white w-full">
-        <div className="max-w-7xl mx-auto w-full px-6 py-16 md:py-24">
-          <motion.div {...fadeUp} className="text-center max-w-2xl mx-auto mb-16">
-            <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase mb-4">
-              Our Philosophy
-            </p>
-            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6 leading-tight">
-              We don&apos;t believe in lowering the standard.
-              <br />
-              We believe in changing how parents help young athletes rise to it.
-            </h2>
-            <p className="font-body text-text-body leading-relaxed">
-              Long Game isn&apos;t about making sports easier—it&apos;s about helping parents become the steady presence that supports young athletes through hard work, failure, and pressure.
-            </p>
-          </motion.div>
-          <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
-            {pillars.map((p, i) => (
-              <motion.div
-                key={p.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.1 }}
-                className="bg-background border border-border-grey rounded-2xl p-8 shadow-[0_4px_16px_rgba(18,21,20,0.08)] text-left"
-              >
-                <div className="w-14 h-14 rounded-2xl bg-teal/10 flex items-center justify-center mb-4">
-                  <p.icon className="w-7 h-7 text-teal" strokeWidth={1.5} />
-                </div>
-                <h3 className="font-heading text-lg font-semibold mb-3">{p.title}</h3>
-                <p className="font-body text-sm text-text-body leading-relaxed">{p.body}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* SECTION 4: THE QUIZ — FIND YOUR MOMENT (moved up) */}
+      <QuizSection />
 
       {/* SECTION 3.5: THE REALITY PARENTS ARE FACING */}
       <section className="pt-4 pb-16 md:pt-8 md:pb-24" style={{ backgroundColor: "#F1F3F2" }}>
@@ -406,8 +377,57 @@ export default function Home() {
         </div>
       </section>
       
-      {/* SECTION 4: THE QUIZ — FIND YOUR MOMENT */}
-      <QuizSection />
+      {/* SECTION 2.5: WHAT WE BELIEVE (rebuilt, moved down) */}
+      <section className="bg-white w-full">
+        <div className="max-w-7xl mx-auto w-full px-6 py-16 md:py-24">
+          <motion.div {...fadeUp} className="text-center max-w-2xl mx-auto mb-16">
+            <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase mb-4">
+              Our Philosophy
+            </p>
+            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6 leading-tight">
+              We don&apos;t believe in lowering the standard.
+              <br />
+              We believe in changing how parents help young athletes rise to it.
+            </h2>
+            <p className="font-body text-text-body leading-relaxed">
+              Long Game isn&apos;t about making sports easier &mdash; it&apos;s about helping
+              you guide your athlete through the hard parts, not around them.
+            </p>
+          </motion.div>
+          <div className="grid md:grid-cols-2 gap-5 max-w-3xl mx-auto">
+            {pillars.map((p, i) => (
+              <motion.div
+                key={p.title}
+                initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.5, ease: "easeOut", delay: reduceMotion ? 0 : i * 0.09 }}
+                className="bg-white border border-border-grey rounded-md p-7 text-left transition-colors hover:border-teal hover:shadow-[0_4px_16px_rgba(18,21,20,0.08)]"
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-9 h-9 rounded-full bg-background flex items-center justify-center shrink-0">
+                    <p.icon className="w-4 h-4 text-teal" strokeWidth={2} aria-hidden="true" />
+                  </div>
+                  <h3 className="font-heading text-lg font-semibold">{p.title}</h3>
+                </div>
+                <p className="font-body italic text-sm text-charcoal/70 leading-relaxed mb-3">
+                  {p.hard}
+                </p>
+                <motion.div
+                  initial={reduceMotion ? false : { scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={{ duration: 0.4, ease: "easeOut", delay: reduceMotion ? 0 : i * 0.09 + 0.15 }}
+                  className="w-7 h-0.5 bg-teal origin-left mb-3"
+                />
+                <p className="font-heading font-bold text-charcoal leading-snug">
+                  <span className="text-teal">&rarr;</span> {p.helps}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* SECTION 6: THE SIGNATURE IDEA — THE LONG GAME PRINCIPLE */}
       <section className="bg-ink text-cream py-16 md:py-24">
@@ -446,47 +466,19 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 5: PROOF (LEADERS + TESTIMONIALS CONSOLIDATED) */}
+      {/* SECTION 5: PROOF (merged, one heading) */}
       <section className="bg-cream py-16 md:py-24">
         <div className="max-w-5xl mx-auto px-6 text-center">
-          <motion.h2 {...fadeUp} className="font-heading text-2xl md:text-3xl font-bold mb-3">
-            Trusted by leaders in sport.
+          <motion.h2 {...fadeUp} className="font-heading text-3xl md:text-4xl font-bold mb-3">
+            What Parents Are Saying
           </motion.h2>
           <motion.p
             {...fadeUp}
             transition={{ ...fadeUp.transition, delay: 0.05 }}
-            className="font-body text-text-body mb-12 max-w-md mx-auto"
+            className="font-body text-text-body mb-16 max-w-md mx-auto"
           >
-            Experienced coaches, scouts and leaders who understand what
-            matters most.
+            Trusted by sports parents &mdash; and the coaches, scouts, and leaders who know what matters most.
           </motion.p>
-          <div className="grid grid-cols-3 gap-6 md:gap-10 mb-20">
-            {leaders.map((l, i) => (
-              <motion.div
-                key={l.name}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.08 }}
-                className="text-center"
-              >
-                {l.photo ? (
-                  <img
-                    src={l.photo}
-                    alt={l.name}
-                    className="w-20 h-20 md:w-24 md:h-24 rounded-full mx-auto mb-4 object-cover object-top"
-                  />
-                ) : (
-                  <Placeholder label="Headshot" className="w-20 h-20 md:w-24 md:h-24 rounded-full mx-auto mb-4" />
-                )}
-                <p className="font-heading font-semibold text-sm">{l.name}</p>
-                <p className="font-heading text-xs text-teal tracking-wide leading-snug">{l.role}</p>
-              </motion.div>
-            ))}
-          </div>
-          <motion.h2 {...fadeUp} className="font-heading text-3xl md:text-4xl font-bold text-center mb-16">
-            What Parents Are Saying
-          </motion.h2>
           <div className="space-y-14 max-w-4xl mx-auto">
             {parentQuotes.map((q, i) => (
               <motion.div
@@ -510,69 +502,31 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
+          <div className="grid grid-cols-3 gap-6 md:gap-10 pt-14 mt-14 border-t border-border-grey max-w-3xl mx-auto">
+            {leaders.map((l, i) => (
+              <motion.div
+                key={l.name}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.08 }}
+                className="text-center"
+              >
+                {l.photo ? (
+                  <img
+                    src={l.photo}
+                    alt={l.name}
+                    className="w-20 h-20 md:w-24 md:h-24 rounded-full mx-auto mb-4 object-cover object-top"
+                  />
+                ) : (
+                  <Placeholder label="Headshot" className="w-20 h-20 md:w-24 md:h-24 rounded-full mx-auto mb-4" />
+                )}
+                <p className="font-heading font-semibold text-sm">{l.name}</p>
+                <p className="font-heading text-xs text-teal tracking-wide leading-snug">{l.role}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
-      </section>
-
-      
-
-      {/* SECTION 6.5: FAQ */}
-      <section className="max-w-3xl mx-auto w-full px-6 py-20">
-        <h2 className="font-heading text-2xl md:text-3xl font-bold text-center mb-12">
-          Common Questions
-        </h2>
-        <Accordion items={faqs} openIndex={openFaq} setOpenIndex={setOpenFaq} />
-      </section>
-
-      {/* SECTION 7: BUILT FROM EXPERIENCE. CREATED WITH PURPOSE. */}
-      <section className="max-w-6xl mx-auto w-full px-6 py-20 md:py-28 grid md:grid-cols-2 gap-14 items-center">
-        <motion.div {...fadeUp}>
-          <Placeholder label="Documentary Photo" className="aspect-[4/3] rounded-lg" />
-        </motion.div>
-        <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.15 }}>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6 leading-tight">
-            Built from experience.
-            <br />
-            Created with purpose.
-          </h2>
-          <div className="font-body text-text-body leading-relaxed mb-8">
-            <p className="mb-4">
-              Long Game wasn&apos;t built in a boardroom—it came from years coaching young athletes and walking alongside sports families through the same conversations, again and again.
-            </p>
-            <p className="font-semibold text-charcoal">
-              Long Game exists because families deserve support too.
-            </p>
-          </div>
-          <p className="font-heading font-semibold">Shawn Dixon</p>
-          <p className="font-body text-sm text-text-muted mb-8">
-            Coach &middot; Parent &middot; Author
-            <br />
-            Author of <span className="italic">Raising an Athlete: Built for the Long Game</span>
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 border-t border-border-grey pt-8">
-            <div>
-              <p className="font-heading text-sm font-semibold mb-1">Years of Coaching</p>
-              <p className="font-body text-xs text-text-muted">
-                Helping young athletes and sports families navigate the youth
-                sports journey.
-              </p>
-            </div>
-            <div>
-              <p className="font-heading text-sm font-semibold mb-1">
-                Amazon #1 Best Selling Author
-              </p>
-              <p className="font-body text-xs text-text-muted">
-                Raising an Athlete: Built for the Long Game.
-              </p>
-            </div>
-            <div>
-              <p className="font-heading text-sm font-semibold mb-1">Built for Sports Families</p>
-              <p className="font-body text-xs text-text-muted">
-                Created to support parents, athletes, teams, and organizations
-                through every stage of the journey.
-              </p>
-            </div>
-          </div>
-        </motion.div>
       </section>
 
       {/* SECTION 8: WHAT'S INSIDE */}
@@ -615,12 +569,12 @@ export default function Home() {
       </section>
 
       <section id="pricing" className="w-full py-4 md:py-8">
-        <div className="max-w-6xl mx-auto px-5 md:px-6 grid md:grid-cols-2 gap-8 items-center">
-          <motion.div {...fadeUp} className="hidden md:block">
+        <div className="max-w-lg mx-auto px-5 md:px-6">
+          <motion.div {...fadeUp} className="hidden md:block mb-8">
             <img
               src="/parent-portal-phone.png"
               alt="Parent Academy on mobile"
-              className="w-full h-auto max-w-[380px] mx-auto"
+              className="w-full h-auto max-w-[280px] mx-auto"
             />
           </motion.div>
           <motion.div
@@ -784,6 +738,66 @@ export default function Home() {
         </div>
       </section>
 
+      {/* SECTION 6.5: FAQ (moved here) */}
+      <section className="max-w-3xl mx-auto w-full px-6 py-20">
+        <h2 className="font-heading text-2xl md:text-3xl font-bold text-center mb-12">
+          Common Questions
+        </h2>
+        <Accordion items={faqs} openIndex={openFaq} setOpenIndex={setOpenFaq} />
+      </section>
+
+      {/* SECTION 7: BUILT FROM EXPERIENCE. CREATED WITH PURPOSE. (moved here) */}
+      <section className="max-w-6xl mx-auto w-full px-6 py-20 md:py-28 grid md:grid-cols-2 gap-14 items-center">
+        <motion.div {...fadeUp}>
+          <Placeholder label="Documentary Photo" className="aspect-[4/3] rounded-lg" />
+        </motion.div>
+        <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.15 }}>
+          <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6 leading-tight">
+            Built from experience.
+            <br />
+            Created with purpose.
+          </h2>
+          <div className="font-body text-text-body leading-relaxed mb-8">
+            <p className="mb-4">
+              Long Game wasn&apos;t built in a boardroom&mdash;it came from years coaching young athletes and walking alongside sports families through the same conversations, again and again.
+            </p>
+            <p className="font-semibold text-charcoal">
+              Long Game exists because families deserve support too.
+            </p>
+          </div>
+          <p className="font-heading font-semibold">Shawn Dixon</p>
+          <p className="font-body text-sm text-text-muted mb-8">
+            Coach &middot; Parent &middot; Author
+            <br />
+            Author of <span className="italic">Raising an Athlete: Built for the Long Game</span>
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 border-t border-border-grey pt-8">
+            <div>
+              <p className="font-heading text-sm font-semibold mb-1">Years of Coaching</p>
+              <p className="font-body text-xs text-text-muted">
+                Helping young athletes and sports families navigate the youth
+                sports journey.
+              </p>
+            </div>
+            <div>
+              <p className="font-heading text-sm font-semibold mb-1">
+                Amazon #1 Best Selling Author
+              </p>
+              <p className="font-body text-xs text-text-muted">
+                Raising an Athlete: Built for the Long Game.
+              </p>
+            </div>
+            <div>
+              <p className="font-heading text-sm font-semibold mb-1">Built for Sports Families</p>
+              <p className="font-body text-xs text-text-muted">
+                Created to support parents, athletes, teams, and organizations
+                through every stage of the journey.
+              </p>
+            </div>
+          </div>
+        </motion.div>
+      </section>
+
       {/* SECTION: FINAL CLOSE */}
       <section className="max-w-6xl mx-auto w-full px-6 pt-16 pb-16 md:pt-20 md:pb-20">
         <motion.h2 {...fadeUp} className="font-heading text-3xl md:text-4xl font-bold text-center mb-10 leading-tight">
@@ -795,7 +809,7 @@ export default function Home() {
           <img
             src="/duffel-bag-stadium.jpg"
             alt="Duffel bag left on a wet stadium parking lot at night"
-            className="w-full h-auto max-h-[500px] object-cover object-bottom rounded-2xl"
+            className="w-full h-auto max-h-[500px] object-contain rounded-2xl"
           />
         </motion.div>
       </section>
