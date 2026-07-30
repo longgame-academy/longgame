@@ -92,12 +92,6 @@ const parentQuotes = [
     name: "Jim Kean",
     role: "Parent of Two Division I Athletes, Educator",
   },
-  {
-    quote:
-      "Long Game was a game changer for our family. It challenged me to reflect on the kind of sports parent I wanted to be, and it helped save my relationship with my son. Every parent should go through it.",
-    name: "Brian Creslink",
-    role: "AAA Hickey Parent",
-  },
 ];
 
 const leaders = [
@@ -250,12 +244,12 @@ export default function Home() {
         >
           <img
             src="/hero-mobile.jpg"
-            alt="Young athlete reflecting alone on the stairs after practice"
+            alt="Father and son walking off the field"
             className="absolute inset-0 w-full h-full object-cover object-[center_15%] md:hidden"
           />
           <img
             src="/hero-desktop.jpg"
-            alt="Young athlete reflecting alone on the stairs after practice"
+            alt="Young athlete sitting alone reflecting after a game"
             className="absolute inset-0 w-full h-full object-cover object-[center_15%] hidden md:block"
           />
         </motion.div>
@@ -313,22 +307,10 @@ export default function Home() {
           </h2>
           <div className="font-body text-text-body leading-relaxed mb-6">
             <p className="mb-4">
-              The game has changed since many of us played.
-            </p>
-            <p className="mb-4">
-              Today&apos;s athletes carry more than just their equipment.
-              They carry pressure from parents who want the best for them,
-              friends and teammates, coaches, social media, team group
-              chats, and expectations that follow them from the field, to
-              the car ride home, around the dinner table, and into the
-              quiet moments when they&apos;re left alone with their
-              thoughts.
-            </p>
-            <p className="mb-4">
-              Most parents aren&apos;t looking for perfection. They&apos;re
-              simply trying to help their child navigate a world of youth
-              sports that looks very different from the one they grew up
-              in&mdash;without a roadmap for how.
+              The pressure found its way into the car ride home, the dinner
+              table, and conversations families never expected to have. Most
+              parents aren&apos;t looking for perfection. They&apos;re trying
+              to do right by the child they love—without a system for how.
             </p>
             <p className="font-semibold text-charcoal">
               That&apos;s what Long Game provides.
@@ -423,12 +405,12 @@ export default function Home() {
                 className="bg-white border border-border-grey rounded-md p-7 text-left transition-colors hover:border-teal hover:shadow-[0_4px_16px_rgba(18,21,20,0.08)]"
               >
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-9 h-9 rounded-xl bg-teal/10 flex items-center justify-center shrink-0">
+                  <div className="w-9 h-9 rounded-full bg-background flex items-center justify-center shrink-0">
                     <p.icon className="w-4 h-4 text-teal" strokeWidth={2} aria-hidden="true" />
                   </div>
                   <h3 className="font-heading text-lg font-semibold">{p.title}</h3>
                 </div>
-                <p className="font-body text-sm text-charcoal/70 leading-relaxed mb-3">
+                <p className="font-body italic text-sm text-charcoal/70 leading-relaxed mb-3">
                   {p.hard}
                 </p>
                 <motion.div
@@ -507,7 +489,7 @@ export default function Home() {
                 transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.1 }}
                 className="text-center border-b border-border-grey pb-14 last:border-0"
               >
-                <p className="font-body italic text-base md:text-lg leading-relaxed mb-5">
+                <p className="font-body italic text-xl md:text-2xl leading-relaxed mb-5">
                   &ldquo;{q.quote}&rdquo;
                 </p>
                 <div className="flex justify-center gap-1 mb-4">
@@ -680,43 +662,42 @@ export default function Home() {
               competitive sport.
             </p>
 
-            <div className="flex flex-wrap gap-x-4 gap-y-1.5 text-[11px] font-body text-cream/60 mb-6">
+            <div className="flex flex-wrap gap-x-4 gap-y-1.5 text-[11px] font-body text-cream/60">
               <span className="flex items-center gap-1.5"><span className="text-teal">&#10003;</span> Secure Checkout</span>
               <span className="flex items-center gap-1.5"><span className="text-teal">&#10003;</span> Instant Access</span>
               <span className="flex items-center gap-1.5"><span className="text-teal">&#10003;</span> One-Time Purchase</span>
-            </div>
-
-            <div className="border-t border-cream/10 pt-6 flex flex-wrap justify-center items-center gap-3">
-              <span className="border border-cream/20 rounded-lg px-4 py-2.5 font-heading font-bold italic text-[#1A1F71] text-sm bg-white">
-                VISA
-              </span>
-              <span className="bg-[#1A1A1A] rounded-lg px-4 py-2.5 flex items-center">
-                <span className="w-4 h-4 rounded-full bg-[#EB001B]" />
-                <span className="w-4 h-4 rounded-full bg-[#F79E1B] -ml-2" />
-              </span>
-              <span className="bg-[#1F72CD] text-white rounded-lg px-4 py-2.5 font-heading font-bold text-sm">
-                AMEX
-              </span>
-              <span className="bg-[#635BFF] text-white rounded-lg px-4 py-2.5 font-heading font-bold text-sm">
-                stripe
-              </span>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* SECTION: BUILT FOR THE LONG GAME */}
+      {/* SECTION: BUILT FOR THE LONG GAME (TRUST/PAYMENT BADGES) */}
       <section className="bg-background py-16 md:py-20">
         <div className="max-w-2xl mx-auto px-6 text-center">
           <motion.h2 {...fadeUp} className="font-heading text-3xl md:text-4xl font-bold mb-4">
             Built for the Long Game
           </motion.h2>
           <motion.div {...fadeUp} className="w-12 h-0.5 bg-teal mx-auto mb-8" />
-          <motion.p {...fadeUp} className="font-body text-text-body leading-relaxed">
+          <motion.p {...fadeUp} className="font-body text-text-body leading-relaxed mb-10">
             You&apos;re making an investment in the relationship that matters
             most. Get instant access today, and if you&apos;re not completely
             satisfied within 30 days, we&apos;ll make it right.
           </motion.p>
+          <motion.div {...fadeUp} className="flex flex-wrap justify-center items-center gap-4">
+            <span className="border border-border-grey rounded-lg px-5 py-3 font-heading font-bold italic text-[#1A1F71] text-sm bg-white">
+              VISA
+            </span>
+            <span className="bg-[#1A1A1A] rounded-lg px-5 py-3 flex items-center">
+              <span className="w-4 h-4 rounded-full bg-[#EB001B]" />
+              <span className="w-4 h-4 rounded-full bg-[#F79E1B] -ml-2" />
+            </span>
+            <span className="bg-[#1F72CD] text-white rounded-lg px-5 py-3 font-heading font-bold text-sm">
+              AMEX
+            </span>
+            <span className="bg-[#635BFF] text-white rounded-lg px-5 py-3 font-heading font-bold text-sm">
+              stripe
+            </span>
+          </motion.div>
         </div>
       </section>
 
