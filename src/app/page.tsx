@@ -809,7 +809,7 @@ export default function Home() {
           <img
             src="/duffel-bag-stadium.jpg"
             alt="Duffel bag left on a wet stadium parking lot at night"
-            className="w-full h-auto rounded-2xl"
+            className="w-full h-auto max-w-3xl mx-auto rounded-2xl"
           />
         </motion.div>
       </section>
