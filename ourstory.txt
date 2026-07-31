@@ -4,7 +4,6 @@ import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
-import { Heart, MessageCircle, Flame, Compass } from "lucide-react";
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -13,28 +12,49 @@ const fadeUp = {
   transition: { duration: 0.7, ease: "easeOut" },
 } as const;
 
-
+const startedSeeing = [
+  {
+    title: "Confidence Was Becoming Fragile",
+    body: "Many young athletes began believing their worth depended on their performance instead of their growth.",
+  },
+  {
+    title: "Parents Were Carrying More Than Ever",
+    body: "Parents wanted to help. But many weren't sure what to say after the difficult games, the setbacks, or the moments when confidence disappeared.",
+  },
+  {
+    title: "Coaches Needed Partners",
+    body: "The best coaches develop athletes. The best parents reinforce everything that happens away from the field.",
+  },
+  {
+    title: "The Relationship Was Being Tested",
+    body: "The pressure to perform was beginning to overshadow the reason families fell in love with sports in the first place.",
+  },
+];
 
 const beliefs = [
   {
     title: "Relationships Matter More Than Results",
     body: "Strong relationships create athletes who stay in the game longer.",
-    icon: Heart,
   },
   {
     title: "Confidence Is Built Through Everyday Conversations",
     body: "The words parents choose shape how athletes see themselves.",
-    icon: MessageCircle,
   },
   {
     title: "Hard Work Should Never Be Optional",
     body: "Growth comes from discipline, effort, accountability, and showing up when it's difficult.",
-    icon: Flame,
   },
   {
     title: "Adversity Is Part of Development",
     body: "The goal isn't to remove hard moments. It's to help athletes learn how to respond to them.",
-    icon: Compass,
+  },
+  {
+    title: "Character Lasts Longer Than Trophies",
+    body: "Wins fade. Who an athlete becomes lasts forever.",
+  },
+  {
+    title: "The Game Will End. The Relationship Won't.",
+    body: "The greatest legacy isn't a championship. It's the relationship that remains long after sport is over.",
   },
 ];
 
@@ -45,8 +65,8 @@ export default function OurStoryPage() {
 
       {/* SECTION 1: HERO */}
       <section className="bg-white w-full">
-        <div className="max-w-6xl mx-auto w-full px-6 py-14 md:py-24 grid md:grid-cols-[11fr_9fr] gap-12 items-center">
-          <motion.div {...fadeUp} className="text-left">
+        <div className="max-w-6xl mx-auto w-full px-6 py-20 md:py-28 grid md:grid-cols-[11fr_9fr] gap-12 items-center">
+          <motion.div {...fadeUp}>
             <p className="font-heading text-teal text-xs font-semibold tracking-widest uppercase mb-4">
               Our Story
             </p>
@@ -54,15 +74,14 @@ export default function OurStoryPage() {
               Why Long Game Exists
             </h1>
             <div className="font-body text-lg text-text-body leading-relaxed space-y-4 mb-8">
-              <p>
-                Every season tells a different story. Some end with
-                championships. Others end with disappointment.
-              </p>
+              <p>Every season tells a different story.</p>
+              <p>Some end with championships.</p>
+              <p>Others end with disappointment.</p>
               <p>
                 But long after the final score is forgotten, one thing
-                remains&mdash;the relationship between a parent and their
-                athlete.
+                remains.
               </p>
+              <p>The relationship between a parent and their athlete.</p>
               <p className="font-semibold text-charcoal">
                 That&apos;s what Long Game exists to protect.
               </p>
@@ -89,43 +108,77 @@ export default function OurStoryPage() {
         </div>
       </section>
 
-      {/* SECTION 3: WHO'S BEHIND LONG GAME */}
-      <section className="bg-background w-full">
-        <div className="max-w-3xl mx-auto w-full px-6 py-14 md:py-24">
-          <motion.div {...fadeUp} className="text-left">
-            <p className="font-heading text-teal text-xs font-semibold tracking-widest uppercase mb-4">
-              The People Behind Long Game
-            </p>
-            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6 leading-tight">
-              Long Game is built by coaches, parents, and people who&apos;ve
-              spent their careers around athletes&mdash;not one voice, one
-              season, or one sport.
+      {/* SECTION 2: YOUTH SPORTS HAS CHANGED */}
+      <section className="bg-white w-full">
+        <div className="max-w-[700px] mx-auto w-full px-6 py-20 md:py-28 text-center">
+          <motion.div {...fadeUp}>
+            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-8">
+              Youth Sports Has Changed
             </h2>
             <div className="font-body text-lg text-text-body leading-relaxed space-y-4">
               <p>
-                We&apos;ve sat through the quiet car rides home. We&apos;ve
-                had the hard conversations with coaches. We&apos;ve watched
-                a kid lose their confidence, and worked to help them find it
-                again.
+                Today&apos;s sports families are navigating more than
+                practices and games.
               </p>
-              <p>That&apos;s not a tagline. It&apos;s who&apos;s actually building this.</p>
+              <p>They&apos;re navigating pressure.</p>
+              <p>Comparison.</p>
+              <p>Recruiting.</p>
+              <p>Playing time.</p>
+              <p>Confidence.</p>
+              <p>Burnout.</p>
               <p>
-                Shawn Dixon leads Long Game, drawing on [X] years of
-                coaching and conversations with hundreds of sports families.
-                He&apos;s joined by people like Jay Wells (18-year NHL
-                veteran), Allan Ross (former MLB scout), and Doug Ouilette
-                (VP, Ancaster Baseball)&mdash;coaches and leaders who&apos;ve
-                shaped what Long Game teaches from their own time on the
-                field, not just their opinions about it.
+                Parents are expected to know exactly what to say in every
+                difficult moment, yet very few are ever shown how.
+              </p>
+              <p>Athletes have coaches.</p>
+              <p>Parents rarely do.</p>
+              <p className="font-semibold text-charcoal">
+                Long Game was created to change that.
               </p>
             </div>
           </motion.div>
         </div>
       </section>
 
+      {/* SECTION 3: WHAT WE STARTED SEEING */}
+      <section className="bg-white w-full">
+        <div className="max-w-6xl mx-auto w-full px-6 py-20 md:py-28">
+          <motion.h2
+            {...fadeUp}
+            className="font-heading text-3xl md:text-4xl font-bold text-center mb-16"
+          >
+            What We Started Seeing
+          </motion.h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {startedSeeing.map((c, i) => (
+              <motion.div
+                key={c.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.1 }}
+                className="bg-background border border-border-grey rounded-2xl p-8 shadow-[0_4px_16px_rgba(18,21,20,0.08)]"
+              >
+                <h3 className="font-heading text-lg font-semibold mb-3">{c.title}</h3>
+                <p className="font-body text-sm text-text-body leading-relaxed">{c.body}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* SECTION 4: THE HARDEST MOMENTS */}
       <section className="bg-white w-full">
-        <div className="max-w-3xl mx-auto w-full px-6 py-14 md:py-24 text-left">
+        <div className="max-w-6xl mx-auto w-full px-6 pt-20 md:pt-28">
+          <motion.div {...fadeUp} className="rounded-2xl overflow-hidden mb-16">
+            <img
+              src="/our-story-alone.jpg"
+              alt="Athlete walking alone off the field"
+              className="w-full h-auto max-h-[560px] object-cover"
+            />
+          </motion.div>
+        </div>
+        <div className="max-w-3xl mx-auto w-full px-6 pb-20 md:pb-28 text-center">
           <motion.div {...fadeUp}>
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-8">
               The Hardest Moments Usually Happen When Nobody Is Watching
@@ -148,14 +201,14 @@ export default function OurStoryPage() {
 
       {/* SECTION 5: WHAT WE BELIEVE */}
       <section className="bg-ink w-full">
-        <div className="max-w-6xl mx-auto w-full px-6 py-14 md:py-24">
+        <div className="max-w-6xl mx-auto w-full px-6 py-20 md:py-28">
           <motion.h2
             {...fadeUp}
             className="font-heading text-3xl md:text-4xl font-bold text-center text-cream mb-16"
           >
             What We Believe
           </motion.h2>
-          <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {beliefs.map((b, i) => (
               <motion.div
                 key={b.title}
@@ -165,28 +218,44 @@ export default function OurStoryPage() {
                 transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.1 }}
                 className="border border-cream/15 rounded-2xl p-8"
               >
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ backgroundColor: "#F1F3F2" }}>
-                  <b.icon className="w-5 h-5 text-teal" strokeWidth={1.5} aria-hidden="true" />
-                </div>
                 <h3 className="font-heading text-lg font-semibold text-cream mb-3">{b.title}</h3>
                 <p className="font-body text-sm text-cream/70 leading-relaxed">{b.body}</p>
               </motion.div>
             ))}
           </div>
-          <motion.p {...fadeUp} className="font-heading font-semibold text-teal text-center mt-14">
-            That&apos;s the Long Game.
-          </motion.p>
+        </div>
+      </section>
+
+      {/* SECTION 6: HIGH STANDARDS + STRONG SUPPORT */}
+      <section className="bg-white w-full">
+        <div className="max-w-3xl mx-auto w-full px-6 py-20 md:py-28 text-center">
+          <motion.div {...fadeUp}>
+            <h2 className="font-heading text-3xl md:text-5xl font-bold mb-8 leading-tight">
+              We Believe Great Athletes Need Both High Standards and Strong Support.
+            </h2>
+            <div className="font-body text-xl text-charcoal/80 leading-relaxed space-y-4">
+              <p>Long Game isn&apos;t about lowering expectations.</p>
+              <p>
+                It&apos;s about helping parents raise athletes who embrace
+                hard work, respond to adversity, compete with confidence,
+                and keep growing through every challenge.
+              </p>
+              <p>Because resilience isn&apos;t built by avoiding difficult moments.</p>
+              <p>It&apos;s built by learning how to move through them.</p>
+              <p className="font-heading font-semibold text-teal">That&apos;s the Long Game.</p>
+            </div>
+          </motion.div>
         </div>
       </section>
 
       {/* SECTION 7: FINAL CTA */}
       <section className="bg-white w-full">
-        <div className="max-w-3xl mx-auto w-full px-6 pb-14 md:pb-24 text-center">
+        <div className="max-w-3xl mx-auto w-full px-6 pb-20 md:pb-28 text-center">
           <motion.div {...fadeUp}>
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">
               Ready to Start Your Long Game?
             </h2>
-            <p className="font-body text-lg text-text-body leading-relaxed mb-10 max-w-2xl mx-auto text-left">
+            <p className="font-body text-lg text-text-body leading-relaxed mb-10 max-w-2xl mx-auto">
               Inside the Parent Academy you&apos;ll learn practical
               strategies for handling the conversations, setbacks,
               pressures, and everyday moments that shape an athlete far

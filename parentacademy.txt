@@ -6,7 +6,7 @@ import Nav from "@/components/Nav";
 import { CheckoutButton } from "@/components/CheckoutButton";
 import Footer from "@/components/Footer";
 import { motion, AnimatePresence } from "framer-motion";
-import { Car, Sparkles, Users, MessageCircle, Compass, Fuel, Target, Timer, Star } from "lucide-react";
+import { Car, Sparkles, Users, MessageCircle, Compass, Fuel, Target, Timer } from "lucide-react";
 
 function Placeholder({ label, className = "" }: { label: string; className?: string }) {
   return (
@@ -96,38 +96,42 @@ const benefits = [
 const whatYouGet = [
   { title: "The Car Ride Home", body: "Exact scripts for the fifteen minutes that matter most.", image: "/long-game-experience.png" },
   { title: "Reflection Workbook", body: "Fillable worksheets that turn a hard game into a real conversation.", image: "/org-family-access.png" },
-  { title: "The 12 Modules", body: "Twelve structured modules, one for every stage of the season.", image: "/org-admin-phones.png" },
+  { title: "Field Guides", body: "Twelve practical guides, one for every situation you'll face.", image: "/org-admin-phones.png" },
   { title: "Glove Box Cards", body: "Quick reminders for the moments that happen fast.", image: "/org-admin-phones.png" },
 ];
 
 const faqs = [
   {
-    q: "What exactly do I get for $97?",
-    a: "Instant access to all 12 modules, 165+ pages of guidance, fillable worksheets, practical scripts for hard conversations, and the Glove Box Cards bonus — one payment, no subscription.",
+    q: "Who is the Parent Academy designed for?",
+    a: "The Parent Academy was created for parents of athletes of all ages and across all sports. Whether your child is just beginning or competing at a high level, the principles inside are designed to help you navigate the challenges of youth sports.",
   },
   {
-    q: "Do I have to go in order, or can I jump to what I need right now?",
-    a: "Jump straight to whatever situation you're facing tonight. Every module works on its own — there's no required sequence.",
+    q: "Is the Parent Academy for all sports?",
+    a: "Yes. While many stories come from baseball, the principles apply across every youth sport. Confidence, communication, pressure, setbacks, motivation, burnout, and protecting the parent-athlete relationship are universal.",
   },
   {
-    q: "How long does a module actually take?",
-    a: "Most modules take 15–20 minutes. It's built for a parent with no spare time, not a course you have to block off an afternoon for.",
+    q: "How do I access the Parent Academy?",
+    a: "You'll receive immediate access through your secure online account after purchase.",
   },
   {
-    q: "Is this only for certain sports?",
-    a: "No. The situations inside — playing time, confidence, coach communication — show up in every sport. Parents across baseball, hockey, soccer, basketball, and more use it.",
+    q: "Can I print the Parent Guide?",
+    a: "Yes. The Parent Guide is provided as a fillable PDF that can also be printed.",
   },
   {
-    q: "What if it doesn't help my family?",
-    a: "If you're not satisfied within 30 days, we'll make it right.",
+    q: "Is this a subscription?",
+    a: "No. Your initial purchase is a one-time payment that gives you permanent access to the Parent Academy you purchase today. Future resources or programs may be offered separately.",
   },
   {
-    q: "Will I be able to use this on my phone?",
-    a: "Yes — everything is built for the device you'll actually reach for in the moment, not a PDF you'll forget to open.",
+    q: "Will new content be added?",
+    a: "Yes. As new resources are created, you'll be notified by email. Some future content may be offered separately or through membership options.",
   },
   {
-    q: "Is this a one-time purchase or a subscription?",
-    a: "One-time payment of $97. Lifetime access, including future updates — no recurring charges.",
+    q: "What if I'm not satisfied?",
+    a: "Contact us within 30 days of purchase for a full refund.",
+  },
+  {
+    q: "Do I have to complete the Parent Academy in order?",
+    a: "No. The Parent Academy is designed to be practical, not prescriptive. While each module builds on the last, you can start wherever your family needs the most support right now. Whether you're navigating confidence, communication, pressure, or the car ride home, simply begin there and come back to the other modules when you're ready.",
   },
 ];
 
@@ -154,7 +158,7 @@ function Accordion({
           >
             <button
               onClick={() => setOpenIndex(isOpen ? null : i)}
-              className={`w-full text-left px-6 flex justify-between items-center gap-4 ${idPrefix ? "py-5" : "py-3.5"}`}
+              className="w-full text-left px-6 py-5 flex justify-between items-center gap-4"
             >
               <span className="flex items-center gap-3">
                 {idPrefix && (
@@ -333,7 +337,7 @@ export default function ParentAcademyPage() {
       </section>
 
       {/* SECTION 3: PARENT PAIN POINTS */}
-      <section className="max-w-6xl mx-auto w-full px-6 py-14 md:py-24">
+      <section className="max-w-6xl mx-auto w-full px-6 py-16 md:py-24">
         <div className="grid md:grid-cols-2 gap-6">
           {painPoints.map((p) => (
             <motion.div
@@ -344,9 +348,7 @@ export default function ParentAcademyPage() {
               transition={{ duration: 0.5, ease: "easeOut" }}
               className="bg-cream border border-border-grey rounded-2xl p-7 flex flex-col"
             >
-              <div className="w-10 h-10 rounded-full flex items-center justify-center mb-4" style={{ backgroundColor: "#E8EFF0" }}>
-                <p.icon className="w-5 h-5 text-teal" strokeWidth={1.5} aria-hidden="true" />
-              </div>
+              <p.icon className="w-6 h-6 text-teal mb-4" strokeWidth={1.5} aria-hidden="true" />
               <h3 className="font-heading text-xl font-bold mb-2">{p.title}</h3>
               <p className="font-body text-sm text-text-body leading-relaxed mb-2">&ldquo;{p.quote}&rdquo;</p>
               <p className="font-body text-sm text-text-muted leading-relaxed mb-5 flex-1">{p.body}</p>
@@ -362,7 +364,7 @@ export default function ParentAcademyPage() {
       </section>
 
       {/* SECTION 4: SUPPORT FOR EVERY MOMENT */}
-      <section className="max-w-6xl mx-auto w-full px-6 py-14 md:py-24 grid md:grid-cols-2 gap-12 items-center">
+      <section className="max-w-6xl mx-auto w-full px-6 py-16 md:py-24 grid md:grid-cols-2 gap-12 items-center">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.6, ease: "easeOut" }}>
           <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase mb-6">
             Support for Every Moment
@@ -460,13 +462,13 @@ export default function ParentAcademyPage() {
         <Accordion items={modules} openIndex={openModule} setOpenIndex={setOpenModule} idPrefix="module" />
       </section>
 
-      {/* SECTION 5 REPEAT: LIGHTWEIGHT PRICING BAR */}
-      <section id="pricing" className="w-full px-6 py-14 md:py-24">
-        <div className="bg-ink text-cream rounded-2xl max-w-3xl mx-auto px-6 py-5 md:px-10 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="font-heading text-base md:text-lg font-semibold">
-            $97 USD &middot; Founding Member Price
-          </p>
-          <CheckoutButton className="inline-flex items-center gap-2 bg-cream text-ink font-heading font-semibold text-sm px-6 py-3 rounded-lg hover:bg-cream/90 transition-colors whitespace-nowrap" />
+      {/* SECTION 5 REPEAT: PRICING BOX */}
+      <section id="pricing" className="w-full px-6 py-16 md:py-20">
+        <PricingCard />
+        <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-1.5 text-[13px] font-body text-text-muted mt-6">
+          <span className="flex items-center gap-1.5"><span className="text-teal">&#10003;</span> Secure Checkout</span>
+          <span className="flex items-center gap-1.5"><span className="text-teal">&#10003;</span> Instant Access</span>
+          <span className="flex items-center gap-1.5"><span className="text-teal">&#10003;</span> One-Time Purchase</span>
         </div>
       </section>
 
@@ -486,54 +488,27 @@ export default function ParentAcademyPage() {
 
       {/* SECTION 9: TRUST */}
       <section className="bg-background py-10 md:py-12">
-        <div className="max-w-4xl mx-auto px-6">
-          <p className="font-body text-sm text-text-muted text-center mb-8">
-            Recognized by coaches, scouts, and leaders who&apos;ve spent their careers around athletes.
-          </p>
-          <div className="flex flex-col md:flex-row gap-8 md:gap-14 items-center">
-            <div className="flex flex-col gap-4 shrink-0">
-              <div>
-                <p className="font-heading text-sm font-bold">Jay Wells</p>
-                <p className="font-body text-[13px] text-text-muted">18-Year NHL Veteran</p>
-              </div>
-              <div>
-                <p className="font-heading text-sm font-bold">Allan Ross</p>
-                <p className="font-body text-[13px] text-text-muted">Former MLB Scout</p>
-              </div>
-              <div>
-                <p className="font-heading text-sm font-bold">Doug Ouilette</p>
-                <p className="font-body text-[13px] text-text-muted">VP, Ancaster Baseball</p>
-              </div>
+        <div className="max-w-4xl mx-auto px-6 flex flex-col md:flex-row gap-8 md:gap-14 items-center">
+          <div className="flex flex-col gap-4 shrink-0">
+            <div>
+              <p className="font-heading text-sm font-bold">Jay Wells</p>
+              <p className="font-body text-[13px] text-text-muted">18-Year NHL Veteran</p>
             </div>
-            <div className="md:border-l border-border-grey md:pl-14 flex flex-col gap-8">
-              <div className="text-center md:text-left">
-                <div className="flex justify-center md:justify-start gap-1 mb-2">
-                  {[...Array(5)].map((_, idx) => (
-                    <Star key={idx} className="w-4 h-4" style={{ color: "#005548", fill: "#005548" }} />
-                  ))}
-                </div>
-                <p className="font-body italic text-lg text-charcoal leading-relaxed mb-2">
-                  &ldquo;I thought this was going to help my daughter. I didn&apos;t
-                  realize how much it would help me.&rdquo;
-                </p>
-                <p className="font-heading text-sm font-bold text-text-body">Jennifer R., Hockey Mom</p>
-              </div>
-              <div className="text-center md:text-left">
-                <div className="flex justify-center md:justify-start gap-1 mb-2">
-                  {[...Array(5)].map((_, idx) => (
-                    <Star key={idx} className="w-4 h-4" style={{ color: "#005548", fill: "#005548" }} />
-                  ))}
-                </div>
-                <p className="font-body italic text-lg text-charcoal leading-relaxed mb-2">
-                  &ldquo;Practical guidance for the conversations and challenges
-                  every sports family faces. I only wish this had been
-                  available twenty years ago.&rdquo;
-                </p>
-                <p className="font-heading text-sm font-bold text-text-body">
-                  Jim Kean, Parent of Two Division I Athletes, Educator
-                </p>
-              </div>
+            <div>
+              <p className="font-heading text-sm font-bold">Allan Ross</p>
+              <p className="font-body text-[13px] text-text-muted">Former MLB Scout</p>
             </div>
+            <div>
+              <p className="font-heading text-sm font-bold">Doug Ouilette</p>
+              <p className="font-body text-[13px] text-text-muted">VP, Ancaster Baseball</p>
+            </div>
+          </div>
+          <div className="md:border-l border-border-grey md:pl-14 text-center md:text-left">
+            <p className="font-body italic text-lg text-charcoal leading-relaxed mb-2">
+              &ldquo;I thought this was going to help my daughter. I didn&apos;t
+              realize how much it would help me.&rdquo;
+            </p>
+            <p className="font-heading text-sm font-bold text-text-body">Jennifer R., Hockey Mom</p>
           </div>
         </div>
       </section>
