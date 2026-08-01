@@ -44,7 +44,15 @@ export async function POST(req: Request) {
 
   const code = parsed.data.code.toUpperCase();
 
+  let orgName: string | null = null;
+
   try {
+    // Keep this transaction purely local to the database. Clerk and Resend
+    // calls used to run inside it, holding the FOR UPDATE lock on the code row
+    // across two network round trips — that serialises every redemption of a
+    // shared org code behind the slowest third-party response, and a mail
+    // failure would roll back a membership that Clerk had already been told
+    // about.
     await db.transaction(async (tx) => {
       // Row-level lock: blocks any other transaction from reading/writing
       // this same code row until this transaction commits or rolls back.
@@ -81,24 +89,14 @@ export async function POST(req: Request) {
         status: "active",
       });
 
-      const [existingEnrollment] = await tx
-        .select()
-        .from(enrollments)
-        .where(eq(enrollments.userId, userId))
-        .limit(1);
-
-      if (!existingEnrollment) {
-        await tx.insert(enrollments).values({
+      await tx
+        .insert(enrollments)
+        .values({
           userId,
           accessType: "org",
           contentPackage: "standard_v1",
-        });
-      }
-
-      const client = await clerkClient();
-      await client.users.updateUserMetadata(userId, {
-        publicMetadata: { enrolled: true },
-      });
+        })
+        .onConflictDoNothing({ target: enrollments.userId });
 
       await tx
         .update(orgCodes)
@@ -106,16 +104,12 @@ export async function POST(req: Request) {
         .where(eq(orgCodes.id, codeRow.id));
 
       const [org] = await tx
-        .select()
+        .select({ name: organizations.name })
         .from(organizations)
         .where(eq(organizations.id, codeRow.organizationId))
         .limit(1);
 
-      const user = await client.users.getUser(userId);
-      const email = user.primaryEmailAddress?.emailAddress;
-      if (email && org) {
-        await sendOrgWelcomeEmail(email, org.name);
-      }
+      orgName = org?.name ?? null;
     });
   } catch (err) {
     if (err instanceof RouteError) {
@@ -123,6 +117,23 @@ export async function POST(req: Request) {
     }
     console.error("Org code redemption failed:", err);
     return NextResponse.json({ error: "Something went wrong" }, { status: 500 });
+  }
+
+  // Committed. Everything below is best-effort: the user already has access,
+  // so a Clerk or Resend hiccup must not surface as a failed redemption.
+  try {
+    const client = await clerkClient();
+    await client.users.updateUserMetadata(userId, {
+      publicMetadata: { enrolled: true },
+    });
+
+    const user = await client.users.getUser(userId);
+    const email = user.primaryEmailAddress?.emailAddress;
+    if (email && orgName) {
+      await sendOrgWelcomeEmail(email, orgName);
+    }
+  } catch (err) {
+    console.error("Post-redemption sync failed for user:", userId, err);
   }
 
   return NextResponse.json({ ok: true });

@@ -9,15 +9,27 @@ export default function CheckoutSuccessPage() {
 
   useEffect(() => {
     let attempts = 0;
-    const maxAttempts = 10;
+    let timer: ReturnType<typeof setTimeout>;
+    let cancelled = false;
+    const maxAttempts = 15;
 
     const poll = async () => {
-      const res = await fetch("/api/checkout/status");
-      const data = await res.json();
+      if (cancelled) return;
 
-      if (data.enrolled) {
-        router.push("/portal");
-        return;
+      try {
+        const res = await fetch("/api/checkout/status", { cache: "no-store" });
+        const data = res.ok ? await res.json() : {};
+
+        if (cancelled) return;
+
+        if (data.enrolled) {
+          router.push("/portal");
+          return;
+        }
+      } catch {
+        // A transient network error used to reject inside this async loop and
+        // leave the user on "Confirming your payment..." forever. Fall through
+        // to the retry instead.
       }
 
       attempts++;
@@ -26,10 +38,16 @@ export default function CheckoutSuccessPage() {
         return;
       }
 
-      setTimeout(poll, 1000);
+      // Back off so a slow webhook doesn't get hammered with 1s polls.
+      timer = setTimeout(poll, Math.min(1000 * attempts, 4000));
     };
 
     poll();
+
+    return () => {
+      cancelled = true;
+      clearTimeout(timer);
+    };
   }, [router]);
 
   return (

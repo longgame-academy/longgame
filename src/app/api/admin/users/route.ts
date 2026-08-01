@@ -1,5 +1,5 @@
 ﻿import { db } from "@/db";
-import { enrollments, orgMemberships, organizations, payments } from "@/db/schema";
+import { enrollments, orgMemberships, organizations } from "@/db/schema";
 import { requireAdmin } from "@/lib/admin";
 import { NextResponse } from "next/server";
 import { clerkClient } from "@clerk/nextjs/server";

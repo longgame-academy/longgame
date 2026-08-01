@@ -48,24 +48,37 @@ export default function AdminContentPage() {
   }, [loadItems]);
 
   const [uploading, setUploading] = useState(false);
+  const [uploadError, setUploadError] = useState<string | null>(null);
 
   async function handleFileUpload(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
     if (!file) return;
 
     setUploading(true);
+    setUploadError(null);
     const formData = new FormData();
     formData.append("file", file);
 
-    const res = await fetch("/api/admin/content/upload", {
-      method: "POST",
-      body: formData,
-    });
+    try {
+      const res = await fetch("/api/admin/content/upload", {
+        method: "POST",
+        body: formData,
+      });
 
-    setUploading(false);
-    if (res.ok) {
-      const data = await res.json();
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok) {
+        // The API enforces a type allowlist and a size cap; surface the reason
+        // rather than silently doing nothing.
+        setUploadError(data.error || "Upload failed. Please try again.");
+        return;
+      }
+
       setAssetRef(data.url);
+    } catch {
+      setUploadError("Upload failed. Please try again.");
+    } finally {
+      setUploading(false);
     }
   }
   
@@ -114,7 +127,10 @@ export default function AdminContentPage() {
     loadItems();
   }
 
-  async function deleteItem(id: number) {
+  async function deleteItem(id: number, title: string) {
+    // Irreversible, and it was previously a single unguarded click next to
+    // the visibility controls.
+    if (!window.confirm(`Delete "${title}"? This cannot be undone.`)) return;
     await fetch(`/api/admin/content/${id}`, { method: "DELETE" });
     loadItems();
   }
@@ -194,13 +210,19 @@ export default function AdminContentPage() {
               </label>
               <input
                 type="file"
+                accept=".pdf,.png,.jpg,.jpeg,.doc,.docx"
                 onChange={handleFileUpload}
                 className="w-full border border-charcoal/20 rounded-lg px-3 py-2 font-body bg-cream text-sm"
               />
               {uploading && (
                 <p className="font-body text-xs text-charcoal/50 mt-1">Uploading...</p>
               )}
-              {assetRef && !uploading && (
+              {uploadError && (
+                <p className="font-body text-xs text-red-600 mt-1" role="alert">
+                  {uploadError}
+                </p>
+              )}
+              {assetRef && !uploading && !uploadError && (
                 <p className="font-body text-xs text-green-700 mt-1">File attached</p>
               )}
             </div>
@@ -287,7 +309,7 @@ export default function AdminContentPage() {
                 )}
 
                 <button
-                  onClick={() => deleteItem(item.id)}
+                  onClick={() => deleteItem(item.id, item.title)}
                   className="text-xs font-heading font-semibold text-red-600 hover:underline"
                 >
                   Delete

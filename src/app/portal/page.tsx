@@ -1,6 +1,5 @@
-﻿import { auth, currentUser } from "@clerk/nextjs/server";
+﻿import { currentUser } from "@clerk/nextjs/server";
 import Link from "next/link";
-import { motion } from "framer-motion";
 
 export default async function PortalDashboard() {
   const user = await currentUser();

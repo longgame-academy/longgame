@@ -5,7 +5,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import {
-  Users, Megaphone, TrendingUp, Heart, Award, Repeat,
+  Users, Megaphone, TrendingUp, Heart, Award,
   ClipboardList, Car, Volume2, Compass, Fuel, Shield, Target,
   MessageCircle, Calendar, BarChart3, Clock, CheckCircle2,
 } from "lucide-react";

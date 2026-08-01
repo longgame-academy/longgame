@@ -82,7 +82,7 @@ export default function JoinOrganizationPage() {
         onClick={() => router.push("/portal")}
         className="w-full text-center font-body text-sm text-text-muted mt-4 hover:underline"
       >
-        Skip — I don't have a code
+        Skip &mdash; I don&apos;t have a code
       </button>
     </motion.div>
   );

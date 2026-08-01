@@ -52,7 +52,9 @@ export default function Footer() {
       const res = await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, source: "footer" }),
+        // Submitting this form is the opt-in; the API requires an explicit
+        // consent flag on every lead so there is a server-side opt-in record.
+        body: JSON.stringify({ email, source: "footer", consent: true }),
       });
       if (!res.ok) throw new Error();
       setStatus("done");
@@ -94,6 +96,16 @@ export default function Footer() {
             {status === "loading" ? "Sending..." : status === "done" ? "Thank You" : "Stay Connected"}
           </button>
         </form>
+        {status === "error" && (
+          <p className="font-body text-sm text-red-400 mt-4" role="alert">
+            Something went wrong. Please try again.
+          </p>
+        )}
+        {status === "done" && (
+          <p className="font-body text-sm text-teal mt-4" role="status">
+            You&apos;re on the list — thanks for subscribing.
+          </p>
+        )}
       </div>
 
       <div className="border-t border-cream/10">

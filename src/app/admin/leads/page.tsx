@@ -16,13 +16,19 @@ export default function AdminLeadsPage() {
   const [leads, setLeads] = useState<Lead[]>([]);
   const [loading, setLoading] = useState(true);
 
+  const [error, setError] = useState(false);
+
   useEffect(() => {
     fetch("/api/admin/leads")
-      .then((res) => res.json())
-      .then((data) => {
-        setLeads(data.leads);
-        setLoading(false);
-      });
+      .then(async (res) => {
+        if (!res.ok) throw new Error("Request failed");
+        const data = await res.json();
+        // Without this guard a failed request left `leads` undefined and the
+        // render below threw on .map().
+        setLeads(Array.isArray(data.leads) ? data.leads : []);
+      })
+      .catch(() => setError(true))
+      .finally(() => setLoading(false));
   }, []);
 
   return (
@@ -39,6 +45,10 @@ export default function AdminLeadsPage() {
 
       {loading ? (
         <p className="font-body text-text-muted">Loading...</p>
+      ) : error ? (
+        <p className="font-body text-red-600" role="alert">
+          Could not load leads. Please refresh and try again.
+        </p>
       ) : leads.length === 0 ? (
         <p className="font-body text-text-muted">No leads yet.</p>
       ) : (

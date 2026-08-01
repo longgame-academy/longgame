@@ -2,7 +2,7 @@
 import { redirect } from "next/navigation";
 import { db } from "@/db";
 import { content } from "@/db/schema";
-import { and, eq, inArray, or } from "drizzle-orm";
+import { and, eq, inArray } from "drizzle-orm";
 import { getUserAccessType } from "@/lib/access";
 import Link from "next/link";
 
