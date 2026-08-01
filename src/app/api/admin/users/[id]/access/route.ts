@@ -1,7 +1,5 @@
-﻿import { db } from "@/db";
-import { enrollments } from "@/db/schema";
 import { requireAdmin } from "@/lib/admin";
-import { eq } from "drizzle-orm";
+import { grantIndividualAccess, revokeUserAccess } from "@/lib/access";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 
@@ -19,6 +17,9 @@ export async function POST(
   }
 
   const { id: targetUserId } = await params;
+  if (!targetUserId || !/^user_[A-Za-z0-9]+$/.test(targetUserId)) {
+    return NextResponse.json({ error: "Invalid user id" }, { status: 400 });
+  }
 
   let body: unknown;
   try {
@@ -32,22 +33,23 @@ export async function POST(
     return NextResponse.json({ error: "Invalid input" }, { status: 400 });
   }
 
-  if (parsed.data.action === "grant") {
-    const [existing] = await db
-      .select()
-      .from(enrollments)
-      .where(eq(enrollments.userId, targetUserId))
-      .limit(1);
+  const enrolled = parsed.data.action === "grant";
 
-    if (!existing) {
-      await db.insert(enrollments).values({
-        userId: targetUserId,
-        accessType: "individual",
-        contentPackage: "standard_v1",
-      });
+  try {
+    // Shared with the Stripe webhook's refund/dispute path so the two
+    // revocation routes cannot drift apart.
+    if (enrolled) {
+      await grantIndividualAccess(targetUserId);
+    } else {
+      await revokeUserAccess(targetUserId);
     }
-  } else {
-    await db.delete(enrollments).where(eq(enrollments.userId, targetUserId));
+
+    console.info(
+      `[admin] access ${enrolled ? "granted" : "revoked"} for ${targetUserId} by ${check.userId}`
+    );
+  } catch (err) {
+    console.error("Failed to update access for user:", targetUserId, err);
+    return NextResponse.json({ error: "Something went wrong" }, { status: 500 });
   }
 
   return NextResponse.json({ ok: true });
