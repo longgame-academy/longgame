@@ -109,15 +109,6 @@ export default function OurStoryPage() {
                 again.
               </p>
               <p>That&apos;s not a tagline. It&apos;s who&apos;s actually building this.</p>
-              <p>
-                Shawn Dixon leads Long Game, drawing on [X] years of
-                coaching and conversations with hundreds of sports families.
-                He&apos;s joined by people like Jay Wells (18-year NHL
-                veteran), Allan Ross (former MLB scout), and Doug Ouilette
-                (VP, Ancaster Baseball)&mdash;coaches and leaders who&apos;ve
-                shaped what Long Game teaches from their own time on the
-                field, not just their opinions about it.
-              </p>
             </div>
           </motion.div>
         </div>
@@ -165,8 +156,8 @@ export default function OurStoryPage() {
                 transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.1 }}
                 className="border border-cream/15 rounded-2xl p-8"
               >
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ backgroundColor: "#F1F3F2" }}>
-                  <b.icon className="w-5 h-5 text-teal" strokeWidth={1.5} aria-hidden="true" />
+                <div className="icon-badge mb-4">
+                  <b.icon strokeWidth={1.5} aria-hidden="true" />
                 </div>
                 <h3 className="font-heading text-lg font-semibold text-cream mb-3">{b.title}</h3>
                 <p className="font-body text-sm text-cream/70 leading-relaxed">{b.body}</p>
@@ -181,7 +172,7 @@ export default function OurStoryPage() {
 
       {/* SECTION 7: FINAL CTA */}
       <section className="bg-white w-full">
-        <div className="max-w-3xl mx-auto w-full px-6 pb-14 md:pb-24 text-center">
+        <div className="max-w-3xl mx-auto w-full px-6 pt-20 md:pt-28 pb-20 md:pb-28 text-center">
           <motion.div {...fadeUp}>
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">
               Ready to Start Your Long Game?

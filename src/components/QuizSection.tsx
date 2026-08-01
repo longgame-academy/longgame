@@ -112,7 +112,7 @@ export default function QuizSection() {
             <div
               key={item.id}
               className={`rounded-sm border overflow-hidden transition-colors ${
-                isLastOdd ? "col-span-2" : ""
+                isOpen || isLastOdd ? "col-span-2" : ""
               } ${
                 isOpen ? "border-teal shadow-[0_4px_20px_rgba(20,24,26,0.08)]" : "border-border-grey"
               }`}

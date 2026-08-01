@@ -6,7 +6,7 @@ import Nav from "@/components/Nav";
 import { CheckoutButton } from "@/components/CheckoutButton";
 import Footer from "@/components/Footer";
 import { motion, AnimatePresence } from "framer-motion";
-import { Car, Sparkles, Users, MessageCircle, Compass, Fuel, Target, Timer, Star } from "lucide-react";
+import { Car, Sparkles, Users, MessageCircle, Compass, Fuel, Target, Timer, Star, BadgeCheck } from "lucide-react";
 
 function Placeholder({ label, className = "" }: { label: string; className?: string }) {
   return (
@@ -100,6 +100,27 @@ const whatYouGet = [
   { title: "Glove Box Cards", body: "Quick reminders for the moments that happen fast.", image: "/org-admin-phones.png" },
 ];
 
+const endorsers = [
+  { name: "Jay Wells", role: "18-Year NHL Veteran, 1994 Stanley Cup Champion", photo: "/team/jay-wells.jpg" },
+  { name: "Allan Ross", role: "Former Major League Baseball Scout", photo: "/team/allan-ross.jpg" },
+  { name: "Doug Ouilette", role: "Vice President, Ancaster Baseball", photo: "/team/doug-ouilette.jpg" },
+];
+
+const academyTestimonials = [
+  {
+    quote:
+      "I thought this was going to help my daughter. I didn't realize how much it would help me.",
+    name: "Jennifer R.",
+    role: "Hockey Mom",
+  },
+  {
+    quote:
+      "Practical guidance for the conversations and challenges every sports family faces. I only wish this had been available twenty years ago.",
+    name: "Jim Kean",
+    role: "Parent of Two Division I Athletes, Educator",
+  },
+];
+
 const faqs = [
   {
     q: "What exactly do I get for $97?",
@@ -158,8 +179,8 @@ function Accordion({
             >
               <span className="flex items-center gap-3">
                 {idPrefix && (
-                  <span className="w-8 h-8 rounded-full bg-background flex items-center justify-center shrink-0 font-heading text-teal text-sm font-bold">
-                    {i + 1}
+                  <span className="step-number text-sm">
+                    {String(i + 1).padStart(2, "0")}
                   </span>
                 )}
                 <span className="font-heading font-semibold text-base">
@@ -344,8 +365,8 @@ export default function ParentAcademyPage() {
               transition={{ duration: 0.5, ease: "easeOut" }}
               className="bg-cream border border-border-grey rounded-2xl p-7 flex flex-col"
             >
-              <div className="w-10 h-10 rounded-full flex items-center justify-center mb-4" style={{ backgroundColor: "#E8EFF0" }}>
-                <p.icon className="w-5 h-5 text-teal" strokeWidth={1.5} aria-hidden="true" />
+              <div className="icon-badge mb-4">
+                <p.icon strokeWidth={1.5} aria-hidden="true" />
               </div>
               <h3 className="font-heading text-xl font-bold mb-2">{p.title}</h3>
               <p className="font-body text-sm text-text-body leading-relaxed mb-2">&ldquo;{p.quote}&rdquo;</p>
@@ -370,8 +391,8 @@ export default function ParentAcademyPage() {
           <div className="space-y-6">
             {benefits.map((b) => (
               <div key={b.title} className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0" style={{ backgroundColor: "#E8EFF0" }}>
-                  <b.icon className="w-5 h-5 text-teal" strokeWidth={1.5} aria-hidden="true" />
+                <div className="icon-badge">
+                  <b.icon strokeWidth={1.5} aria-hidden="true" />
                 </div>
                 <div>
                   <h3 className="font-heading text-lg font-bold mb-1">{b.title}</h3>
@@ -484,56 +505,82 @@ export default function ParentAcademyPage() {
         </div>
       </section>
 
-      {/* SECTION 9: TRUST */}
-      <section className="bg-background py-10 md:py-12">
-        <div className="max-w-4xl mx-auto px-6">
-          <p className="font-body text-sm text-text-muted text-center mb-8">
-            Recognized by coaches, scouts, and leaders who&apos;ve spent their careers around athletes.
-          </p>
-          <div className="flex flex-col md:flex-row gap-8 md:gap-14 items-center">
-            <div className="flex flex-col gap-4 shrink-0">
-              <div>
-                <p className="font-heading text-sm font-bold">Jay Wells</p>
-                <p className="font-body text-[13px] text-text-muted">18-Year NHL Veteran</p>
-              </div>
-              <div>
-                <p className="font-heading text-sm font-bold">Allan Ross</p>
-                <p className="font-body text-[13px] text-text-muted">Former MLB Scout</p>
-              </div>
-              <div>
-                <p className="font-heading text-sm font-bold">Doug Ouilette</p>
-                <p className="font-body text-[13px] text-text-muted">VP, Ancaster Baseball</p>
-              </div>
-            </div>
-            <div className="md:border-l border-border-grey md:pl-14 flex flex-col gap-8">
-              <div className="text-center md:text-left">
-                <div className="flex justify-center md:justify-start gap-1 mb-2">
+      {/* SECTION 9A: ENDORSEMENTS — who stands behind this */}
+      <section className="bg-background py-16 md:py-24">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <p className="font-heading text-teal text-[13px] font-semibold tracking-widest uppercase mb-3">
+              Recognized By
+            </p>
+            <h2 className="font-heading text-2xl md:text-3xl font-bold leading-tight max-w-2xl mx-auto">
+              Coaches, scouts, and leaders who&apos;ve spent their careers around athletes.
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+            {endorsers.map((e, i) => (
+              <motion.div
+                key={e.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.08 }}
+                className="bg-cream border border-border-grey rounded-2xl p-7 text-center flex flex-col items-center"
+              >
+                <div className="relative mb-4">
+                  <img
+                    src={e.photo}
+                    alt={e.name}
+                    className="w-20 h-20 rounded-full object-cover object-top"
+                  />
+                  <BadgeCheck
+                    className="absolute -bottom-1 -right-1 w-6 h-6 text-teal bg-cream rounded-full"
+                    strokeWidth={2}
+                    aria-hidden="true"
+                  />
+                </div>
+                <p className="font-heading text-base font-bold mb-1">{e.name}</p>
+                <p className="font-body text-[13px] text-text-muted leading-snug">{e.role}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 9B: PARENT TESTIMONIALS — what families say */}
+      <section className="py-16 md:py-24" style={{ backgroundColor: "#F1F3F2" }}>
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <p className="font-heading text-teal text-[13px] font-semibold tracking-widest uppercase mb-3">
+              From Parents
+            </p>
+            <h2 className="font-heading text-2xl md:text-3xl font-bold leading-tight">
+              What families say after going through it.
+            </h2>
+          </div>
+          <div className="grid md:grid-cols-2 gap-5">
+            {academyTestimonials.map((t, i) => (
+              <motion.figure
+                key={t.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.08 }}
+                className="bg-background border border-border-grey rounded-2xl p-7 md:p-8 text-left flex flex-col"
+              >
+                <div className="flex gap-1 mb-4" aria-label="Rated 5 out of 5">
                   {[...Array(5)].map((_, idx) => (
-                    <Star key={idx} className="w-4 h-4" style={{ color: "#005548", fill: "#005548" }} />
+                    <Star key={idx} className="w-4 h-4 text-teal fill-teal" aria-hidden="true" />
                   ))}
                 </div>
-                <p className="font-body italic text-lg text-charcoal leading-relaxed mb-2">
-                  &ldquo;I thought this was going to help my daughter. I didn&apos;t
-                  realize how much it would help me.&rdquo;
-                </p>
-                <p className="font-heading text-sm font-bold text-text-body">Jennifer R., Hockey Mom</p>
-              </div>
-              <div className="text-center md:text-left">
-                <div className="flex justify-center md:justify-start gap-1 mb-2">
-                  {[...Array(5)].map((_, idx) => (
-                    <Star key={idx} className="w-4 h-4" style={{ color: "#005548", fill: "#005548" }} />
-                  ))}
-                </div>
-                <p className="font-body italic text-lg text-charcoal leading-relaxed mb-2">
-                  &ldquo;Practical guidance for the conversations and challenges
-                  every sports family faces. I only wish this had been
-                  available twenty years ago.&rdquo;
-                </p>
-                <p className="font-heading text-sm font-bold text-text-body">
-                  Jim Kean, Parent of Two Division I Athletes, Educator
-                </p>
-              </div>
-            </div>
+                <blockquote className="font-body italic text-base md:text-lg text-charcoal leading-relaxed mb-6 flex-1">
+                  &ldquo;{t.quote}&rdquo;
+                </blockquote>
+                <figcaption className="border-t border-border-grey pt-4">
+                  <p className="font-heading text-sm font-bold">{t.name}</p>
+                  <p className="font-body text-[13px] text-text-muted leading-snug">{t.role}</p>
+                </figcaption>
+              </motion.figure>
+            ))}
           </div>
         </div>
       </section>

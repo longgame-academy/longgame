@@ -89,8 +89,8 @@ export default function FreeGuidePage() {
                 transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.1 }}
                 className="bg-cream border border-border-grey rounded-2xl p-8 shadow-[0_4px_16px_rgba(18,21,20,0.08)]"
               >
-                <div className="w-14 h-14 rounded-2xl bg-teal/10 flex items-center justify-center mb-4">
-                  <f.icon className="w-7 h-7 text-teal" strokeWidth={1.5} />
+                <div className="icon-badge mb-4">
+                  <f.icon strokeWidth={1.5} aria-hidden="true" />
                 </div>
                 <h3 className="font-heading text-lg font-semibold mb-3">{f.title}</h3>
                 <p className="font-body text-sm text-text-body leading-relaxed">{f.body}</p>

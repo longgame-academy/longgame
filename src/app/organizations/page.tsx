@@ -185,8 +185,8 @@ export default function OrganizationsPage() {
                 className="rounded-2xl p-7 flex flex-col"
                 style={{ backgroundColor: "#1A1E1C", border: "1px solid rgba(255,255,255,.08)" }}
               >
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ backgroundColor: "#F1F3F2" }}>
-                  <p.icon className="w-5 h-5 text-teal" strokeWidth={1.5} aria-hidden="true" />
+                <div className="icon-badge mb-4">
+                  <p.icon strokeWidth={1.5} aria-hidden="true" />
                 </div>
                 <h3 className="font-heading text-lg font-bold text-cream mb-2">{p.title}</h3>
                 <p className="font-body text-sm mb-3" style={{ color: "#C9CFCC" }}>{p.problem}</p>
@@ -213,8 +213,8 @@ export default function OrganizationsPage() {
               transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.08 }}
               className="bg-cream border border-border-grey rounded-2xl p-6"
             >
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style={{ backgroundColor: "#F1F3F2" }}>
-                <b.icon className="w-5 h-5 text-teal" strokeWidth={1.5} aria-hidden="true" />
+              <div className="icon-badge mb-3">
+                <b.icon strokeWidth={1.5} aria-hidden="true" />
               </div>
               <h3 className="font-heading text-lg font-bold mb-2">{b.title}</h3>
               <p className="font-body text-sm text-text-body leading-relaxed">{b.body}</p>
@@ -247,8 +247,8 @@ export default function OrganizationsPage() {
             <div className="grid grid-cols-2 gap-4">
               {portalBenefits.map((b) => (
                 <div key={b.title} className="bg-cream border border-border-grey rounded-2xl p-5">
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-2" style={{ backgroundColor: "#F1F3F2" }}>
-                    <b.icon className="w-5 h-5 text-teal" strokeWidth={1.5} aria-hidden="true" />
+                  <div className="icon-badge mb-3">
+                    <b.icon strokeWidth={1.5} aria-hidden="true" />
                   </div>
                   <h3 className="font-heading text-base font-bold mb-1">{b.title}</h3>
                   <p className="font-body text-[13px] text-text-body leading-relaxed">{b.body}</p>
@@ -284,19 +284,21 @@ export default function OrganizationsPage() {
           </h2>
           <div className="space-y-5">
             {alignmentPoints.map((v) => (
-              <div key={v.label}>
-                <div className="flex items-center gap-2 mb-1">
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ backgroundColor: "#F1F3F2" }}>
-                    <v.icon className="w-5 h-5 text-teal" strokeWidth={1.5} aria-hidden="true" />
-                  </div>
-                  <p className="font-heading text-base font-bold">{v.label}</p>
-                  {v.inDev && (
-                    <span className="font-heading text-[10px] uppercase tracking-wide text-text-muted bg-background rounded-full px-2.5 py-0.5">
-                      In Development
-                    </span>
-                  )}
+              <div key={v.label} className="flex items-start gap-4">
+                <div className="icon-badge">
+                  <v.icon strokeWidth={1.5} aria-hidden="true" />
                 </div>
-                <p className="font-body text-sm text-text-body leading-relaxed pl-7">{v.body}</p>
+                <div>
+                  <div className="flex flex-wrap items-center gap-2 mb-1">
+                    <p className="font-heading text-base font-bold">{v.label}</p>
+                    {v.inDev && (
+                      <span className="font-heading text-[10px] uppercase tracking-wide text-text-muted bg-background rounded-full px-2.5 py-0.5">
+                        In Development
+                      </span>
+                    )}
+                  </div>
+                  <p className="font-body text-sm text-text-body leading-relaxed">{v.body}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -318,8 +320,8 @@ export default function OrganizationsPage() {
               transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.06 }}
               className="text-center"
             >
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center mx-auto mb-3" style={{ backgroundColor: "#F1F3F2" }}>
-                <o.icon className="w-5 h-5 text-teal" strokeWidth={1.5} aria-hidden="true" />
+              <div className="icon-badge mx-auto mb-3">
+                <o.icon strokeWidth={1.5} aria-hidden="true" />
               </div>
               <h3 className="font-heading text-lg font-bold mb-1">{o.title}</h3>
               <p className="font-body text-sm text-text-body">{o.body}</p>
@@ -340,7 +342,9 @@ export default function OrganizationsPage() {
               transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.08 }}
               className="bg-cream border border-border-grey rounded-2xl p-8"
             >
-              <e.icon className="w-5 h-5 text-teal mb-4" strokeWidth={1.5} aria-hidden="true" />
+              <div className="icon-badge mb-4">
+                <e.icon strokeWidth={1.5} aria-hidden="true" />
+              </div>
               <p className="font-heading text-4xl font-bold mb-3">{e.figure}</p>
               <p className="font-body text-sm text-text-body leading-relaxed mb-4">{e.body}</p>
               <p className="font-body text-sm text-teal font-semibold mb-4">{e.support}</p>
@@ -363,7 +367,7 @@ export default function OrganizationsPage() {
             <div className="space-y-7">
               {launchSteps.map((s) => (
                 <div key={s.step} className="flex items-start gap-4">
-                  <span className="w-8 h-8 rounded-full bg-teal text-cream font-heading text-sm font-bold flex items-center justify-center shrink-0">
+                  <span className="step-number text-lg leading-tight">
                     {s.step}
                   </span>
                   <div>
@@ -437,8 +441,11 @@ export default function OrganizationsPage() {
         </motion.div>
       </section>
 
-      {/* SECTION 12: FINAL CTA */}
-      <section className="bg-ink py-20 md:py-28 text-center">
+      {/* SECTION 12: FINAL CTA
+          Sits directly above the (also dark) footer "Stay Connected" block, so
+          the bottom padding is trimmed and a hairline divider marks the seam —
+          the two read as one continuous dark section rather than two boxes. */}
+      <section className="bg-ink pt-20 md:pt-28 pb-16 md:pb-20 text-center border-b border-cream/10">
         <motion.div {...fadeUp} className="max-w-2xl mx-auto px-6">
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-cream mb-6">
             Let&apos;s Build Something Better Together.

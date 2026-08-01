@@ -11,6 +11,7 @@
   --color-teal-forest: #003D35;
   --color-blue-grey: #E8EFF0;
   --color-blue-grey-deep: #DCE6E8;
+  --color-badge-mint: #DCEAE6;
   --color-border-grey: #E1E5E3;
   --color-text-body: #5D6562;
   --color-text-muted: #858C89;
@@ -31,6 +32,7 @@
   --color-teal-forest: var(--color-teal-forest);
   --color-blue-grey: var(--color-blue-grey);
   --color-blue-grey-deep: var(--color-blue-grey-deep);
+  --color-badge-mint: var(--color-badge-mint);
   --color-border-grey: var(--color-border-grey);
   --color-text-body: var(--color-text-body);
   --color-text-muted: var(--color-text-muted);
@@ -80,4 +82,46 @@ h1, h2, h3, h4 {
   font-weight: 400;
   line-height: 1.46;
   letter-spacing: -0.01em;
+}
+
+/* --- Shared icon badge -------------------------------------------------
+   One treatment for every icon across the site: rounded square, soft
+   teal/mint background, teal stroke. Works on light and dark surfaces. */
+.icon-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  flex-shrink: 0;
+  border-radius: 1rem;
+  background-color: var(--color-badge-mint);
+  color: var(--color-teal);
+}
+
+.icon-badge > svg {
+  width: 1.75rem;
+  height: 1.75rem;
+  stroke-width: 1.5;
+}
+
+/* --- Shared numbered step indicator ------------------------------------
+   No container, teal text, zero-padded two-digit numbers. */
+.step-number {
+  font-family: var(--font-heading), sans-serif;
+  font-weight: 700;
+  color: var(--color-teal);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
+}
+
+/* Horizontal scrollers use dot pagination instead of a native scrollbar. */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }

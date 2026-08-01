@@ -1,11 +1,11 @@
 ﻿"use client";
 
-import { useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import { Star } from "lucide-react";
+import { Star, BadgeCheck } from "lucide-react";
 import QuizSection from "@/components/QuizSection";
 
 const fadeUp = {
@@ -133,6 +133,94 @@ const faqs = [
     a: "No. The Parent Academy is designed to be practical, not prescriptive. While each module builds on the last, you can start wherever your family needs the most support right now. Whether you're navigating confidence, communication, pressure, or the car ride home, simply begin there and come back to the other modules when you're ready.",
   },
 ];
+
+const whatsInside = [
+  { label: "Module Library", image: "/long-game-experience.png" },
+  { label: "Worksheets", image: "/org-family-access.png" },
+  { label: "Glove Box Cards", image: "/org-admin-phones.png" },
+];
+
+/**
+ * Horizontal phone-mockup scroller. On mobile it scrolls with snap points and
+ * dot pagination (the native scrollbar track is hidden); on md+ it becomes a
+ * static 3-up grid and the dots are hidden.
+ */
+function WhatsInsideScroller() {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [active, setActive] = useState(0);
+
+  const syncActive = useCallback(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    const trackRect = track.getBoundingClientRect();
+    const trackCenter = trackRect.left + trackRect.width / 2;
+    let nearest = 0;
+    let nearestDistance = Number.POSITIVE_INFINITY;
+    Array.from(track.children).forEach((child, i) => {
+      const rect = (child as HTMLElement).getBoundingClientRect();
+      const distance = Math.abs(rect.left + rect.width / 2 - trackCenter);
+      if (distance < nearestDistance) {
+        nearestDistance = distance;
+        nearest = i;
+      }
+    });
+    setActive(nearest);
+  }, []);
+
+  useEffect(() => {
+    syncActive();
+  }, [syncActive]);
+
+  const scrollToSlide = (i: number) => {
+    const child = trackRef.current?.children[i] as HTMLElement | undefined;
+    child?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+  };
+
+  return (
+    <>
+      <div
+        ref={trackRef}
+        onScroll={syncActive}
+        className="no-scrollbar flex md:grid md:grid-cols-3 gap-6 overflow-x-auto snap-x snap-mandatory md:overflow-visible -mx-6 px-6 md:mx-0 md:px-0"
+      >
+        {whatsInside.map((item, i) => (
+          <motion.div
+            key={item.label}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.12 }}
+            className="text-center shrink-0 w-full snap-center md:w-auto"
+          >
+            <div className="h-[340px] flex items-center justify-center mb-4">
+              <img
+                src={item.image}
+                alt={item.label}
+                className="max-h-full max-w-full w-auto h-auto object-contain mx-auto"
+              />
+            </div>
+            <p className="font-heading text-sm font-semibold text-charcoal">{item.label}</p>
+          </motion.div>
+        ))}
+      </div>
+
+      <div className="flex md:hidden justify-center items-center gap-2.5 mt-6">
+        {whatsInside.map((item, i) => (
+          <button
+            key={item.label}
+            type="button"
+            aria-current={active === i}
+            aria-label={`Show ${item.label}`}
+            onClick={() => scrollToSlide(i)}
+            className={`h-2 rounded-full transition-all duration-300 ${
+              active === i ? "w-6 bg-teal" : "w-2 bg-charcoal/20 hover:bg-charcoal/35"
+            }`}
+          />
+        ))}
+      </div>
+    </>
+  );
+}
 
 function Accordion({
   items,
@@ -378,52 +466,76 @@ export default function Home() {
           >
             Trusted by sports parents &mdash; and the coaches, scouts, and leaders who know what matters most.
           </motion.p>
-          <div className="grid md:grid-cols-2 gap-x-10 gap-y-12 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-5 max-w-4xl mx-auto">
             {parentQuotes.map((q, i) => (
-              <motion.div
+              <motion.figure
                 key={q.name}
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.1 }}
-                className="text-center"
+                className="bg-background border border-border-grey rounded-2xl p-7 md:p-8 text-left flex flex-col"
               >
-                <p className="font-body italic text-base md:text-lg leading-relaxed mb-5">
-                  &ldquo;{q.quote}&rdquo;
-                </p>
-                <div className="flex justify-center gap-1 mb-4">
+                <div className="flex gap-1 mb-4" aria-label="Rated 5 out of 5">
                   {[...Array(5)].map((_, idx) => (
-                    <Star key={idx} className="w-4 h-4 text-teal fill-teal" />
+                    <Star key={idx} className="w-4 h-4 text-teal fill-teal" aria-hidden="true" />
                   ))}
                 </div>
-                <p className="font-heading font-semibold text-sm">{q.name}</p>
-                <p className="font-heading text-xs text-teal tracking-wide">{q.role}</p>
-              </motion.div>
+                <blockquote className="font-body italic text-base md:text-lg leading-relaxed mb-6 flex-1">
+                  &ldquo;{q.quote}&rdquo;
+                </blockquote>
+                <figcaption className="border-t border-border-grey pt-4">
+                  <p className="font-heading font-semibold text-sm">{q.name}</p>
+                  <p className="font-body text-[13px] text-text-muted leading-snug">{q.role}</p>
+                </figcaption>
+              </motion.figure>
             ))}
           </div>
-          <div className="grid grid-cols-3 gap-6 md:gap-10 pt-14 mt-14 border-t border-border-grey max-w-3xl mx-auto">
-            {leaders.map((l, i) => (
-              <motion.div
-                key={l.name}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.08 }}
-                className="text-center"
-              >
-                {l.photo ? (
-                  <img
-                    src={l.photo}
-                    alt={l.name}
-                    className="w-20 h-20 md:w-24 md:h-24 rounded-full mx-auto mb-4 object-cover object-top"
-                  />
-                ) : (
-                  <Placeholder label="Headshot" className="w-20 h-20 md:w-24 md:h-24 rounded-full mx-auto mb-4" />
-                )}
-                <p className="font-heading font-semibold text-sm">{l.name}</p>
-                <p className="font-heading text-xs text-teal tracking-wide leading-snug">{l.role}</p>
-              </motion.div>
-            ))}
+
+          {/* Endorsements — visually separated from the parent quotes above so
+              "who stands behind this" doesn't blend into "what parents say". */}
+          <div className="pt-16 mt-16 border-t border-border-grey max-w-4xl mx-auto">
+            <motion.p {...fadeUp} className="font-heading text-teal text-[13px] font-semibold tracking-widest uppercase mb-3">
+              Recognized By
+            </motion.p>
+            <motion.h3
+              {...fadeUp}
+              transition={{ ...fadeUp.transition, delay: 0.05 }}
+              className="font-heading text-2xl md:text-3xl font-bold leading-tight mb-10 max-w-2xl mx-auto"
+            >
+              Coaches, scouts, and leaders who&apos;ve spent their careers around athletes.
+            </motion.h3>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+              {leaders.map((l, i) => (
+                <motion.div
+                  key={l.name}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.08 }}
+                  className="bg-background border border-border-grey rounded-2xl p-7 text-center flex flex-col items-center"
+                >
+                  <div className="relative mb-4">
+                    {l.photo ? (
+                      <img
+                        src={l.photo}
+                        alt={l.name}
+                        className="w-20 h-20 rounded-full object-cover object-top"
+                      />
+                    ) : (
+                      <Placeholder label="Headshot" className="w-20 h-20 rounded-full" />
+                    )}
+                    <BadgeCheck
+                      className="absolute -bottom-1 -right-1 w-6 h-6 text-teal bg-background rounded-full"
+                      strokeWidth={2}
+                      aria-hidden="true"
+                    />
+                  </div>
+                  <p className="font-heading text-base font-bold mb-1">{l.name}</p>
+                  <p className="font-body text-[13px] text-text-muted leading-snug">{l.role}</p>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -439,31 +551,7 @@ export default function Home() {
               A look at the system, on the device you&apos;ll actually use it on.
             </p>
           </motion.div>
-          <div className="flex md:grid md:grid-cols-3 gap-6 overflow-x-auto snap-x snap-mandatory md:overflow-visible -mx-6 px-6 md:mx-0 md:px-0">
-            {[
-              { label: "Module Library", image: "/long-game-experience.png" },
-              { label: "Worksheets", image: "/org-family-access.png" },
-              { label: "Glove Box Cards", image: "/org-admin-phones.png" },
-            ].map((item, i) => (
-              <motion.div
-                key={item.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.12 }}
-                className="text-center shrink-0 w-full snap-center md:w-auto"
-              >
-                <div className="h-[340px] flex items-center justify-center mb-4">
-                  <img
-                    src={item.image}
-                    alt={item.label}
-                    className="max-h-full max-w-full w-auto h-auto object-contain mx-auto"
-                  />
-                </div>
-                <p className="font-heading text-sm font-semibold text-charcoal">{item.label}</p>
-              </motion.div>
-            ))}
-          </div>
+          <WhatsInsideScroller />
         </div>
       </section>
 
