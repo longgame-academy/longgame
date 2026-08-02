@@ -1,11 +1,11 @@
 ﻿"use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import { Star, BadgeCheck } from "lucide-react";
+import { Star } from "lucide-react";
 import QuizSection from "@/components/QuizSection";
 
 const fadeUp = {
@@ -82,20 +82,55 @@ const stats = [
   {
     stat: "70%",
     headline: "Children quit organized sports by age 13.",
-    body: "Most don't leave because they aren't talented. They leave because the experience stopped being fun.",
     source: "Source: Aspen Institute / SFIA",
   },
   {
     stat: "#1",
-    headline: 'Reason kids quit sports: "It stopped being fun."',
-    body: "Pressure, adult expectations, and burnout consistently rank among the biggest reasons children walk away.",
+    headline: 'Reason kids quit: "It stopped being fun."',
     source: "Source: Aspen Institute / Project Play",
   },
   {
     stat: "80%+",
     headline: "Parents believe they're being supportive.",
-    body: "Many athletes experience the same behaviours as pressure. Perception matters more than intention.",
     source: "Source: Harvard Youth Sports Survey",
+  },
+];
+
+const academyRows = [
+  {
+    term: "12 guided modules",
+    detail: "Learn how to handle the moments sports parents face most.",
+  },
+  {
+    term: "Real-world scripts",
+    detail: "Simple language to keep close when conversations get hard.",
+  },
+  {
+    term: "Worksheets & reflection",
+    detail: "Turn what you learn into changes you can actually use.",
+  },
+  {
+    term: "Glove Box Cards",
+    detail: "Keep the most important reminders close when you need them.",
+  },
+];
+
+const systemRows = [
+  {
+    term: "Common mistakes",
+    detail: "See what can unintentionally make things harder.",
+  },
+  {
+    term: "Better responses",
+    detail: "Learn a more helpful way to respond.",
+  },
+  {
+    term: "Try saying",
+    detail: "Get practical words for difficult moments.",
+  },
+  {
+    term: "Put it into practice",
+    detail: "Use reflections and five-minute actions to make it stick.",
   },
 ];
 
@@ -134,91 +169,25 @@ const faqs = [
   },
 ];
 
-const whatsInside = [
-  { label: "Module Library", image: "/long-game-experience.png" },
-  { label: "Worksheets", image: "/org-family-access.png" },
-  { label: "Glove Box Cards", image: "/org-admin-phones.png" },
-];
-
 /**
- * Horizontal phone-mockup scroller. On mobile it scrolls with snap points and
- * dot pagination (the native scrollbar track is hidden); on md+ it becomes a
- * static 3-up grid and the dots are hidden.
+ * Text-only feature list: a term and one supporting line per row, separated by
+ * hairline rules. Deliberately no icons or cards — typography and the dividers
+ * carry the structure.
  */
-function WhatsInsideScroller() {
-  const trackRef = useRef<HTMLDivElement>(null);
-  const [active, setActive] = useState(0);
-
-  const syncActive = useCallback(() => {
-    const track = trackRef.current;
-    if (!track) return;
-    const trackRect = track.getBoundingClientRect();
-    const trackCenter = trackRect.left + trackRect.width / 2;
-    let nearest = 0;
-    let nearestDistance = Number.POSITIVE_INFINITY;
-    Array.from(track.children).forEach((child, i) => {
-      const rect = (child as HTMLElement).getBoundingClientRect();
-      const distance = Math.abs(rect.left + rect.width / 2 - trackCenter);
-      if (distance < nearestDistance) {
-        nearestDistance = distance;
-        nearest = i;
-      }
-    });
-    setActive(nearest);
-  }, []);
-
-  useEffect(() => {
-    syncActive();
-  }, [syncActive]);
-
-  const scrollToSlide = (i: number) => {
-    const child = trackRef.current?.children[i] as HTMLElement | undefined;
-    child?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
-  };
-
+function FeatureRows({ rows }: { rows: { term: string; detail: string }[] }) {
   return (
-    <>
-      <div
-        ref={trackRef}
-        onScroll={syncActive}
-        className="no-scrollbar flex md:grid md:grid-cols-3 gap-6 overflow-x-auto snap-x snap-mandatory md:overflow-visible -mx-6 px-6 md:mx-0 md:px-0"
-      >
-        {whatsInside.map((item, i) => (
-          <motion.div
-            key={item.label}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.12 }}
-            className="text-center shrink-0 w-full snap-center md:w-auto"
-          >
-            <div className="h-[340px] flex items-center justify-center mb-4">
-              <img
-                src={item.image}
-                alt={item.label}
-                className="max-h-full max-w-full w-auto h-auto object-contain mx-auto"
-              />
-            </div>
-            <p className="font-heading text-sm font-semibold text-charcoal">{item.label}</p>
-          </motion.div>
-        ))}
-      </div>
-
-      <div className="flex md:hidden justify-center items-center gap-2.5 mt-6">
-        {whatsInside.map((item, i) => (
-          <button
-            key={item.label}
-            type="button"
-            aria-current={active === i}
-            aria-label={`Show ${item.label}`}
-            onClick={() => scrollToSlide(i)}
-            className={`h-2 rounded-full transition-all duration-300 ${
-              active === i ? "w-6 bg-teal" : "w-2 bg-charcoal/20 hover:bg-charcoal/35"
-            }`}
-          />
-        ))}
-      </div>
-    </>
+    <dl className="mt-10 border-t border-border-grey">
+      {rows.map((row) => (
+        <div key={row.term} className="border-b border-border-grey py-5">
+          <dt className="font-heading text-base font-semibold text-charcoal mb-1.5">
+            {row.term}
+          </dt>
+          <dd className="font-body text-sm text-text-body leading-relaxed">
+            {row.detail}
+          </dd>
+        </div>
+      ))}
+    </dl>
   );
 }
 
@@ -342,7 +311,7 @@ export default function Home() {
       </section>
 
       {/* SECTION 2: YOUTH SPORTS HAVE CHANGED */}
-      <section className="max-w-7xl mx-auto w-full px-6 py-14 md:py-24 grid md:grid-cols-5 gap-12 items-center">
+      <section className="max-w-7xl mx-auto w-full px-6 py-20 md:py-32 grid md:grid-cols-5 gap-12 md:gap-16 items-center">
         <motion.div {...fadeUp} className="md:col-span-3">
           <img src="/athlete-reflection.jpg" alt="Young athlete reflecting quietly in the locker room" className="w-full h-auto aspect-[4/3] object-cover rounded-lg" />
         </motion.div>
@@ -380,45 +349,72 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* SECTION 4: THE QUIZ — FIND YOUR MOMENT (moved up) */}
-      <QuizSection />
-
-      {/* SECTION 3.5: THE REALITY PARENTS ARE FACING */}
-      <section className="pt-14 pb-14 md:pt-24 md:pb-24" style={{ backgroundColor: "#F1F3F2" }}>
-        <div className="max-w-6xl mx-auto px-6">
-          <motion.h2 {...fadeUp} className="font-heading text-3xl md:text-4xl font-bold text-center mb-10">
-            The Reality Parents Are Facing
-          </motion.h2>
-          <div className="grid md:grid-cols-3 gap-6 mb-10">
-            {stats.map((s, i) => (
-              <motion.div
-                key={s.stat}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.1 }}
-                className="bg-ink rounded-[28px] p-10 md:p-12"
-              >
-                <p className="font-heading text-5xl md:text-6xl font-bold text-teal mb-6">{s.stat}</p>
-                <h3 className="font-heading text-lg font-semibold text-cream mb-3 leading-snug">{s.headline}</h3>
-                <p className="font-body text-sm leading-relaxed mb-6" style={{ color: "#B8BDBD" }}>
-                  {s.body}
-                </p>
-                <p className="font-heading text-xs text-teal tracking-wide">{s.source}</p>
-              </motion.div>
-            ))}
-          </div>
-          <motion.div {...fadeUp} className="text-center">
-            <Link href="/research-evidence" className="font-heading text-sm font-semibold text-teal hover:underline">
-              Here&apos;s what the research shows. &rarr;
-            </Link>
+      {/* SECTION 3: THE PARENT ACADEMY — copy left, product visual right */}
+      <section className="max-w-6xl mx-auto w-full px-6 py-20 md:py-32">
+        <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+          <motion.div {...fadeUp}>
+            <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase mb-4">
+              The Parent Academy
+            </p>
+            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6 leading-tight max-w-[440px]">
+              A better way to parent through sports.
+            </h2>
+            <p className="font-body text-text-body leading-relaxed max-w-[480px]">
+              Most parents want to help. The hard part is knowing what actually
+              helps when confidence drops, pressure builds, failure hits, or
+              sport starts affecting your relationship. The right guidance can
+              change how those moments unfold.
+            </p>
+            <FeatureRows rows={academyRows} />
+          </motion.div>
+          <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.15 }}>
+            {/* TODO: swap for real Parent Portal dashboard visual */}
+            <Placeholder
+              label="Parent Portal Dashboard"
+              className="w-full aspect-[4/5] rounded-lg"
+            />
           </motion.div>
         </div>
       </section>
-      
+
+      {/* SECTION 4: THE QUIZ — FIND YOUR MOMENT */}
+      <QuizSection />
+
+      {/* SECTION 5: INSIDE THE SYSTEM — reader visual left on desktop, copy
+          first on mobile (the visual is ordered ahead of it only at md+). */}
+      <section className="max-w-6xl mx-auto w-full px-6 py-20 md:py-32">
+        <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+          <motion.div {...fadeUp}>
+            <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase mb-4">
+              Inside the System
+            </p>
+            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6 leading-tight max-w-[440px]">
+              Practical guidance you can actually use.
+            </h2>
+            <p className="font-body text-text-body leading-relaxed max-w-[480px]">
+              Understanding what&apos;s happening is only the beginning. Each
+              module helps you avoid common mistakes, know what to say, and put
+              what you&apos;ve learned into practice.
+            </p>
+            <FeatureRows rows={systemRows} />
+          </motion.div>
+          <motion.div
+            {...fadeUp}
+            transition={{ ...fadeUp.transition, delay: 0.15 }}
+            className="md:order-first"
+          >
+            {/* TODO: swap for real Reader visual */}
+            <Placeholder
+              label="Module Reader"
+              className="w-full aspect-[4/5] rounded-lg"
+            />
+          </motion.div>
+        </div>
+      </section>
+
       {/* SECTION 6: THE SIGNATURE IDEA — THE LONG GAME PRINCIPLE */}
-      <section className="bg-ink text-cream py-16 md:py-24">
-        <div className="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      <section className="bg-ink text-cream py-20 md:py-32">
+        <div className="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-12 md:gap-16 items-center">
           <motion.div {...fadeUp}>
             <img
               src="/youth-sports-changed.jpg"
@@ -453,8 +449,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 5: PROOF (merged, one heading) */}
-      <section className="bg-cream py-16 md:py-24">
+      {/* SECTION 7: PROOF (merged, one heading) */}
+      <section className="bg-cream py-20 md:py-32">
         <div className="max-w-5xl mx-auto px-6 text-center">
           <motion.h2 {...fadeUp} className="font-heading text-3xl md:text-4xl font-bold mb-3">
             What Parents Are Saying
@@ -515,7 +511,7 @@ export default function Home() {
                   transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.08 }}
                   className="bg-background border border-border-grey rounded-2xl p-7 text-center flex flex-col items-center"
                 >
-                  <div className="relative mb-4">
+                  <div className="mb-4">
                     {l.photo ? (
                       <img
                         src={l.photo}
@@ -525,11 +521,6 @@ export default function Home() {
                     ) : (
                       <Placeholder label="Headshot" className="w-20 h-20 rounded-full" />
                     )}
-                    <BadgeCheck
-                      className="absolute -bottom-1 -right-1 w-6 h-6 text-teal bg-background rounded-full"
-                      strokeWidth={2}
-                      aria-hidden="true"
-                    />
                   </div>
                   <p className="font-heading text-base font-bold mb-1">{l.name}</p>
                   <p className="font-body text-[13px] text-text-muted leading-snug">{l.role}</p>
@@ -540,22 +531,38 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 8: WHAT'S INSIDE */}
-      <section className="bg-cream py-16 md:py-24">
+      {/* SECTION 8: THE REALITY PARENTS ARE FACING — moved below the proof
+          section. Three figures, one line each, sourced. Nothing else. */}
+      <section className="py-20 md:py-32" style={{ backgroundColor: "#F1F3F2" }}>
         <div className="max-w-6xl mx-auto px-6">
-          <motion.div {...fadeUp} className="text-center mb-14">
-            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
-              What&apos;s Inside
-            </h2>
-            <p className="font-body text-text-body max-w-xl mx-auto leading-relaxed">
-              A look at the system, on the device you&apos;ll actually use it on.
-            </p>
+          <motion.h2 {...fadeUp} className="font-heading text-3xl md:text-4xl font-bold text-center mb-14">
+            The Reality Parents Are Facing
+          </motion.h2>
+          <div className="grid md:grid-cols-3 gap-6 mb-12">
+            {stats.map((s, i) => (
+              <motion.div
+                key={s.stat}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.1 }}
+                className="bg-ink rounded-[28px] p-10 md:p-12"
+              >
+                <p className="font-heading text-5xl md:text-6xl font-bold text-teal mb-5">{s.stat}</p>
+                <h3 className="font-heading text-lg font-semibold text-cream mb-6 leading-snug">{s.headline}</h3>
+                <p className="font-heading text-xs text-teal tracking-wide">{s.source}</p>
+              </motion.div>
+            ))}
+          </div>
+          <motion.div {...fadeUp} className="text-center">
+            <Link href="/research-evidence" className="font-heading text-sm font-semibold text-teal hover:underline">
+              Here&apos;s what the research shows. &rarr;
+            </Link>
           </motion.div>
-          <WhatsInsideScroller />
         </div>
       </section>
 
-      <section id="pricing" className="w-full py-4 md:py-8">
+      <section id="pricing" className="w-full py-16 md:py-24">
         <div className="max-w-lg mx-auto px-5 md:px-6">
           <motion.div {...fadeUp} className="hidden md:block mb-8">
             <img
@@ -677,16 +684,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 6.5: FAQ (moved here) */}
-      <section className="max-w-3xl mx-auto w-full px-6 py-14 md:py-24">
+      {/* SECTION 10A: FAQ */}
+      <section className="max-w-3xl mx-auto w-full px-6 py-20 md:py-32">
         <h2 className="font-heading text-2xl md:text-3xl font-bold text-center mb-12">
           Common Questions
         </h2>
         <Accordion items={faqs} openIndex={openFaq} setOpenIndex={setOpenFaq} />
       </section>
 
-      {/* SECTION 7: BUILT FROM EXPERIENCE. CREATED WITH PURPOSE. (moved here) */}
-      <section className="max-w-6xl mx-auto w-full px-6 py-20 md:py-28 grid md:grid-cols-2 gap-14 items-center">
+      {/* SECTION 10B: BUILT FROM EXPERIENCE. CREATED WITH PURPOSE. */}
+      <section className="max-w-6xl mx-auto w-full px-6 py-20 md:py-32 grid md:grid-cols-2 gap-14 md:gap-16 items-center">
         <motion.div {...fadeUp}>
           <Placeholder label="Documentary Photo" className="aspect-[4/3] rounded-lg" />
         </motion.div>
@@ -731,7 +738,7 @@ export default function Home() {
       </section>
 
       {/* SECTION: FINAL CLOSE */}
-      <section className="max-w-6xl mx-auto w-full px-6 pt-16 pb-16 md:pt-20 md:pb-20">
+      <section className="max-w-6xl mx-auto w-full px-6 pt-20 pb-20 md:pt-24 md:pb-28">
         <motion.h2 {...fadeUp} className="font-heading text-3xl md:text-4xl font-bold text-center mb-10 leading-tight">
           The Game Will End.
           <br />
