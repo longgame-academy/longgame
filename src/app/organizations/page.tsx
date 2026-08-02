@@ -4,11 +4,6 @@ import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
-import {
-  Users, Megaphone, TrendingUp, Heart, Award,
-  ClipboardList, Car, Volume2, Compass, Fuel, Shield, Target,
-  MessageCircle, Calendar, BarChart3, Clock, CheckCircle2,
-} from "lucide-react";
 
 function Placeholder({ label, className = "" }: { label: string; className?: string }) {
   return (
@@ -28,45 +23,45 @@ const fadeUp = {
 } as const;
 
 const problems = [
-  { icon: Clock, title: "Playing Time & Role Conflict", problem: "A playing-time complaint lands on your desk before the coach even knows there's a concern.", helps: "Parents get a framework for knowing when a conversation is warranted—and how to have it with the coach, not about the coach." },
-  { icon: ClipboardList, title: "Staff & Administrator Overload", problem: "Your staff spends hours managing parent conflict that has nothing to do with coaching.", helps: "When parents share the same philosophy your organization does, staff spend less time refereeing and more time developing athletes." },
-  { icon: Car, title: "Pressure Following Athletes Home", problem: "What happens in the car ride home undoes what happened at practice.", helps: "Parents get the exact language for the fifteen minutes after a hard game—so home reinforces what you're building, not undermines it." },
-  { icon: Volume2, title: "Sideline & Spectator Behaviour", problem: "One parent's behaviour at a game becomes everyone's problem, including yours.", helps: "A shared standard for how parents show up—modelled and taught, not just posted on a sign." },
-  { icon: Compass, title: "Misaligned Expectations", problem: "Time, fees, travel, and training create expectations your organization never actually promised.", helps: "Parents get a realistic picture of development early, so expectations are set before they become conflict." },
-  { icon: Fuel, title: "Burnout & Athlete Retention", problem: "A kid who wanted this at nine doesn't want it at thirteen—and you lose a family.", helps: "Parents learn to read the signs early and respond in ways that keep kids in the game instead of pushing them out." },
+  { title: "Playing Time & Role Conflict", problem: "A playing-time complaint lands on your desk before the coach even knows there's a concern.", helps: "Parents get a framework for knowing when a conversation is warranted—and how to have it with the coach, not about the coach." },
+  { title: "Staff & Administrator Overload", problem: "Your staff spends hours managing parent conflict that has nothing to do with coaching.", helps: "When parents share the same philosophy your organization does, staff spend less time refereeing and more time developing athletes." },
+  { title: "Pressure Following Athletes Home", problem: "What happens in the car ride home undoes what happened at practice.", helps: "Parents get the exact language for the fifteen minutes after a hard game—so home reinforces what you're building, not undermines it." },
+  { title: "Sideline & Spectator Behaviour", problem: "One parent's behaviour at a game becomes everyone's problem, including yours.", helps: "A shared standard for how parents show up—modelled and taught, not just posted on a sign." },
+  { title: "Misaligned Expectations", problem: "Time, fees, travel, and training create expectations your organization never actually promised.", helps: "Parents get a realistic picture of development early, so expectations are set before they become conflict." },
+  { title: "Burnout & Athlete Retention", problem: "A kid who wanted this at nine doesn't want it at thirteen—and you lose a family.", helps: "Parents learn to read the signs early and respond in ways that keep kids in the game instead of pushing them out." },
 ];
 
 const proactiveBoxes = [
-  { icon: Shield, title: "Prepare Parents", body: "Set the tone before the season starts, not after the first conflict." },
-  { icon: Target, title: "Align Expectations", body: "Give families a realistic picture of development, time, and role." },
-  { icon: MessageCircle, title: "Support the Moment", body: "Give parents the exact words when a hard moment actually happens." },
+  { title: "Prepare Parents", body: "Set the tone before the season starts, not after the first conflict." },
+  { title: "Align Expectations", body: "Give families a realistic picture of development, time, and role." },
+  { title: "Support the Moment", body: "Give parents the exact words when a hard moment actually happens." },
 ];
 
 const portalBenefits = [
-  { icon: ClipboardList, title: "Parent Development System", body: "Twelve practical modules covering the moments that matter most." },
-  { icon: Compass, title: "Field Guides", body: "In-depth guidance parents can return to all season long." },
-  { icon: MessageCircle, title: "Practical Tools and Scripts", body: "Exact language for hard conversations, not general advice." },
-  { icon: TrendingUp, title: "Question-Based Navigation", body: "Parents find help by situation, not by table of contents." },
+  { title: "Parent Development System", body: "Twelve practical modules covering the moments that matter most." },
+  { title: "Field Guides", body: "In-depth guidance parents can return to all season long." },
+  { title: "Practical Tools and Scripts", body: "Exact language for hard conversations, not general advice." },
+  { title: "Question-Based Navigation", body: "Parents find help by situation, not by table of contents." },
 ];
 
 const alignmentPoints = [
-  { icon: Users, label: "Coach-Parent Alignment", body: "A shared framework so coaches and parents are working from the same expectations.", inDev: true },
-  { icon: Shield, label: "Parent Behaviour Standard", body: "A clear, positive standard for how parents show up—not just a list of rules.", inDev: true },
-  { icon: Calendar, label: "Preseason Pathways", body: "Set families up before the season starts, not after the first issue.", inDev: false },
-  { icon: BarChart3, label: "Organization Visibility", body: "See engagement across your families at a glance.", inDev: false },
+  { label: "Coach-Parent Alignment", body: "A shared framework so coaches and parents are working from the same expectations.", inDev: true },
+  { label: "Parent Behaviour Standard", body: "A clear, positive standard for how parents show up—not just a list of rules.", inDev: true },
+  { label: "Preseason Pathways", body: "Set families up before the season starts, not after the first issue.", inDev: false },
+  { label: "Organization Visibility", body: "See engagement across your families at a glance.", inDev: false },
 ];
 
 const outcomes = [
-  { icon: Shield, title: "Fewer Preventable Conflicts", body: "Issues get addressed before they escalate." },
-  { icon: Megaphone, title: "Better Support for Coaches", body: "Less time managing parents, more time developing athletes." },
-  { icon: Heart, title: "Healthier Athlete Experiences", body: "Kids play in an environment built for them to thrive." },
-  { icon: Award, title: "Stronger Organizational Trust", body: "Families who feel supported become families who stay." },
+  { title: "Fewer Preventable Conflicts", body: "Issues get addressed before they escalate." },
+  { title: "Better Support for Coaches", body: "Less time managing parents, more time developing athletes." },
+  { title: "Healthier Athlete Experiences", body: "Kids play in an environment built for them to thrive." },
+  { title: "Stronger Organizational Trust", body: "Families who feel supported become families who stay." },
 ];
 
 const evidence = [
-  { icon: Clock, figure: "70%", body: "of kids quit organized sports by age 13, most because the experience stopped being fun, not because of talent.", support: "Every family that leaves is a family your organization worked to earn.", source: "Aspen Institute / Project Play" },
-  { icon: Users, figure: "46%", body: "of youth coaches have experienced verbal harassment — 56% of those say it came from parents of athletes.", support: "Coaches who feel supported by parents stay longer.", source: "U.S. Center for SafeSport, National Coaches Survey (Jan. 2026)" },
-  { icon: Shield, figure: "80%", body: "of young officials quit within their first two years — more than 75% cite adult behaviour as the primary reason.", support: "How parents show up shapes whether officials, volunteers, and coaches want to come back.", source: "National Association of Sports Officials (NASO) survey, cited via the Ohio High School Athletic Association" },
+  { figure: "70%", body: "of kids quit organized sports by age 13, most because the experience stopped being fun, not because of talent.", support: "Every family that leaves is a family your organization worked to earn.", source: "Aspen Institute / Project Play" },
+  { figure: "46%", body: "of youth coaches have experienced verbal harassment — 56% of those say it came from parents of athletes.", support: "Coaches who feel supported by parents stay longer.", source: "U.S. Center for SafeSport, National Coaches Survey (Jan. 2026)" },
+  { figure: "80%", body: "of young officials quit within their first two years — more than 75% cite adult behaviour as the primary reason.", support: "How parents show up shapes whether officials, volunteers, and coaches want to come back.", source: "National Association of Sports Officials (NASO) survey, cited via the Ohio High School Athletic Association" },
 ];
 
 const launchSteps = [
@@ -185,9 +180,6 @@ export default function OrganizationsPage() {
                 className="rounded-2xl p-7 flex flex-col"
                 style={{ backgroundColor: "#1A1E1C", border: "1px solid rgba(255,255,255,.08)" }}
               >
-                <div className="icon-badge mb-4">
-                  <p.icon strokeWidth={1.5} aria-hidden="true" />
-                </div>
                 <h3 className="font-heading text-lg font-bold text-cream mb-2">{p.title}</h3>
                 <p className="font-body text-sm mb-3" style={{ color: "#C9CFCC" }}>{p.problem}</p>
                 <div className="w-6 h-0.5 bg-teal mb-3" />
@@ -213,9 +205,6 @@ export default function OrganizationsPage() {
               transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.08 }}
               className="bg-cream border border-border-grey rounded-2xl p-6"
             >
-              <div className="icon-badge mb-3">
-                <b.icon strokeWidth={1.5} aria-hidden="true" />
-              </div>
               <h3 className="font-heading text-lg font-bold mb-2">{b.title}</h3>
               <p className="font-body text-sm text-text-body leading-relaxed">{b.body}</p>
             </motion.div>
@@ -247,9 +236,6 @@ export default function OrganizationsPage() {
             <div className="grid grid-cols-2 gap-4">
               {portalBenefits.map((b) => (
                 <div key={b.title} className="bg-cream border border-border-grey rounded-2xl p-5">
-                  <div className="icon-badge mb-3">
-                    <b.icon strokeWidth={1.5} aria-hidden="true" />
-                  </div>
                   <h3 className="font-heading text-base font-bold mb-1">{b.title}</h3>
                   <p className="font-body text-[13px] text-text-body leading-relaxed">{b.body}</p>
                 </div>
@@ -282,23 +268,18 @@ export default function OrganizationsPage() {
           <h2 className="font-heading text-2xl md:text-3xl font-bold leading-tight mb-8">
             Give your coaches and your families the same playbook.
           </h2>
-          <div className="space-y-5">
+          <div className="border-t border-border-grey">
             {alignmentPoints.map((v) => (
-              <div key={v.label} className="flex items-start gap-4">
-                <div className="icon-badge">
-                  <v.icon strokeWidth={1.5} aria-hidden="true" />
+              <div key={v.label} className="border-b border-border-grey py-5">
+                <div className="flex flex-wrap items-center gap-2 mb-1">
+                  <p className="font-heading text-base font-bold">{v.label}</p>
+                  {v.inDev && (
+                    <span className="font-heading text-[10px] uppercase tracking-wide text-text-muted bg-background rounded-full px-2.5 py-0.5">
+                      In Development
+                    </span>
+                  )}
                 </div>
-                <div>
-                  <div className="flex flex-wrap items-center gap-2 mb-1">
-                    <p className="font-heading text-base font-bold">{v.label}</p>
-                    {v.inDev && (
-                      <span className="font-heading text-[10px] uppercase tracking-wide text-text-muted bg-background rounded-full px-2.5 py-0.5">
-                        In Development
-                      </span>
-                    )}
-                  </div>
-                  <p className="font-body text-sm text-text-body leading-relaxed">{v.body}</p>
-                </div>
+                <p className="font-body text-sm text-text-body leading-relaxed">{v.body}</p>
               </div>
             ))}
           </div>
@@ -320,9 +301,6 @@ export default function OrganizationsPage() {
               transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.06 }}
               className="text-center"
             >
-              <div className="icon-badge mx-auto mb-3">
-                <o.icon strokeWidth={1.5} aria-hidden="true" />
-              </div>
               <h3 className="font-heading text-lg font-bold mb-1">{o.title}</h3>
               <p className="font-body text-sm text-text-body">{o.body}</p>
             </motion.div>
@@ -342,9 +320,6 @@ export default function OrganizationsPage() {
               transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.08 }}
               className="bg-cream border border-border-grey rounded-2xl p-8"
             >
-              <div className="icon-badge mb-4">
-                <e.icon strokeWidth={1.5} aria-hidden="true" />
-              </div>
               <p className="font-heading text-4xl font-bold mb-3">{e.figure}</p>
               <p className="font-body text-sm text-text-body leading-relaxed mb-4">{e.body}</p>
               <p className="font-body text-sm text-teal font-semibold mb-4">{e.support}</p>
@@ -405,14 +380,11 @@ export default function OrganizationsPage() {
             <h2 className="font-heading text-2xl md:text-3xl font-bold leading-tight mb-8">
               A complete parent-development ecosystem, not a one-time resource.
             </h2>
-            <div className="space-y-5">
+            <div className="border-t border-border-grey">
               {includes.map((item, i) => (
-                <div key={item.title} className="flex items-start gap-3">
-                  <CheckCircle2 className={i === 0 ? "w-6 h-6 text-teal shrink-0 mt-0.5" : "w-5 h-5 text-teal shrink-0 mt-0.5"} strokeWidth={1.5} aria-hidden="true" />
-                  <div>
-                    <p className={i === 0 ? "font-heading text-lg font-bold mb-1" : "font-heading text-base font-bold mb-1"}>{item.title}</p>
-                    <p className="font-body text-sm text-text-body leading-relaxed">{item.body}</p>
-                  </div>
+                <div key={item.title} className="border-b border-border-grey py-5">
+                  <p className={i === 0 ? "font-heading text-lg font-bold mb-1" : "font-heading text-base font-bold mb-1"}>{item.title}</p>
+                  <p className="font-body text-sm text-text-body leading-relaxed">{item.body}</p>
                 </div>
               ))}
             </div>

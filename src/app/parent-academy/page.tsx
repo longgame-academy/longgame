@@ -5,7 +5,7 @@ import Nav from "@/components/Nav";
 import { CheckoutButton } from "@/components/CheckoutButton";
 import Footer from "@/components/Footer";
 import { motion, AnimatePresence } from "framer-motion";
-import { Car, Sparkles, Users, MessageCircle, Compass, Fuel, Target, Timer, Star, BadgeCheck } from "lucide-react";
+import { Star } from "lucide-react";
 
 function Placeholder({ label, className = "" }: { label: string; className?: string }) {
   return (
@@ -69,12 +69,12 @@ const modules = [
 ];
 
 const painPoints = [
-  { icon: Car, title: "The Car Ride Home", quote: "The drive home says more than the game did.", body: "Long Game gives you the exact words for those first fifteen minutes.", module: 1 },
-  { icon: Sparkles, title: "Confidence", quote: "The kid who used to play free now plays scared.", body: "A system for rebuilding belief without forcing it.", module: 2 },
-  { icon: Users, title: "Playing Time", quote: "You don't know if this is worth a conversation.", body: "A clear-headed way to know when to speak up and when to let it sit.", module: 5 },
-  { icon: MessageCircle, title: "Coach Communication", quote: "You're trying to figure out what's worth raising.", body: "Scripts and timing for the conversations that actually help.", module: 9 },
-  { icon: Compass, title: "Failure & Setbacks", quote: "A slump isn't a crisis. It can feel like one.", body: "How to stay steady when your athlete goes cold.", module: 7 },
-  { icon: Fuel, title: "Burnout", quote: "They said they want to quit.", body: "How to tell a bad week from something real—and what to do either way.", module: 11 },
+  { title: "The Car Ride Home", quote: "The drive home says more than the game did.", body: "Long Game gives you the exact words for those first fifteen minutes.", module: 1 },
+  { title: "Confidence", quote: "The kid who used to play free now plays scared.", body: "A system for rebuilding belief without forcing it.", module: 2 },
+  { title: "Playing Time", quote: "You don't know if this is worth a conversation.", body: "A clear-headed way to know when to speak up and when to let it sit.", module: 5 },
+  { title: "Coach Communication", quote: "You're trying to figure out what's worth raising.", body: "Scripts and timing for the conversations that actually help.", module: 9 },
+  { title: "Failure & Setbacks", quote: "A slump isn't a crisis. It can feel like one.", body: "How to stay steady when your athlete goes cold.", module: 7 },
+  { title: "Burnout", quote: "They said they want to quit.", body: "How to tell a bad week from something real—and what to do either way.", module: 11 },
 ];
 
 const quickNav = [
@@ -87,9 +87,9 @@ const quickNav = [
 ];
 
 const benefits = [
-  { icon: Target, title: "Know what to focus on", body: "Straight guidance for exactly what you're facing right now." },
-  { icon: Compass, title: "Find the right support fast", body: "Search by situation, not by chapter number." },
-  { icon: Timer, title: "Keep going at your own pace", body: "No deadlines. No modules you're not ready for yet." },
+  { title: "Know what to focus on", body: "Straight guidance for exactly what you're facing right now." },
+  { title: "Find the right support fast", body: "Search by situation, not by chapter number." },
+  { title: "Keep going at your own pace", body: "No deadlines. No modules you're not ready for yet." },
 ];
 
 const whatYouGet = [
@@ -364,9 +364,6 @@ export default function ParentAcademyPage() {
               transition={{ duration: 0.5, ease: "easeOut" }}
               className="bg-cream border border-border-grey rounded-2xl p-7 flex flex-col"
             >
-              <div className="icon-badge mb-4">
-                <p.icon strokeWidth={1.5} aria-hidden="true" />
-              </div>
               <h3 className="font-heading text-xl font-bold mb-2">{p.title}</h3>
               <p className="font-body text-sm text-text-body leading-relaxed mb-2">&ldquo;{p.quote}&rdquo;</p>
               <p className="font-body text-sm text-text-muted leading-relaxed mb-5 flex-1">{p.body}</p>
@@ -387,16 +384,11 @@ export default function ParentAcademyPage() {
           <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase mb-6">
             Support for Every Moment
           </p>
-          <div className="space-y-6">
+          <div className="border-t border-border-grey">
             {benefits.map((b) => (
-              <div key={b.title} className="flex items-start gap-4">
-                <div className="icon-badge">
-                  <b.icon strokeWidth={1.5} aria-hidden="true" />
-                </div>
-                <div>
-                  <h3 className="font-heading text-lg font-bold mb-1">{b.title}</h3>
-                  <p className="font-body text-sm text-text-body leading-relaxed">{b.body}</p>
-                </div>
+              <div key={b.title} className="border-b border-border-grey py-5">
+                <h3 className="font-heading text-lg font-bold mb-1">{b.title}</h3>
+                <p className="font-body text-sm text-text-body leading-relaxed">{b.body}</p>
               </div>
             ))}
           </div>
@@ -525,16 +517,11 @@ export default function ParentAcademyPage() {
                 transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.08 }}
                 className="bg-cream border border-border-grey rounded-2xl p-7 text-center flex flex-col items-center"
               >
-                <div className="relative mb-4">
+                <div className="mb-4">
                   <img
                     src={e.photo}
                     alt={e.name}
                     className="w-20 h-20 rounded-full object-cover object-top"
-                  />
-                  <BadgeCheck
-                    className="absolute -bottom-1 -right-1 w-6 h-6 text-teal bg-cream rounded-full"
-                    strokeWidth={2}
-                    aria-hidden="true"
                   />
                 </div>
                 <p className="font-heading text-base font-bold mb-1">{e.name}</p>
