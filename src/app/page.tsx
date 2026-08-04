@@ -138,35 +138,35 @@ const systemRows = [
 const faqs = [
   {
     q: "Who is the Parent Academy designed for?",
-    a: "The Parent Academy was created for parents of athletes of all ages and across all sports. Whether your child is just beginning or competing at a high level, the principles inside are designed to help you navigate the challenges of youth sports.",
+    a: "The Parent Academy is for parents of athletes roughly ages 8–18, across all sports and competitive levels. The principles are universal — confidence, pressure, communication, setbacks, motivation, identity, burnout, and protecting the parent–athlete relationship.",
   },
   {
     q: "Is the Parent Academy for all sports?",
-    a: "Yes. While many stories come from baseball, the principles apply across every youth sport. Confidence, communication, pressure, setbacks, motivation, burnout, and protecting the parent-athlete relationship are universal.",
+    a: "Yes. The challenges parents face in youth sports go far beyond any one game. Confidence, pressure, communication, setbacks, playing time, motivation and the parent–athlete relationship show up across every sport.",
   },
   {
     q: "How do I access the Parent Academy?",
-    a: "You'll receive immediate access through your secure online account after purchase.",
+    a: "After you purchase, you'll receive immediate access to the complete 12-module Parent Academy through your online account. You can work through it at your own pace on your phone, tablet or computer.",
   },
   {
-    q: "Can I print the Parent Guide?",
-    a: "Yes. The Parent Guide is provided as a fillable PDF that can also be printed.",
+    q: "Can I download or print the Parent Academy?",
+    a: "The Parent Academy is designed to be accessed through your online account and cannot be downloaded as a complete course. Certain practical resources — including worksheets, reflection pages, checklists, cheat sheets and Glove Box Cards — can be downloaded or printed for personal use.",
   },
   {
     q: "Is this a subscription?",
-    a: "No. Your initial purchase is a one-time payment that gives you permanent access to the Parent Academy you purchase today. Future resources or programs may be offered separately.",
+    a: "No. It's a one-time purchase with no automatic renewal. Your purchase includes the complete Parent Academy plus 12 months of bonus access to the Long Game Library.",
   },
   {
     q: "Will new content be added?",
-    a: "Yes. As new resources are created, you'll be notified by email. Some future content may be offered separately or through membership options.",
+    a: "Yes. Your purchase includes the complete Parent Academy plus 12 months of access to our growing library of Field Guides, Practical Tools and select new resources added during your access period. There is no automatic renewal.",
   },
   {
     q: "What if I'm not satisfied?",
-    a: "Contact us within 30 days of purchase for a full refund.",
+    a: "Your purchase is backed by our 14-Day Satisfaction Guarantee. You may request a full refund within 14 days of purchase, provided you have not consumed more than 25% of the Parent Development System.",
   },
   {
     q: "Do I have to complete the Parent Academy in order?",
-    a: "No. The Parent Academy is designed to be practical, not prescriptive. While each module builds on the last, you can start wherever your family needs the most support right now. Whether you're navigating confidence, communication, pressure, or the car ride home, simply begin there and come back to the other modules when you're ready.",
+    a: "No. You can work through all 12 modules in order or go directly to the topic you need right now. The Parent Academy is designed to work both ways.",
   },
 ];
 

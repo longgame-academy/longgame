@@ -121,36 +121,43 @@ const academyTestimonials = [
   },
 ];
 
-const faqs = [
-  {
-    q: "What exactly do I get for $97?",
-    a: "Instant access to all 12 modules, 165+ pages of guidance, fillable worksheets, practical scripts for hard conversations, and the Glove Box Cards bonus — one payment, no subscription.",
-  },
-  {
-    q: "Do I have to go in order, or can I jump to what I need right now?",
-    a: "Jump straight to whatever situation you're facing tonight. Every module works on its own — there's no required sequence.",
-  },
-  {
-    q: "How long does a module actually take?",
-    a: "Most modules take 15–20 minutes. It's built for a parent with no spare time, not a course you have to block off an afternoon for.",
-  },
-  {
-    q: "Is this only for certain sports?",
-    a: "No. The situations inside — playing time, confidence, coach communication — show up in every sport. Parents across baseball, hockey, soccer, basketball, and more use it.",
-  },
-  {
-    q: "What if it doesn't help my family?",
-    a: "If you're not satisfied within 30 days, we'll make it right.",
-  },
-  {
-    q: "Will I be able to use this on my phone?",
-    a: "Yes — everything is built for the device you'll actually reach for in the moment, not a PDF you'll forget to open.",
-  },
-  {
-    q: "Is this a one-time purchase or a subscription?",
-    a: "One-time payment of $97. Lifetime access, including future updates — no recurring charges.",
-  },
-];
+/**
+ * The opening question quotes the price, so it has to follow the visitor's
+ * region the same way the pricing card does — "$97" in the US and everywhere
+ * else, "$119 CAD" in Canada.
+ */
+function buildFaqs(priceLabel: string) {
+  return [
+    {
+      q: `What exactly do I get for ${priceLabel}?`,
+      a: "You get the complete 12-module Parent Academy, including lessons, scripts, reflection exercises, worksheets, cheat sheets and practical action steps. Your purchase also includes 12 months of bonus access to the Long Game Library, with Field Guides, Practical Tools and select new resources.",
+    },
+    {
+      q: "Do I have to go in order, or can I jump to what I need right now?",
+      a: "You can do either. Work through the full system in order, or jump directly to the module that fits what your family is dealing with right now.",
+    },
+    {
+      q: "How long does a module actually take?",
+      a: "Most modules are designed to be practical and easy to work through at your own pace. You don't need hours at a time — read when you have time, come back when you need it, and focus on the ideas that matter most to your family.",
+    },
+    {
+      q: "Is this only for certain sports?",
+      a: "No. The Parent Academy is designed for sports parents across different sports and competitive levels. The situations may look different, but confidence, pressure, communication, setbacks, motivation and the parent–athlete relationship are universal.",
+    },
+    {
+      q: "What if it doesn't help my family?",
+      a: "Your purchase is protected by our 14-Day Satisfaction Guarantee. If it isn't right for your family, you may request a full refund within 14 days, provided you have not consumed more than 25% of the Parent Development System.",
+    },
+    {
+      q: "Will I be able to use this on my phone?",
+      a: "Yes. The Parent Academy and Long Game Library are designed to work across phone, tablet and computer, so you can access them wherever you need them.",
+    },
+    {
+      q: "Is this a one-time purchase or a subscription?",
+      a: "It's a one-time purchase. There are no monthly payments and no automatic renewal. Your purchase includes the complete Parent Academy plus 12 months of bonus Long Game Library access.",
+    },
+  ];
+}
 
 function Accordion({
   items,
@@ -315,6 +322,7 @@ export default function ParentAcademyPage() {
   const [openModule, setOpenModule] = useState<number | null>(null);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const pricing = usePricing();
+  const faqs = buildFaqs(pricing.isCanada ? pricing.display : pricing.amount);
 
   return (
     <main className="flex flex-col min-h-screen bg-background text-charcoal">
