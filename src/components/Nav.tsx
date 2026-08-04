@@ -2,18 +2,45 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useMotionValueEvent,
+  useReducedMotion,
+} from "framer-motion";
 import { Show, UserButton } from "@clerk/nextjs";
+
+/** Scrolled past roughly the header's own height before it starts hiding. */
+const HIDE_AFTER = 120;
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const reduceMotion = useReducedMotion();
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    // The mobile menu lives inside the header, so it can never slide away
+    // underneath an open menu. Reduced motion keeps the header pinned instead.
+    if (open || reduceMotion) {
+      setHidden(false);
+      return;
+    }
+
+    const previous = scrollY.getPrevious() ?? 0;
+    if (latest > previous && latest > HIDE_AFTER) setHidden(true);
+    else if (latest < previous) setHidden(false);
+  });
 
   return (
     <motion.header
       initial={{ opacity: 0, y: -12 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-      className="w-full border-b border-border-grey"
+      animate={{ opacity: 1, y: hidden ? "-100%" : 0 }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
+      // bg-inherit picks up whichever background the page's <main> sets, so
+      // pinning the header doesn't change how it looks on any page.
+      className="sticky top-0 z-50 w-full bg-inherit border-b border-border-grey"
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-5">
         <Link href="/" className="flex items-center">
