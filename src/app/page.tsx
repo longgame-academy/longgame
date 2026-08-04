@@ -693,7 +693,8 @@ export default function Home() {
             <p className="text-[11px] font-body text-cream/60 mb-6">
               14-Day Satisfaction Guarantee &mdash; Full refund available within
               14 days, provided no more than 25% of the Parent Development
-              System has been consumed.
+              System has been consumed. If more than 25% of the content has
+              been completed, no refund will be issued.
             </p>
 
             <div className="border-t border-cream/10 pt-6 flex flex-wrap justify-center items-center gap-3">

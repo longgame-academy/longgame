@@ -329,7 +329,8 @@ function PricingCard() {
         <p className="font-body text-xs text-cream/60 border-t border-cream/10 pt-4 mt-4">
           14-Day Satisfaction Guarantee &mdash; Full refund available within 14
           days, provided no more than 25% of the Parent Development System has
-          been consumed.
+          been consumed. If more than 25% of the content has been completed, no
+          refund will be issued.
         </p>
       </div>
     </motion.div>
