@@ -22,8 +22,8 @@ const faqs = [
     a: "Yes — the portal is fully accessible on mobile, tablet, and desktop.",
   },
   {
-    q: "Do I get lifetime access?",
-    a: "[Placeholder — Shawn to confirm access duration policy.]",
+    q: "How long do I have access?",
+    a: "Your one-time purchase includes the complete Parent Academy plus 12 months of access to the Long Game Library — Field Guides, Practical Tools, and select new resources added during that period. There is no lifetime access and no automatic renewal.",
   },
 ];
 
