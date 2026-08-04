@@ -270,7 +270,7 @@ function PricingCard() {
         </p>
         <p className="font-body text-xs text-cream/60 mb-6">
           One-time payment &middot; Regular price{" "}
-          <span className="line-through">$147</span>
+          <span className="line-through">{pricing.regular}</span>
         </p>
 
         <CheckoutButton className="flex items-center justify-center gap-2 bg-cream text-ink font-heading font-semibold text-sm px-6 py-3.5 rounded-lg hover:bg-cream/90 transition-colors mb-3 w-full" />

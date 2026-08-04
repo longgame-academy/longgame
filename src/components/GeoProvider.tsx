@@ -26,6 +26,8 @@ export type Pricing = {
   currency: "CAD" | "USD";
   /** Figure and currency together, e.g. "$119 CAD" — for inline copy. */
   display: string;
+  /** Pre-discount figure shown struck through beside `amount`. */
+  regular: string;
 };
 
 /**
@@ -42,5 +44,6 @@ export function usePricing(): Pricing {
     amount: isCanada ? "$119" : "$97",
     currency: isCanada ? "CAD" : "USD",
     display: isCanada ? "$119 CAD" : "$97 USD",
+    regular: isCanada ? "$179" : "$147",
   };
 }

@@ -619,7 +619,7 @@ export default function Home() {
             </p>
             <p className="font-body text-xs text-cream/60 mb-6">
               One-time payment &middot; Regular price{" "}
-              <span className="line-through">$147</span>
+              <span className="line-through">{pricing.regular}</span>
             </p>
 
             <Link
