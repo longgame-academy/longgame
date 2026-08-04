@@ -1,8 +1,10 @@
 ﻿import type { Metadata } from "next";
+import { headers } from "next/headers";
 import "@/lib/env";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { CookieConsent } from "@/components/CookieConsent";
+import { GeoProvider } from "@/components/GeoProvider";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://longgameacademy.com"),
@@ -35,11 +37,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Vercel populates this on every edge request. Missing (local dev, another
+  // host, a proxy that strips it) simply means the visitor is priced in USD.
+  const country = (await headers()).get("x-vercel-ip-country");
+
   return (
     <ClerkProvider>
       <html lang="en" className="h-full antialiased">
@@ -51,7 +57,7 @@ export default function RootLayout({
           />
         </head>
         <body className="min-h-full flex flex-col">
-          {children}
+          <GeoProvider country={country}>{children}</GeoProvider>
           <CookieConsent />
         </body>
       </html>

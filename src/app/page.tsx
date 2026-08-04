@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { Star, GraduationCap, BookOpen } from "lucide-react";
 import QuizSection from "@/components/QuizSection";
+import { usePricing } from "@/components/GeoProvider";
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -246,6 +247,7 @@ function Accordion({
 export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const reduceMotion = useReducedMotion();
+  const pricing = usePricing();
 
   return (
     <main className="flex flex-col min-h-screen bg-background text-charcoal">
@@ -598,11 +600,13 @@ export default function Home() {
             </p>
 
             <div className="flex items-end gap-2 mb-1">
-              <span className="font-heading text-4xl font-bold">$97</span>
-              <span className="font-heading text-xs text-cream/60 mb-1.5">USD</span>
+              <span className="font-heading text-4xl font-bold">{pricing.amount}</span>
+              <span className="font-heading text-xs text-cream/60 mb-1.5">
+                {pricing.currency}
+              </span>
             </div>
             <p className="font-heading text-teal text-[11px] font-semibold tracking-widest uppercase mb-1">
-              Founding Member Price
+              Founding Price
             </p>
             <p className="font-body text-xs text-cream/60 mb-6">
               One-time payment &middot; Regular price{" "}
@@ -634,7 +638,6 @@ export default function Home() {
                   "Confidence, pressure & resilience strategies",
                   "Practical scripts for difficult conversations",
                   "Immediate access on all devices",
-                  "Lifetime access & future updates",
                   "Works for all sports and competitive levels",
                 ].map((item) => (
                   <li
@@ -651,6 +654,13 @@ export default function Home() {
             <div className="border-t border-cream/10 pt-4 mb-6">
               <p className="font-heading text-teal text-[11px] font-semibold tracking-widest uppercase mb-2">
                 Bonus
+              </p>
+              <p className="font-heading text-sm font-semibold mb-1">
+                12 Months of Long Game Library Access
+              </p>
+              <p className="font-body text-xs text-cream/60 leading-relaxed mb-4">
+                Field Guides, Practical Tools and select new resources to help
+                with the moments that come next.
               </p>
               <p className="font-heading text-sm font-semibold mb-1">
                 Long Game Glove Box Cards
@@ -672,7 +682,9 @@ export default function Home() {
               <span className="flex items-center gap-1.5"><span className="text-teal">&#10003;</span> One-Time Purchase</span>
             </div>
             <p className="text-[11px] font-body text-cream/60 mb-6">
-              30-Day Guarantee &mdash; If you&apos;re not completely satisfied, we&apos;ll make it right.
+              14-Day Satisfaction Guarantee &mdash; Full refund available within
+              14 days, provided no more than 25% of the Parent Development
+              System has been consumed.
             </p>
 
             <div className="border-t border-cream/10 pt-6 flex flex-wrap justify-center items-center gap-3">

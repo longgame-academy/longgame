@@ -6,6 +6,7 @@ import { CheckoutButton } from "@/components/CheckoutButton";
 import Footer from "@/components/Footer";
 import { motion, AnimatePresence } from "framer-motion";
 import { Star, Car, Sparkles, Users, MessageCircle, Compass, Fuel } from "lucide-react";
+import { usePricing } from "@/components/GeoProvider";
 
 function Placeholder({ label, className = "" }: { label: string; className?: string }) {
   return (
@@ -217,6 +218,8 @@ function Accordion({
 }
 
 function PricingCard() {
+  const pricing = usePricing();
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
@@ -230,11 +233,15 @@ function PricingCard() {
           Long Game &middot; Parent Academy &middot; 12 Modules
         </p>
         <div className="flex items-end gap-2 mb-1">
-          <span className="font-heading text-4xl md:text-5xl font-bold">$97</span>
-          <span className="font-heading text-xs text-cream/60 mb-1.5">USD</span>
+          <span className="font-heading text-4xl md:text-5xl font-bold">
+            {pricing.amount}
+          </span>
+          <span className="font-heading text-xs text-cream/60 mb-1.5">
+            {pricing.currency}
+          </span>
         </div>
         <p className="font-heading text-teal text-sm font-bold mb-1">
-          Founding Member Price
+          Founding Price
         </p>
         <p className="font-body text-xs text-cream/60 mb-6">
           One-time payment &middot; Regular price{" "}
@@ -250,6 +257,13 @@ function PricingCard() {
         </a>
 
         <div className="border border-cream/10 bg-cream/5 rounded-2xl p-5 mt-6">
+          <p className="font-heading text-sm font-semibold mb-1">
+            Bonus: 12 Months of Long Game Library Access
+          </p>
+          <p className="font-body text-xs text-cream/60 leading-relaxed mb-4">
+            Field Guides, Practical Tools and select new resources to help with
+            the moments that come next.
+          </p>
           <p className="font-heading text-sm font-semibold mb-1">
             Bonus: Long Game Glove Box Cards
           </p>
@@ -272,7 +286,6 @@ function PricingCard() {
             "Confidence, pressure & resilience strategies",
             "Practical scripts for difficult conversations",
             "Immediate access on all devices",
-            "Lifetime access & future updates",
             "Works for all sports and competitive levels",
           ].map((item) => (
             <li
@@ -288,6 +301,11 @@ function PricingCard() {
           Designed for parents of athletes ages 8&ndash;18 across every
           competitive sport.
         </p>
+        <p className="font-body text-xs text-cream/60 border-t border-cream/10 pt-4 mt-4">
+          14-Day Satisfaction Guarantee &mdash; Full refund available within 14
+          days, provided no more than 25% of the Parent Development System has
+          been consumed.
+        </p>
       </div>
     </motion.div>
   );
@@ -296,6 +314,7 @@ function PricingCard() {
 export default function ParentAcademyPage() {
   const [openModule, setOpenModule] = useState<number | null>(null);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const pricing = usePricing();
 
   return (
     <main className="flex flex-col min-h-screen bg-background text-charcoal">
@@ -481,7 +500,7 @@ export default function ParentAcademyPage() {
       <section id="pricing" className="w-full px-6 py-14 md:py-24">
         <div className="bg-ink text-cream rounded-2xl max-w-3xl mx-auto px-6 py-5 md:px-10 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="font-heading text-base md:text-lg font-semibold">
-            $97 USD &middot; Founding Member Price
+            {pricing.display} &middot; Founding Price
           </p>
           <CheckoutButton className="inline-flex items-center gap-2 bg-cream text-ink font-heading font-semibold text-sm px-6 py-3 rounded-lg hover:bg-cream/90 transition-colors whitespace-nowrap" />
         </div>
