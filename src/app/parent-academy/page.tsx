@@ -5,7 +5,10 @@ import Nav from "@/components/Nav";
 import { CheckoutButton } from "@/components/CheckoutButton";
 import Footer from "@/components/Footer";
 import { motion, AnimatePresence } from "framer-motion";
-import { Star, Car, Sparkles, Users, MessageCircle, Compass, Fuel } from "lucide-react";
+import {
+  Star, Car, Sparkles, Users, MessageCircle, Compass, Fuel,
+  BookOpen, Wrench, CalendarDays,
+} from "lucide-react";
 import { usePricing } from "@/components/GeoProvider";
 
 function Placeholder({ label, className = "" }: { label: string; className?: string }) {
@@ -76,6 +79,21 @@ const painPoints = [
   { icon: MessageCircle, title: "Coach Communication", quote: "You're trying to figure out what's worth raising.", body: "Scripts and timing for the conversations that actually help.", module: 9 },
   { icon: Compass, title: "Failure & Setbacks", quote: "A slump isn't a crisis. It can feel like one.", body: "How to stay steady when your athlete goes cold.", module: 7 },
   { icon: Fuel, title: "Burnout", quote: "They said they want to quit.", body: "How to tell a bad week from something real—and what to do either way.", module: 11 },
+];
+
+const fieldGuides = [
+  "Social Media & Your Athlete",
+  "The Recruiting Reality",
+  "When Sports Start Taking Over Family Life",
+  "And more…",
+];
+
+const practicalTools = [
+  "Season Planner",
+  "Tournament Weekend Planner",
+  "Parent–Athlete Check-In",
+  "Decision Worksheets",
+  "And more…",
 ];
 
 const quickNav = [
@@ -512,6 +530,96 @@ export default function ParentAcademyPage() {
           </p>
           <CheckoutButton className="inline-flex items-center gap-2 bg-cream text-ink font-heading font-semibold text-sm px-6 py-3 rounded-lg hover:bg-cream/90 transition-colors whitespace-nowrap" />
         </div>
+      </section>
+
+      {/* SECTION 7B: INCLUDED WITH YOUR FIRST YEAR — the Long Game Library
+          bonus, sitting between the pricing bar and the product preview. */}
+      <section className="max-w-6xl mx-auto w-full px-6 py-14 md:py-24">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="text-center max-w-2xl mx-auto mb-12"
+        >
+          <p className="font-heading text-teal text-[13px] font-semibold tracking-widest uppercase mb-3">
+            Included With Your First Year
+          </p>
+          <h2 className="font-heading text-2xl md:text-3xl font-bold leading-tight mb-4">
+            For everything the season brings.
+          </h2>
+          <p className="font-body text-text-body leading-relaxed">
+            Your first year includes a growing library of Field Guides and
+            Practical Tools designed for the situations, decisions and
+            conversations that come up along the way.
+          </p>
+        </motion.div>
+
+        <div className="grid md:grid-cols-2 gap-6">
+          {[
+            {
+              icon: BookOpen,
+              label: "Field Guides",
+              body: "Deeper guidance for challenges today's sports families face.",
+              items: fieldGuides,
+            },
+            {
+              icon: Wrench,
+              label: "Practical Tools",
+              body: "Simple resources designed to actually be used.",
+              items: practicalTools,
+            },
+          ].map((col, i) => (
+            <motion.div
+              key={col.label}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.08 }}
+              className="bg-cream border border-border-grey rounded-2xl p-7 md:p-8"
+            >
+              <span className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-badge-mint mb-4">
+                <col.icon
+                  className="w-7 h-7 text-teal"
+                  strokeWidth={1.5}
+                  aria-hidden="true"
+                />
+              </span>
+              <h3 className="font-heading text-[13px] font-semibold tracking-widest uppercase text-charcoal mb-2">
+                {col.label}
+              </h3>
+              <p className="font-body text-sm text-text-body leading-relaxed mb-5">
+                {col.body}
+              </p>
+              <ul className="font-body text-sm text-text-body space-y-0">
+                {col.items.map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-start gap-2.5 py-2 border-b border-border-grey last:border-0"
+                  >
+                    <span className="text-teal">&#10003;</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
+        </div>
+
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="flex items-center justify-center gap-2 font-body text-sm text-text-muted text-center mt-10"
+        >
+          <CalendarDays
+            className="w-4 h-4 text-teal shrink-0"
+            strokeWidth={1.5}
+            aria-hidden="true"
+          />
+          New Field Guides and Practical Tools added throughout your first year.
+        </motion.p>
       </section>
 
       {/* SECTION 8: SEE WHAT'S INSIDE */}
