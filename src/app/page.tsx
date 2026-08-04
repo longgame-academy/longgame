@@ -736,7 +736,15 @@ export default function Home() {
       {/* SECTION 10B: BUILT FROM EXPERIENCE. CREATED WITH PURPOSE. */}
       <section className="max-w-6xl mx-auto w-full px-6 py-20 md:py-32 grid md:grid-cols-2 gap-14 md:gap-16 items-center">
         <motion.div {...fadeUp}>
-          <Placeholder label="Documentary Photo" className="aspect-[4/3] rounded-lg" />
+          <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
+            <Image
+              src="/our-story-documentary.jpg"
+              alt="A coach's notebook, pen and whistle resting on a courtside bench at night, with players and parents gathered out of focus in the background"
+              fill
+              sizes="(min-width: 768px) 50vw, 100vw"
+              className="object-cover"
+            />
+          </div>
         </motion.div>
         <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.15 }}>
           <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6 leading-tight">
