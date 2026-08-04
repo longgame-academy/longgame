@@ -366,11 +366,20 @@ export default function Home() {
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6 leading-tight max-w-[440px]">
               A better way to parent through sports.
             </h2>
-            <p className="font-body text-text-body leading-relaxed max-w-[480px]">
+            <p className="font-body text-text-body leading-relaxed max-w-[480px] mb-4">
               Most parents want to help. The hard part is knowing what actually
               helps when confidence drops, pressure builds, failure hits, or
               sport starts affecting your relationship. The right guidance can
               change how those moments unfold.
+            </p>
+            <p className="font-body text-text-body leading-relaxed max-w-[480px]">
+              <span className="font-semibold text-charcoal">
+                This isn&apos;t about lowering expectations or making sport easier.
+              </span>{" "}
+              Kids still need standards, accountability, work ethic and
+              challenge. It&apos;s about knowing how to push in ways that build
+              confidence, resilience and a strong competitor &mdash; without
+              damaging their relationship with the game or with you.
             </p>
             <FeatureRows rows={academyRows} />
           </motion.div>
