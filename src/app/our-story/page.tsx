@@ -40,7 +40,7 @@ export default function OurStoryPage() {
 
       {/* SECTION 1: HERO */}
       <section className="bg-white w-full">
-        <div className="max-w-6xl mx-auto w-full px-6 py-14 md:py-24 grid md:grid-cols-[11fr_9fr] gap-12 items-center">
+        <div className="max-w-6xl mx-auto w-full px-6 py-20 md:py-28 grid md:grid-cols-[11fr_9fr] gap-12 items-center">
           <motion.div {...fadeUp} className="text-left">
             <p className="font-heading text-teal text-xs font-semibold tracking-widest uppercase mb-4">
               Our Story
@@ -86,7 +86,7 @@ export default function OurStoryPage() {
 
       {/* SECTION 3: WHO'S BEHIND LONG GAME */}
       <section className="bg-background w-full">
-        <div className="max-w-3xl mx-auto w-full px-6 py-14 md:py-24">
+        <div className="max-w-3xl mx-auto w-full px-6 py-20 md:py-28">
           <motion.div {...fadeUp} className="text-left">
             <p className="font-heading text-teal text-xs font-semibold tracking-widest uppercase mb-4">
               The People Behind Long Game
@@ -111,7 +111,7 @@ export default function OurStoryPage() {
 
       {/* SECTION 4: THE HARDEST MOMENTS */}
       <section className="bg-white w-full">
-        <div className="max-w-3xl mx-auto w-full px-6 py-14 md:py-24 text-left">
+        <div className="max-w-3xl mx-auto w-full px-6 py-20 md:py-28 text-left">
           <motion.div {...fadeUp}>
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-8">
               The Hardest Moments Usually Happen When Nobody Is Watching
@@ -134,7 +134,7 @@ export default function OurStoryPage() {
 
       {/* SECTION 5: WHAT WE BELIEVE */}
       <section className="bg-ink w-full">
-        <div className="max-w-6xl mx-auto w-full px-6 py-14 md:py-24">
+        <div className="max-w-6xl mx-auto w-full px-6 py-20 md:py-28">
           <motion.h2
             {...fadeUp}
             className="font-heading text-3xl md:text-4xl font-bold text-center text-cream mb-16"

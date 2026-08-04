@@ -347,7 +347,7 @@ export default function ParentAcademyPage() {
       <Nav />
 
       {/* SECTION 1: HERO */}
-      <section className="bg-background py-16 md:py-24 min-h-[720px] flex items-center">
+      <section className="bg-background py-20 md:py-28 min-h-[720px] flex items-center">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: "easeOut" }}>
             <p className="font-heading text-teal text-[13px] font-semibold tracking-widest uppercase mb-3">
@@ -386,7 +386,7 @@ export default function ParentAcademyPage() {
       </section>
 
       {/* SECTION 2: RECOGNITION */}
-      <section className="py-14 md:py-16" style={{ backgroundColor: "#F1F3F2" }}>
+      <section className="py-20 md:py-28" style={{ backgroundColor: "#F1F3F2" }}>
         <div className="max-w-2xl mx-auto px-6 text-center">
           <h2 className="font-heading text-3xl md:text-4xl font-bold leading-tight mb-3">
             You care deeply. That does not make the hard moments easier.
@@ -398,7 +398,7 @@ export default function ParentAcademyPage() {
       </section>
 
       {/* SECTION 3: PARENT PAIN POINTS */}
-      <section className="max-w-6xl mx-auto w-full px-6 py-14 md:py-24">
+      <section className="max-w-6xl mx-auto w-full px-6 py-20 md:py-28">
         <div className="grid md:grid-cols-2 gap-6">
           {painPoints.map((p) => (
             <motion.div
@@ -429,7 +429,7 @@ export default function ParentAcademyPage() {
       </section>
 
       {/* SECTION 4: SUPPORT FOR EVERY MOMENT */}
-      <section className="max-w-6xl mx-auto w-full px-6 py-14 md:py-24 grid md:grid-cols-2 gap-12 items-center">
+      <section className="max-w-6xl mx-auto w-full px-6 py-20 md:py-28 grid md:grid-cols-2 gap-12 items-center">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.6, ease: "easeOut" }}>
           <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase mb-6">
             Support for Every Moment
@@ -454,7 +454,7 @@ export default function ParentAcademyPage() {
       </section>
 
       {/* SECTION 5: PRICING BOX */}
-      <section id="pricing-top" className="w-full px-6 py-16 md:py-20">
+      <section id="pricing-top" className="w-full px-6 py-20 md:py-28">
         <PricingCard />
         <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-1.5 text-[13px] font-body text-text-muted mt-6">
           <span className="flex items-center gap-1.5"><span className="text-teal">&#10003;</span> Secure Checkout</span>
@@ -464,7 +464,7 @@ export default function ParentAcademyPage() {
       </section>
 
       {/* SECTION 6: WHAT YOU GET */}
-      <section className="max-w-6xl mx-auto w-full px-6 py-16 md:py-24">
+      <section className="max-w-6xl mx-auto w-full px-6 py-20 md:py-28">
         <div className="border-t border-border-grey">
           {whatYouGet.map((band, i) => (
             <motion.div
@@ -492,7 +492,7 @@ export default function ParentAcademyPage() {
       </section>
 
       {/* SECTION 7: EXPLORE THE PARENT ACADEMY */}
-      <section id="modules" className="max-w-3xl mx-auto w-full px-6 py-20">
+      <section id="modules" className="max-w-3xl mx-auto w-full px-6 py-20 md:py-28">
         <h2 className="font-heading text-2xl md:text-3xl font-bold text-center mb-6">
           Explore the Parent Academy
         </h2>
@@ -523,7 +523,7 @@ export default function ParentAcademyPage() {
       </section>
 
       {/* SECTION 5 REPEAT: LIGHTWEIGHT PRICING BAR */}
-      <section id="pricing" className="w-full px-6 py-14 md:py-24">
+      <section id="pricing" className="w-full px-6 py-20 md:py-28">
         <div className="bg-ink text-cream rounded-2xl max-w-3xl mx-auto px-6 py-5 md:px-10 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="font-heading text-base md:text-lg font-semibold">
             {pricing.display} &middot; Founding Price
@@ -534,7 +534,7 @@ export default function ParentAcademyPage() {
 
       {/* SECTION 7B: INCLUDED WITH YOUR FIRST YEAR — the Long Game Library
           bonus, sitting between the pricing bar and the product preview. */}
-      <section className="max-w-6xl mx-auto w-full px-6 py-14 md:py-24">
+      <section className="max-w-6xl mx-auto w-full px-6 py-20 md:py-28">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -623,7 +623,7 @@ export default function ParentAcademyPage() {
       </section>
 
       {/* SECTION 8: SEE WHAT'S INSIDE */}
-      <section className="bg-ink py-20">
+      <section className="bg-ink py-20 md:py-28">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="font-heading text-2xl md:text-3xl font-bold text-cream text-center mb-12">
             See what&apos;s inside.
@@ -637,7 +637,7 @@ export default function ParentAcademyPage() {
       </section>
 
       {/* SECTION 9A: ENDORSEMENTS — who stands behind this */}
-      <section className="bg-background py-16 md:py-24">
+      <section className="bg-background py-20 md:py-28">
         <div className="max-w-5xl mx-auto px-6">
           <div className="text-center mb-12">
             <p className="font-heading text-teal text-[13px] font-semibold tracking-widest uppercase mb-3">
@@ -673,7 +673,7 @@ export default function ParentAcademyPage() {
       </section>
 
       {/* SECTION 9B: PARENT TESTIMONIALS — what families say */}
-      <section className="py-16 md:py-24" style={{ backgroundColor: "#F1F3F2" }}>
+      <section className="py-20 md:py-28" style={{ backgroundColor: "#F1F3F2" }}>
         <div className="max-w-5xl mx-auto px-6">
           <div className="text-center mb-12">
             <p className="font-heading text-teal text-[13px] font-semibold tracking-widest uppercase mb-3">
@@ -712,7 +712,7 @@ export default function ParentAcademyPage() {
       </section>
 
       {/* SECTION 10: FINAL CTA */}
-      <section className="bg-ink py-16 md:py-24">
+      <section className="bg-ink py-20 md:py-28">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.6, ease: "easeOut" }} className="text-center md:text-left">
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-cream mb-4">
@@ -736,7 +736,7 @@ export default function ParentAcademyPage() {
       </section>
 
       {/* FAQ */}
-      <section className="max-w-3xl mx-auto w-full px-6 py-20">
+      <section className="max-w-3xl mx-auto w-full px-6 py-20 md:py-28">
         <h2 className="font-heading text-2xl md:text-3xl font-bold text-center mb-12">
           Common Questions
         </h2>

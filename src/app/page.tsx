@@ -583,8 +583,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="pricing" className="w-full py-16 md:py-24">
-        <div className="max-w-lg mx-auto px-5 md:px-6">
+      <section id="pricing" className="w-full py-20 md:py-32">
+        <div className="max-w-lg mx-auto px-6">
           <motion.div {...fadeUp} className="hidden md:block mb-8">
             <img
               src="/parent-portal-phone.png"
@@ -769,7 +769,7 @@ export default function Home() {
       </section>
 
       {/* SECTION: FINAL CLOSE */}
-      <section className="max-w-6xl mx-auto w-full px-6 pt-20 pb-20 md:pt-24 md:pb-28">
+      <section className="max-w-6xl mx-auto w-full px-6 pt-20 pb-20 md:pt-32 md:pb-28">
         <motion.h2 {...fadeUp} className="font-heading text-3xl md:text-4xl font-bold text-center mb-10 leading-tight">
           The Game Will End.
           <br />

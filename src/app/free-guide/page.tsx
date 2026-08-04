@@ -103,7 +103,7 @@ export default function FreeGuidePage() {
       </section>
 
       {/* SECTION 3 - FREE GUIDE CARD (Parent Academy Pricing Card Style) */}
-      <section className="w-full py-16 md:py-20">
+      <section className="w-full py-20 md:py-28">
         <div className="max-w-lg mx-auto px-6">
           <motion.div
             {...fadeUp}
@@ -190,7 +190,7 @@ export default function FreeGuidePage() {
 
       {/* SECTION 4 - LARGE QUOTE */}
       <section className="bg-white w-full">
-        <div className="max-w-3xl mx-auto w-full px-6 py-14 md:py-24 text-center">
+        <div className="max-w-3xl mx-auto w-full px-6 py-20 md:py-28 text-center">
           <motion.p {...fadeUp} className="font-heading text-3xl md:text-5xl font-bold leading-tight">
             The game will end.
             <br />
