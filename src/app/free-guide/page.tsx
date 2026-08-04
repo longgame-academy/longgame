@@ -4,6 +4,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import FreeGuideForm from "@/components/FreeGuideForm";
 import { motion } from "framer-motion";
+import { MessageCircle, Brain, Heart } from "lucide-react";
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -16,14 +17,17 @@ const features = [
   {
     title: "Better Conversations",
     body: "Learn exactly what to say—and what not to say—after every game.",
+    icon: MessageCircle,
   },
   {
     title: "Build Confidence",
     body: "Simple conversations that strengthen confidence instead of pressure.",
+    icon: Brain,
   },
   {
     title: "Protect Your Relationship",
     body: "Because long after the game ends, your relationship is what matters most.",
+    icon: Heart,
   },
 ];
 
@@ -85,6 +89,11 @@ export default function FreeGuidePage() {
                 transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.1 }}
                 className="bg-cream border border-border-grey rounded-2xl p-8 shadow-[0_4px_16px_rgba(18,21,20,0.08)]"
               >
+                <f.icon
+                  className="w-7 h-7 text-teal mb-4"
+                  strokeWidth={1.5}
+                  aria-hidden="true"
+                />
                 <h3 className="font-heading text-lg font-semibold mb-3">{f.title}</h3>
                 <p className="font-body text-sm text-text-body leading-relaxed">{f.body}</p>
               </motion.div>

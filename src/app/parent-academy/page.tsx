@@ -5,7 +5,7 @@ import Nav from "@/components/Nav";
 import { CheckoutButton } from "@/components/CheckoutButton";
 import Footer from "@/components/Footer";
 import { motion, AnimatePresence } from "framer-motion";
-import { Star } from "lucide-react";
+import { Star, Car, Sparkles, Users, MessageCircle, Compass, Fuel } from "lucide-react";
 
 function Placeholder({ label, className = "" }: { label: string; className?: string }) {
   return (
@@ -69,12 +69,12 @@ const modules = [
 ];
 
 const painPoints = [
-  { title: "The Car Ride Home", quote: "The drive home says more than the game did.", body: "Long Game gives you the exact words for those first fifteen minutes.", module: 1 },
-  { title: "Confidence", quote: "The kid who used to play free now plays scared.", body: "A system for rebuilding belief without forcing it.", module: 2 },
-  { title: "Playing Time", quote: "You don't know if this is worth a conversation.", body: "A clear-headed way to know when to speak up and when to let it sit.", module: 5 },
-  { title: "Coach Communication", quote: "You're trying to figure out what's worth raising.", body: "Scripts and timing for the conversations that actually help.", module: 9 },
-  { title: "Failure & Setbacks", quote: "A slump isn't a crisis. It can feel like one.", body: "How to stay steady when your athlete goes cold.", module: 7 },
-  { title: "Burnout", quote: "They said they want to quit.", body: "How to tell a bad week from something real—and what to do either way.", module: 11 },
+  { icon: Car, title: "The Car Ride Home", quote: "The drive home says more than the game did.", body: "Long Game gives you the exact words for those first fifteen minutes.", module: 1 },
+  { icon: Sparkles, title: "Confidence", quote: "The kid who used to play free now plays scared.", body: "A system for rebuilding belief without forcing it.", module: 2 },
+  { icon: Users, title: "Playing Time", quote: "You don't know if this is worth a conversation.", body: "A clear-headed way to know when to speak up and when to let it sit.", module: 5 },
+  { icon: MessageCircle, title: "Coach Communication", quote: "You're trying to figure out what's worth raising.", body: "Scripts and timing for the conversations that actually help.", module: 9 },
+  { icon: Compass, title: "Failure & Setbacks", quote: "A slump isn't a crisis. It can feel like one.", body: "How to stay steady when your athlete goes cold.", module: 7 },
+  { icon: Fuel, title: "Burnout", quote: "They said they want to quit.", body: "How to tell a bad week from something real—and what to do either way.", module: 11 },
 ];
 
 const quickNav = [
@@ -364,6 +364,11 @@ export default function ParentAcademyPage() {
               transition={{ duration: 0.5, ease: "easeOut" }}
               className="bg-cream border border-border-grey rounded-2xl p-7 flex flex-col"
             >
+              <p.icon
+                className="w-7 h-7 text-teal mb-4"
+                strokeWidth={1.5}
+                aria-hidden="true"
+              />
               <h3 className="font-heading text-xl font-bold mb-2">{p.title}</h3>
               <p className="font-body text-sm text-text-body leading-relaxed mb-2">&ldquo;{p.quote}&rdquo;</p>
               <p className="font-body text-sm text-text-muted leading-relaxed mb-5 flex-1">{p.body}</p>

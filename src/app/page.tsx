@@ -5,7 +5,7 @@ import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import { Star } from "lucide-react";
+import { Star, GraduationCap, BookOpen } from "lucide-react";
 import QuizSection from "@/components/QuizSection";
 
 const fadeUp = {
@@ -353,6 +353,11 @@ export default function Home() {
       <section className="max-w-6xl mx-auto w-full px-6 py-20 md:py-32">
         <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
           <motion.div {...fadeUp}>
+            <GraduationCap
+              className="w-7 h-7 text-teal mb-3"
+              strokeWidth={1.5}
+              aria-hidden="true"
+            />
             <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase mb-4">
               The Parent Academy
             </p>
@@ -385,6 +390,11 @@ export default function Home() {
       <section className="max-w-6xl mx-auto w-full px-6 py-20 md:py-32">
         <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
           <motion.div {...fadeUp}>
+            <BookOpen
+              className="w-7 h-7 text-teal mb-3"
+              strokeWidth={1.5}
+              aria-hidden="true"
+            />
             <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase mb-4">
               Inside the System
             </p>

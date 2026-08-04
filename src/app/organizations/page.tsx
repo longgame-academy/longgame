@@ -4,6 +4,7 @@ import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
+import { Shield, Target, MessageCircle, Users, Handshake } from "lucide-react";
 
 function Placeholder({ label, className = "" }: { label: string; className?: string }) {
   return (
@@ -32,9 +33,9 @@ const problems = [
 ];
 
 const proactiveBoxes = [
-  { title: "Prepare Parents", body: "Set the tone before the season starts, not after the first conflict." },
-  { title: "Align Expectations", body: "Give families a realistic picture of development, time, and role." },
-  { title: "Support the Moment", body: "Give parents the exact words when a hard moment actually happens." },
+  { icon: Shield, title: "Prepare Parents", body: "Set the tone before the season starts, not after the first conflict." },
+  { icon: Target, title: "Align Expectations", body: "Give families a realistic picture of development, time, and role." },
+  { icon: MessageCircle, title: "Support the Moment", body: "Give parents the exact words when a hard moment actually happens." },
 ];
 
 const portalBenefits = [
@@ -205,6 +206,11 @@ export default function OrganizationsPage() {
               transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.08 }}
               className="bg-cream border border-border-grey rounded-2xl p-6"
             >
+              <b.icon
+                className="w-7 h-7 text-teal mb-3"
+                strokeWidth={1.5}
+                aria-hidden="true"
+              />
               <h3 className="font-heading text-lg font-bold mb-2">{b.title}</h3>
               <p className="font-body text-sm text-text-body leading-relaxed">{b.body}</p>
             </motion.div>
@@ -262,6 +268,11 @@ export default function OrganizationsPage() {
           />
         </motion.div>
         <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.15 }} className="md:col-span-2">
+          <Users
+            className="w-7 h-7 text-teal mb-3"
+            strokeWidth={1.5}
+            aria-hidden="true"
+          />
           <p className="font-heading text-teal text-[13px] font-semibold tracking-widest uppercase mb-3">
             Organization-Wide Alignment
           </p>
@@ -374,6 +385,11 @@ export default function OrganizationsPage() {
             />
           </motion.div>
           <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.15 }} className="md:col-span-2">
+            <Handshake
+              className="w-7 h-7 text-teal mb-3"
+              strokeWidth={1.5}
+              aria-hidden="true"
+            />
             <p className="font-heading text-teal text-[13px] font-semibold tracking-widest uppercase mb-3">
               Your Partnership Includes
             </p>
