@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
@@ -384,11 +385,15 @@ export default function Home() {
             <FeatureRows rows={academyRows} />
           </motion.div>
           <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.15 }}>
-            {/* TODO: swap for real Parent Portal dashboard visual */}
-            <Placeholder
-              label="Parent Portal Dashboard"
-              className="w-full aspect-[4/5] rounded-lg"
-            />
+            <div className="relative w-full aspect-[4/5] rounded-lg overflow-hidden">
+              <Image
+                src="/parent-portal-dashboard.png"
+                alt="The Parent Portal home screen on a phone, asking what you need help with right now and listing situations such as a lost confidence, playing time, and a tense car ride home"
+                fill
+                sizes="(min-width: 768px) 50vw, 100vw"
+                className="object-contain"
+              />
+            </div>
           </motion.div>
         </div>
       </section>
@@ -424,11 +429,15 @@ export default function Home() {
             transition={{ ...fadeUp.transition, delay: 0.15 }}
             className="md:order-first"
           >
-            {/* TODO: swap for real Reader visual */}
-            <Placeholder
-              label="Module Reader"
-              className="w-full aspect-[4/5] rounded-lg"
-            />
+            <div className="relative w-full aspect-[4/5] rounded-lg overflow-hidden">
+              <Image
+                src="/module-reader.png"
+                alt="A Parent Academy module open on a phone, showing the common mistake, a better response, a suggested line to try saying, and a reflection prompt"
+                fill
+                sizes="(min-width: 768px) 50vw, 100vw"
+                className="object-contain"
+              />
+            </div>
           </motion.div>
         </div>
       </section>
