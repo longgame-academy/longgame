@@ -179,7 +179,8 @@ export default function OurStoryPage() {
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">
               Ready to Start Your Long Game?
             </h2>
-            <p className="font-body text-lg text-text-body leading-relaxed mb-10 max-w-2xl mx-auto text-left">
+            <p className="font-body text-lg text-text-body leading-relaxed mb-10 max-w-2xl mx-auto text-left">git status
+            
               Inside the Parent Academy you&apos;ll learn practical
               strategies for handling the conversations, setbacks,
               pressures, and everyday moments that shape an athlete far
