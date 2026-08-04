@@ -4,6 +4,7 @@ import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
+import { Heart, MessageCircle, Flame, Compass } from "lucide-react";
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -18,18 +19,22 @@ const beliefs = [
   {
     title: "Relationships Matter More Than Results",
     body: "Strong relationships create athletes who stay in the game longer.",
+    icon: Heart,
   },
   {
     title: "Confidence Is Built Through Everyday Conversations",
     body: "The words parents choose shape how athletes see themselves.",
+    icon: MessageCircle,
   },
   {
     title: "Hard Work Should Never Be Optional",
     body: "Growth comes from discipline, effort, accountability, and showing up when it's difficult.",
+    icon: Flame,
   },
   {
     title: "Adversity Is Part of Development",
     body: "The goal isn't to remove hard moments. It's to help athletes learn how to respond to them.",
+    icon: Compass,
   },
 ];
 
@@ -151,6 +156,11 @@ export default function OurStoryPage() {
                 transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.1 }}
                 className="border border-cream/15 rounded-2xl p-8"
               >
+                <b.icon
+                  className="w-7 h-7 text-teal mb-4"
+                  strokeWidth={1.5}
+                  aria-hidden="true"
+                />
                 <h3 className="font-heading text-lg font-semibold text-cream mb-3">{b.title}</h3>
                 <p className="font-body text-sm text-cream/70 leading-relaxed">{b.body}</p>
               </motion.div>
