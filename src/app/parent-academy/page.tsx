@@ -579,13 +579,11 @@ export default function ParentAcademyPage() {
               transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.08 }}
               className="bg-cream border border-border-grey rounded-2xl p-7 md:p-8"
             >
-              <span className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-badge-mint mb-4">
-                <col.icon
-                  className="w-7 h-7 text-teal"
-                  strokeWidth={1.5}
-                  aria-hidden="true"
-                />
-              </span>
+              <col.icon
+                className="w-7 h-7 text-teal mb-4"
+                strokeWidth={1.5}
+                aria-hidden="true"
+              />
               <h3 className="font-heading text-[13px] font-semibold tracking-widest uppercase text-charcoal mb-2">
                 {col.label}
               </h3>
