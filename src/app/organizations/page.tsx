@@ -297,25 +297,29 @@ export default function OrganizationsPage() {
         </motion.div>
       </section>
 
-      {/* SECTION 7: ORGANIZATION OUTCOMES */}
-      <section className="max-w-6xl mx-auto w-full px-6 py-20 md:py-28">
-        <motion.p {...fadeUp} className="font-heading text-teal text-[13px] font-semibold tracking-widest uppercase eyebrow text-center">
-          The Result
-        </motion.p>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {outcomes.map((o, i) => (
-            <motion.div
-              key={o.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.06 }}
-              className="text-center"
-            >
-              <h3 className="font-heading text-lg font-bold mb-1">{o.title}</h3>
-              <p className="font-body text-sm text-text-body">{o.body}</p>
-            </motion.div>
-          ))}
+      {/* SECTION 7: ORGANIZATION OUTCOMES — given its own tinted band and
+          larger type so it reads as a deliberate section rather than stray
+          text floating between the two richer sections around it. */}
+      <section className="bg-cream py-20 md:py-28">
+        <div className="max-w-6xl mx-auto w-full px-6">
+          <motion.p {...fadeUp} className="font-heading text-teal text-[13px] font-semibold tracking-widest uppercase eyebrow text-center">
+            The Result
+          </motion.p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-12">
+            {outcomes.map((o, i) => (
+              <motion.div
+                key={o.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.06 }}
+                className="text-center"
+              >
+                <h3 className="font-heading text-xl md:text-2xl font-bold mb-2 leading-tight">{o.title}</h3>
+                <p className="font-body text-base text-text-body leading-relaxed">{o.body}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
