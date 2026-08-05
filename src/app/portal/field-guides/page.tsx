@@ -4,6 +4,8 @@ import { db } from "@/db";
 import { content } from "@/db/schema";
 import { and, eq, inArray } from "drizzle-orm";
 import { getUserAccessType } from "@/lib/access";
+import { getLibraryGate } from "@/lib/library";
+import { LibraryExpiredNotice } from "@/components/LibraryExpiredNotice";
 import Link from "next/link";
 
 export default async function FieldGuidesPage() {
@@ -12,6 +14,13 @@ export default async function FieldGuidesPage() {
 
   const accessType = await getUserAccessType(userId);
   if (!accessType) redirect("/parent-academy");
+
+  // Field Guides are Library content, so they lock when the 12-month bonus
+  // ends. Checked server-side; the guides are never fetched if it has.
+  const gate = await getLibraryGate(userId, accessType);
+  if (!gate.allowed) {
+    return <LibraryExpiredNotice title="Field Guides" expiresAt={gate.expiresAt} />;
+  }
 
   const visibleValues =
     accessType === "individual"

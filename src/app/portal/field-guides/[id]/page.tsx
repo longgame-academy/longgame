@@ -4,6 +4,8 @@ import { db } from "@/db";
 import { content } from "@/db/schema";
 import { eq } from "drizzle-orm";
 import { getUserAccessType } from "@/lib/access";
+import { getLibraryGate } from "@/lib/library";
+import { LibraryExpiredNotice } from "@/components/LibraryExpiredNotice";
 
 export default async function FieldGuideDetailPage({
   params,
@@ -15,6 +17,13 @@ export default async function FieldGuideDetailPage({
 
   const accessType = await getUserAccessType(userId);
   if (!accessType) redirect("/parent-academy");
+
+  // Gated here as well as on the listing, so an expired customer cannot reach
+  // a guide by its direct URL.
+  const gate = await getLibraryGate(userId, accessType);
+  if (!gate.allowed) {
+    return <LibraryExpiredNotice title="Field Guides" expiresAt={gate.expiresAt} />;
+  }
 
   const { id } = await params;
   const guideId = Number(id);

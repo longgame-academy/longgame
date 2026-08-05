@@ -4,6 +4,8 @@ import { db } from "@/db";
 import { content } from "@/db/schema";
 import { and, eq, inArray } from "drizzle-orm";
 import { getUserAccessType } from "@/lib/access";
+import { getLibraryGate } from "@/lib/library";
+import { LibraryExpiredNotice } from "@/components/LibraryExpiredNotice";
 
 export default async function ToolsPage() {
   const { userId } = await auth();
@@ -11,6 +13,13 @@ export default async function ToolsPage() {
 
   const accessType = await getUserAccessType(userId);
   if (!accessType) redirect("/parent-academy");
+
+  // Practical Tools are Library content, so they lock when the 12-month bonus
+  // ends. Checked server-side; the tools are never fetched if it has.
+  const gate = await getLibraryGate(userId, accessType);
+  if (!gate.allowed) {
+    return <LibraryExpiredNotice title="Practical Tools" expiresAt={gate.expiresAt} />;
+  }
 
   const visibleValues =
     accessType === "individual"

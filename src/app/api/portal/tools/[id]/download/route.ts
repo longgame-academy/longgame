@@ -3,6 +3,7 @@ import { db } from "@/db";
 import { content } from "@/db/schema";
 import { eq } from "drizzle-orm";
 import { getUserAccessType } from "@/lib/access";
+import { getLibraryGate } from "@/lib/library";
 import { NextResponse } from "next/server";
 
 export async function GET(
@@ -16,6 +17,13 @@ export async function GET(
 
   const accessType = await getUserAccessType(userId);
   if (!accessType) {
+    return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+  }
+
+  // Tools are Library content. Without this, an expired customer could still
+  // pull the file straight from this endpoint.
+  const gate = await getLibraryGate(userId, accessType);
+  if (!gate.allowed) {
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   }
 
