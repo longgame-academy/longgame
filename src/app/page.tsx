@@ -762,7 +762,7 @@ export default function Home() {
           </div>
           <p className="font-heading font-semibold">Shawn Dixon</p>
           <p className="font-body text-sm text-text-muted mb-8">
-            Coach &middot; Parent &middot; Author
+            Founder &middot; Coach &middot; Parent
             <br />
             Author of <span className="italic">Raising an Athlete: Built for the Long Game</span>
           </p>
