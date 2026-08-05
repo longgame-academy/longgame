@@ -10,6 +10,7 @@ import {
   BookOpen, Wrench, CalendarDays,
 } from "lucide-react";
 import { usePricing } from "@/components/GeoProvider";
+import { GUARANTEE_FULL, GUARANTEE_LIBRARY_NOTE, GUARANTEE_TITLE } from "@/lib/legal";
 
 function Placeholder({ label, className = "" }: { label: string; className?: string }) {
   return (
@@ -164,7 +165,7 @@ function buildFaqs(priceLabel: string) {
     },
     {
       q: "What if it doesn't help my family?",
-      a: "Your purchase is protected by our 14-Day Satisfaction Guarantee. If it isn't right for your family, you may request a full refund within 14 days, provided you have not consumed more than 25% of the Parent Development System.",
+      a: `Your purchase is protected by our ${GUARANTEE_TITLE}. If it isn't right for your family: ${GUARANTEE_FULL} ${GUARANTEE_LIBRARY_NOTE}`,
     },
     {
       q: "Will I be able to use this on my phone?",
@@ -242,10 +243,9 @@ function Accordion({
   );
 }
 
-/* The guarantee has to read identically wherever it appears, so the pricing
-   card renders it from one string rather than repeating the wording. */
-const GUARANTEE_COPY =
-  "14-Day Satisfaction Guarantee — Full refund available within 14 days, provided no more than 25% of the Parent Development System has been consumed. If more than 25% of the content has been completed, no refund will be issued.";
+/* The guarantee has to read identically wherever it appears, so it comes from
+   the shared constant rather than being restated here. */
+const GUARANTEE_COPY = `${GUARANTEE_TITLE} — ${GUARANTEE_FULL}`;
 
 function PricingCard() {
   const pricing = usePricing();

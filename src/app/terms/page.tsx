@@ -1,5 +1,11 @@
 ﻿import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import {
+  GUARANTEE_FULL,
+  GUARANTEE_LIBRARY_NOTE,
+  GUARANTEE_TITLE,
+  SUPPORT_EMAIL,
+} from "@/lib/legal";
 
 export default function TermsPage() {
   return (
@@ -49,10 +55,12 @@ export default function TermsPage() {
             <p>You are responsible for maintaining the confidentiality of your account credentials and for all activity that occurs under your account. You agree to provide accurate and complete information when creating an account or making a purchase, and to keep such information up to date.</p>
             <p className="mt-3">You acknowledge that Long Game&apos;s content is educational in nature and that you are responsible for how you apply it within your own family or organization.</p>
           </div>
-          <div>
+          <div id="refunds" className="scroll-mt-24">
             <h2 className="font-heading text-xl font-semibold mb-3">8. Refund Policy</h2>
-            <p>Your Parent Academy purchase is backed by our 14-Day Satisfaction Guarantee. A full refund is available within 14 days of purchase, provided no more than 25% of the Parent Development System has been consumed. If more than 25% of the content has been completed, no refund will be issued.</p>
-            <p className="mt-3">To request a refund, contact us at hello@longgameacademy.com within the 14-day window. Refunds are issued to the original payment method. Organization licenses are governed by their separate license agreement.</p>
+            <p>Your Parent Academy purchase is backed by our {GUARANTEE_TITLE}. {GUARANTEE_FULL}</p>
+            <p className="mt-3">{GUARANTEE_LIBRARY_NOTE}</p>
+            <p className="mt-3">To request a refund, contact us at {SUPPORT_EMAIL} within the 14-day window. Refunds are issued to the original payment method. Organization licenses are governed by their separate license agreement.</p>
+            <p className="mt-3">The Parent Academy is a one-time purchase. There is no subscription, no automatic renewal and no recurring charge. The 12 months of Long Game Library access included with your purchase is a bonus that ends on its stated expiry date; it does not renew automatically and nothing will be charged to extend it.</p>
           </div>
           <div>
             <h2 className="font-heading text-xl font-semibold mb-3">9. Limitation of Liability</h2>

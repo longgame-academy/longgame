@@ -3,6 +3,12 @@
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
+import {
+  GUARANTEE_FULL,
+  GUARANTEE_LIBRARY_NOTE,
+  GUARANTEE_TITLE,
+  SUPPORT_EMAIL,
+} from "@/lib/legal";
 
 const faqs = [
   {
@@ -24,6 +30,14 @@ const faqs = [
   {
     q: "How long do I have access?",
     a: "Your one-time purchase includes the complete Parent Academy plus 12 months of access to the Long Game Library — Field Guides, Practical Tools, and select new resources added during that period. There is no lifetime access and no automatic renewal.",
+  },
+  {
+    q: "Is this a subscription? Will I be charged again?",
+    a: "No. The Parent Academy is a one-time payment. There is no subscription, no automatic renewal and no recurring charge, so there is nothing to cancel. The 12 months of Long Game Library access is a bonus included with that purchase; when it ends, nothing is charged to extend it.",
+  },
+  {
+    q: "What if I'm not satisfied?",
+    a: `Your purchase is backed by our ${GUARANTEE_TITLE}. ${GUARANTEE_FULL} ${GUARANTEE_LIBRARY_NOTE} To request a refund, contact us at ${SUPPORT_EMAIL} within the 14-day window.`,
   },
 ];
 

@@ -9,6 +9,7 @@ import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { Star, GraduationCap, BookOpen } from "lucide-react";
 import QuizSection from "@/components/QuizSection";
 import { usePricing } from "@/components/GeoProvider";
+import { GUARANTEE_FULL, GUARANTEE_LIBRARY_NOTE, GUARANTEE_TITLE } from "@/lib/legal";
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -163,7 +164,7 @@ const faqs = [
   },
   {
     q: "What if I'm not satisfied?",
-    a: "Your purchase is backed by our 14-Day Satisfaction Guarantee. You may request a full refund within 14 days of purchase, provided you have not consumed more than 25% of the Parent Development System.",
+    a: `Your purchase is backed by our ${GUARANTEE_TITLE}. ${GUARANTEE_FULL} ${GUARANTEE_LIBRARY_NOTE}`,
   },
   {
     q: "Do I have to complete the Parent Academy in order?",
@@ -700,10 +701,7 @@ export default function Home() {
               <span className="flex items-center gap-1.5"><span className="text-teal">&#10003;</span> One-Time Purchase</span>
             </div>
             <p className="text-[11px] font-body text-cream/60 mb-6">
-              14-Day Satisfaction Guarantee &mdash; Full refund available within
-              14 days, provided no more than 25% of the Parent Development
-              System has been consumed. If more than 25% of the content has
-              been completed, no refund will be issued.
+              {GUARANTEE_TITLE} &mdash; {GUARANTEE_FULL}
             </p>
 
             <div className="border-t border-cream/10 pt-6 flex flex-wrap justify-center items-center gap-3">
