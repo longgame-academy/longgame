@@ -786,19 +786,22 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* SECTION: FINAL CLOSE */}
-      <section className="max-w-6xl mx-auto w-full px-6 pt-20 pb-20 md:pt-32 md:pb-28">
-        <motion.h2 {...fadeUp} className="font-heading text-3xl md:text-4xl font-bold text-center mb-10 leading-tight">
-          The Game Will End.
-          <br />
-          The Relationship Won&apos;t.
-        </motion.h2>
-        <motion.div {...fadeUp}>
+      {/* SECTION: FINAL CLOSE — the heading sits inside the photo, set to the
+          left rather than centred, over the dark sky at the top of the frame.
+          No top padding, so the photo follows straight on from the section
+          above it. */}
+      <section className="max-w-6xl mx-auto w-full px-6 pt-0 pb-20 md:pb-28">
+        <motion.div {...fadeUp} className="relative max-w-3xl mx-auto">
           <img
             src="/duffel-bag-stadium.jpg"
             alt="Duffel bag left on a wet stadium parking lot at night"
-            className="w-full h-auto max-w-3xl mx-auto rounded-2xl"
+            className="w-full h-auto rounded-2xl"
           />
+          <h2 className="absolute top-6 left-5 md:top-10 md:left-10 max-w-[80%] font-heading text-2xl md:text-4xl font-bold text-cream text-left leading-tight">
+            The Game Will End.
+            <br />
+            The Relationship Won&apos;t.
+          </h2>
         </motion.div>
       </section>
 
