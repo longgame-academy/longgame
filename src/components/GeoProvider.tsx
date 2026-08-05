@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useContext } from "react";
+import { pricingForCountry } from "@/lib/pricing";
 
 /**
  * Two-digit ISO country code for the current request, resolved server-side in
@@ -18,32 +19,25 @@ export function GeoProvider({
   return <CountryContext.Provider value={country}>{children}</CountryContext.Provider>;
 }
 
-export type Pricing = {
-  country: string | null;
-  isCanada: boolean;
-  /** Bare figure, e.g. "$119" — pair with `currency` when both are shown. */
-  amount: string;
-  currency: "CAD" | "USD";
-  /** Figure and currency together, e.g. "$119 CAD" — for inline copy. */
-  display: string;
-  /** Pre-discount figure shown struck through beside `amount`. */
-  regular: string;
-};
+export type Pricing = ReturnType<typeof usePricing>;
 
 /**
- * Canada is priced in CAD; the US, everywhere else, and any request we can't
- * geolocate all fall back to USD.
+ * Reads the visitor's country from context and resolves it through the shared
+ * pricing table, so the figures on the marketing pages are the same ones
+ * checkout and the PaymentIntent use.
  */
-export function usePricing(): Pricing {
+export function usePricing() {
   const country = useContext(CountryContext);
-  const isCanada = country === "CA";
+  const plan = pricingForCountry(country);
 
   return {
+    ...plan,
     country,
-    isCanada,
-    amount: isCanada ? "$119" : "$97",
-    currency: isCanada ? "CAD" : "USD",
-    display: isCanada ? "$119 CAD" : "$97 USD",
-    regular: isCanada ? "$179" : "$147",
+    isCanada: plan.currency === "CAD",
   };
+}
+
+/** The country resolved for this request, for callers that need it directly. */
+export function useCountry(): string | null {
+  return useContext(CountryContext);
 }
