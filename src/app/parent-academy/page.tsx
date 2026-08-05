@@ -244,6 +244,11 @@ function Accordion({
 
 function PricingCard() {
   const pricing = usePricing();
+  // Mobile only: the card opens at roughly half height, ending after the bonus
+  // box, and the rest expands on request. Nothing is removed — the full
+  // included list and the guarantee are one tap away, and from md up the whole
+  // card is visible as before.
+  const [showAll, setShowAll] = useState(false);
 
   return (
     <motion.div
@@ -274,9 +279,17 @@ function PricingCard() {
         </p>
 
         <CheckoutButton className="flex items-center justify-center gap-2 bg-cream text-ink font-heading font-semibold text-sm px-6 py-3.5 rounded-lg hover:bg-cream/90 transition-colors mb-3 w-full" />
+        <button
+          type="button"
+          onClick={() => setShowAll((v) => !v)}
+          aria-expanded={showAll}
+          className="md:hidden block w-full text-center font-heading text-xs font-semibold text-teal hover:underline"
+        >
+          {showAll ? "Show Less ↑" : "See Everything Included ↓"}
+        </button>
         <a
           href="#modules"
-          className="block text-center font-heading text-xs font-semibold text-teal hover:underline"
+          className="hidden md:block text-center font-heading text-xs font-semibold text-teal hover:underline"
         >
           See Everything Included &rarr;
         </a>
@@ -299,7 +312,11 @@ function PricingCard() {
         </div>
       </div>
 
-      <div className="border-t md:border-t-0 md:border-l border-cream/10 pt-6 md:pt-0 md:pl-14">
+      <div
+        className={`${
+          showAll ? "block" : "hidden"
+        } md:block border-t md:border-t-0 md:border-l border-cream/10 pt-6 md:pt-0 md:pl-14`}
+      >
         <p className="font-heading text-teal text-[11px] font-semibold tracking-widest uppercase mb-3">
           Included
         </p>
