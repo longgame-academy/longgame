@@ -5,7 +5,7 @@ import { stripe } from "@/lib/stripe";
 import { db } from "@/db";
 import { payments } from "@/db/schema";
 import { getLibraryAccess } from "@/lib/orders";
-import { checkoutRatelimit } from "@/lib/ratelimit";
+import { confirmationRatelimit } from "@/lib/ratelimit";
 
 const querySchema = z.object({
   payment_intent: z.string().trim().min(1).max(255),
@@ -35,7 +35,7 @@ export async function GET(req: Request) {
     return NextResponse.json({ error: "Invalid request" }, { status: 400 });
   }
 
-  const { success } = await checkoutRatelimit.limit(
+  const { success } = await confirmationRatelimit.limit(
     `confirmation:${parsed.data.payment_intent}`
   );
   if (!success) {

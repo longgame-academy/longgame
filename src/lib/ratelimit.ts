@@ -23,3 +23,12 @@ export const checkoutRatelimit = new Ratelimit({
   limiter: Ratelimit.slidingWindow(10, "1 m"),
   prefix: "ratelimit:checkout",
 });
+
+// The success page polls this while it waits for the webhook, so the ceiling
+// has to clear a full poll cycle. At 10/min a legitimate purchaser was being
+// throttled into the "still finalising" fallback on their own receipt.
+export const confirmationRatelimit = new Ratelimit({
+  redis,
+  limiter: Ratelimit.slidingWindow(40, "1 m"),
+  prefix: "ratelimit:confirmation",
+});
