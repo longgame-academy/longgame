@@ -533,8 +533,9 @@ export default function ParentAcademyPage() {
         </div>
       </section>
 
-      {/* SECTION 7B: INCLUDED WITH YOUR FIRST YEAR — the Long Game Library
-          bonus, sitting between the pricing bar and the product preview. */}
+      {/* SECTION 7B: BONUS WITH YOUR PURCHASE — the 12-month Long Game Library
+          bonus, sitting between the pricing bar and the product preview.
+          This is a bonus included with a one-time purchase, not a subscription. */}
       <section className="max-w-6xl mx-auto w-full px-6 py-20 md:py-28">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -544,15 +545,22 @@ export default function ParentAcademyPage() {
           className="text-center max-w-2xl mx-auto mb-12"
         >
           <p className="font-heading text-teal text-[13px] font-semibold tracking-widest uppercase mb-3">
-            Included With Your First Year
+            Bonus With Your Parent Academy Purchase
           </p>
           <h2 className="font-heading text-2xl md:text-3xl font-bold leading-tight mb-4">
-            For everything the season brings.
+            Your Parent Academy goes beyond the 12 modules.
           </h2>
+          <p className="font-body text-text-body leading-relaxed mb-4">
+            When you purchase the Parent Academy, you&apos;ll also receive 12
+            months of free access to all additional content in the Long Game
+            Parent Portal.
+          </p>
           <p className="font-body text-text-body leading-relaxed">
-            Your first year includes a growing library of Field Guides and
-            Practical Tools designed for the situations, decisions and
-            conversations that come up along the way.
+            That means every new Field Guide, Practical Tool and parent resource
+            we add during those 12 months is included at no additional cost.
+          </p>
+          <p className="inline-block bg-cream border border-border-grey rounded-lg px-4 py-2.5 font-heading text-[12px] font-semibold text-teal-dark mt-6">
+            One-time purchase &middot; No subscription &middot; No automatic renewal
           </p>
         </motion.div>
 
@@ -617,7 +625,8 @@ export default function ParentAcademyPage() {
             strokeWidth={1.5}
             aria-hidden="true"
           />
-          New Field Guides and Practical Tools added throughout your first year.
+          New resources added during your 12-month bonus access period are
+          included at no additional cost.
         </motion.p>
       </section>
 
