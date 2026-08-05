@@ -618,10 +618,10 @@ export default function ParentAcademyPage() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="flex items-center justify-center gap-2 font-body text-sm text-text-muted text-center mt-10"
+          className="flex items-start justify-center gap-2.5 font-body text-sm text-text-muted text-center mt-10"
         >
           <CalendarDays
-            className="w-4 h-4 text-teal shrink-0"
+            className="w-5 h-5 text-teal shrink-0"
             strokeWidth={1.5}
             aria-hidden="true"
           />
