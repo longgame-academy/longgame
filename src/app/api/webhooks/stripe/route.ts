@@ -153,6 +153,18 @@ async function handleIntentSucceeded(event: Stripe.Event) {
       `${LOG} order ${order.orderNumber} granted to ${userId} (intent ${intent.id})`
     );
 
+    // The order number only exists once the order is recorded, so write it back
+    // onto the intent. Without it the trail is one-way: Admin can reach Stripe,
+    // but a customer quoting "order LG-XXXXXXXX" cannot be found in the Stripe
+    // dashboard, which is exactly the moment support needs to issue a refund.
+    try {
+      await stripe.paymentIntents.update(intent.id, {
+        metadata: { ...intent.metadata, orderNumber: order.orderNumber },
+      });
+    } catch (err) {
+      console.error(`${LOG} could not tag intent ${intent.id} with its order number:`, err);
+    }
+
     try {
       await sendPurchaseReceiptEmail({
         to: email,
