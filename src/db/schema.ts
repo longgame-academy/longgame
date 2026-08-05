@@ -16,7 +16,12 @@ import { relations } from "drizzle-orm";
 export const orgStatusEnum = pgEnum("org_status", ["pending", "verified", "rejected"]);
 export const membershipStatusEnum = pgEnum("membership_status", ["active", "removed"]);
 export const accessTypeEnum = pgEnum("access_type", ["individual", "org"]);
-export const paymentStatusEnum = pgEnum("payment_status", ["pending", "succeeded", "failed", "refunded"]);
+export const paymentStatusEnum = pgEnum("payment_status", ["pending", "succeeded", "failed", "refunded", "partially_refunded"]);
+// The Parent Academy is the purchased product; Library access is the 12-month
+// bonus that comes with it. They are deliberately separate rows so a future
+// offer can change one without touching the other.
+export const entitlementKindEnum = pgEnum("entitlement_kind", ["parent_academy", "library"]);
+export const entitlementSourceEnum = pgEnum("entitlement_source", ["purchase", "org", "admin"]);
 export const leadSourceEnum = pgEnum("lead_source", ["free_guide"]);
 export const contentTypeEnum = pgEnum("content_type", ["module", "field_guide", "tool"]);
 export const visibilityEnum = pgEnum("visibility", ["individual", "org", "both", "neither"]);
@@ -66,6 +71,14 @@ export const enrollments = pgTable("enrollments", {
   uniqueIndex("enrollments_user_id_idx").on(table.userId),
 ]);
 
+/**
+ * The order ledger. `stripePaymentId` stays the idempotency key it has always
+ * been — its unique constraint is what stops a retried webhook creating a
+ * second order — and now holds the PaymentIntent id for on-site checkout.
+ *
+ * Everything added below is nullable or defaulted so the migration is purely
+ * additive and existing rows stay valid.
+ */
 export const payments = pgTable("payments", {
   id: serial("id").primaryKey(),
   userId: varchar("user_id", { length: 255 }).notNull(),
@@ -73,8 +86,95 @@ export const payments = pgTable("payments", {
   amount: integer("amount").notNull(), // cents
   status: paymentStatusEnum("status").notNull().default("pending"),
   createdAt: timestamp("created_at").notNull().defaultNow(),
+
+  // Human-facing Long Game order id, e.g. "LG-7Q2K4M8P". Support and the
+  // future verified-reviews flow look orders up by this.
+  orderNumber: varchar("order_number", { length: 32 }).unique(),
+  currency: varchar("currency", { length: 3 }),
+  email: varchar("email", { length: 255 }),
+  firstName: varchar("first_name", { length: 255 }),
+  lastName: varchar("last_name", { length: 255 }),
+  stripeCustomerId: varchar("stripe_customer_id", { length: 255 }),
+  stripePaymentIntentId: varchar("stripe_payment_intent_id", { length: 255 }),
+  stripeCheckoutSessionId: varchar("stripe_checkout_session_id", { length: 255 }),
+  // Cents refunded so far, so a partial refund is distinguishable from a full
+  // one without another round trip to Stripe.
+  amountRefunded: integer("amount_refunded").notNull().default(0),
+  taxAmount: integer("tax_amount").notNull().default(0),
+  updatedAt: timestamp("updated_at").notNull().defaultNow(),
 }, (table) => [
   index("payments_user_id_idx").on(table.userId),
+  index("payments_email_idx").on(table.email),
+  index("payments_payment_intent_idx").on(table.stripePaymentIntentId),
+]);
+
+/**
+ * What a user is actually entitled to, and until when. One row per
+ * (user, kind); `expiresAt` null means it does not expire.
+ *
+ * Parent Academy access remains gated by `enrollments`, which every existing
+ * access check already reads. This table adds the time-bounded Library bonus
+ * alongside it without changing how the Academy is granted.
+ */
+export const entitlements = pgTable("entitlements", {
+  id: serial("id").primaryKey(),
+  userId: varchar("user_id", { length: 255 }).notNull(),
+  kind: entitlementKindEnum("kind").notNull(),
+  source: entitlementSourceEnum("source").notNull().default("purchase"),
+  // Which order paid for this. Null for org and admin grants.
+  orderId: integer("order_id").references(() => payments.id),
+  startsAt: timestamp("starts_at").notNull().defaultNow(),
+  expiresAt: timestamp("expires_at"),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+  updatedAt: timestamp("updated_at").notNull().defaultNow(),
+}, (table) => [
+  // Makes granting idempotent: a retried webhook conflicts instead of
+  // inserting a second entitlement.
+  uniqueIndex("entitlements_user_kind_idx").on(table.userId, table.kind),
+  index("entitlements_expires_at_idx").on(table.expiresAt),
+]);
+
+/**
+ * Email captured on the checkout page before payment completed. Never implies
+ * a paid order or any entitlement. `recoveredAt` is stamped once the same
+ * email buys, which is what suppresses them from the recovery sequence.
+ */
+export const abandonedCheckouts = pgTable("abandoned_checkouts", {
+  id: serial("id").primaryKey(),
+  email: varchar("email", { length: 255 }).notNull(),
+  // Optional on purpose: recovery must not require a name.
+  firstName: varchar("first_name", { length: 255 }),
+  amount: integer("amount"),
+  currency: varchar("currency", { length: 3 }),
+  stripePaymentIntentId: varchar("stripe_payment_intent_id", { length: 255 }),
+  recoveredAt: timestamp("recovered_at"),
+  lastEmailedAt: timestamp("last_emailed_at"),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+  updatedAt: timestamp("updated_at").notNull().defaultNow(),
+}, (table) => [
+  uniqueIndex("abandoned_checkouts_email_idx").on(table.email),
+  index("abandoned_checkouts_recovered_idx").on(table.recoveredAt),
+]);
+
+/**
+ * Voluntary renewal nudges at 30/14/7 days before Library expiry. Nothing here
+ * charges anyone — there is no auto-renew. Rows are created when the Library
+ * entitlement is granted so the schedule is data, not a cron guess.
+ */
+export const renewalReminders = pgTable("renewal_reminders", {
+  id: serial("id").primaryKey(),
+  userId: varchar("user_id", { length: 255 }).notNull(),
+  entitlementId: integer("entitlement_id").notNull().references(() => entitlements.id),
+  // 30, 14 or 7.
+  offsetDays: integer("offset_days").notNull(),
+  scheduledFor: timestamp("scheduled_for").notNull(),
+  sentAt: timestamp("sent_at"),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+}, (table) => [
+  // One reminder per entitlement per offset, so re-running the scheduler or
+  // replaying a webhook cannot double-book a send.
+  uniqueIndex("renewal_reminders_entitlement_offset_idx").on(table.entitlementId, table.offsetDays),
+  index("renewal_reminders_due_idx").on(table.scheduledFor, table.sentAt),
 ]);
 
 // ---------- Leads ----------
@@ -126,5 +226,24 @@ export const orgMembershipsRelations = relations(orgMemberships, ({ one }) => ({
   organization: one(organizations, {
     fields: [orgMemberships.organizationId],
     references: [organizations.id],
+  }),
+}));
+
+export const paymentsRelations = relations(payments, ({ many }) => ({
+  entitlements: many(entitlements),
+}));
+
+export const entitlementsRelations = relations(entitlements, ({ one, many }) => ({
+  order: one(payments, {
+    fields: [entitlements.orderId],
+    references: [payments.id],
+  }),
+  reminders: many(renewalReminders),
+}));
+
+export const renewalRemindersRelations = relations(renewalReminders, ({ one }) => ({
+  entitlement: one(entitlements, {
+    fields: [renewalReminders.entitlementId],
+    references: [entitlements.id],
   }),
 }));
