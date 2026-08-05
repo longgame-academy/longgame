@@ -4,7 +4,6 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import FreeGuideForm from "@/components/FreeGuideForm";
 import { motion } from "framer-motion";
-import { MessageCircle, Brain, Heart } from "lucide-react";
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -12,25 +11,6 @@ const fadeUp = {
   viewport: { once: true, margin: "-80px" },
   transition: { duration: 0.7, ease: "easeOut" },
 } as const;
-
-const features = [
-  {
-    title: "Better Conversations",
-    body: "Learn exactly what to say—and what not to say—after every game.",
-    icon: MessageCircle,
-  },
-  {
-    title: "Build Confidence",
-    body: "Simple conversations that strengthen confidence instead of pressure.",
-    icon: Brain,
-  },
-  {
-    title: "Protect Your Relationship",
-    body: "Because long after the game ends, your relationship is what matters most.",
-    icon: Heart,
-  },
-];
-
 
 
 export default function FreeGuidePage() {
@@ -43,20 +23,25 @@ export default function FreeGuidePage() {
         <div className="max-w-4xl mx-auto w-full px-6 py-20 md:py-28 text-center">
           <motion.div {...fadeUp}>
             <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase mb-4">
-              Free Guide
+              Free Guide for Sports Parents
             </p>
             <h1 className="font-heading text-4xl md:text-5xl font-bold leading-tight mb-6">
-              The Car Ride Home
+              Not sure what to say after the game?
             </h1>
             <p className="font-body text-lg text-text-body mb-8">
-              One conversation can shape an athlete for years.
+              The Car Ride Home gives you practical words for the moments when
+              your athlete is disappointed, frustrated, quiet&mdash;or simply
+              not ready to talk.
             </p>
             <a
               href="#download"
               className="inline-block bg-teal text-white font-heading font-semibold px-8 py-4 rounded-lg hover:bg-[#005548] transition-colors"
             >
-              Download the Free Guide &rarr;
+              Get the Free Guide &rarr;
             </a>
+            <p className="font-body text-sm text-text-muted mt-4">
+              Free &bull; Instant PDF &bull; 20&ndash;25 minute read
+            </p>
           </motion.div>
 
           <motion.div
@@ -73,32 +58,23 @@ export default function FreeGuidePage() {
         </div>
       </section>
 
-      {/* SECTION 2 - WHAT YOU'LL LEARN */}
+      {/* SECTION 2 - THE MOMENT AFTER THE GAME — plain text, no cards or icons */}
       <section className="bg-white w-full">
-        <div className="max-w-5xl mx-auto w-full px-6 py-20 md:py-28">
-          <motion.h2 {...fadeUp} className="font-heading text-3xl md:text-4xl font-bold text-center mb-14">
-            What You&apos;ll Learn
-          </motion.h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            {features.map((f, i) => (
-              <motion.div
-                key={f.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.1 }}
-                className="bg-cream border border-border-grey rounded-2xl p-8 shadow-[0_4px_16px_rgba(18,21,20,0.08)]"
-              >
-                <f.icon
-                  className="w-7 h-7 text-teal mb-4"
-                  strokeWidth={1.5}
-                  aria-hidden="true"
-                />
-                <h3 className="font-heading text-lg font-semibold mb-3">{f.title}</h3>
-                <p className="font-body text-sm text-text-body leading-relaxed">{f.body}</p>
-              </motion.div>
-            ))}
-          </div>
+        <div className="max-w-3xl mx-auto w-full px-6 py-20 md:py-28 text-center">
+          <motion.div {...fadeUp}>
+            <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase mb-4">
+              The Moment After the Game
+            </p>
+            <h2 className="font-heading text-3xl md:text-4xl font-bold leading-tight mb-6">
+              The game is over. The emotions aren&apos;t.
+            </h2>
+            <p className="font-body text-lg text-text-body leading-relaxed">
+              You want to help. But in those first few minutes, it can be hard
+              to know whether to talk, encourage, ask questions&mdash;or say
+              nothing at all. This guide shows you how to handle that moment
+              without turning the ride home into another performance review.
+            </p>
+          </motion.div>
         </div>
       </section>
 
@@ -110,20 +86,18 @@ export default function FreeGuidePage() {
             className="bg-ink text-cream rounded-[24px] p-6 md:p-8"
           >
             <p className="font-heading text-teal text-[11px] font-semibold tracking-widest uppercase mb-3">
-              Free Parent Guide
+              The Car Ride Home
             </p>
             <h2 className="font-heading text-2xl md:text-3xl font-bold mb-3 leading-tight">
-              Everything You Need for the Car Ride Home
+              A practical guide for what happens after the game.
             </h2>
             <p className="font-body text-sm text-cream/70 leading-relaxed mb-6">
-              One conversation after the game can shape your athlete&apos;s
-              confidence for years. Learn exactly what to say, what to
-              avoid, and how to turn every drive home into an opportunity
-              to strengthen your relationship.
+              Know what to say, what to avoid, and how to respond when emotions
+              are still high.
             </p>
 
             <div className="flex items-end gap-2 mb-1">
-              <span className="font-heading text-4xl font-bold">Free</span>
+              <span className="font-heading text-4xl font-bold">FREE</span>
             </div>
             <p className="font-body text-xs text-cream/60 mb-6">
               No cost &middot; Instant PDF download
@@ -148,13 +122,11 @@ export default function FreeGuidePage() {
               </p>
               <ul className="font-body text-sm space-y-0">
                 {[
-                  "Why the first five minutes matter most",
-                  "Exactly what to say after great games and difficult games",
-                  "Questions that build confidence—and the ones to avoid",
-                  "Practical conversation scripts you can use immediately",
+                  "Why the first five minutes matter",
+                  "What to say after good games and difficult ones",
+                  "Questions that help—and the ones that can feel like pressure",
                   "How to respond when your athlete is frustrated, quiet, or discouraged",
-                  "A simple framework that protects confidence and your relationship",
-                  "Works for every sport and every competitive level",
+                  "Practical words and scripts you can use immediately",
                 ].map((item) => (
                   <li
                     key={item}
@@ -175,14 +147,33 @@ export default function FreeGuidePage() {
                 Printable Glove Box Card
               </p>
               <p className="font-body text-xs text-cream/60 leading-relaxed">
-                Keep the most important reminders in your vehicle so
-                you&apos;ll always know what to say when emotions are high.
+                Keep the most useful reminders with you for the moments when
+                you&apos;re not sure what to say.
               </p>
             </div>
 
             <p className="font-body text-xs text-cream/60 border-t border-cream/10 pt-4">
               20&ndash;25 minute read &middot; Instant PDF download &middot;
               Practical conversations you can use after your very next game
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* SECTION 3B - AFTER YOU READ IT — plain text, no cards or icons */}
+      <section className="bg-white w-full">
+        <div className="max-w-3xl mx-auto w-full px-6 py-20 md:py-28 text-center">
+          <motion.div {...fadeUp}>
+            <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase mb-4">
+              After You Read It
+            </p>
+            <h2 className="font-heading text-3xl md:text-4xl font-bold leading-tight mb-6">
+              You&apos;ll know what to do.
+            </h2>
+            <p className="font-body text-lg text-text-body leading-relaxed">
+              You&apos;ll have a simple approach for the first few minutes after
+              the game, better questions for when they&apos;re ready to talk,
+              and practical words for the moments when they&apos;re not.
             </p>
           </motion.div>
         </div>
@@ -203,12 +194,15 @@ export default function FreeGuidePage() {
       <section id="download" className="bg-cream w-full">
         <div className="max-w-2xl mx-auto w-full px-6 py-20 md:py-28 text-center">
           <motion.div {...fadeUp}>
+            <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase mb-4">
+              Free Download
+            </p>
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
-              Ready to Read?
+              Make the next ride home different.
             </h2>
             <p className="font-body text-lg text-text-body mb-10">
-              Enter your email below and we&apos;ll send The Car Ride Home
-              directly to your inbox.
+              You don&apos;t need the perfect words. You just need a better way
+              to handle the moment.
             </p>
           </motion.div>
 
@@ -216,7 +210,11 @@ export default function FreeGuidePage() {
             <FreeGuideForm />
           </motion.div>
 
-          <p className="font-body text-sm text-charcoal/50 mt-8 mb-16">
+          <p className="font-body text-sm text-text-muted mt-4">
+            Free &bull; Instant access &bull; No credit card required
+          </p>
+
+          <p className="font-body text-sm text-charcoal/50 mt-6 mb-16">
             We respect your inbox. No spam. Just practical resources and
             occasional updates from Long Game.
           </p>
