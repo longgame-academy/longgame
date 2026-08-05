@@ -90,7 +90,7 @@ export default function OrganizationsPage() {
       <section className="bg-background py-16 md:py-24 min-h-[680px] flex items-center">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: "easeOut" }}>
-            <p className="font-heading text-teal text-[13px] font-semibold tracking-widest uppercase mb-3">
+            <p className="font-heading text-teal text-[13px] font-semibold tracking-widest uppercase eyebrow">
               Parent Development for Youth Sports Organizations
             </p>
             <h1 className="font-heading text-4xl md:text-5xl font-bold leading-tight mb-6 max-w-[580px]">
@@ -233,7 +233,7 @@ export default function OrganizationsPage() {
       <section className="py-20 md:py-28" style={{ backgroundColor: "#F1F3F2" }}>
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-5 gap-12 items-center">
           <motion.div {...fadeUp} className="md:col-span-2">
-            <p className="font-heading text-teal text-[13px] font-semibold tracking-widest uppercase mb-3">
+            <p className="font-heading text-teal text-[13px] font-semibold tracking-widest uppercase eyebrow">
               The Parent Portal
             </p>
             <h2 className="font-heading text-2xl md:text-3xl font-bold leading-tight mb-8">
@@ -273,7 +273,7 @@ export default function OrganizationsPage() {
             strokeWidth={1.5}
             aria-hidden="true"
           />
-          <p className="font-heading text-teal text-[13px] font-semibold tracking-widest uppercase mb-3">
+          <p className="font-heading text-teal text-[13px] font-semibold tracking-widest uppercase eyebrow">
             Organization-Wide Alignment
           </p>
           <h2 className="font-heading text-2xl md:text-3xl font-bold leading-tight mb-8">
@@ -299,7 +299,7 @@ export default function OrganizationsPage() {
 
       {/* SECTION 7: ORGANIZATION OUTCOMES */}
       <section className="max-w-6xl mx-auto w-full px-6 py-20 md:py-28">
-        <motion.p {...fadeUp} className="font-heading text-teal text-[13px] font-semibold tracking-widest uppercase text-center mb-4">
+        <motion.p {...fadeUp} className="font-heading text-teal text-[13px] font-semibold tracking-widest uppercase eyebrow text-center">
           The Result
         </motion.p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -344,7 +344,7 @@ export default function OrganizationsPage() {
       <section className="py-20 md:py-28" style={{ backgroundColor: "#F1F3F2" }}>
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
           <motion.div {...fadeUp}>
-            <p className="font-heading text-teal text-[13px] font-semibold tracking-widest uppercase mb-3">
+            <p className="font-heading text-teal text-[13px] font-semibold tracking-widest uppercase eyebrow">
               Simple to Launch
             </p>
             <h2 className="font-heading text-2xl md:text-3xl font-bold leading-tight mb-10">
@@ -390,7 +390,7 @@ export default function OrganizationsPage() {
               strokeWidth={1.5}
               aria-hidden="true"
             />
-            <p className="font-heading text-teal text-[13px] font-semibold tracking-widest uppercase mb-3">
+            <p className="font-heading text-teal text-[13px] font-semibold tracking-widest uppercase eyebrow">
               Your Partnership Includes
             </p>
             <h2 className="font-heading text-2xl md:text-3xl font-bold leading-tight mb-8">
@@ -411,7 +411,7 @@ export default function OrganizationsPage() {
       {/* SECTION 11: TAILORED PARTNERSHIP */}
       <section className="py-20 md:py-28 text-center" style={{ backgroundColor: "#F1F3F2" }}>
         <motion.div {...fadeUp} className="max-w-xl mx-auto px-6">
-          <p className="font-heading text-teal text-[13px] font-semibold tracking-widest uppercase mb-4">
+          <p className="font-heading text-teal text-[13px] font-semibold tracking-widest uppercase eyebrow">
             Organization Partnership
           </p>
           <h2 className="font-heading text-3xl font-bold leading-tight mb-4">

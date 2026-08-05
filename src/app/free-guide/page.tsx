@@ -22,7 +22,7 @@ export default function FreeGuidePage() {
       <section className="bg-cream w-full">
         <div className="max-w-4xl mx-auto w-full px-6 py-20 md:py-28 text-center">
           <motion.div {...fadeUp}>
-            <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase mb-4">
+            <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase eyebrow">
               Free Guide for Sports Parents
             </p>
             <h1 className="font-heading text-4xl md:text-5xl font-bold leading-tight mb-6">
@@ -62,7 +62,7 @@ export default function FreeGuidePage() {
       <section className="bg-white w-full">
         <div className="max-w-3xl mx-auto w-full px-6 py-20 md:py-28 text-center">
           <motion.div {...fadeUp}>
-            <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase mb-4">
+            <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase eyebrow">
               The Moment After the Game
             </p>
             <h2 className="font-heading text-3xl md:text-4xl font-bold leading-tight mb-6">
@@ -85,7 +85,7 @@ export default function FreeGuidePage() {
             {...fadeUp}
             className="bg-ink text-cream rounded-[24px] p-6 md:p-8"
           >
-            <p className="font-heading text-teal text-[11px] font-semibold tracking-widest uppercase mb-3">
+            <p className="font-heading text-teal text-[11px] font-semibold tracking-widest uppercase eyebrow">
               The Car Ride Home
             </p>
             <h2 className="font-heading text-2xl md:text-3xl font-bold mb-3 leading-tight">
@@ -164,7 +164,7 @@ export default function FreeGuidePage() {
       <section className="bg-white w-full">
         <div className="max-w-3xl mx-auto w-full px-6 py-20 md:py-28 text-center">
           <motion.div {...fadeUp}>
-            <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase mb-4">
+            <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase eyebrow">
               After You Read It
             </p>
             <h2 className="font-heading text-3xl md:text-4xl font-bold leading-tight mb-6">
@@ -194,7 +194,7 @@ export default function FreeGuidePage() {
       <section id="download" className="bg-cream w-full">
         <div className="max-w-2xl mx-auto w-full px-6 py-20 md:py-28 text-center">
           <motion.div {...fadeUp}>
-            <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase mb-4">
+            <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase eyebrow">
               Free Download
             </p>
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">

@@ -319,7 +319,7 @@ export default function Home() {
           <img src="/athlete-reflection.jpg" alt="Young athlete reflecting quietly in the locker room" className="w-full h-auto aspect-[4/3] object-cover rounded-lg" />
         </motion.div>
         <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.15 }}>
-          <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase mb-4">
+          <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase eyebrow">
             Why Long Game Exists
           </p>
           <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6 leading-tight">
@@ -361,7 +361,7 @@ export default function Home() {
               strokeWidth={1.5}
               aria-hidden="true"
             />
-            <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase mb-4">
+            <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase eyebrow">
               The Parent Academy
             </p>
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6 leading-tight max-w-[440px]">
@@ -411,7 +411,7 @@ export default function Home() {
               strokeWidth={1.5}
               aria-hidden="true"
             />
-            <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase mb-4">
+            <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase eyebrow">
               Inside the System
             </p>
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6 leading-tight max-w-[440px]">
@@ -521,7 +521,7 @@ export default function Home() {
           {/* Endorsements — visually separated from the parent quotes above so
               "who stands behind this" doesn't blend into "what parents say". */}
           <div className="pt-16 mt-16 border-t border-border-grey max-w-4xl mx-auto">
-            <motion.p {...fadeUp} className="font-heading text-teal text-[13px] font-semibold tracking-widest uppercase mb-3">
+            <motion.p {...fadeUp} className="font-heading text-teal text-[13px] font-semibold tracking-widest uppercase eyebrow">
               Recognized By
             </motion.p>
             <motion.h3
@@ -605,7 +605,7 @@ export default function Home() {
             {...fadeUp}
             className="bg-ink text-cream rounded-[24px] max-w-[520px] mx-auto p-6 md:p-8"
           >
-            <p className="font-heading text-teal text-[11px] font-semibold tracking-widest uppercase mb-3">
+            <p className="font-heading text-teal text-[11px] font-semibold tracking-widest uppercase eyebrow">
               The Parent Academy
             </p>
             <h2 className="font-heading text-2xl md:text-3xl font-bold mb-3 leading-tight">
