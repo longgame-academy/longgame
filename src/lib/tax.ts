@@ -12,6 +12,20 @@ export function isTaxEnabled(): boolean {
   return process.env.STRIPE_TAX_ENABLED === "true";
 }
 
+/**
+ * The Stripe tax code describing what is being sold.
+ *
+ * This materially changes what gets collected — the same order in Texas is
+ * taxed at 8.25% under the generic electronically-supplied-services code and
+ * exempt under the on-demand-online-course code. Left unset, Stripe falls back
+ * to the account's default code, which is unlikely to be the right one for a
+ * pre-recorded video course and would be an easy way to silently under- or
+ * over-collect. Set STRIPE_TAX_CODE once the correct code is confirmed.
+ */
+function productTaxCode(): string | undefined {
+  return process.env.STRIPE_TAX_CODE?.trim() || undefined;
+}
+
 export type TaxResult = {
   /** Tax in cents. Zero means no tax row is shown to the customer. */
   taxAmount: number;
@@ -63,6 +77,7 @@ export async function calculateTax(params: {
           amount: params.amount,
           reference: "parent_academy",
           tax_behavior: "exclusive",
+          tax_code: productTaxCode(),
         },
       ],
       customer_details: {
