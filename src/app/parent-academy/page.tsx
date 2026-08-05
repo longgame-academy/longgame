@@ -242,6 +242,11 @@ function Accordion({
   );
 }
 
+/* The guarantee has to read identically wherever it appears, so the pricing
+   card renders it from one string rather than repeating the wording. */
+const GUARANTEE_COPY =
+  "14-Day Satisfaction Guarantee — Full refund available within 14 days, provided no more than 25% of the Parent Development System has been consumed. If more than 25% of the content has been completed, no refund will be issued.";
+
 function PricingCard() {
   const pricing = usePricing();
   // Mobile only: the card opens at roughly half height, ending after the bonus
@@ -310,6 +315,13 @@ function PricingCard() {
             that matter most.
           </p>
         </div>
+
+        {/* Mobile only: the guarantee stays out of the collapsed section so it
+            is always visible, never behind the tap. From md up it renders in
+            the right-hand column, where it has always sat. */}
+        <p className="md:hidden font-body text-xs text-cream/60 border-t border-cream/10 pt-4 mt-6">
+          {GUARANTEE_COPY}
+        </p>
       </div>
 
       <div
@@ -343,11 +355,10 @@ function PricingCard() {
           Designed for parents of athletes ages 8&ndash;18 across every
           competitive sport.
         </p>
-        <p className="font-body text-xs text-cream/60 border-t border-cream/10 pt-4 mt-4">
-          14-Day Satisfaction Guarantee &mdash; Full refund available within 14
-          days, provided no more than 25% of the Parent Development System has
-          been consumed. If more than 25% of the content has been completed, no
-          refund will be issued.
+        {/* On mobile the guarantee renders in the left column instead, so that
+            it stays visible while this column is collapsed. */}
+        <p className="hidden md:block font-body text-xs text-cream/60 border-t border-cream/10 pt-4 mt-4">
+          {GUARANTEE_COPY}
         </p>
       </div>
     </motion.div>
