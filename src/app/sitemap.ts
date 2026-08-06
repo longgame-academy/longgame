@@ -7,6 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/parent-academy",
     "/organizations",
     "/free-guide",
+    "/reviews",
     "/our-story",
     "/contact",
     "/faq",

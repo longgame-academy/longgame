@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { usePricing } from "@/components/GeoProvider";
 import { GUARANTEE_FULL, GUARANTEE_LIBRARY_NOTE, GUARANTEE_TITLE } from "@/lib/legal";
+import { ACADEMY_REVIEWS } from "@/lib/reviews";
 
 function Placeholder({ label, className = "" }: { label: string; className?: string }) {
   return (
@@ -123,21 +124,6 @@ const endorsers = [
   { name: "Jay Wells", role: "18-Year NHL Veteran, 1994 Stanley Cup Champion", photo: "/team/jay-wells.jpg" },
   { name: "Allan Ross", role: "Former Major League Baseball Scout", photo: "/team/allan-ross.jpg" },
   { name: "Doug Ouilette", role: "Vice President, Ancaster Baseball", photo: "/team/doug-ouilette.jpg" },
-];
-
-const academyTestimonials = [
-  {
-    quote:
-      "I thought this was going to help my daughter. I didn't realize how much it would help me.",
-    name: "Jennifer R.",
-    role: "Hockey Mom",
-  },
-  {
-    quote:
-      "Practical guidance for the conversations and challenges every sports family faces. I only wish this had been available twenty years ago.",
-    name: "Jim Kean",
-    role: "Parent of Two Division I Athletes, Educator",
-  },
 ];
 
 /**
@@ -692,11 +678,11 @@ export default function ParentAcademyPage() {
               From Parents
             </p>
             <h2 className="font-heading text-2xl md:text-3xl font-bold leading-tight">
-              What families say after going through it.
+              What sports parents are saying.
             </h2>
           </div>
           <div className="grid md:grid-cols-2 gap-5">
-            {academyTestimonials.map((t, i) => (
+            {ACADEMY_REVIEWS.map((t, i) => (
               <motion.figure
                 key={t.name}
                 initial={{ opacity: 0, y: 20 }}
@@ -715,7 +701,6 @@ export default function ParentAcademyPage() {
                 </blockquote>
                 <figcaption className="border-t border-border-grey pt-4">
                   <p className="font-heading text-sm font-bold">{t.name}</p>
-                  <p className="font-body text-[13px] text-text-muted leading-snug">{t.role}</p>
                 </figcaption>
               </motion.figure>
             ))}
