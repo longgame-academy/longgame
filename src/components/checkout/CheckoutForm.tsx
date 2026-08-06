@@ -158,6 +158,11 @@ function CheckoutInner({ currency, productAmount, priceLabel }: Props) {
     billingCountry: string;
     billingState: string;
     billingPostalCode: string;
+    // Not collected on the card path by design. A wallet returns them, so they
+    // are passed through when it does rather than being discarded.
+    billingLine1?: string;
+    billingLine2?: string;
+    billingCity?: string;
     isWallet: boolean;
   }) {
     if (!stripe || !elements) return;
@@ -197,6 +202,13 @@ function CheckoutInner({ currency, productAmount, priceLabel }: Props) {
       // The card element is told not to collect name, email or address, so
       // those are supplied here from the fields above — which is what lets
       // email sit before the card form rather than inside it.
+      //
+      // Every address subfield must be present as a string. Opting out of
+      // collection with `fields.billingDetails.address: "never"` makes Stripe
+      // require the whole address here, and an `undefined` value counts as not
+      // passed — which is an IntegrationError at confirm time, not a silent
+      // omission. The fields this form deliberately does not ask for are sent
+      // as empty strings, which Stripe accepts as "not collected".
       const { error: confirmError } = await stripe.confirmPayment({
         elements,
         clientSecret: data.clientSecret,
@@ -208,12 +220,12 @@ function CheckoutInner({ currency, productAmount, priceLabel }: Props) {
               name: `${details.firstName} ${details.lastName}`.trim() || undefined,
               email: details.email,
               address: {
-                country: details.billingCountry || undefined,
-                state: details.billingState || undefined,
-                postal_code: details.billingPostalCode || undefined,
-                line1: undefined,
-                line2: undefined,
-                city: undefined,
+                country: details.billingCountry,
+                state: details.billingState,
+                postal_code: details.billingPostalCode,
+                line1: details.billingLine1 ?? "",
+                line2: details.billingLine2 ?? "",
+                city: details.billingCity ?? "",
               },
             },
           },
@@ -313,6 +325,9 @@ function CheckoutInner({ currency, productAmount, priceLabel }: Props) {
               billingCountry: address?.country ?? billingCountry,
               billingState: address?.state ?? billingState,
               billingPostalCode: address?.postal_code ?? billingPostalCode,
+              billingLine1: address?.line1 ?? "",
+              billingLine2: address?.line2 ?? "",
+              billingCity: address?.city ?? "",
               isWallet: true,
             });
           }}
