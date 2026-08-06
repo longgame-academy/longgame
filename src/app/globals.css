@@ -86,6 +86,16 @@ h1, h2, h3, h4 {
   letter-spacing: -0.01em;
 }
 
+/* --- Shared section eyebrow --------------------------------------------
+   The small uppercase label that introduces a section title. Only the gap
+   below it lives here, so the eyebrow-to-title spacing stays identical
+   everywhere on the site and can be retuned from one place. Colour and size
+   stay on the element, since they vary by context (teal on light sections,
+   smaller inside cards). */
+.eyebrow {
+  margin-bottom: 1.5rem;
+}
+
 /* --- Shared numbered step indicator ------------------------------------
    No container, teal text, zero-padded two-digit numbers. */
 .step-number {

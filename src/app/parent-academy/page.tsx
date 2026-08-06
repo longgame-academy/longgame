@@ -10,6 +10,7 @@ import {
   BookOpen, Wrench, CalendarDays,
 } from "lucide-react";
 import { usePricing } from "@/components/GeoProvider";
+import { GUARANTEE_FULL, GUARANTEE_LIBRARY_NOTE, GUARANTEE_TITLE } from "@/lib/legal";
 
 function Placeholder({ label, className = "" }: { label: string; className?: string }) {
   return (
@@ -164,7 +165,7 @@ function buildFaqs(priceLabel: string) {
     },
     {
       q: "What if it doesn't help my family?",
-      a: "Your purchase is protected by our 14-Day Satisfaction Guarantee. If it isn't right for your family, you may request a full refund within 14 days, provided you have not consumed more than 25% of the Parent Development System.",
+      a: `Your purchase is protected by our ${GUARANTEE_TITLE}. If it isn't right for your family: ${GUARANTEE_FULL} ${GUARANTEE_LIBRARY_NOTE}`,
     },
     {
       q: "Will I be able to use this on my phone?",
@@ -242,8 +243,17 @@ function Accordion({
   );
 }
 
+/* The guarantee has to read identically wherever it appears, so it comes from
+   the shared constant rather than being restated here. */
+const GUARANTEE_COPY = `${GUARANTEE_TITLE} — ${GUARANTEE_FULL}`;
+
 function PricingCard() {
   const pricing = usePricing();
+  // Mobile only: the card opens at roughly half height, ending after the bonus
+  // box, and the rest expands on request. Nothing is removed — the full
+  // included list and the guarantee are one tap away, and from md up the whole
+  // card is visible as before.
+  const [showAll, setShowAll] = useState(false);
 
   return (
     <motion.div
@@ -254,7 +264,7 @@ function PricingCard() {
       className="bg-ink text-cream rounded-[28px] max-w-[920px] mx-auto p-6 md:p-14 grid md:grid-cols-2 gap-10 md:gap-14"
     >
       <div>
-        <p className="font-heading text-teal text-[13px] font-semibold tracking-widest uppercase mb-4">
+        <p className="font-heading text-teal text-[13px] font-semibold tracking-widest uppercase eyebrow">
           Long Game &middot; Parent Academy &middot; 12 Modules
         </p>
         <div className="flex items-end gap-2 mb-1">
@@ -274,9 +284,17 @@ function PricingCard() {
         </p>
 
         <CheckoutButton className="flex items-center justify-center gap-2 bg-cream text-ink font-heading font-semibold text-sm px-6 py-3.5 rounded-lg hover:bg-cream/90 transition-colors mb-3 w-full" />
+        <button
+          type="button"
+          onClick={() => setShowAll((v) => !v)}
+          aria-expanded={showAll}
+          className="md:hidden block w-full text-center font-heading text-xs font-semibold text-teal hover:underline"
+        >
+          {showAll ? "Show Less ↑" : "See Everything Included ↓"}
+        </button>
         <a
           href="#modules"
-          className="block text-center font-heading text-xs font-semibold text-teal hover:underline"
+          className="hidden md:block text-center font-heading text-xs font-semibold text-teal hover:underline"
         >
           See Everything Included &rarr;
         </a>
@@ -297,9 +315,20 @@ function PricingCard() {
             that matter most.
           </p>
         </div>
+
+        {/* Mobile only: the guarantee stays out of the collapsed section so it
+            is always visible, never behind the tap. From md up it renders in
+            the right-hand column, where it has always sat. */}
+        <p className="md:hidden font-body text-xs text-cream/60 border-t border-cream/10 pt-4 mt-6">
+          {GUARANTEE_COPY}
+        </p>
       </div>
 
-      <div className="border-t md:border-t-0 md:border-l border-cream/10 pt-6 md:pt-0 md:pl-14">
+      <div
+        className={`${
+          showAll ? "block" : "hidden"
+        } md:block border-t md:border-t-0 md:border-l border-cream/10 pt-6 md:pt-0 md:pl-14`}
+      >
         <p className="font-heading text-teal text-[11px] font-semibold tracking-widest uppercase mb-3">
           Included
         </p>
@@ -326,11 +355,10 @@ function PricingCard() {
           Designed for parents of athletes ages 8&ndash;18 across every
           competitive sport.
         </p>
-        <p className="font-body text-xs text-cream/60 border-t border-cream/10 pt-4 mt-4">
-          14-Day Satisfaction Guarantee &mdash; Full refund available within 14
-          days, provided no more than 25% of the Parent Development System has
-          been consumed. If more than 25% of the content has been completed, no
-          refund will be issued.
+        {/* On mobile the guarantee renders in the left column instead, so that
+            it stays visible while this column is collapsed. */}
+        <p className="hidden md:block font-body text-xs text-cream/60 border-t border-cream/10 pt-4 mt-4">
+          {GUARANTEE_COPY}
         </p>
       </div>
     </motion.div>
@@ -351,7 +379,7 @@ export default function ParentAcademyPage() {
       <section className="bg-background py-20 md:py-28 min-h-[720px] flex items-center">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: "easeOut" }}>
-            <p className="font-heading text-teal text-[13px] font-semibold tracking-widest uppercase mb-3">
+            <p className="font-heading text-teal text-[13px] font-semibold tracking-widest uppercase eyebrow">
               The Parent Academy
             </p>
             <h1 className="font-heading text-4xl md:text-5xl font-bold leading-tight mb-6 max-w-[560px]">
@@ -432,7 +460,7 @@ export default function ParentAcademyPage() {
       {/* SECTION 4: SUPPORT FOR EVERY MOMENT */}
       <section className="max-w-6xl mx-auto w-full px-6 py-20 md:py-28 grid md:grid-cols-2 gap-12 items-center">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.6, ease: "easeOut" }}>
-          <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase mb-6">
+          <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase eyebrow">
             Support for Every Moment
           </p>
           <div className="border-t border-border-grey">
@@ -533,8 +561,9 @@ export default function ParentAcademyPage() {
         </div>
       </section>
 
-      {/* SECTION 7B: INCLUDED WITH YOUR FIRST YEAR — the Long Game Library
-          bonus, sitting between the pricing bar and the product preview. */}
+      {/* SECTION 7B: BONUS WITH YOUR PURCHASE — the 12-month Long Game Library
+          bonus, sitting between the pricing bar and the product preview.
+          This is a bonus included with a one-time purchase, not a subscription. */}
       <section className="max-w-6xl mx-auto w-full px-6 py-20 md:py-28">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -543,16 +572,23 @@ export default function ParentAcademyPage() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="text-center max-w-2xl mx-auto mb-12"
         >
-          <p className="font-heading text-teal text-[13px] font-semibold tracking-widest uppercase mb-3">
-            Included With Your First Year
+          <p className="font-heading text-teal text-[13px] font-semibold tracking-widest uppercase eyebrow">
+            Bonus With Your Parent Academy Purchase
           </p>
           <h2 className="font-heading text-2xl md:text-3xl font-bold leading-tight mb-4">
-            For everything the season brings.
+            Your Parent Academy goes beyond the 12 modules.
           </h2>
+          <p className="font-body text-text-body leading-relaxed mb-4">
+            When you purchase the Parent Academy, you&apos;ll also receive 12
+            months of free access to all additional content in the Long Game
+            Parent Portal.
+          </p>
           <p className="font-body text-text-body leading-relaxed">
-            Your first year includes a growing library of Field Guides and
-            Practical Tools designed for the situations, decisions and
-            conversations that come up along the way.
+            That means every new Field Guide, Practical Tool and parent resource
+            we add during those 12 months is included at no additional cost.
+          </p>
+          <p className="inline-block bg-cream border border-border-grey rounded-lg px-4 py-2.5 font-heading text-[12px] font-semibold text-teal-dark mt-6">
+            One-time purchase &middot; No subscription &middot; No automatic renewal
           </p>
         </motion.div>
 
@@ -610,14 +646,15 @@ export default function ParentAcademyPage() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="flex items-center justify-center gap-2 font-body text-sm text-text-muted text-center mt-10"
+          className="flex items-start justify-center gap-2.5 font-body text-sm text-text-muted text-center mt-10"
         >
           <CalendarDays
-            className="w-4 h-4 text-teal shrink-0"
+            className="w-5 h-5 text-teal shrink-0"
             strokeWidth={1.5}
             aria-hidden="true"
           />
-          New Field Guides and Practical Tools added throughout your first year.
+          New resources added during your 12-month bonus access period are
+          included at no additional cost.
         </motion.p>
       </section>
 
@@ -639,7 +676,7 @@ export default function ParentAcademyPage() {
       <section className="bg-background py-20 md:py-28">
         <div className="max-w-5xl mx-auto px-6">
           <div className="text-center mb-12">
-            <p className="font-heading text-teal text-[13px] font-semibold tracking-widest uppercase mb-3">
+            <p className="font-heading text-teal text-[13px] font-semibold tracking-widest uppercase eyebrow">
               Recognized By
             </p>
             <h2 className="font-heading text-2xl md:text-3xl font-bold leading-tight max-w-2xl mx-auto">
@@ -675,7 +712,7 @@ export default function ParentAcademyPage() {
       <section className="py-20 md:py-28" style={{ backgroundColor: "#F1F3F2" }}>
         <div className="max-w-5xl mx-auto px-6">
           <div className="text-center mb-12">
-            <p className="font-heading text-teal text-[13px] font-semibold tracking-widest uppercase mb-3">
+            <p className="font-heading text-teal text-[13px] font-semibold tracking-widest uppercase eyebrow">
               From Parents
             </p>
             <h2 className="font-heading text-2xl md:text-3xl font-bold leading-tight">

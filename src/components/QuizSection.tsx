@@ -93,7 +93,7 @@ export default function QuizSection() {
   return (
     <section id="quiz-section" className="bg-cream py-20 md:py-32">
       <div className="max-w-2xl mx-auto px-6 text-center mb-12">
-        <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase mb-3">
+        <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase eyebrow">
           Find Your Moment
         </p>
         <h2 className="font-heading text-3xl md:text-4xl font-bold mb-3">

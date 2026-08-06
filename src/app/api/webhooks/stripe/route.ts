@@ -4,8 +4,15 @@ import { payments, enrollments } from "@/db/schema";
 import { eq, inArray } from "drizzle-orm";
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
-import { sendWelcomeEmail } from "@/lib/emails/sendWelcomeEmail";
+import { sendWelcomeEmail, sendPurchaseReceiptEmail } from "@/lib/emails/sendWelcomeEmail";
 import { grantIndividualAccess, revokeUserAccess } from "@/lib/access";
+import {
+  findOrCreateClerkUser,
+  grantPurchaseEntitlements,
+  recordPaidOrder,
+  revokePurchaseEntitlements,
+  suppressAbandonedCheckout,
+} from "@/lib/orders";
 
 const LOG = "[stripe-webhook]";
 
@@ -15,6 +22,12 @@ const GRANT_EVENTS: string[] = [
   "checkout.session.completed",
   "checkout.session.async_payment_succeeded",
 ];
+
+// On-site checkout confirms a PaymentIntent rather than a hosted session.
+// Apple Pay and card both land here, so both produce the same order record.
+const INTENT_EVENT = "payment_intent.succeeded";
+
+const FAILURE_EVENTS: string[] = ["payment_intent.payment_failed"];
 
 const REVOKE_EVENTS: string[] = ["charge.refunded", "charge.dispute.created"];
 
@@ -44,8 +57,16 @@ export async function POST(req: Request) {
   }
 
   try {
+    if (event.type === INTENT_EVENT) {
+      return await handleIntentSucceeded(event);
+    }
+
     if (GRANT_EVENTS.includes(event.type)) {
       return await handleGrant(event);
+    }
+
+    if (FAILURE_EVENTS.includes(event.type)) {
+      return handleFailure(event);
     }
 
     if (REVOKE_EVENTS.includes(event.type)) {
@@ -58,6 +79,128 @@ export async function POST(req: Request) {
     console.error(`${LOG} processing failed for event ${event.id} (${event.type}):`, err);
     return NextResponse.json({ error: "Processing failed" }, { status: 500 });
   }
+}
+
+/**
+ * The only path that grants access for on-site checkout.
+ *
+ * Every step is idempotent, so a Stripe retry re-runs this safely: the order
+ * insert conflicts on the PaymentIntent id, the entitlement inserts conflict on
+ * (user, kind), and the reminders conflict on (entitlement, offset). The email
+ * is the one non-idempotent action, so it is sent only on first processing.
+ *
+ * Nothing here depends on the browser. Closing the tab the instant the payment
+ * clears still results in full access.
+ */
+async function handleIntentSucceeded(event: Stripe.Event) {
+  const intent = event.data.object as Stripe.PaymentIntent;
+
+  if (intent.status !== "succeeded") {
+    console.warn(`${LOG} intent ${intent.id} is ${intent.status}, not granting`);
+    return NextResponse.json({ ok: true, pending: true });
+  }
+
+  // Only our own checkout should grant the Academy. Anything else that happens
+  // to hit this account is recorded by Stripe but not entitled here.
+  if (intent.metadata?.product !== "parent_academy") {
+    return NextResponse.json({ ok: true, ignored: "not_parent_academy" });
+  }
+
+  const email = intent.metadata?.email || intent.receipt_email;
+  if (!email) {
+    // Retrying will not conjure an email. Accept the event and flag it, rather
+    // than leaving Stripe to retry forever.
+    console.error(
+      `${LOG} intent ${intent.id} has no email — MANUAL REVIEW REQUIRED, access not granted`
+    );
+    return NextResponse.json({ ok: true, unlinked: true });
+  }
+
+  const firstName = intent.metadata?.firstName || null;
+  const lastName = intent.metadata?.lastName || null;
+
+  // Resolved by email, so a returning customer keeps their existing account.
+  const userId = await findOrCreateClerkUser({ email, firstName, lastName });
+
+  // Taken from Stripe rather than the clock, so a retry computes the same
+  // Library expiry the customer was originally told.
+  const purchasedAt = new Date(intent.created * 1000);
+
+  const order = await recordPaidOrder({
+    userId,
+    stripePaymentId: intent.id,
+    stripePaymentIntentId: intent.id,
+    stripeCustomerId: typeof intent.customer === "string" ? intent.customer : null,
+    email,
+    firstName,
+    lastName,
+    amount: intent.amount_received || intent.amount,
+    currency: intent.currency,
+    taxAmount: Number(intent.metadata?.taxAmount ?? 0) || 0,
+  });
+
+  const { libraryExpiresAt } = await grantPurchaseEntitlements({
+    userId,
+    orderId: order.id,
+    purchasedAt,
+  });
+
+  // They bought — take them out of the recovery sequence.
+  await suppressAbandonedCheckout(email);
+
+  if (order.isFirstProcessing) {
+    console.info(
+      `${LOG} order ${order.orderNumber} granted to ${userId} (intent ${intent.id})`
+    );
+
+    // The order number only exists once the order is recorded, so write it back
+    // onto the intent. Without it the trail is one-way: Admin can reach Stripe,
+    // but a customer quoting "order LG-XXXXXXXX" cannot be found in the Stripe
+    // dashboard, which is exactly the moment support needs to issue a refund.
+    try {
+      await stripe.paymentIntents.update(intent.id, {
+        metadata: { ...intent.metadata, orderNumber: order.orderNumber },
+      });
+    } catch (err) {
+      console.error(`${LOG} could not tag intent ${intent.id} with its order number:`, err);
+    }
+
+    try {
+      await sendPurchaseReceiptEmail({
+        to: email,
+        orderNumber: order.orderNumber,
+        amount: intent.amount_received || intent.amount,
+        currency: intent.currency,
+        libraryExpiresAt,
+      });
+    } catch (err) {
+      // A mail failure must not fail the webhook — that would have Stripe
+      // retrying against access that is already granted.
+      console.error(`${LOG} receipt email failed for order ${order.orderNumber}:`, err);
+    }
+  }
+
+  return NextResponse.json({
+    ok: true,
+    orderNumber: order.orderNumber,
+    alreadyProcessed: !order.isFirstProcessing,
+  });
+}
+
+/**
+ * A declined or failed payment is recorded in the log and grants nothing. The
+ * customer sees a retryable error in the browser from the confirm call itself.
+ */
+function handleFailure(event: Stripe.Event) {
+  const intent = event.data.object as Stripe.PaymentIntent;
+
+  console.warn(
+    `${LOG} payment failed for intent ${intent.id} ` +
+      `(${intent.last_payment_error?.code ?? "unknown"}: ` +
+      `${intent.last_payment_error?.message ?? "no message"}) — no access granted`
+  );
+
+  return NextResponse.json({ ok: true, granted: false });
 }
 
 async function handleGrant(event: Stripe.Event) {
@@ -127,6 +270,21 @@ async function handleRevoke(event: Stripe.Event) {
   const context = describeRevocation(event);
 
   if (!context.shouldRevoke) {
+    // A partial refund leaves access in place, but the order still has to
+    // reflect it so admin and support see what was actually returned.
+    const partial = await findPaymentForCharge(context);
+
+    if (partial && partial.status !== "refunded") {
+      await db
+        .update(payments)
+        .set({
+          status: "partially_refunded",
+          amountRefunded: context.amountRefunded ?? 0,
+          updatedAt: new Date(),
+        })
+        .where(eq(payments.id, partial.id));
+    }
+
     console.warn(`${LOG} ${context.reason} — no access change (event ${event.id})`);
     return NextResponse.json({ ok: true, revoked: false, reason: context.reason });
   }
@@ -171,6 +329,8 @@ async function handleRevoke(event: Stripe.Event) {
     // revokeUserAccess is idempotent (delete + metadata write), so it is safe
     // to reach here again if we crash before marking the payment below.
     await revokeUserAccess(payment.userId);
+    // Ends the Library bonus too, without deleting the entitlement history.
+    await revokePurchaseEntitlements(payment.userId);
     console.warn(
       `${LOG} ACCESS REVOKED for ${payment.userId} — ${context.kind} ` +
         `(payment ${payment.stripePaymentId}, amount ${payment.amount}, event ${event.id})`
@@ -179,7 +339,11 @@ async function handleRevoke(event: Stripe.Event) {
 
   await db
     .update(payments)
-    .set({ status: "refunded" })
+    .set({
+      status: "refunded",
+      amountRefunded: context.amountRefunded ?? payment.amount,
+      updatedAt: new Date(),
+    })
     .where(eq(payments.id, payment.id));
 
   return NextResponse.json({ ok: true, revoked: true, userId: payment.userId });
@@ -187,6 +351,8 @@ async function handleRevoke(event: Stripe.Event) {
 
 type RevocationContext = {
   kind: string;
+  /** Cents returned so far, so a partial refund is visible in the order. */
+  amountRefunded: number | null;
   chargeId: string | null;
   paymentIntentId: string | null;
   shouldRevoke: boolean;
@@ -203,6 +369,7 @@ function describeRevocation(event: Stripe.Event): RevocationContext {
 
     return {
       kind: "refund",
+      amountRefunded: charge.amount_refunded,
       chargeId: charge.id,
       paymentIntentId: idOf(charge.payment_intent),
       // charge.refunded also fires for partial refunds (a goodwill discount,
@@ -218,6 +385,7 @@ function describeRevocation(event: Stripe.Event): RevocationContext {
 
   return {
     kind: `dispute (${dispute.reason})`,
+    amountRefunded: dispute.amount,
     chargeId: idOf(dispute.charge),
     paymentIntentId: idOf(dispute.payment_intent),
     shouldRevoke: true,

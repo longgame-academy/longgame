@@ -71,7 +71,7 @@ export default function ResearchEvidencePage() {
         <div className="max-w-3xl mx-auto px-6 text-center">
           <motion.div {...fadeUp}>
             <p
-              className="font-heading text-xs font-semibold uppercase mb-4"
+              className="font-heading text-xs font-semibold uppercase eyebrow"
               style={{ letterSpacing: "0.18em", color: "#858C89" }}
             >
               Research &amp; Evidence
@@ -135,7 +135,7 @@ export default function ResearchEvidencePage() {
       <section className="bg-ink text-cream py-20 md:py-28">
         <div className="max-w-3xl mx-auto px-6">
           <motion.div {...fadeUp}>
-            <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase mb-6">
+            <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase eyebrow">
               Why Long Game Exists
             </p>
             <div className="font-body text-cream/80 leading-relaxed space-y-4">

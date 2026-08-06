@@ -47,7 +47,7 @@ export default function OurStoryPage() {
       <section className="bg-white w-full">
         <div className="max-w-6xl mx-auto w-full px-6 py-20 md:py-28 grid md:grid-cols-[11fr_9fr] gap-12 items-center">
           <motion.div {...fadeUp} className="text-left">
-            <p className="font-heading text-teal text-xs font-semibold tracking-widest uppercase mb-4">
+            <p className="font-heading text-teal text-xs font-semibold tracking-widest uppercase eyebrow">
               Our Story
             </p>
             <h1 className="font-heading text-4xl md:text-5xl font-bold leading-tight mb-6">
@@ -93,7 +93,7 @@ export default function OurStoryPage() {
       <section className="bg-background w-full">
         <div className="max-w-3xl mx-auto w-full px-6 py-20 md:py-28">
           <motion.div {...fadeUp} className="text-left">
-            <p className="font-heading text-teal text-xs font-semibold tracking-widest uppercase mb-4">
+            <p className="font-heading text-teal text-xs font-semibold tracking-widest uppercase eyebrow">
               The People Behind Long Game
             </p>
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6 leading-tight">

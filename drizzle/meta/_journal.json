@@ -15,6 +15,13 @@
       "when": 1784607842632,
       "tag": "0001_absent_red_wolf",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1785906089688,
+      "tag": "0002_glossy_the_watchers",
+      "breakpoints": true
     }
   ]
 }

@@ -9,6 +9,7 @@ import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { Star, GraduationCap, BookOpen } from "lucide-react";
 import QuizSection from "@/components/QuizSection";
 import { usePricing } from "@/components/GeoProvider";
+import { GUARANTEE_FULL, GUARANTEE_LIBRARY_NOTE, GUARANTEE_TITLE } from "@/lib/legal";
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -163,7 +164,7 @@ const faqs = [
   },
   {
     q: "What if I'm not satisfied?",
-    a: "Your purchase is backed by our 14-Day Satisfaction Guarantee. You may request a full refund within 14 days of purchase, provided you have not consumed more than 25% of the Parent Development System.",
+    a: `Your purchase is backed by our ${GUARANTEE_TITLE}. ${GUARANTEE_FULL} ${GUARANTEE_LIBRARY_NOTE}`,
   },
   {
     q: "Do I have to complete the Parent Academy in order?",
@@ -319,7 +320,7 @@ export default function Home() {
           <img src="/athlete-reflection.jpg" alt="Young athlete reflecting quietly in the locker room" className="w-full h-auto aspect-[4/3] object-cover rounded-lg" />
         </motion.div>
         <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.15 }}>
-          <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase mb-4">
+          <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase eyebrow">
             Why Long Game Exists
           </p>
           <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6 leading-tight">
@@ -361,7 +362,7 @@ export default function Home() {
               strokeWidth={1.5}
               aria-hidden="true"
             />
-            <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase mb-4">
+            <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase eyebrow">
               The Parent Academy
             </p>
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6 leading-tight max-w-[440px]">
@@ -411,7 +412,7 @@ export default function Home() {
               strokeWidth={1.5}
               aria-hidden="true"
             />
-            <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase mb-4">
+            <p className="font-heading text-teal text-sm font-semibold tracking-widest uppercase eyebrow">
               Inside the System
             </p>
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6 leading-tight max-w-[440px]">
@@ -521,7 +522,7 @@ export default function Home() {
           {/* Endorsements — visually separated from the parent quotes above so
               "who stands behind this" doesn't blend into "what parents say". */}
           <div className="pt-16 mt-16 border-t border-border-grey max-w-4xl mx-auto">
-            <motion.p {...fadeUp} className="font-heading text-teal text-[13px] font-semibold tracking-widest uppercase mb-3">
+            <motion.p {...fadeUp} className="font-heading text-teal text-[13px] font-semibold tracking-widest uppercase eyebrow">
               Recognized By
             </motion.p>
             <motion.h3
@@ -605,7 +606,7 @@ export default function Home() {
             {...fadeUp}
             className="bg-ink text-cream rounded-[24px] max-w-[520px] mx-auto p-6 md:p-8"
           >
-            <p className="font-heading text-teal text-[11px] font-semibold tracking-widest uppercase mb-3">
+            <p className="font-heading text-teal text-[11px] font-semibold tracking-widest uppercase eyebrow">
               The Parent Academy
             </p>
             <h2 className="font-heading text-2xl md:text-3xl font-bold mb-3 leading-tight">
@@ -700,10 +701,7 @@ export default function Home() {
               <span className="flex items-center gap-1.5"><span className="text-teal">&#10003;</span> One-Time Purchase</span>
             </div>
             <p className="text-[11px] font-body text-cream/60 mb-6">
-              14-Day Satisfaction Guarantee &mdash; Full refund available within
-              14 days, provided no more than 25% of the Parent Development
-              System has been consumed. If more than 25% of the content has
-              been completed, no refund will be issued.
+              {GUARANTEE_TITLE} &mdash; {GUARANTEE_FULL}
             </p>
 
             <div className="border-t border-cream/10 pt-6 flex flex-wrap justify-center items-center gap-3">
@@ -762,7 +760,7 @@ export default function Home() {
           </div>
           <p className="font-heading font-semibold">Shawn Dixon</p>
           <p className="font-body text-sm text-text-muted mb-8">
-            Coach &middot; Parent &middot; Author
+            Founder &middot; Coach &middot; Parent
             <br />
             Author of <span className="italic">Raising an Athlete: Built for the Long Game</span>
           </p>
@@ -786,19 +784,22 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* SECTION: FINAL CLOSE */}
-      <section className="max-w-6xl mx-auto w-full px-6 pt-20 pb-20 md:pt-32 md:pb-28">
-        <motion.h2 {...fadeUp} className="font-heading text-3xl md:text-4xl font-bold text-center mb-10 leading-tight">
-          The Game Will End.
-          <br />
-          The Relationship Won&apos;t.
-        </motion.h2>
-        <motion.div {...fadeUp}>
+      {/* SECTION: FINAL CLOSE — the heading sits inside the photo, set to the
+          left rather than centred, over the dark sky at the top of the frame.
+          No top padding, so the photo follows straight on from the section
+          above it. */}
+      <section className="max-w-6xl mx-auto w-full px-6 pt-0 pb-20 md:pb-28">
+        <motion.div {...fadeUp} className="relative max-w-3xl mx-auto">
           <img
             src="/duffel-bag-stadium.jpg"
             alt="Duffel bag left on a wet stadium parking lot at night"
-            className="w-full h-auto max-w-3xl mx-auto rounded-2xl"
+            className="w-full h-auto rounded-2xl"
           />
+          <h2 className="absolute top-6 left-5 md:top-10 md:left-10 max-w-[80%] font-heading text-2xl md:text-4xl font-bold text-cream text-left leading-tight">
+            The Game Will End.
+            <br />
+            The Relationship Won&apos;t.
+          </h2>
         </motion.div>
       </section>
 

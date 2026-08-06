@@ -10,7 +10,27 @@ type User = {
   accessType: "individual" | "org" | null;
   orgName: string | null;
   createdAt: number;
+  libraryStatus: "active" | "expired" | "none";
+  libraryExpiresAt: string | null;
+  latestOrder: {
+    orderNumber: string | null;
+    status: string;
+    amount: number;
+    currency: string | null;
+    amountRefunded: number;
+    stripePaymentIntentId: string | null;
+    createdAt: string;
+  } | null;
 };
+
+function formatDate(iso: string): string {
+  return new Intl.DateTimeFormat("en-GB", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(new Date(iso));
+}
 
 export default function AdminUsersPage() {
   const [users, setUsers] = useState<User[]>([]);
@@ -87,6 +107,46 @@ export default function AdminUsersPage() {
                   <p className="font-body text-sm text-text-muted">
                     {u.email}
                   </p>
+
+                  {/* Order and Library state, so a support or refund lookup
+                      starts here rather than in Stripe. */}
+                  {u.latestOrder && (
+                    <p className="font-body text-xs text-text-muted mt-1">
+                      <span className="font-semibold text-charcoal">
+                        {u.latestOrder.orderNumber ?? "—"}
+                      </span>
+                      {" · "}
+                      {(u.latestOrder.amount / 100).toFixed(2)}{" "}
+                      {u.latestOrder.currency ?? ""}
+                      {" · "}
+                      {u.latestOrder.status.replace("_", " ")}
+                      {u.latestOrder.amountRefunded > 0 &&
+                        ` (${(u.latestOrder.amountRefunded / 100).toFixed(2)} refunded)`}
+                      {" · "}
+                      {formatDate(u.latestOrder.createdAt)}
+                    </p>
+                  )}
+
+                  {u.libraryStatus !== "none" && (
+                    <p className="font-body text-xs mt-1">
+                      <span
+                        className={
+                          u.libraryStatus === "active"
+                            ? "font-semibold text-green-800"
+                            : "font-semibold text-text-muted"
+                        }
+                      >
+                        Library {u.libraryStatus === "active" ? "Active" : "Expired"}
+                      </span>
+                      {u.libraryExpiresAt && (
+                        <span className="text-text-muted">
+                          {" · "}
+                          {u.libraryStatus === "active" ? "through" : "ended"}{" "}
+                          {formatDate(u.libraryExpiresAt)}
+                        </span>
+                      )}
+                    </p>
+                  )}
                 </div>
 
                 <div className="flex items-center gap-3">
