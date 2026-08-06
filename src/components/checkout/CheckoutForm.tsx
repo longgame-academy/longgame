@@ -11,6 +11,7 @@ import {
   useStripe,
 } from "@stripe/react-stripe-js";
 import { formatAmount } from "@/lib/pricing";
+import { COUNTRIES, PRIORITY_COUNTRIES } from "@/lib/countries";
 import {
   GUARANTEE_SENTENCE,
   GUARANTEE_TITLE,
@@ -453,14 +454,25 @@ function CheckoutInner({ currency, productAmount, priceLabel }: Props) {
             onBlur={refreshQuote}
             className="w-full h-[47px] border border-[#D5DAD7] rounded-[9px] px-3 font-body text-sm mb-3 bg-white focus:outline-none focus:border-teal"
           >
+            {/* Every value is a real ISO 3166-1 alpha-2 code, because this is
+                sent to Stripe verbatim as billing_details.address.country. The
+                six selling countries stay at the top; the full list replaces
+                the old "Other" option, which Stripe rejected outright. */}
             <option value="">Select country</option>
-            <option value="CA">Canada</option>
-            <option value="US">United States</option>
-            <option value="GB">United Kingdom</option>
-            <option value="AU">Australia</option>
-            <option value="NZ">New Zealand</option>
-            <option value="IE">Ireland</option>
-            <option value="OT">Other</option>
+            <optgroup label="Common">
+              {PRIORITY_COUNTRIES.map((country) => (
+                <option key={`priority-${country.code}`} value={country.code}>
+                  {country.name}
+                </option>
+              ))}
+            </optgroup>
+            <optgroup label="All countries">
+              {COUNTRIES.map((country) => (
+                <option key={country.code} value={country.code}>
+                  {country.name}
+                </option>
+              ))}
+            </optgroup>
           </select>
 
           <label htmlFor="state" className="block font-heading text-xs font-bold mb-1.5">

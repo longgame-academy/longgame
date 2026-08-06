@@ -4,9 +4,15 @@ import { z } from "zod";
 import { checkoutRatelimit } from "@/lib/ratelimit";
 import { pricingForCountry } from "@/lib/pricing";
 import { calculateTax } from "@/lib/tax";
+import { isSupportedCountry } from "@/lib/countries";
 
 const bodySchema = z.object({
-  billingCountry: z.string().trim().length(2).toUpperCase(),
+  billingCountry: z
+    .string()
+    .trim()
+    .length(2)
+    .toUpperCase()
+    .refine(isSupportedCountry, "Unsupported billing country"),
   billingState: z.string().trim().max(64).optional().or(z.literal("")),
   billingPostalCode: z.string().trim().max(32).optional().or(z.literal("")),
 });

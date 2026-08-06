@@ -5,6 +5,7 @@ import { stripe } from "@/lib/stripe";
 import { checkoutRatelimit } from "@/lib/ratelimit";
 import { pricingForCountry } from "@/lib/pricing";
 import { calculateTax } from "@/lib/tax";
+import { isSupportedCountry } from "@/lib/countries";
 import { recordAbandonedCheckout } from "@/lib/abandoned";
 
 const LOG = "[checkout-intent]";
@@ -15,7 +16,15 @@ const bodySchema = z.object({
   email: z.string().trim().toLowerCase().email().max(255),
   firstName: z.string().trim().max(255).optional().or(z.literal("")),
   lastName: z.string().trim().max(255).optional().or(z.literal("")),
-  billingCountry: z.string().trim().length(2).toUpperCase(),
+  // Checked against the list Stripe actually accepts, not just its length. An
+  // unknown code is rejected by Stripe at confirm time, so catching it here
+  // turns a dead-end payment failure into a correctable form error.
+  billingCountry: z
+    .string()
+    .trim()
+    .length(2)
+    .toUpperCase()
+    .refine(isSupportedCountry, "Unsupported billing country"),
   billingState: z.string().trim().max(64).optional().or(z.literal("")),
   billingPostalCode: z.string().trim().max(32).optional().or(z.literal("")),
 });
