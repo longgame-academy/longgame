@@ -10,6 +10,7 @@ import { Star, GraduationCap, BookOpen } from "lucide-react";
 import QuizSection from "@/components/QuizSection";
 import { usePricing } from "@/components/GeoProvider";
 import { GUARANTEE_FULL, GUARANTEE_LIBRARY_NOTE, GUARANTEE_TITLE } from "@/lib/legal";
+import { HOMEPAGE_REVIEWS } from "@/lib/reviews";
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -29,33 +30,6 @@ function Placeholder({ label, className = "" }: { label: string; className?: str
 }
 
 
-
-const parentQuotes = [
-  {
-    quote:
-      "This changed the way we talked after games. Our son became more confident, but more importantly, our relationship became stronger.",
-    name: "Sarah M.",
-    role: "Baseball Mom",
-  },
-  {
-    quote:
-      "I thought this was going to help my daughter. I didn't realize how much it would help me.",
-    name: "Jennifer R.",
-    role: "Hockey Mom",
-  },
-  {
-    quote:
-      "Practical guidance for the conversations and challenges every sports family faces. I only wish this had been available twenty years ago.",
-    name: "Jim Kean",
-    role: "Parent of Two Division I Athletes, Educator",
-  },
-  {
-    quote:
-      "Long Game was a game changer for our family. It challenged me to reflect on the kind of sports parent I wanted to be, and it helped save my relationship with my son. Every parent should go through it.",
-    name: "Brian Creslink",
-    role: "AAA Hickey Parent",
-  },
-];
 
 const leaders = [
   {
@@ -494,7 +468,7 @@ export default function Home() {
             Trusted by sports parents &mdash; and the coaches, scouts, and leaders who know what matters most.
           </motion.p>
           <div className="grid md:grid-cols-2 gap-5 max-w-4xl mx-auto">
-            {parentQuotes.map((q, i) => (
+            {HOMEPAGE_REVIEWS.map((q, i) => (
               <motion.figure
                 key={q.name}
                 initial={{ opacity: 0, y: 16 }}
@@ -513,11 +487,21 @@ export default function Home() {
                 </blockquote>
                 <figcaption className="border-t border-border-grey pt-4">
                   <p className="font-heading font-semibold text-sm">{q.name}</p>
-                  <p className="font-body text-[13px] text-text-muted leading-snug">{q.role}</p>
                 </figcaption>
               </motion.figure>
             ))}
           </div>
+
+          {/* Deliberately a plain text link, not a button — the section already
+              has the Academy CTA below it and a second button would compete. */}
+          <motion.div {...fadeUp} className="mt-10">
+            <Link
+              href="/reviews"
+              className="font-heading text-sm font-semibold text-teal hover:underline"
+            >
+              View More Reviews &rarr;
+            </Link>
+          </motion.div>
 
           {/* Endorsements — visually separated from the parent quotes above so
               "who stands behind this" doesn't blend into "what parents say". */}

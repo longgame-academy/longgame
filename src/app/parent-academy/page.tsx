@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { usePricing } from "@/components/GeoProvider";
 import { GUARANTEE_FULL, GUARANTEE_LIBRARY_NOTE, GUARANTEE_TITLE } from "@/lib/legal";
+import { ACADEMY_REVIEWS } from "@/lib/reviews";
 
 function Placeholder({ label, className = "" }: { label: string; className?: string }) {
   return (
@@ -125,21 +126,6 @@ const endorsers = [
   { name: "Doug Ouilette", role: "Vice President, Ancaster Baseball", photo: "/team/doug-ouilette.jpg" },
 ];
 
-const academyTestimonials = [
-  {
-    quote:
-      "I thought this was going to help my daughter. I didn't realize how much it would help me.",
-    name: "Jennifer R.",
-    role: "Hockey Mom",
-  },
-  {
-    quote:
-      "Practical guidance for the conversations and challenges every sports family faces. I only wish this had been available twenty years ago.",
-    name: "Jim Kean",
-    role: "Parent of Two Division I Athletes, Educator",
-  },
-];
-
 /**
  * The opening question quotes the price, so it has to follow the visitor's
  * region the same way the pricing card does — "$97" in the US and everywhere
@@ -249,11 +235,6 @@ const GUARANTEE_COPY = `${GUARANTEE_TITLE} — ${GUARANTEE_FULL}`;
 
 function PricingCard() {
   const pricing = usePricing();
-  // Mobile only: the card opens at roughly half height, ending after the bonus
-  // box, and the rest expands on request. Nothing is removed — the full
-  // included list and the guarantee are one tap away, and from md up the whole
-  // card is visible as before.
-  const [showAll, setShowAll] = useState(false);
 
   return (
     <motion.div
@@ -261,7 +242,7 @@ function PricingCard() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="bg-ink text-cream rounded-[28px] max-w-[920px] mx-auto p-6 md:p-14 grid md:grid-cols-2 gap-10 md:gap-14"
+      className="bg-ink text-cream rounded-[28px] max-w-[920px] mx-auto p-6 sm:p-8 md:p-14 grid md:grid-cols-2 gap-8 md:gap-14"
     >
       <div>
         <p className="font-heading text-teal text-[13px] font-semibold tracking-widest uppercase eyebrow">
@@ -283,23 +264,17 @@ function PricingCard() {
           <span className="line-through">{pricing.regular}</span>
         </p>
 
-        <CheckoutButton className="flex items-center justify-center gap-2 bg-cream text-ink font-heading font-semibold text-sm px-6 py-3.5 rounded-lg hover:bg-cream/90 transition-colors mb-3 w-full" />
-        <button
-          type="button"
-          onClick={() => setShowAll((v) => !v)}
-          aria-expanded={showAll}
-          className="md:hidden block w-full text-center font-heading text-xs font-semibold text-teal hover:underline"
-        >
-          {showAll ? "Show Less ↑" : "See Everything Included ↓"}
-        </button>
+        <CheckoutButton className="flex items-center justify-center gap-2 bg-cream text-ink font-heading font-semibold text-sm px-6 py-3.5 rounded-lg hover:bg-cream/90 transition-colors mb-1 w-full" />
+        {/* Kept as a plain link, but with enough vertical padding to be a
+            comfortable tap target on mobile. */}
         <a
           href="#modules"
-          className="hidden md:block text-center font-heading text-xs font-semibold text-teal hover:underline"
+          className="block text-center font-heading text-xs font-semibold text-teal hover:underline py-2.5"
         >
           See Everything Included &rarr;
         </a>
 
-        <div className="border border-cream/10 bg-cream/5 rounded-2xl p-5 mt-6">
+        <div className="border border-cream/10 bg-cream/5 rounded-2xl p-5 mt-5">
           <p className="font-heading text-sm font-semibold mb-1">
             Bonus: 12 Months of Long Game Library Access
           </p>
@@ -315,20 +290,9 @@ function PricingCard() {
             that matter most.
           </p>
         </div>
-
-        {/* Mobile only: the guarantee stays out of the collapsed section so it
-            is always visible, never behind the tap. From md up it renders in
-            the right-hand column, where it has always sat. */}
-        <p className="md:hidden font-body text-xs text-cream/60 border-t border-cream/10 pt-4 mt-6">
-          {GUARANTEE_COPY}
-        </p>
       </div>
 
-      <div
-        className={`${
-          showAll ? "block" : "hidden"
-        } md:block border-t md:border-t-0 md:border-l border-cream/10 pt-6 md:pt-0 md:pl-14`}
-      >
+      <div className="border-t md:border-t-0 md:border-l border-cream/10 pt-8 md:pt-0 md:pl-14">
         <p className="font-heading text-teal text-[11px] font-semibold tracking-widest uppercase mb-3">
           Included
         </p>
@@ -355,9 +319,7 @@ function PricingCard() {
           Designed for parents of athletes ages 8&ndash;18 across every
           competitive sport.
         </p>
-        {/* On mobile the guarantee renders in the left column instead, so that
-            it stays visible while this column is collapsed. */}
-        <p className="hidden md:block font-body text-xs text-cream/60 border-t border-cream/10 pt-4 mt-4">
+        <p className="font-body text-xs text-cream/60 border-t border-cream/10 pt-4 mt-4">
           {GUARANTEE_COPY}
         </p>
       </div>
@@ -716,11 +678,11 @@ export default function ParentAcademyPage() {
               From Parents
             </p>
             <h2 className="font-heading text-2xl md:text-3xl font-bold leading-tight">
-              What families say after going through it.
+              What sports parents are saying.
             </h2>
           </div>
           <div className="grid md:grid-cols-2 gap-5">
-            {academyTestimonials.map((t, i) => (
+            {ACADEMY_REVIEWS.map((t, i) => (
               <motion.figure
                 key={t.name}
                 initial={{ opacity: 0, y: 20 }}
@@ -739,7 +701,6 @@ export default function ParentAcademyPage() {
                 </blockquote>
                 <figcaption className="border-t border-border-grey pt-4">
                   <p className="font-heading text-sm font-bold">{t.name}</p>
-                  <p className="font-body text-[13px] text-text-muted leading-snug">{t.role}</p>
                 </figcaption>
               </motion.figure>
             ))}
