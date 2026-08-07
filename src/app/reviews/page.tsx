@@ -4,7 +4,8 @@ import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
-import { MORE_REVIEWS } from "@/lib/reviews";
+import { Star } from "lucide-react";
+import { ALL_REVIEWS } from "@/lib/reviews";
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -44,14 +45,15 @@ export default function ReviewsPage() {
         </div>
       </section>
 
-      {/* The reviews read as quotes, not as marketplace listings: no ratings,
-          no dates, no counts — just the words and who said them. */}
+      {/* The reviews read as quotes, not as marketplace listings: no dates,
+          no counts — just the words and who said them. Keyed by index because
+          several reviewers share a name. */}
       <section className="py-16 md:py-24">
         <div className="max-w-5xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-5 md:gap-6">
-            {MORE_REVIEWS.map((review, i) => (
+            {ALL_REVIEWS.map((review, i) => (
               <motion.figure
-                key={review.name}
+                key={i}
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
@@ -64,6 +66,16 @@ export default function ReviewsPage() {
                 }}
                 className="bg-cream border border-border-grey rounded-2xl p-7 md:p-8 text-left flex flex-col"
               >
+                <div className="flex gap-1 mb-4" aria-label="Rated 5 out of 5">
+                  {[...Array(5)].map((_, idx) => (
+                    <Star key={idx} className="w-4 h-4 text-teal fill-teal" aria-hidden="true" />
+                  ))}
+                </div>
+                {review.title && (
+                  <p className="font-heading text-base font-bold leading-snug mb-3">
+                    {review.title}
+                  </p>
+                )}
                 <blockquote className="font-body italic text-base md:text-lg leading-relaxed mb-6 flex-1">
                   &ldquo;{review.quote}&rdquo;
                 </blockquote>
